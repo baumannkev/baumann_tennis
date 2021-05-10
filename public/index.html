@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Clases De Tenis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700,900" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="container-time">
+            <h2 class="heading">Clases Individuales TEST - Grupales</h2>
+            <h3 class="heading-days">Lunes-Viernes</h3>
+            <p>8am - 12pm Manana</p>
+            <p>12:30pm - 17:30pm Tarde</p>
+
+            <h3 class="heading-days">Sabado y Domingo</h3>
+            <p>9am - 11am Manana</p>
+            <p>13:30pm - 17:30pm Tarde</p>
+
+            <hr>
+
+            <h4 class="heading-phone">Contactanos: 0983 288</h4>
+        </div>
+
+        <div class="container-form">
+            <form name="theform">
+                <h2 class="heading heading-yellow">Reservar Online</h2>
+
+                <div class="form-field">
+                    <p>Nombre</p>
+                    <input type="text" placeholder="Tu Nombre" onKeyup="checkform()" />
+                </div>
+                <div class="form-field">
+                    <p>Email</p>
+                    <input type="email" placeholder="Tu email" onKeyup="checkform()" />
+                </div>
+                <div class="form-field">
+                    <p>Fecha</p>
+                    <input type="date" onKeyup="checkform()" />
+                </div>
+                <div class="form-field">
+                    <p>Hora</p>
+                    <input type="time" onKeyup="checkform()" />
+                </div>
+                <div class="form-field">
+                    <p>Cuantas Personas?</p>
+                    <select name="select" id="#">
+                        <option value="1">1 persona</option>
+                        <option value="2">2 personas</option>
+                        <option value="3">3 personas</option>
+                        <option value="4">4 personas</option>
+                        <option value="5">5 personas</option>
+                        <option value="5+">5+ personas</option>
+                    </select>
+                </div>
+
+                <!-- <button class="btn">Registrar</button> -->
+                <input id="submitbutton" href="confirmation.html" role="button" type="submit" disabled="disabled"
+                    value="Registrar" />
+
+                <!-- <a id = "submitbutton" href="confirmation.html" role="button" type="submit" disabled="disabled" value="Submit">Registrar</a> -->
+            </form>
+            <!-- <form name="theform">
+                <input type="text" onKeyup="checkform()" />
+                <input type="text" onKeyup="checkform()" />
+                <input id="submitbutton" type="submit" disabled="disabled" value="Submit" />
+                </form> -->
+            <script type="text/javascript" language="javascript">
+                function checkform() {
+                    var f = document.forms["theform"].elements;
+                    var cansubmit = true;
+                    document.getElementById('submitbutton').onclick = function () {
+                        href = "confirmation.html";
+                    };
+
+                    for (var i = 0; i < f.length; i++) {
+                        if (f[i].value.length == 0) cansubmit = false;
+                    }
+
+                    if (cansubmit) {
+                        document.getElementById('submitbutton').disabled = false;
+                    }
+                    else {
+                        document.getElementById('submitbutton').disabled = 'disabled';
+                    }
+                }
+
+            </script>
+        </div>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.5.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/8.5.0/firebase-analytics.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+
+</body>
+
+</html>
