@@ -18,7 +18,7 @@
     <!-- Initialize Firebase -->
     <script src="/__/firebase/init.js"></script>
 
-     <!-- Add Firebase products that you want to use -->
+    <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
@@ -157,7 +157,8 @@
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <!-- <div id="background"></div> -->
-                <img src="/pictures/clasesfoto.jpg" alt="New York" width="1200" height="700">
+                <!-- <img src="/pictures/clasesfoto.jpg" alt="New York" width="1200" height="700"> -->
+                <img alt="New York" width="1200" height="700">
                 <div class="carousel-caption">
                     <h3>New York</h3>
                     <p>The atmosphere in New York is lorem ipsum.</p>
@@ -387,17 +388,22 @@
     </footer>
 
     <script>
+        var storage = firebase.storage();
+        var storageRef = storage.ref();
+        var spaceRef = storageRef.child('pictures/background.jpg');
+
+        storageRef.child('pictures/backgrond.jpg').getDownloadURL().then(function (url) {
+
+
+            var test = 'gs://baumanntennis-af590.appspot.com';
+            document.querySelector('img').src = test;
+
+        }).catch(function (error) {
+
+        });
+
         $(document).ready(function () {
-            //Add photos
-            var storage = firebase.storage();
-            var storageRef = storage.storageRef();
 
-            // var imagesRef = storageRef.child('pictures')
-
-            var backRef = storageRef.child('pictures/background-image.jpg');
-
-            $("#background").append("<img src='" + backRef + "' id='photo1'>")
-            
             // Initialize Tooltip
             $('[data-toggle="tooltip"]').tooltip();
 
