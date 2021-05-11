@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel ="stylesheet" href = "css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <!-- <body> -->
@@ -143,7 +143,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <div id = "background"></div>
+                <div id="background"></div>
                 <!-- <img src="/pictures/clasesfoto.jpg" alt="New York" width="1200" height="700"> -->
                 <div class="carousel-caption">
                     <h3>New York</h3>
@@ -375,6 +375,16 @@
 
     <script>
         $(document).ready(function () {
+            //Add photos
+            var storage = firebase.storage();
+            var storageRef = storage.storageRef();
+
+            var imagesRef = storageRef.child('pictures')
+
+            var backRef = storageRef.child('pictures/background-image.jpg');
+
+            $("#background").append("<img src='" + backRef + "' id='photo1'>")
+            
             // Initialize Tooltip
             $('[data-toggle="tooltip"]').tooltip();
 
@@ -414,7 +424,7 @@
     <!-- Initialize Firebase -->
     <script src="/__/firebase/init.js"></script>
 
-    <script src ="/storage.rules"></script>
+    <script src="/storage.rules"></script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
