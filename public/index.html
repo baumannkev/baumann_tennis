@@ -11,7 +11,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FLogo.jpg?alt=media&token=60f6e909-6be7-44fd-a913-e350ef02578f" type="image/x-icon" />
+    <link rel="shortcut icon"
+        href="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FLogo.jpg?alt=media&token=60f6e909-6be7-44fd-a913-e350ef02578f"
+        type="image/x-icon" />
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
@@ -25,6 +27,10 @@
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-analytics.js"></script>
     <script src="/scripts/firebase_api_baumanntennis.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/26da0e4274.js" crossorigin="anonymous"></script>
+
 </head>
 
 <!-- <body> -->
@@ -122,19 +128,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#myPage">Baumann Tennis</a>
+                <a class="navbar-brand" href="#myPage">
+                    Baumann Tennis</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#myPage">HOME</a></li>
-                    <li><a href="#band">REGISTRAR</a></li>
-                    <li><a href="#tour">TOUR</a></li>
+                    <li><a href="#equipo">EL EQUIPO</a></li>
+                    <li><a href="#registrar">REGISTRAR</a></li>
                     <li><a href="#contact">CONTACT</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Merchandise</a></li>
+                            <li><a href="test1.html">Merchandise</a></li>
                             <li><a href="#">Extras</a></li>
                             <li><a href="#">Media</a></li>
                         </ul>
@@ -151,12 +158,18 @@
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+            <li data-target="#myCarousel" data-slide-to="6"></li>
+            <li data-target="#myCarousel" data-slide-to="7"></li>
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img width="1200" height="700" src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fpelota.jpg?alt=media&token=440cc862-b788-42db-97ba-b77548d235f4"/>
+                <img width="1200" height="700"
+                    src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fpelota.jpg?alt=media&token=440cc862-b788-42db-97ba-b77548d235f4" />
                 <div class="carousel-caption">
                     <h3>Casa Lillo</h3>
                     <p>@baumanntennis.</p>
@@ -164,7 +177,8 @@
             </div>
 
             <div class="item">
-                <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FAsset%201.png?alt=media&token=83cd5e18-e854-4133-8e62-49d9410b3590" alt="Chicago" width="800" height="400">
+                <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FAsset%201.png?alt=media&token=83cd5e18-e854-4133-8e62-49d9410b3590"
+                    alt="Chicago" width="800" height="400">
                 <div class="carousel-caption">
                     <h3></h3>
                     <p></p>
@@ -172,12 +186,59 @@
             </div>
 
             <div class="item">
-                <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FLa_Casa.png?alt=media&token=1e2f4d4c-fbe7-40d4-abfc-7cfac0924748" alt="Los Angeles" width="800" height="400">
+                <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FLa_Casa.png?alt=media&token=1e2f4d4c-fbe7-40d4-abfc-7cfac0924748"
+                    alt="Los Angeles" width="800" height="400">
                 <div class="carousel-caption">
                     <h3>Grupos</h3>
                     <p>Ofrecemos clases de grupos!</p>
                 </div>
             </div>
+
+            <div class="item">
+                <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fcuarto_angulo.jpg?alt=media&token=0eeb3f1c-ebf8-4e5a-a4d6-d581bcc67cd7"
+                    alt="" width="800" height="400">
+                <div class="carousel-caption">
+                    <h3>Singles</h3>
+                    <p>Ofrecemos clases de singles!</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fcancha.jpg?alt=media&token=df3041b2-4051-49a6-a35e-241d14184312"
+                    alt="" width="800" height="400">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fotro_angulo.jpg?alt=media&token=d7387931-4d2d-4fee-8170-2935199df4cc"
+                    alt="" width="800" height="400">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fsillas.jpg?alt=media&token=d87ac6f4-0ea5-465f-bbd4-b611016d50ed"
+                    alt="" width="800" height="400">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Ftercer_angulo.jpg?alt=media&token=c032f9db-67c8-4769-b476-a11ebd69fb1d"
+                    alt="" width="800" height="400">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
         </div>
 
         <!-- Left and right controls -->
@@ -191,8 +252,8 @@
         </a>
     </div>
 
-    <!-- Container (The Band Section) -->
-    <div id="band" class="container text-center">
+    <!-- Container (EQUIPO Section) -->
+    <div id="equipo" class="container text-center">
         <h3>El Equipo</h3>
         <p><em>We love tennis!</em></p>
         <p>📍Asuncion 🇵🇾
@@ -204,8 +265,8 @@
             <div class="col-sm-4">
                 <p class="text-center"><strong>Bob</strong></p><br>
                 <a href="#demo" data-toggle="collapse">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fbob.jpeg?alt=media&token=6fdac0c6-8c7d-43c1-b2fe-58ab15843291" class="img-circle person" alt="Random Name" width="300"
-                        height="100">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fbob.jpeg?alt=media&token=6fdac0c6-8c7d-43c1-b2fe-58ab15843291"
+                        class="img-circle person" alt="Random Name" width="300" height="100">
                 </a>
                 <div id="demo" class="collapse">
                     <p>Guitarist and Lead Vocalist</p>
@@ -216,8 +277,8 @@
             <div class="col-sm-4">
                 <p class="text-center"><strong>Gethard</strong></p><br>
                 <a href="#demo2" data-toggle="collapse">
-                    <img src="/public/images/FotoPerfil.jpg" class="img-circle person" alt="Random Name" width="255"
-                        height="255">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fgethard.jpg?alt=media&token=8559ffb8-7a4e-4e9e-b6ce-eb032ab9382d"
+                        class="img-circle person" alt="Random Name" width="55" height="55">
                 </a>
                 <div id="demo2" class="collapse">
                     <p>Drummer</p>
@@ -228,8 +289,8 @@
             <div class="col-sm-4">
                 <p class="text-center"><strong>Normie</strong></p><br>
                 <a href="#demo3" data-toggle="collapse">
-                    <img src="/public/images/FotoPerfil.jpg" class="img-circle person" alt="Random Name" width="255"
-                        height="255">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fnorm.jpg?alt=media&token=100a8170-3a04-44dc-b944-34e4cafb092e"
+                        class="img-circle person" alt="Random Name" width="255" height="255">
                 </a>
                 <div id="demo3" class="collapse">
                     <p>Bass player</p>
@@ -240,11 +301,12 @@
         </div>
     </div>
 
-    <!-- Container (TOUR Section) -->
-    <div id="tour" class="bg-1">
+    <!-- Container (REGISTRAR Section) -->
+    <div id="registrar" class="bg-1">
         <div class="container">
-            <h3 class="text-center">TOUR DATES</h3>
-            <p class="text-center">Lorem ipsum we'll play you some music.<br> Remember to book your tickets!</p>
+            <h3 class="text-center">REGISTRAR</h3>
+            <p class="text-center">Se cumplen todos los requisitos y protocolos sanitarios.<br> Reserva la cancha cuando
+                quieras!</p>
             <ul class="list-group">
                 <li class="list-group-item">September <span class="label label-danger">Sold Out!</span></li>
                 <li class="list-group-item">October <span class="label label-danger">Sold Out!</span></li>
@@ -324,9 +386,13 @@
         <div class="row">
             <div class="col-md-4">
                 <p>Fan? Drop a note.</p>
-                <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
-                <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
-                <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+                <p><span class="glyphicon glyphicon-map-marker"></span>Pdte. Frutos 2925 esquina Dr. Caballero,
+                    Asuncion, Paraguay</p>
+                <p><span class="glyphicon glyphicon-phone"></span>Phone: 0982 367638</p>
+                <p><span class="glyphicon glyphicon-envelope"></span>Email: rbau@gmail.com</p>
+                <p><span class="fab fa-instagram"> Insta:<a
+                            href="https://instagram.com/baumanntennis?igshid=1se5twpjgogen" data-toggle="tooltip"
+                            title="Visit Instagram Page" target="_blank">baumanntennis</a></span></p>
             </div>
             <div class="col-md-8">
                 <div class="row">
@@ -347,7 +413,7 @@
             </div>
         </div>
         <br>
-        <h3 class="text-center">From The Blog</h3>
+        <h3 class="text-center">About Us</h3>
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#home">Kevin</a></li>
             <li><a data-toggle="tab" href="#menu1">Robert</a></li>
@@ -370,16 +436,20 @@
         </div>
     </div>
 
-    <!-- Image of location/map -->
-    <img src="/public/images/background-image.jpg" class="img-responsive" style="width:100%">
+    <!-- Map  -->
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.232549954158!2d-57.56076158581113!3d-25.29638978385006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da93a582642b3%3A0x3d8b365b336409c2!2sBaumann%20Tennis!5e0!3m2!1sen!2sca!4v1620715993234!5m2!1sen!2sca"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
 
     <!-- Footer -->
     <footer class="text-center">
         <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
             <span class="glyphicon glyphicon-chevron-up"></span>
         </a><br><br>
-        <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" data-toggle="tooltip"
-                title="Visit w3schools">www.w3schools.com</a></p>
+        <p>Website Made By <a href="https://github.com/baumannkev" data-toggle="tooltip" title="Visit Github Page">Kevin
+                Baumann</a></p>
     </footer>
 
     <script>

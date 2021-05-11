@@ -28,6 +28,9 @@ body {
     height: 700px;
     margin: auto;
   }
+  .carousel{
+    background-color: rgb(255, 255, 255);
+  }
   .carousel-caption h3 {
     color: #fff !important;
   }
