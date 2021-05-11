@@ -23,7 +23,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-analytics.js"></script>
-
+    <script src="/scripts/firebase_api_baumanntennis.js"></script>
 </head>
 
 <!-- <body> -->
@@ -152,30 +152,10 @@
             <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
 
-        <script>
-            function showimage() {
-
-                var storageRef = firebase.storage().ref();
-                var spaceRef = storageRef.child('pictures/Logo.jpg');
-                storageRef.child('pictures/Logo.jpg').getDownloadURL().then(function (url) {
-                    var test = url;
-                    alert(url);
-                    document.querySelector('img').src = test;
-
-                }).catch(function (error) {
-
-                });
-
-
-            }
-        </script>
-
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <!-- <div id="background"></div> -->
-                <!-- <img src="/pictures/clasesfoto.jpg" alt="New York" width="1200" height="700"> -->
-                <img width="1200" height="700">
+                <img width="1200" height="700" id = "img1" src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FLogo.jpg?alt=media&token=60f6e909-6be7-44fd-a913-e350ef02578f"/>
                 <div class="carousel-caption">
                     <h3>New York</h3>
                     <p>The atmosphere in New York is lorem ipsum.</p>
@@ -183,7 +163,7 @@
             </div>
 
             <div class="item">
-                <img src="/public/images/background-image.jpg" alt="Chicago" width="1200" height="700">
+                <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fbanner.jpg?alt=media&token=32a41bf3-4e89-442a-b922-d5fb209ccacf" alt="Chicago" width="1200" height="700">
                 <div class="carousel-caption">
                     <h3>Chicago</h3>
                     <p>Thank you, Chicago - A night we won't forget.</p>
@@ -191,7 +171,7 @@
             </div>
 
             <div class="item">
-                <img src="/public/images/background.jpg" alt="Los Angeles" width="1200" height="700">
+                <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fclasesfoto.jpg?alt=media&token=1b379dde-82ca-4988-8a82-ac7cc60b53d2" alt="Los Angeles" width="1200" height="700">
                 <div class="carousel-caption">
                     <h3>LA</h3>
                     <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>

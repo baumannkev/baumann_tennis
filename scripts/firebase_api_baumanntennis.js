@@ -17,4 +17,3 @@
 var storage = firebase.storage();
 //  72178440964
 
-// gsutil -m acl ch -r -u service-72178440964@gcp-sa-firebasestorage.iam.gserviceaccount.com gs://gs://baumanntennis-af590.appspot.com
