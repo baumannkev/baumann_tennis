@@ -113,7 +113,6 @@
     </div>  -->
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
-
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -152,6 +151,24 @@
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
+
+        <script>
+            function showimage() {
+
+                var storageRef = firebase.storage().ref();
+                var spaceRef = storageRef.child('pictures/Logo.jpg');
+                storageRef.child('pictures/Logo.jpg').getDownloadURL().then(function (url) {
+                    var test = url;
+                    alert(url);
+                    document.querySelector('img').src = test;
+
+                }).catch(function (error) {
+
+                });
+
+
+            }
+        </script>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
@@ -388,19 +405,6 @@
     </footer>
 
     <script>
-        var storage = firebase.storage();
-        var storageRef = storage.ref();
-        var spaceRef = storageRef.child('pictures/background.jpg');
-
-        storageRef.child('pictures/backgrond.jpg').getDownloadURL().then(function (url) {
-
-
-            var test = 'gs://baumanntennis-af590.appspot.com';
-            document.querySelector('img').src = test;
-
-        }).catch(function (error) {
-
-        });
 
         $(document).ready(function () {
 
@@ -433,8 +437,6 @@
         })
     </script>
 
-
-    <!-- <script src="/scripts/displayUserProfilePic.js"></script> -->
 </body>
 
 </html>
