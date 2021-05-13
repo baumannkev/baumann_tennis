@@ -114,6 +114,7 @@ body {
   .navbar-default .navbar-toggle {
     border-color: transparent;
   }
+
   .open .dropdown-toggle {
     color: #fff;
     background-color: #555 !important;
