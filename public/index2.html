@@ -121,7 +121,7 @@
     </div>  -->
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top" style="height: 100px;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -130,11 +130,12 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#myPage">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FLogo.jpg?alt=media&token=60f6e909-6be7-44fd-a913-e350ef02578f" width="40" height="40">
-                     Baumann Tennis</a>
+                    <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FLogo.jpg?alt=media&token=60f6e909-6be7-44fd-a913-e350ef02578f"
+                        width="40" height="40">
+                    Baumann Tennis</a>
             </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
+            <div class="collapse navbar-collapse " id="myNavbar" style="padding-top: 20px;">
+                <ul class="nav navbar-nav navbar-right ">
                     <li><a href="#myPage">INICIO</a></li>
                     <li><a href="#registrar">TIENDA</a></li>
                     <li><a href="#historia">NUESTRA HISTORIA</a></li>
@@ -144,7 +145,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">MAS
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/baumann_tennis/public/pricing/test.html">Merchandise</a></li>
+                            <li><a href="/baumann_tennis/public/index1.html" target="_blank">Merchandise</a></li>
                             <li><a href="#">Extras</a></li>
                             <li><a href="#">Media</a></li>
                         </ul>
@@ -256,7 +257,7 @@
     </div>
 
     <!-- Container (REGISTRAR Section) -->
-    <div id="registrar" class="bg-1">
+    <div id="registrar" class="bg-1 ">
         <div class="container">
             <h3 class="text-center">REGISTRAR</h3>
             <p class="text-center">Se cumplen todos los requisitos y protocolos sanitarios.<br> Reserva la cancha cuando
@@ -267,17 +268,17 @@
                 <li class="list-group-item">November <span class="badge">3</span></li>
             </ul> -->
 
-            <div class="row text-center justify-content-evenly">
-                <div class="col-sm-4">
+            <div class="row text-center justify-content-end">
+                <div class="col-sm-5 ">
                     <div class="thumbnail">
                         <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FRegistrar%2Fsingulares.jpg?alt=media&token=8656ec65-b3a5-4f37-980e-ac5fdfd3dd6e"
-                         alt="Grupales" width="400" height="300">
-                        <p><strong>Grupales</strong></p>
+                            alt="Grupales" width="400" height="300">
+                        <p><strong>Reserva en Baumann Tennis descargando la app</strong></p>
                         <p></p>
-                        <button class="btn" data-toggle="modal" data-target="#myModal">Registrate</button>
+                        <button class="btn" data-toggle="modal" data-target="#myModal">Reva</button>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <!-- <div class="col-sm-4">
                     <div class="thumbnail">
                         <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FRegistrar%2Fgrupales.jpg?alt=media&token=4cfbdea5-c663-47de-9d01-c9f7e81458c5" 
                         alt="Particulares" width="400" height="300">
@@ -303,7 +304,7 @@
                         <p></p>
                         <button class="btn" data-toggle="modal" data-target="#myModal">Registrate</button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -312,12 +313,11 @@
             <div class="modal-dialog">
 
                 <!-- Modal content-->
-                <div class="modal-content">
+                <!-- <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">×</button>
-                        <h4><span class="glyphicon glyphicon-lock"></span> Registrar</h4>
-                    </div>
-                    <div class="modal-body">
+                        <h4><span class="glyphicon glyphicon-lock"></span> Registrar</h4> -->
+                <!-- <div class="modal-body">
                         <form role="form">
                             <div class="form-group">
                                 <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Tickets, $23
@@ -331,6 +331,58 @@
                             <button type="submit" class="btn btn-block">Pagar
                                 <span class="glyphicon glyphicon-ok"></span>
                             </button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove"></span> Cancel
+                        </button>
+                        <p>Need <a href="#">help?</a></p>
+                    </div>
+                </div>  -->
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4><span class="glyphicon glyphicon-lock"></span> Registrar</h4>
+                        <!-- https://play.google.com/store/apps/details?id=py.com.kynox.pelotajara&hl=en&gl=US -->
+                    </div>
+                    <div class="modal-body">
+                        <form role="form">
+                            <!-- <div class="form-group">
+                                <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Tickets, $23
+                                    per person</label>
+                                <input type="number" class="form-control" id="psw" placeholder="How many?">
+                            </div>
+                            <div class="form-group">
+                                <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
+                                <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                            </div> -->
+                            <div class="container justify-content-evenly">
+                                <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2FReva.png?alt=media&token=6ac2b832-4c35-4995-8d08-c03c18f731b2"
+                                    style="width: 250px; height: 250px;">
+
+                            </div>
+                            <div class="container justify-center">
+                                <a class="btn-2" href="https://play.google.com/store/apps/details?id=py.com.kynox.pelotajara" target = "_blank" role="button">
+                                    <span><img 
+                                        src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2Fgoogle_play.png?alt=media&token=17aa355b-0bc0-4df6-b026-d3c85b60b58b"
+                                        style="height: 50px; width: 150px;"></span>
+                                </a>
+                                <a class="btn-2" href="https://apps.apple.com/us/app/pelota-jara/id1312023245" target ="_blank" role="button">
+                                    <span><img 
+                                        src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2Fappstore.png?alt=media&token=58a94942-a204-481a-8e4f-bc8c4c7fc6d9"
+                                        style="height: 50px; width: 150px;"></span>
+                                </a>
+                                <!-- <button type="button" class="btn btn-block" style="width: auto; height: auto;">
+                                    <span><img href=""
+                                            src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2Fgoogle_play.png?alt=media&token=17aa355b-0bc0-4df6-b026-d3c85b60b58b"
+                                            style="height: 50px; width: 150px;"></span><a href="https://play.google.com/store/apps/details?id=py.com.kynox.pelotajara"></a>
+                                </button> -->
+                            </div>
+                            <!-- <button type="submit" class="btn btn-block">Pagar
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </button> -->
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -359,11 +411,14 @@
             <div class="col-header">
                 <h1 class="text-center">Deportes</h1>
                 <div class="col-sm-4">
-                    <p class="text-center"><img src ="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2Ffavicon-16x16.png?alt=media&token=24f7255b-3a81-4459-8a27-90fcdf527347"></img>
-                        <strong> Tennis</strong></p><br>
+                    <p class="text-center"><img
+                            src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2Ffavicon-16x16.png?alt=media&token=24f7255b-3a81-4459-8a27-90fcdf527347"></img>
+                        <strong> Tennis</strong>
+                    </p><br>
                     <a href="#demo" data-toggle="collapse">
                         <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fclasesfoto.jpg?alt=media&token=1b379dde-82ca-4988-8a82-ac7cc60b53d2"
-                            class="img-square person" alt="Random Name" style="width: 300px; height: 300px !important; border-radius: 25px !important;">
+                            class="img-square person" alt="Random Name"
+                            style="width: 300px; height: 300px !important; border-radius: 25px !important;">
                     </a>
                     <div id="demo" class="collapse">
                         <p>Clases Grupales</p>
@@ -374,8 +429,8 @@
                 <div class="col-sm-4">
                     <p class="text-center"><strong>COMING SOON</strong></p><br>
                     <a href="#demo2" data-toggle="collapse">
-                        <img src=""
-                        class="img-square person" alt="coming soon" style="width: 300px; height: 300px !important; border-radius: 25px !important;">
+                        <img src="" class="img-square person" alt="coming soon"
+                            style="width: 300px; height: 300px !important; border-radius: 25px !important;">
                     </a>
                     <div id="demo2" class="collapse">
                         <p></p>
@@ -386,8 +441,8 @@
                 <div class="col-sm-4">
                     <p class="text-center"><strong>COMING SOON</strong></p><br>
                     <a href="#demo3" data-toggle="collapse">
-                        <img src=""
-                        class="img-square person" alt="coming soon" style="width: 300px; height: 300px !important; border-radius: 25px !important;">
+                        <img src="" class="img-square person" alt="coming soon"
+                            style="width: 300px; height: 300px !important; border-radius: 25px !important;">
                     </a>
                     <div id="demo3" class="collapse">
                         <p></p>
@@ -409,15 +464,16 @@
             <div class="col-header">
                 <h1 class="text-center">Comodidades</h1>
                 <div class="col-sm-4">
-                    <a href="#vestuario" data-toggle="collapse" >
+                    <a href="#vestuario" data-toggle="collapse">
                         <!-- <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fclasesfoto.jpg?alt=media&token=1b379dde-82ca-4988-8a82-ac7cc60b53d2"
                             class="img-square person" alt="Random Name" style="width: 300px; height: 300px !important; border-radius: 25px !important;"> -->
-                            <p class="text-center"><strong>Vestuario</strong></p><br>
+                        <p class="text-center"><strong>Vestuario</strong></p><br>
                     </a>
                     <div id="vestuario" class="collapse">
                         <p>Vestuario limpio y sanitario.</p>
                         <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fotro_angulo.jpg?alt=media&token=d7387931-4d2d-4fee-8170-2935199df4cc"
-                        class="img-square person" alt="Vestuario" style="width: 300px; height: 300px !important; border-radius: 25px !important;"></img>
+                            class="img-square person" alt="Vestuario"
+                            style="width: 300px; height: 300px !important; border-radius: 25px !important;"></img>
                         <p></p>
                     </div>
                 </div>
@@ -428,15 +484,16 @@
                     <div id="bano" class="collapse">
                         <p>Bano limpio y sanitario.</p>
                         <img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fotro_angulo.jpg?alt=media&token=d7387931-4d2d-4fee-8170-2935199df4cc"
-                        class="img-square person" alt="Vestuario" style="width: 300px; height: 300px !important; border-radius: 25px !important;"></img>
+                            class="img-square person" alt="Vestuario"
+                            style="width: 300px; height: 300px !important; border-radius: 25px !important;"></img>
                         <p></p>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <p class="text-center"><strong>COMING SOON</strong></p><br>
                     <a href="#demo3" data-toggle="collapse">
-                        <img src=""
-                        class="img-square person" alt="coming soon" style="width: 300px; height: 300px !important; border-radius: 25px !important;">
+                        <img src="" class="img-square person" alt="coming soon"
+                            style="width: 300px; height: 300px !important; border-radius: 25px !important;">
                     </a>
                     <div id="demo3" class="collapse">
                         <p></p>
@@ -495,26 +552,26 @@
     </div>
 
     <h3 class="text-center">About Us</h3>
-        <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#home">Kevin</a></li>
-            <li><a data-toggle="tab" href="#menu1">Robert</a></li>
-            <li><a data-toggle="tab" href="#menu2">Steven</a></li>
-        </ul>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Kevin</a></li>
+        <li><a data-toggle="tab" href="#menu1">Robert</a></li>
+        <li><a data-toggle="tab" href="#menu2">Steven</a></li>
+    </ul>
 
-        <div class="tab-content">
-            <div id="home" class="tab-pane fade in active">
-                <h2>Kevin Baumann, Web Developer</h2>
-                <p>Contact me at baumannkev@gmail.com for more project ideas.</p>
-            </div>
-            <div id="menu1" class="tab-pane fade">
-                <h2>Robert Baumann, Operations Manager</h2>
-                <p></p>
-            </div>
-            <div id="menu2" class="tab-pane fade">
-                <h2>Steven Baumann, Chief Financial Officer</h2>
-                <p></p>
-            </div>
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <h2>Kevin Baumann, Web Developer</h2>
+            <p>Contact me at baumannkev@gmail.com for more project ideas.</p>
         </div>
+        <div id="menu1" class="tab-pane fade">
+            <h2>Robert Baumann, Operations Manager</h2>
+            <p></p>
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <h2>Steven Baumann, Chief Financial Officer</h2>
+            <p></p>
+        </div>
+    </div>
     <!-- Footer -->
     <footer class="text-center">
         <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
