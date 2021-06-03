@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+#icon {
+    width: 100px;
+    height: 100px;
+}
+
+span {
+    font-size: 30pt;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #EE964B;
+}
+
+img {
+    vertical-align: middle;
+}
+
+#app-name {
+    text-align: center;
+    padding: 25px;
+}
+
+#instruc {
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    margin: auto;
+    width: 400px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14pt;
+}
