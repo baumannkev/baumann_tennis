@@ -1,0 +1,106 @@
+/* .btn_register{ */
+      /* position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: pink;
+      font-size: 20px;
+      color: white;
+      padding: 10px 30px;
+      cursor: pointer; */
+    /* } */
+    
+    #box{
+      width: 500px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 0 10px black;
+      border-radius: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      padding: 10px;
+      text-align: center;
+      display: none;
+    }
+
+    #box span{
+      color: hotpink;
+      font-size: 40px;
+      display: block;
+      margin: 20px 0;
+    }
+  
+    #box h1{
+      color: brown
+    }
+    
+    .close{
+      font-size: 18px;
+      color: white;
+      padding: 10px 20px;
+      cursor: pointer;
+      background: rgb(199, 199, 240);
+      display: inline-block;
+      border-radius: 1px solid #000;
+    }
+    
+    .btn_click{
+        /* position: absolute; */
+        /* top: 50%; */
+        /* left: 50%; */
+        /* transform: translate(-50%, -50%); */
+        /* background: pink; */
+        /* font-size: 20px; */
+        /* color: white; */
+        /* padding: 10px 30px; */
+        cursor: pointer;
+      }
+      
+      .modal_book{
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* width: auto; */
+        height: 100%;
+        /* height: auto; */
+        /* background-color: rgba(0, 0, 0, 0.3); */
+        opacity: 0;
+        visibility: hidden;
+      }
+      
+      .modal-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 1rem 1.5rem;
+        /* width: 24rem; */
+        width: auto;
+        border-radius: 0.5rem;
+        border: 1px solid;
+        border-color: #000;
+      }
+      
+      .close-button {
+        float: right;
+        width: 2.5rem;
+        line-height: 2.5rem;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        background-color: lightgray;
+      }
+
+      .show-modal {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1.0);
+      }
+      
+      
+    

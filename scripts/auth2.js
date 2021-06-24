@@ -2,21 +2,11 @@
 auth.onAuthStateChanged(user => {
   if (user) {
     db.collection('classes').onSnapshot(snapshot => {
-      // setupGuides(snapshot.docs);
-      // setupRegisterTimes(snapshot.docs);
-      setupUI(user);
-      setupUIRegister(user);
-      getUserName(user);
       setupRegisterTimes(user);
+      setupUI(user);
     }, err => console.log(err.message));
   } else {
-    setupUIRegister();
-    setupUI();
-    getUserName();
     setupRegisterTimes(user);
-    // setupRegisterTimes([]);
-
-    // setupGuides([]);
   }
 });
 

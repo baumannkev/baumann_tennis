@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
+    <meta name="theme-color" content="#F75B13" />
     <title>BaumannTennis</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -13,7 +14,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-    <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
@@ -35,35 +35,30 @@
     <!-- this file was moved after the jQuery Datatables library was laoded -->
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/dataTables.bootstrap.min.js"></script>
 
-
-
-    <!-- <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function () {
-
-            // add padding top to show content behind navbar
-            navbar_height = document.querySelector('.navbar').offsetHeight;
-            document.body.style.paddingTop = navbar_height + 'px';
-
-        });
-    // DOMContentLoaded  end
-    </script>
-</head>
-<div id="google_translate_element">
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({ pageLanguage: 'es' }, 'google_translate_element');
-        }
-    </script>
-</div> -->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <!-- <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"> -->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="styles/util.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/new_register.css">
+    <!--===============================================================================================-->
 
 <body data-bs-spy="scroll" data-bs-target="#navbarCollapse" data-bs-offset="auto" tabindex="0">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light rounded">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img
+                <a class="navbar-brand" style="color: rgb(39,57,82);" href="index.html"><img
                         src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2FBAUMANN%20TENNIS.png?alt=media&token=ed3487eb-d643-4b5d-b8d3-bdf18d768a1f"
                         alt="" width="60" height="70.97" class="d-inline-block align-text-center">
-                    BaumannTennis</a>
+                    Baumann Tennis</a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -79,17 +74,23 @@
                             </li>
                         </span>
                         <span class="logged-in">
+                            <li class="nav-item d-flex">
+                                <button class="btn btn-border shadow"><a href="clases.html" style="color: white;">Mis
+                                        Clases</a></button>
+                            </li>
+                        </span>
+                        <!-- <span class="logged-in">
                             <li class="nav-item d-flex" style="display: none;">
                                 <button href="" class="btn btn-border shadow grey-text" data-bs-toggle="modal"
                                     data-bs-target="#modal-create">Alquila Cancha</button>
                             </li>
-                        </span>
-                        <span class="logged-in">
+                        </span> -->
+                        <!-- <span class="logged-in">
                             <li class="nav-item d-flex" style="display: none;">
                                 <button href="" class="btn btn-border shadow grey-text" data-bs-toggle="modal"
                                     data-bs-target="#modal-clases">Registrate en Clases</button>
                             </li>
-                        </span>
+                        </span> -->
                         <span class="logged-in" id="logout">
                             <li class="logged-in nav-item d-flex" style="display: none;">
                                 <button href="#" class="btn btn-border shadow grey-text" id="logout">Cerrar
@@ -126,9 +127,43 @@
     </header>
     <main>
 
-        <div class="container" style="padding-top: 5rem">
+        <!-- 
+            table align-middle table-sm table-success table-striped table-hover caption-top table-bordered
+         -->
+
+        <div class="container" style="padding-top: 5rem; padding-bottom: 5rem">
             <p class="text-center" id="welcomeMessage"><span class="usersName"></span></p>
         </div>
+        <!-- Table for schedule -->
+        <div class="limiter" style="padding-right: 1rem; padding-left: 1rem">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100 ver6 m-b-110">
+                        <div class="table-responsive">
+                            <table id="tbl1" class="table" data-vertable="ver6">
+                                <!-- <caption>Registrate!</caption> -->
+                                <thead>
+                                    <tr class="row100 head">
+                                        <!-- <th class="column100 column1" data-field="id" data-sortable="true" data-align="center">Hora</th> -->
+                                        <th class="column100 column1" data-column="column1">Hora</th>
+                                        <th class="column100 column2" data-column="column2">Lunes</th>
+                                        <th class="column100 column3" data-column="column3">Martes</th>
+                                        <th class="column100 column4" data-column="column4">Miercoles</th>
+                                        <th class="column100 column5" data-column="column5">Jueves</th>
+                                        <th class="column100 column6" data-column="column6">Viernes</th>
+                                        <th class="column100 column7" data-column="column7">Sabado</th>
+                                        <th class="column100 column8" data-column="column8">Domingo</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody1">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  -->
         <!-- SIGN UP MODAL -->
         <div id="modal-signup" class="modal fade" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -218,9 +253,6 @@
                                     <div class="input-group has-validation">
                                         <input type="email" id="login-email" class="form-control" placeholder="Email"
                                             aria-describedby="inputGroupPrepend" required />
-                                        <div class="invalid-feedback">
-                                            Por favor escribi tu email.
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -229,6 +261,9 @@
                                         <input type="password" id="login-password" class="form-control"
                                             placeholder="Contraseña" aria-describedby="inputGroupPrepend" required />
                                     </div>
+                                    <div id="invalid-feedback" class="text-danger">
+
+                                    </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Atras</button>
@@ -236,6 +271,21 @@
                                     </div>
                                 </div>
                             </form>
+                            <form id="reset-login-pass" class="needs-validation" style="padding-top: 2rem" novalidate>
+                                <div class="mb-3">
+                                    <label for="reset-password" class="form-label">Resetea Contraseña</label>
+                                    <div class="input-group has-validation">
+                                        <input type="email" id="reset-password" class="form-control" placeholder="Email"
+                                            aria-describedby="inputGroupPrepend" required />
+                                    </div>
+                                    <div id="invalid-feedback" class="text-danger">
+
+                                    </div>
+                                    <button type="button" class="btn " data-bs-dismiss="modal">Atras</button>
+                                    <button class="btn  darken-2 z-depth-0">Resetea Contraseña</button>
+                                </div>
+                            </form>
+                            <div class="text-success" id="succesfull-reset-email-login"></div>
                         </div>
                     </div>
                 </div>
@@ -253,6 +303,24 @@
                     <div class="modal-body text-center">
                         <div class="account-details"></div>
                     </div>
+                    <!-- Reset -->
+                    <div class="modal-footer">
+                        <form id="reset-form" class="needs-validation" style="padding-top: 2rem" novalidate>
+                            <div class="mb-3">
+                                <label for="reset-password" class="form-label">Resetea Contraseña</label>
+                                <div class="input-group has-validation">
+                                    <input type="email" id="reset-password" class="form-control" placeholder="Email"
+                                        aria-describedby="inputGroupPrepend" required />
+                                </div>
+                                <div id="invalid-feedback" class="text-danger">
+
+                                </div>
+                                <button type="button" class="btn " data-bs-dismiss="modal">Atras</button>
+                                <button class="btn  darken-2 z-depth-0">Resetea Contraseña</button>
+                            </div>
+                        </form>
+                        <div class="text-success" id="succesfull-reset-email"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -267,20 +335,6 @@
                             <h5 class="modal-title text-center" id="loginModalLabel">Alquila tu Cancha</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <!-- <form id="create-form">
-                        <div class="input-field">
-                            <input type="text" id="title" required>
-                            <label for="title">Guide Title</label>
-                        </div>
-                        <div class="input-field">
-                            <textarea id="content" class="materialize-textarea" required></textarea>
-                            <label for="content">Guide Content</label>
-                        </div>
-                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Atras</button>
-
-                        <button class="btn yellow darken-2 z-depth-0">Alquila</button>
-                    </form> -->
 
                         <!-- -----------------------ALQUILAR-------------------------------------------------------- -->
                         <div class="" id="home">
@@ -514,205 +568,89 @@
                             <h5 class="modal-title text-center" id="loginModalLabel">Registrate en Clases</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <!-- <form id="create-form">
-                                <div class="input-field">
-                                    <input type="text" id="title" required>
-                                    <label for="title">Guide Title</label>
-                                </div>
-                                <div class="input-field">
-                                    <textarea id="content" class="materialize-textarea" required></textarea>
-                                    <label for="content">Guide Content</label>
-                                </div>
-                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Atras</button>
 
-                                <button class="btn yellow darken-2 z-depth-0">Alquila</button>
-                            </form> -->
-                        <!-- BOOKING -->
-                        <div class="container" style="padding-bottom: 5rem;">
-                            <!-- Title -->
-                            <h2>BAUMANN TENNIS</h2>
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="clases-tab" data-bs-toggle="tab"
-                                        data-bs-target="#clases" type="button" role="tab" aria-controls="clases"
-                                        aria-selected="true">Miercoles, Junio 2</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="nextDay1-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nextDay1" type="button" role="tab" aria-controls="nextDay1"
-                                        aria-selected="false">Jueves, Junio 3</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="nextDay2-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nextDay2" type="button" role="tab" aria-controls="nextDay2"
-                                        aria-selected="false">Viernes, Junio 4</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="nextDay3-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nextDay3" type="button" role="tab" aria-controls="nextDay3"
-                                        aria-selected="false">Sabado, Junio 5</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="nextDay4-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nextDay4" type="button" role="tab" aria-controls="nextDay4"
-                                        aria-selected="false">Domingo, Junio 6</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="nextDay5-tab" data-bs-toggle="tab"
-                                        data-bs-target="#nextDay5" type="button" role="tab" aria-controls="nextDay5"
-                                        aria-selected="false">Lunes, Junio 7</button>
-                                </li>
-                            </ul>
+                    </div>
 
-                            <div class="tab-content" id="myTabContent">
-
-                                <!-- Alquilar Canchas -->
-
-                                <div class="tab-pane fade show active" id="home" role="tabpanel"
-                                    aria-labelledby="home-tab">
-                                    <div class="container" style="padding-top: 2rem;">
-                                        <div class="row">
-                                            <div class='col-md-8'>
-                                            </div>
-                                            <!-- Time -->
-                                            <!-- Button trigger modal -->
-                                            <div class="col-6 col-md-4">
-                                            </div>
-                                        </div>
-                                            <div class="col-6 col-md-4">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- ---------------------------------------------------------------- -->
-                                <!-- ANOTHER TAB / Clases  -->
-                                <div class="tab-pane fade" id="clases" role="tabpanel" aria-labelledby="clases-tab">
-                                    <div class="container text-center">
-                                        <div class="row border">
-                                            <div style="padding: 1rem">
-                                                Reservados
-                                            </div>
-                                            <div>6:00 - 7:00</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="">
-                                                Reservados
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6 col-md-4">
-                                                Reservados
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6 col-md-4">
-                                                Booked
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6 col-md-4">
-                                                Booked
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6 col-md-4">
-                                                Booked
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6 col-md-4">
-                                                Booked
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6 col-md-4">
-                                                Booked
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="nextDay1" role="tabpanel" aria-labelledby="nextDay1-tab">
-                                    Jueves, Junio 4
-                                </div>
-                                <div class="tab-pane fade" id="nextDay2" role="tabpanel" aria-labelledby="nextDay2-tab">
-                                    Viernes, Junio 5
-                                </div>
-                                <div class="tab-pane fade" id="nextDay3" role="tabpanel" aria-labelledby="nextDay3-tab">
-                                    Sabado, Junio 6
-                                </div>
-                                <div class="tab-pane fade" id="nextDay4" role="tabpanel" aria-labelledby="nextDay4-tab">
-                                    Domingo, Junio 7
-                                </div>
-                                <div class="tab-pane fade" id="nextDay5" role="tabpanel" aria-labelledby="nextDay5-tab">
-                                    Lunes, Junio 8
-                                </div>
-                            </div>
-
-                            <!-- -----------------------ALQUILAR-------------------------------------------------------- -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal"
-                                    id="confirmButton">Confirmar</button>
-                            </div>
-                        </div>
+                    <!-- -----------------------ALQUILAR-------------------------------------------------------- -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal" id="confirmButton"><a
+                                href="confirmation.html">Confirmar</a></button>
                     </div>
                 </div>
-                <!-- REGISTRAR CLASES -->
+            </div>
+        </div>
+        <!-- REGISTRAR CLASES -->
 
-                <!-- GUIDE LIST -->
-                <div class="container" style="margin-top: 40px;">
-                    <ul class="collapsible z-depth-0 guides" style="border: none;">
-                    </ul>
-                </div>
-                <hr class="featurette-divider">
+        <!-- REGISTRAR USER TO CLASS MODAL -->
+        <!-- <a class="btn_register" onclick="pop()">Show Box</a> -->
+        <!-- <div id="box">
+            <h1>Confirmar Registrar</h1>
+            <div class ="container">
+                <p>Asegura que todo esta correcto</p>
+                <div class="details"> </div>
 
-                <!-- FOOTER -->
-                <footer class="blog-footer">
-                    <h3 class="icons_bt" style="vertical-align: middle;">
-                        <div class="row row-cols-1 row-cols-lg-4 g-4 g-lg-4" id=""
-                            style="padding-bottom: 2rem; padding-right: 0rem; text-align: center; vertical-align: middle;">
-                            <div class="col-3">
-                                <p class="card-text"><small class="text-muted">
-                                        <a class="button1"
-                                            href="https://instagram.com/baumanntennis?igshid=1se5twpjgogen"
-                                            data-toggle="tooltip" title="@baumanntennis" target="_blank">
-                                            <span class="fab fa-instagram"></span></a></small>
-                                </p>
-                            </div>
-                            <div class="col-3">
-                                <p class="card-text"><small class="text-muted">
-                                        <a class="button1" href="https://api.whatsapp.com/message/GDPS56AEKFB2M1"
-                                            data-toggle="tooltip" title="@baumanntennis" target="_blank">
-                                            <span class="fab fa-whatsapp"></span></a></small>
-                                </p>
-                            </div>
-                            <div class="col-3">
-                                <p class="mr-2"><small class="text-muted">
-                                        <a class="button1" href="https://www.facebook.com/baumanntennisacademia/"
-                                            data-toggle="tooltip" title="@baumanntennis" target="_blank">
-                                            <span class="fab fa-facebook-f"></span></a></small>
-                                </p>
-                            </div>
-                            <div class="col-3">
-                                <p class="card-text"><small class="text-muted"></small>
-                                    <a class="button1" href="mailto:Info@baumanntennis.com" data-toggle="tooltip"
-                                        title="Info@baumanntennis.com"><span class="fas fa-envelope"></span></a></small>
-                                </p>
-                            </div>
-                        </div>
-                    </h3>
-                    <footer style="vertical-align: middle; text-align: center;">
-                        <h2> Presidente Juan Manuel Frutos 2925 e/ Dr. Bernardino Caballero, <br>Asuncion, Paraguay</h2>
-                        <p>
-                            <a href="#">De Vuelta al Inicio</a>
+            </div>
+            <a class="close" onclick="pop()">Cancelar</a> -->
+        <!-- <a class="close" onclick="pop()">Close Box</a> -->
+        <!-- </div> -->
+
+        <div class="modal_book">
+            <div class="modal-box">
+                <h1>Confirmar tu inscripcion</h1>
+                <span class="close-button">X</span>
+                <p class="text-center" id="registerMessage"><span class="usersNameRegister"></span></p>
+                <div class="details"></div>
+                <button class="btn confirm-register" type="button" href=""><a
+                        href="confirmation.html">Confirmar</a></button>
+            </div>
+        </div>
+
+        <!-- REGISTRAR CLASES -->
+
+        <footer class="blog-footer">
+            <h3 class="icons_bt" style="vertical-align: middle;">
+                <div class="row row-cols-1 row-cols-lg-4 g-4 g-lg-4" id=""
+                    style="padding-bottom: 2rem; padding-right: 0rem; text-align: center; vertical-align: middle;">
+                    <div class="col-3">
+                        <p class="card-text"><small class="text-muted">
+                                <a class="button1" href="https://instagram.com/baumanntennis?igshid=1se5twpjgogen"
+                                    data-toggle="tooltip" title="@baumanntennis" target="_blank">
+                                    <span class="fab fa-instagram"></span></a></small>
                         </p>
-                        <p><br><br>Website built by Kevin Baumann</p>
-                        <a class="button1" href="mailto:baumannkev@gmail.com">Contact me @baumannkev@gmail.com</a>
-                    </footer>
-                </footer>
-                <!-- <script>
+                    </div>
+                    <div class="col-3">
+                        <p class="card-text"><small class="text-muted">
+                                <a class="button1" href="https://api.whatsapp.com/message/GDPS56AEKFB2M1"
+                                    data-toggle="tooltip" title="@baumanntennis" target="_blank">
+                                    <span class="fab fa-whatsapp"></span></a></small>
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <p class="mr-2"><small class="text-muted">
+                                <a class="button1" href="https://www.facebook.com/baumanntennisacademia/"
+                                    data-toggle="tooltip" title="@baumanntennis" target="_blank">
+                                    <span class="fab fa-facebook-f"></span></a></small>
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <p class="card-text"><small class="text-muted"></small>
+                            <a class="button1" href="mailto:Info@baumanntennis.com" data-toggle="tooltip"
+                                title="Info@baumanntennis.com"><span class="fas fa-envelope"></span></a></small>
+                        </p>
+                    </div>
+                </div>
+            </h3>
+            <footer style="vertical-align: middle; text-align: center;">
+                <h2> Presidente Juan Manuel Frutos 2925 e/ Dr. Bernardino Caballero, <br>Asuncion, Paraguay</h2>
+                <p>
+                    <a href="#">De Vuelta al Inicio</a>
+                </p>
+                <p><br><br>Website built by Kevin Baumann</p>
+                <a class="button1" href="mailto:baumannkev@gmail.com">Contact me at baumannkev@gmail.com</a>
+            </footer>
+        </footer>
+        <!-- <script>
             (function () {
                 'use strict'
                 // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -732,19 +670,24 @@
             })()
 
         </script> -->
+        <button type="button" href=""><a href="admin.html">Admin</a></button>
     </main>
 
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-database.js"></script>
+
     <script>
         // Initialize Firebase
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
             apiKey: "AIzaSyAv4r9MyOZKp8mop4FJl7nhpXFnT4_QZFM",
             authDomain: "baumanntennis-af590.firebaseapp.com",
+            databaseURL: "https://baumanntennis-af590-default-rtdb.firebaseio.com",
             projectId: "baumanntennis-af590",
             storageBucket: "baumanntennis-af590.appspot.com",
             messagingSenderId: "72178440964",
@@ -759,11 +702,25 @@
 
         // update firestore settings
         db.settings({ timestampsInSnapshots: true });
+
     </script>
     <!-- Compiled and minified JavaScript -->
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="scripts/auth.js"></script>
     <script src="scripts/index.js"></script>
+    <script src="scripts/registrar.js"></script>
+    <script src="scripts/main.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+
 </body>
 
 </html>
