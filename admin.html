@@ -41,7 +41,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><img
                         src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2FBAUMANN%20TENNIS.png?alt=media&token=ed3487eb-d643-4b5d-b8d3-bdf18d768a1f"
-                        alt="" width="60" height="70.97" class="d-inline-block align-text-center">
+                        alt="Baumann Tennis Logo" width="60" height="70.97" class="d-inline-block align-text-center">
                     BaumannTennis</a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
@@ -82,14 +82,26 @@
                         </span>
                         <span class="logged-in">
                             <li class="nav-item d-flex">
-                                <button class="btn btn-border shadow"><a href="registrar.html" style="color: white;">A
-                                        Registrar</a></button>
+                                <button class="btn btn-border shadow"><a href="inscribir.html" style="color: white;">
+                                        Inscribir</a></button>
                             </li>
                         </span>
                         <span class="logged-out">
                             <li class="nav-item d-flex">
-                                <button class="btn btn-border shadow"><a href="registrar.html" style="color: white;">A
-                                        Registrar</a></button>
+                                <button class="btn btn-border shadow"><a href="inscribir.html" style="color: white;">
+                                        Inscribir</a></button>
+                            </li>
+                        </span>
+                        <span class="logged-in">
+                            <li class="nav-item d-flex">
+                                <button class="btn btn-border shadow"><a href="registeredusers.html" style="color: white;">
+                                    Lista de Miembros</a></button>
+                            </li>
+                        </span>
+                        <span class="logged-out">
+                            <li class="nav-item d-flex">
+                                <button class="btn btn-border shadow"><a href="registeredusers.html" style="color: white;">
+                                        Lista de Miembros</a></button>
                             </li>
                         </span>
                     </ul>
@@ -102,27 +114,6 @@
         <div class="container" style="padding-top: 5rem">
             <p class="text-center" id="welcomeMessage"><span class="usersName"></span></p>
         </div>
-        <!-- Table for schedule -->
-        <!-- <div class="container table-responsive">
-            <table
-                class="table align-middle table-sm table-success table-striped table-hover caption-top table-bordered">
-                <caption>Editar</caption>
-                <thead class="table-light">
-                    <th scope="col">Hora</th>
-                    <th scope="col">Lunes</th>
-                    <th scope="col">Martes</th>
-                    <th scope="col">Miercoles</th>
-                    <th scope="col">Jueves</th>
-                    <th scope="col">Viernes</th>
-                    <th scope="col">Sabado</th>
-                    <th scope="col">Domingo</th>
-                </thead>
-                <tbody id="tbody1">
-
-                </tbody>
-            </table>
-        </div> -->
-        <!--  -->
         <!-- SIGN UP MODAL -->
         <div id="modal-signup" class="modal fade" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -251,26 +242,12 @@
             $(document).ready(function ($) {
                 //ajax row data
                 var ajax_data = SelectAllData;
-                // [
-                //     { fname: "Code", lname: "With Mark", email: "mark@codewithmark.com" },
-                //     { hora: "Mary", lname: "Moe", email: "mary@gmail.com" },
-                //     { hora: "John", lname: "Doe", email: "john@yahoo.com" },
-                //     { hora: "Julie", lname: "Dooley", email: "julie@gmail.com" },
-                //     { hora: "Code", lname: "With Mark", email: "mark@codewithmark.com" },
-                //     { hora: "Mary", lname: "Moe", email: "mary@gmail.com" },
-                //     { hora: "John", lname: "Doe", email: "john@yahoo.com" },
-                // ]
-
-
-
                 var random_id = function () {
                     var id_num = Math.random().toString(9).substr(2, 3);
                     var id_str = Math.random().toString(36).substr(2);
 
                     return id_num + id_str;
                 }
-
-
                 //--->create data table > start
                 var tbl = '';
                 tbl += '<div class = "container table-responsive">'
@@ -291,32 +268,18 @@
                 // tbl += '<th>Options</th>';
                 tbl += '</tr>';
                 tbl += '</thead>';
-                //--->create table header > end
-
-
                 //--->create table body > start
                 tbl += '<tbody1>';
-
                 //--->create table body rows > start
-
                 //--->edit options > end
-
                 //--->create table body rows > end
-
                 tbl += '</tbody1>';
                 //--->create table body > end
-
                 tbl += '</table>'
                 tbl += '</div>'
                 //--->create data table > end
-
                 //out put table data
                 $(document).find('.tbl_user_data').html(tbl);
-
-                // $(document).find('.btn_save').hide();
-                // $(document).find('.btn_cancel').hide();
-
-
                 //--->make div editable > start
                 $(document).on('click', '.row_data', function (event) {
                     event.preventDefault();
@@ -333,15 +296,12 @@
                     $(this).focus();
                 })
                 //--->make div editable > end
-
                 //--->make div editable STADO > start
                 $(document).on('click', '.row_data_stado', function (event) {
                     event.preventDefault();
-
                     if ($(this).attr('edit_type') == 'button') {
                         return false;
                     }
-
                     //make div editable
                     $(this).closest('span').attr('contenteditable', 'true');
                     //add bg css
@@ -421,19 +381,14 @@
                     //use the "arr"	object for your ajax call
                     $.extend(arr, { row_id: row_id });
 
-
                     // Get a key for a new Post.
                     // var newPostKey = firebase.database().ref().child('status').push().key;
 
                     // Write the new post's data simultaneously in the posts list and the user's post list.
                     var updates = {};
                     updates['/classes/' + col_name + '/status'] = col_val;
-                    // col_name="0' + rowCounter + 'AM/monday">'
-                    // updates['/user-posts/' + uid + '/' + newPostKey] = postData;
 
                     firebase.database().ref().update(updates);
-
-                    // updateDatabaseTable(col_val);
 
                     //out put to show
                     $('.post_msg').html('<pre class="container">Description' + JSON.stringify(arr, null, 2) + '</pre>');
@@ -466,12 +421,8 @@
                     // Write the new post's data simultaneously in the posts list and the user's post list.
                     var updatesStado = {};
                     updatesStado['/classes/' + col_name_stado + '/stado'] = col_val_stado;
-                    // col_name="0' + rowCounter + 'AM/monday">'
-                    // updates['/user-posts/' + uid + '/' + newPostKey] = postData;
 
                     firebase.database().ref().update(updatesStado);
-
-                    // updateDatabaseTable(col_val);
 
                     //out put to show
                     $('.post_msg').html('<pre class="container">Stado' + JSON.stringify(arr_stado, null, 2) + '</pre>');
@@ -503,11 +454,7 @@
                     // Write the new post's data simultaneously in the posts list and the user's post list.
                     var updatesPrecio = {};
                     updatesPrecio['/classes/' + col_name_precio + '/precio'] = col_val_precio;
-                    // col_name="0' + rowCounter + 'AM/monday">'
-                    // updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-
                     firebase.database().ref().update(updatesPrecio);
-
                     //out put to show
                     $('.post_msg').html('<pre class="container">Precio' + JSON.stringify(arr_precio, null, 2) + '</pre>');
 
@@ -538,8 +485,6 @@
                     // Write the new post's data simultaneously in the posts list and the user's post list.
                     var updatesCapacity = {};
                     updatesCapacity['/classes/' + col_name_capacity + '/capacity'] = col_val_capacity;
-                    // col_name="0' + rowCounter + 'AM/monday">'
-                    // updates['/user-posts/' + uid + '/' + newPostKey] = postData;
 
                     firebase.database().ref().update(updatesCapacity);
 
@@ -595,10 +540,7 @@
                     updatesMembersNumbers['/classes/' + col_name_membersNumbers + '/miembros'] = col_val_membersNumbers;
 
                     var updatesPercentage = {};
-                    // updatesPercentage['/classes/' + col_name_membersNumbers + '/percentage'] = (col_val_membersNumbers / col_val_capacity) * 100;
                     updatesPercentage['/classes/' + col_name_membersNumbers + '/percentage'] = percentage;
-                    // col_name="0' + rowCounter + 'AM/monday">'
-                    // updates['/user-posts/' + uid + '/' + newPostKey] = postData;
 
                     firebase.database().ref().update(updatesMembersNumbers);
 
@@ -658,7 +600,6 @@
                     percentageRef.on('child_changed', (data) => {
                         addPercentageElement(data.val().miembros.text);
                     });
-
 
                     function addPercentageElement(memberos) {
                         var updatesPercentage = {};
@@ -770,22 +711,7 @@
 
                                 var sun07Precio = CurrentRecord.val().sunday.precio;
 
-                                // Get Users registered
-
-                                // var monFirstName;
-                                // firebase.database().ref('classes/06AM/monday/patrons').once('value',
-                                //     function (snapshot) {
-                                //         var patrons = snapshot.val();
-                                //         var monFirstName = patrons.firstName;
-                                //         console.log("Name: " + monFirstName);
-                                //     });
-                                // var mon07Patrons = CurrentRecord.val().monday.patrons;
-                                // var firstNames = CurrentRecord.val();
-                                // var name = firstNames.firstName;
-
                                 AddItemsToTable(
-                                    // firstHourHour, firstHourStatus, secondHourHour,
-                                    // secondHourStatus, thirdHourHour, thirdHourStatus,
                                     monday07Status,
                                     tuesday07Status,
                                     wed07Status,
@@ -828,9 +754,7 @@
                                     fri07Precio,
                                     sat07Precio,
                                     sun07Precio,
-                                    // monFirstName,
                                 );
-
                             }
                         );
                     });
@@ -838,7 +762,6 @@
 
             window.onload = SelectAllData;
 
-            // updateTables();
             var counterStart = 6;
             var counterEnd = 7;
 
@@ -852,8 +775,6 @@
 
             var row_id = random_id();
             function AddItemsToTable(
-                // firstHourTime, firstHourStatusTag, secondHourTime,
-                // secondHourStatusTag, thirdHourTime, thirdHourStatusTag,
                 monday07StatusTag,
                 tuesday07StatusTag,
                 wed07StatusTag,
@@ -896,7 +817,6 @@
                 fri07Precio,
                 sat07Precio,
                 sun07Precio,
-                // monFirstName,
             ) {
 
                 var tbody = document.getElementById('tbody1');
@@ -918,29 +838,7 @@
                     AMTimeNumber = "0";
                 } else { AMTimeNumber = ""; }
 
-                // console.log("Name: " + monFirstName)
-                // var myUserId = firebase.auth().currentUser.uid;
-                // var topUserPostsRef = firebase.database().ref('classes').orderByChild('' + AMTimeNumber + rowCounter + AMTime + '/sunday/patrons/' + '/firstName');
-
                 var myDataRef = firebase.database().ref('classes/' + AMTimeNumber + rowCounter + AMTime + '/monday/patrons');
-
-                // var key = myDataRef.key;
-                // //Get users registered
-                // function getUsers(dataRef) {
-                //     var firstName;
-                //     var lastName;
-                //     dataRef.on('child_added', function (snapshot) {
-                //         var message = snapshot.val();
-                //         var id = snapshot.key;
-                //         firstName = message.firstName;
-                //         lastName = message.lastName;
-                //         console.log(firstName, lastName);
-                //     });
-                //     return firstName;
-                // }
-
-                // var usersNames = getUsers(myDataRef);
-                // console.log(usersNames);
 
                 td1.innerHTML = '<td ><div class="row_data" edit_type="click" col_name="' + AMTimeNumber + rowCounter + AMTime + '/monday">' + monday07StatusTag + '</div></td></br></br><span class="row_data_stado" row_id_stado="' + row_id + '" edit_type="click" col_name_stado="' + AMTimeNumber + rowCounter + AMTime + '/monday">' + monday07Stado + '</span></br><span>Precio: </span><span class="row_data_precio" edit_type="click" col_name_precio="' + AMTimeNumber + rowCounter + AMTime + '/monday">' + monday07Precio + 'Gs</span></br><span>Capacity: </span><span class="row_data_capacity" edit_type="click" col_name_capacity="' + AMTimeNumber + rowCounter + AMTime + '/monday">' + monday07Capacity + '</span></br></br><span>Member Numbers: </span><span class="row_data_membersNumbers" edit_type="click" col_name_membersNumbers="' + AMTimeNumber + rowCounter + AMTime + '/monday">' + monday07MembersNumbers + '</span></br></br><span>Porcentaje Lleno: </span><span class="row_data_percentage" edit_type="click" col_name_percentage="' + AMTimeNumber + rowCounter + AMTime + '/monday">' + monday07MembersPercentage + '%</span></td>';
                 td2.innerHTML = '<td ><div class="row_data" edit_type="click" col_name="' + AMTimeNumber + rowCounter + AMTime + '/tuesday">' + tuesday07StatusTag + '</div></td></br></br><span class="row_data_stado" row_id_stado="' + row_id + '" edit_type="click" col_name_stado="' + AMTimeNumber + rowCounter + AMTime + '/tuesday">' + tuesday07Stado + '</span><span>Precio: </span><span class="row_data_precio" edit_type="click" col_name_precio="' + AMTimeNumber + rowCounter + AMTime + '/tuesday">' + tuesday07Precio + 'Gs</span></br></br><span>Capacity: </span><span class="row_data_capacity" edit_type="click" col_name_capacity="' + AMTimeNumber + rowCounter + AMTime + '/tuesday">' + tuesday07Capacity + '</span></br></br><span>Member Numbers: </span><span class="row_data_membersNumbers" edit_type="click" col_name_membersNumbers="' + AMTimeNumber + rowCounter + AMTime + '/tuesday">' + tuesday07MembersNumbers + '</span></br></br><span>Porcentaje Lleno: </span><span class="row_data_percentage" edit_type="click" col_name_percentage="' + AMTimeNumber + rowCounter + AMTime + '/tuesday">' + tuesday07MembersPercentage + '%</span></td>';
@@ -949,8 +847,6 @@
                 td5.innerHTML = '<td ><div class="row_data" edit_type="click" col_name="' + AMTimeNumber + rowCounter + AMTime + '/friday">' + fri07StatusTag + '</div></td></br></br><span class="row_data_stado" row_id_stado="' + row_id + '" edit_type="click" col_name_stado="' + AMTimeNumber + rowCounter + AMTime + '/friday">' + fri07Stado + '</span></br><span>Precio: </span><span class="row_data_precio" edit_type="click" col_name_precio="' + AMTimeNumber + rowCounter + AMTime + '/friday">' + fri07Precio + 'Gs</span></br><span>Capacity: </span><span class="row_data_capacity" edit_type="click" col_name_capacity="' + AMTimeNumber + rowCounter + AMTime + '/friday">' + fri07Capacity + '</span></br></br><span>Member Numbers: </span><span class="row_data_membersNumbers" edit_type="click" col_name_membersNumbers="' + AMTimeNumber + rowCounter + AMTime + '/friday">' + fri07MembersNumbers + '</span></br></br><span>Porcentaje Lleno: </span><span class="row_data_percentage" edit_type="click" col_name_percentage="' + AMTimeNumber + rowCounter + AMTime + '/friday">' + fri07MembersPercentage + '%</span></td>';
                 td6.innerHTML = '<td ><div class="row_data" edit_type="click" col_name="' + AMTimeNumber + rowCounter + AMTime + '/saturday">' + sat07StatusTag + '</div></td></br></br><span class="row_data_stado" row_id_stado="' + row_id + '" edit_type="click" col_name_stado="' + AMTimeNumber + rowCounter + AMTime + '/saturday">' + sat07Stado + '</span></br><span>Precio: </span><span class="row_data_precio" edit_type="click" col_name_precio="' + AMTimeNumber + rowCounter + AMTime + '/saturday">' + sat07Precio + 'Gs</span></br><span>Capacity: </span><span class="row_data_capacity" edit_type="click" col_name_capacity="' + AMTimeNumber + rowCounter + AMTime + '/saturday">' + sat07Capacity + '</span></br></br><span>Member Numbers: </span><span class="row_data_membersNumbers" edit_type="click" col_name_membersNumbers="' + AMTimeNumber + rowCounter + AMTime + '/saturday">' + sat07MembersNumbers + '</span></br></br><span>Porcentaje Lleno: </span><span class="row_data_percentage" edit_type="click" col_name_percentage="' + AMTimeNumber + rowCounter + AMTime + '/saturday">' + sat07MembersPercentage + '%</span></td>';
                 td7.innerHTML = '<td ><div class="row_data" edit_type="click" col_name="' + AMTimeNumber + rowCounter + AMTime + '/sunday">' + sun07StatusTag + '</div></td></br></br><span class="row_data_stado" row_id_stado="' + row_id + '" edit_type="click" col_name_stado="' + AMTimeNumber + rowCounter + AMTime + '/sunday">' + sun07Stado + '</span></br><span>Precio: </span><span class="row_data_precio" edit_type="click" col_name_precio="' + AMTimeNumber + rowCounter + AMTime + '/sunday">' + sun07Precio + 'Gs</span></br><span>Capacity: </span><span class="row_data_capacity" edit_type="click" col_name_capacity="' + AMTimeNumber + rowCounter + AMTime + '/sunday">' + sun07Capacity + '</span></br></br><span>Member Numbers: </span><span class="row_data_membersNumbers" edit_type="click" col_name_membersNumbers="' + AMTimeNumber + rowCounter + AMTime + '/sunday">' + sun07MembersNumbers + '</span></br></br><span>Porcentaje Lleno: </span><span class="row_data_percentage" edit_type="click" col_name_percentage="' + AMTimeNumber + rowCounter + AMTime + '/sunday">' + sun07MembersPercentage + '%</span></td>';
-                // td8.innerHTML = '<td><span class="btn_edit" > <a href="#" class="btn btn-link " "row_id="' + row_id + '" >Edit</a> </span><span class="btn_save"> <a href="#" class="btn btn-link"  row_id="' + row_id + '"> Save</a> | </span><span class="btn_cancel"> <a href="#" class="btn btn-link" row_id="' + row_id + '"> Cancel</a> | </span></td>';
-
                 trow.innerHTML = `<th scope="row">` + counterStart++ + `:00 - ` + counterEnd++ + `:00</th>`
 
                 $(document).find('.btn_save').hide();
@@ -963,33 +859,9 @@
                 trow.appendChild(td5);
                 trow.appendChild(td6);
                 trow.appendChild(td7);
-                // trow.appendChild(td8);
                 tbody.appendChild(trow);
                 rowCounter++;
             }
-            // var firstName;
-            // function getUsers(dataRef) {
-            //     var firstName;
-            //         var lastName;
-            //         dataRef.once('child_added', function (snapshot) {
-            //             var message = snapshot.val();
-            //             var id = snapshot.key;
-            //             firstName = message.firstName;
-            //             lastName = message.lastName;
-            //             console.log(firstName, lastName);
-            //         }).then;
-            //         return firstName;
-            //     // var test = firebase.database().ref('classes/06AM/monday').once('value')
-            //     // // var test = dataRef.once('value')
-            //     //     .then(function (snapshot) {
-            //     //         // var email = snapshot.val();
-            //     //         var log = snapshot.child('patrons').val();
-            //     //         var userName = log.firstName;
-            //     //         console.log(userName);
-            //     //         return userName;
-            //     //     })
-            //     // console.log(test);
-            // }
         </script>
 
         <div class="container text-center">

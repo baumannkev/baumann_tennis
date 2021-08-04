@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="theme-color" content="#F75B13" />
     <title>Baumann Tennis</title>
-    <meta name="author" content="The Baumann Group">
-
-    <!-- Bootstrap for Mobile-first, and JQuery -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -18,93 +16,41 @@
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
 
+    <link href="styles/index.css" rel="stylesheet">
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script> -->
+
+    <!-- <script src="scripts/auth.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-database.js"></script>
+    <!-- <script src="scripts/auth.js"></script> -->
+
     <link rel="shortcut icon"
         href="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2Fandroid-chrome-512x512.png?alt=media&token=5f943206-2ca5-4130-881b-e4c4ed1a21e2"
         type="image/x-icon" />
-
-    <!-- these two lines are for the Auth UI library and CSS-->
-    <!-- <script src="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.js"></script> -->
-    <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css" /> -->
-
-    <link rel="stylesheet" href="styles/index.css">
-
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/26da0e4274.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <!-- this file was moved after the jQuery Datatables library was laoded -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/dataTables.bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="styles/util.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/new_register.css">
+    <!--===============================================================================================-->
 </head>
 
-<style>
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        margin: 0;
-    }
-
-    html {
-        box-sizing: border-box;
-    }
-
-    *,
-    *:before,
-    *:after {
-        box-sizing: inherit;
-    }
-
-    .column {
-        float: left;
-        width: 33.3%;
-        margin-bottom: 16px;
-        padding: 0 8px;
-    }
-
-    .card {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        margin: 8px;
-    }
-
-    .about-section {
-        padding: 50px;
-        text-align: center;
-        background-color: #474e5d;
-        color: white;
-    }
-
-    .container {
-        padding: 0 16px;
-    }
-
-    .container::after,
-    .row::after {
-        content: "";
-        clear: both;
-        display: table;
-    }
-
-    .title {
-        color: grey;
-    }
-
-    .button {
-        border: none;
-        outline: 0;
-        display: inline-block;
-        padding: 8px;
-        color: white;
-        background-color: #000;
-        text-align: center;
-        cursor: pointer;
-        width: 100%;
-    }
-
-    .button:hover {
-        background-color: #555;
-    }
-
-    @media screen and (max-width: 650px) {
-        .column {
-            width: 100%;
-            display: block;
-        }
-    }
-</style>
-
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbarCollapse" data-bs-offset="auto" tabindex="0">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light rounded">
             <div class="container-fluid">
@@ -118,54 +64,46 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div id="navbarCollapse" class="navbar-collapse collapse justify-content-end ">
-
                     <ul class="navbar-nav">
                         <span class="logged-in">
                             <li class="nav-item d-flex" style="display: none;">
-                                <button href="#" class="btn btn-border shadow grey-text" data-bs-toggle="modal"
+                                <button href="#" class="btn btn-border shadow" data-bs-toggle="modal"
                                     data-bs-target="#modal-account">Mi Cuenta</button>
+                            </li>
+                        </span>
+                        <span class="logged-in">
+                            <li class="nav-item d-flex">
+                                <button class="btn btn-border shadow"><a href="clases.html">Mis
+                                        Clases</a></button>
                             </li>
                         </span>
                         <span class="logged-in" id="logout">
                             <li class="logged-in nav-item d-flex" style="display: none;">
-                                <button href="#" class="btn btn-border shadow grey-text" id="logout">Cerrar
+                                <button href="#" class="btn btn-border shadow" id="logout">Cerrar
                                     sesión</button>
                             </li>
                         </span>
                         <span class="logged-out">
                             <li class="nav-item d-flex logged-out" style="display: none;">
-                                <button href="#" class="btn btn-border shadow grey-text" data-bs-toggle="modal"
+                                <button href="#" class="btn btn-border shadow " data-bs-toggle="modal"
                                     data-bs-target="#modal-login">Inicia sesión</button>
                             </li>
                         </span>
                         <span class="logged-out">
                             <li class="nav-item d-flex logged-out" style="display: none;">
-                                <button href="#" class="btn btn-border shadow grey-text " data-bs-toggle="modal"
+                                <button href="#" class="btn btn-border shadow  " data-bs-toggle="modal"
                                     data-bs-target="#modal-signup">Crea tu Cuenta</button>
                             </li>
                         </span>
-                        <span class="logged-in">
-                            <li class="nav-item d-flex">
-                                <button class="btn btn-border shadow"><a href="inscribite.html" style="color: white;">
-                                        Inscribite</a></button>
-                            </li>
-                        </span>
                         <span class="logged-out">
                             <li class="nav-item d-flex">
-                                <button class="btn btn-border shadow"><a href="inscribite.html" style="color: white;">
-                                        Inscribite</a></button>
-                            </li>
-                        </span>
-                        <span class="logged-out">
-                            <li class="nav-item d-flex">
-                                <button class="btn btn-border shadow"><a href="index.html"
-                                        style="color: white;">Inicio</a></button>
+                                <button class="btn btn-border shadow"><a href="index.html">Inicio</a></button>
                             </li>
                         </span>
                         <span class="logged-in">
                             <li class="nav-item d-flex">
                                 <button class="btn btn-border shadow"><a href="index.html"
-                                        style="color: white;">Inicio</a></button>
+                                        >Inicio</a></button>
                             </li>
                         </span>
                     </ul>
@@ -173,10 +111,36 @@
             </div>
         </nav>
     </header>
-
     <main>
-        <div class="container" style="padding-top: 5rem;">
+        <div class="container" style="padding-top: 5rem; padding-bottom: 5rem">
             <p class="text-center" id="welcomeMessage"><span class="usersName"></span></p>
+        </div>
+        <!-- Table for schedule -->
+        <div class="limiter" style="padding-right: 1rem; padding-left: 1rem">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100 ver6 m-b-110">
+                        <div class="table-responsive">
+                            <table id="tbl1" class="table" data-vertable="ver6">
+                                <thead>
+                                    <tr class="row100 head">
+                                        <th class="column100 column1" data-column="column1">Hora</th>
+                                        <th class="column100 column2" data-column="column2">Lunes</th>
+                                        <th class="column100 column3" data-column="column3">Martes</th>
+                                        <th class="column100 column4" data-column="column4">Miercoles</th>
+                                        <th class="column100 column5" data-column="column5">Jueves</th>
+                                        <th class="column100 column6" data-column="column6">Viernes</th>
+                                        <th class="column100 column7" data-column="column7">Sabado</th>
+                                        <th class="column100 column8" data-column="column8">Domingo</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody1">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- SIGN UP MODAL -->
         <div id="modal-signup" class="modal fade" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
@@ -194,9 +158,6 @@
                                     <div class="input-group has-validation">
                                         <input type="email" id="signup-email" class="form-control" placeholder="Email"
                                             aria-describedby="inputGroupPrepend" required>
-                                        <div class="invalid-feedback">
-                                            Por favor escribi tu email.
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -204,9 +165,6 @@
                                     <div class="input-group has-validation">
                                         <input type="password" id="signup-password" class="form-control"
                                             placeholder="Contraseña" required>
-                                        <div class="invalid-feedback">
-                                            Por favor escribi tu contraseña.
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -214,9 +172,6 @@
                                     <div class="input-group has-validation">
                                         <input type="text" id="signup-firstName" class="form-control"
                                             placeholder="Nombre" required>
-                                        <div class="invalid-feedback">
-                                            Por favor escribi tu nombre.
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -224,9 +179,6 @@
                                     <div class="input-group has-validation">
                                         <input type="text" id="signup-lastName" class="form-control"
                                             placeholder="Apellido" required>
-                                        <div class="invalid-feedback">
-                                            Por favor escribi tu apellido.
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -234,10 +186,9 @@
                                     <div class="input-group has-validation">
                                         <input type="text" id="signup-phone" class="form-control"
                                             placeholder="778-387-5139" required>
-                                        <div class="invalid-feedback">
-                                            Por favor escribi tu numero celular.
-                                        </div>
                                     </div>
+                                </div>
+                                <div class="invalid-feedback-signup text-danger">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
@@ -250,7 +201,6 @@
                 </div>
             </div>
         </div>
-
         <!-- LOGIN MODAL -->
         <div id="modal-login" class="modal fade" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -276,7 +226,6 @@
                                             placeholder="Contraseña" aria-describedby="inputGroupPrepend" required />
                                     </div>
                                     <div id="invalid-feedback" class="text-danger">
-
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -287,10 +236,10 @@
                             </form>
                             <form id="reset-login-pass" class="needs-validation" style="padding-top: 2rem" novalidate>
                                 <div class="mb-3">
-                                    <label for="reset-password" class="form-label">Resetea Contraseña</label>
+                                    <label for="reset-password-login" class="form-label">Resetea Contraseña</label>
                                     <div class="input-group has-validation">
-                                        <input type="email" id="reset-password" class="form-control" placeholder="Email"
-                                            aria-describedby="inputGroupPrepend" required />
+                                        <input type="email" id="reset-password-login" class="form-control"
+                                            placeholder="Email" aria-describedby="inputGroupPrepend" required />
                                     </div>
                                     <div id="invalid-feedback" class="text-danger">
 
@@ -305,7 +254,6 @@
                 </div>
             </div>
         </div>
-
         <!-- ACCOUNT MODAL -->
         <div id="modal-account" class="modal fade" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -322,28 +270,81 @@
                         <form id="reset-form" class="needs-validation" style="padding-top: 2rem" novalidate>
                             <div class="mb-3">
                                 <label for="reset-password" class="form-label">Resetea Contraseña</label>
-                                <div class="input-group has-validation" style="margin: 1rem;">
-                                    <input type="email" id="reset-password" class="form-control" placeholder="Email"
-                                        aria-describedby="inputGroupPrepend" required />
+                                <div class="input-group has-validation">
+                                    <input style="margin: 1rem;" type="email" id="reset-password" class="form-control"
+                                        placeholder="Email" aria-describedby="inputGroupPrepend" required />
                                 </div>
                                 <div id="invalid-feedback" class="text-danger">
+
                                 </div>
-                                <button type="button" class="btn " data-bs-dismiss="modal">Atras</button>
-                                <button class="btn  darken-2 z-depth-0">Resetea Contraseña</button>
                             </div>
+                            <button type="button" class="btn " data-bs-dismiss="modal">Atras</button>
+                            <button class="btn darken-2 z-depth-0">Resetea Contraseña</button>
                         </form>
                         <div class="text-success" id="succesfull-reset-email"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="d-flex align-items-center">
-            <div class="container text-center">
-                <div id="listssClasses" class="row justify-content-center text-center listsClasses "
-                    style="padding-top: 5rem; text-align: center;">
+        <!--------------------- Alquilar --------------------------------->
+        <!-- ----------------------------------------------------------------->
+        <!---------------------REGISTRAR CLASES ----------------------->
+        <!-- REGISTRAR MODAL -->
+        <div class="modal_book">
+            <div class="modal-box">
+                <h1 class="text-center">Confirma tu inscripcion</h1>
+                <span class="close-button">X</span>
+                <p class="text-center" id="registerMessage"><span class="usersNameRegister"></span></p>
+                <div class="details"></div>
+                <h3 style="margin: 1rem;">Elegi los meses que queres jugar</h3>
+                <select id="select1" class="form-select" onchange="getOption(); getDatesAndPrice();"
+                    aria-label="Default select example">
+                    <option selected>0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <!-- <option class="confirm-weeks" value="1" onclick="getOption(); return 
+                    false;" selected>1</option>
+                    <option class="confirm-weeks" value="2" onclick="getOption(); return 
+                    false;">2</option>
+                    <option class="confirm-weeks" value="3" onclick="getOption(); return 
+                    false;">3</option>
+                    <option class="confirm-weeks" value="4" onclick="getOption(); return 
+                    false;">4</option>
+                    <option class="confirm-weeks" value="5" onclick="getOption(); return 
+                    false;">5</option>
+                    <option class="confirm-weeks" value="6" onclick="getOption(); return 
+                    false;">6</option>
+                    <option class="confirm-weeks" value="7" onclick="getOption(); return 
+                    false;">7</option>
+                    <option class="confirm-weeks" value="8" onclick="getOption(); return 
+                    false;">8</option> -->
+                </select>
+                <div class="container" style="padding-top: 1rem">
+                    <h4>Meses Total: <span id="weeks"></span></h4>
                 </div>
+                <div class="container">
+                    <h4>Desde: <span id="days"></span></h4>
+                </div>
+                <div class="container">
+                    <h4>Hasta: <span id="to-date"></span></h4>
+                </div>
+                <div class="container">
+                    <div>
+                        <h2>Precio Total: <span id="total-price"></span></h2>
+                    </div>
+                </div>
+                <button class="btn confirm-register" type="button" href="confirmation.html" style="margin: 1rem;">
+                    Confirmar Inscripcion
+                </button>
             </div>
         </div>
+        <!-- REGISTRAR CLASES -->
 
         <!-- FOOTER -->
         <footer class="blog-footer">
@@ -415,6 +416,7 @@
 
                         <div class="col-lg-2 col-md-6 footer-links">
                             <h4>Paginas Utiles</h4>
+                            <br>
                             <ul>
                                 <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
                                 <li><i class="bx bx-chevron-right"></i> <a href="inscribite.html">Inscribite</a></li>
@@ -424,6 +426,7 @@
 
                         <div class="col-lg-3 col-md-6 footer-links">
                             <h4>Nuestros Servicios</h4>
+                            <br>
                             <ul>
                                 <li><i class="bx bx-chevron-right"></i> <a href="#">Tenis</a></li>
                                 <li><i class="bx bx-chevron-right"></i> <a href="#">Colonia de Ingles</a></li>
@@ -466,35 +469,13 @@
             </div>
         </footer><!-- End Footer -->
 
+        <button type="button" href=""><a href="admin.html">Admin</a></button>
     </main>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
-    <!-- CSS only -->
-
-    <link href="styles/index.css" rel="stylesheet">
-
-    <link rel="shortcut icon"
-        href="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2Fandroid-chrome-512x512.png?alt=media&token=5f943206-2ca5-4130-881b-e4c4ed1a21e2"
-        type="image/x-icon" />
-
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/26da0e4274.js" crossorigin="anonymous"></script>
-
-    <!-- <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-    </script> -->
-
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
-
-    <!-- this file was moved after the jQuery Datatables library was laoded -->
-
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-database.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-database.js"></script> -->
     <script>
         // Initialize Firebase
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -509,24 +490,30 @@
             measurementId: "G-P03D4PZRMV"
         };
         firebase.initializeApp(firebaseConfig);
-
         // make auth and firestore references
         const auth = firebase.auth();
         const db = firebase.firestore();
-
         // update firestore settings
         db.settings({ timestampsInSnapshots: true });
-
     </script>
     <!-- Compiled and minified JavaScript -->
-
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="scripts/auth2.js"></script>
+    <script src="scripts/auth.js"></script>
     <script src="scripts/index.js"></script>
-    <script src="scripts/myClasses.js"></script>
+    <script src="scripts/registrar.js"></script>
+    <script src="scripts/main.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
 
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6108361918d81fd3"></script>
 </body>
-
 
 </html>

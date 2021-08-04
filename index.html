@@ -4,7 +4,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
+  <meta name="description"
+    content="Practica y mejora tu tenis en una de la mejor cancha en Asuncion en el sitio de Baumann Tennis">
+  <meta content="Baumann Tennis" name="keywords">
+  <meta content="Clases, clases, de, tenis, Tenis, asuncion, Asuncion " name="keywords">
+  <meta content="de" name="keywords">
+  <meta content="Tenis" name="keywords">
+  <meta content="Asuncion" name="keywords">
+  <meta content="Inscripcion" name="keywords">
   <title>Baumann Tennis</title>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -18,7 +25,11 @@
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
     crossorigin="anonymous"></script>
 
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="styles/index.css" rel="stylesheet">
+
+  <!-- <link href="vendor/aos/aos.css" rel="stylesheet"> -->
 
   <link rel="shortcut icon"
     href="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2Fandroid-chrome-512x512.png?alt=media&token=5f943206-2ca5-4130-881b-e4c4ed1a21e2"
@@ -28,7 +39,7 @@
   <script src="https://kit.fontawesome.com/26da0e4274.js" crossorigin="anonymous"></script>
 
   <!-- <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-  </script> -->
+    </script> -->
 
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 
@@ -43,7 +54,7 @@
       document.body.style.paddingTop = navbar_height + 'px';
 
     });
-    // DOMContentLoaded  end
+      // DOMContentLoaded  end
   </script>
 </head>
 
@@ -53,7 +64,7 @@
       <div class="container-fluid">
         <a class="navbar-brand" style="color: rgb(39,57,82);" href="index.html"><img
             src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2FBAUMANN%20TENNIS.png?alt=media&token=ed3487eb-d643-4b5d-b8d3-bdf18d768a1f"
-            alt="" width="60" height="70.97" class="d-inline-block align-text-center">
+            alt="Logo de Baumann Tennis" width="60" height="70.97" class="d-inline-block align-text-center">
           Baumann Tennis</a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
@@ -66,23 +77,23 @@
             <li class="nav-item d-flex">
               <a class="nav-link scrollto" href="#">Inicio</a>
             </li>
-            <li class="nav-item d-flex">
+            <!-- <li class="nav-item d-flex">
               <a class="nav-link scrollto" href="#tienda">Tienda</a>
-            </li>
-            <li class="nav-item d-flex">
+            </li> -->
+            <!-- <li class="nav-item d-flex">
               <a class="nav-link scrollto" href="#historia">Nuestra Historia</a>
-            </li>
+            </li> -->
             <li class="nav-item d-flex">
               <a class="nav-link scrollto" href="#filosofia">Filosofia</a>
-            </li>
-            <li class="nav-item d-flex">
-              <a class="nav-link" href="abouttheprofs.html">Los Profes</a>
             </li>
             <li class="nav-item d-flex">
               <a class="nav-link scrollto" href="#contact">Contactos</a>
             </li>
             <li class="nav-item d-flex">
-              <a class="nav-link" href="registrar.html">Registrar</a>
+              <a class="nav-link" href="sobrelosprofes.html">Los Profes</a>
+            </li>
+            <li class="nav-item d-flex">
+              <a class="nav-link" href="inscribite.html">Inscribite</a>
             </li>
           </ul>
         </div>
@@ -90,150 +101,165 @@
     </nav>
   </header>
 
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container" data-aos="zoom-out" data-aos-delay="100">
+      <div class="row">
+        <div class="col-xl-6">
+          <h1>Baumann Tennis</h1>
+          <h2>Te esperamos para que disfrutes de nuestras instalaciones, veni a a practicar tenis en un ambiente
+            agradable y seguro</h2>
+          <a href="inscribite.html"><button class="btn-get-started">Inscribite</button></a>
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
   <main>
     <!-- <div id="google_translate_element">
 
 
-      <script type="text/javascript">
-        function googleTranslateElementInit() {
-          new google.translate.TranslateElement({ pageLanguage: 'es' }, 'google_translate_element');
-        }
-      </script>
+        <script type="text/javascript">
+          function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'es' }, 'google_translate_element');
+          }
+        </script>
 
 
-    </div> -->
+      </div> -->
 
-    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
-          aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="img-responsive" width="100%" height="100%"
-            src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/Fotos%20Buenas%20para%20Website%2FHome%20Page.jpg?alt=media&token=ba76ede8-dfa5-47e7-b29b-ede8b0b6ae26"
-            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <rect width="100%" height="100%" fill="#777" /></img>
+    <!-- <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+            aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="img-responsive" width="100%" height="100%"
+              src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/Fotos%20Buenas%20para%20Website%2FHome%20Page.jpg?alt=media&token=ba76ede8-dfa5-47e7-b29b-ede8b0b6ae26"
+              alt="Cancha de Baumann Tennis" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <rect width="100%" height="100%" fill="#777" /></img>
 
-          <div class="container">
-            <div class="carousel-caption text-start">
-              <h1>Clases de Tenis</h1>
-              <p>Clases particulares o grupales | Para adultos o para niños.</p>
-              <p><a class="btn btn-lg btn-success" href="registrar.html">Registrate Hoy</a></p>
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h1>Clases de Tenis</h1>
+                <p>Clases particulares o grupales | Para adultos o para niños.</p>
+                <p><a class="btn btn-lg btn-success" href="Inscribite.html">Inscribite Hoy</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="img-responsive" width="100%" height="100%"
+              src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/Fotos%20Buenas%20para%20Website%2FOther%202.jpg?alt=media&token=253c0094-6115-4757-8fde-2de3d63381ca"
+              alt="Cancha de Baumann Tennis" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <rect width="100%" height="100%" fill="#777" /></img>
+
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>Alquileres de Cancha.</h1>
+                <p>Abierto 24hrs al dia. Veni inscribite cuando quieras.</p>
+                <p><a class="btn btn-lg btn-success" href="Inscribite.html">Ve si hay lugar</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="img-responsive" width="100%" height="100%"
+              src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/Fotos%20Buenas%20para%20Website%2FPANO_20210417_170835%20(3).jpg?alt=media&token=38e84773-aba8-45f0-8ecf-8ec582079e0b"
+              alt="Cancha de Baumann Tennis" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <rect width="100%" height="100%" fill="#777" /></img>
+
+            <div class="container">
+              <div class="carousel-caption text-end">
+                <h1>Trabaja Con Nosotros.</h1>
+                <p>Siempre necesitamos mas instructores. Contactanos para aprender mas.</p>
+                <p><a class="btn btn-lg btn-success" href="#contact">Contactar</a></p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="carousel-item">
-          <img class="img-responsive" width="100%" height="100%"
-            src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/Fotos%20Buenas%20para%20Website%2FOther%202.jpg?alt=media&token=253c0094-6115-4757-8fde-2de3d63381ca"
-            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <rect width="100%" height="100%" fill="#777" /></img>
-
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Alquileres de Cancha.</h1>
-              <p>Abierto 24hrs al dia. Veni registra cuando quieras.</p>
-              <p><a class="btn btn-lg btn-success" href="registrar.html">Mirar si hay lugar</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img class="img-responsive" width="100%" height="100%"
-            src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/Fotos%20Buenas%20para%20Website%2FPANO_20210417_170835%20(3).jpg?alt=media&token=38e84773-aba8-45f0-8ecf-8ec582079e0b"
-            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <rect width="100%" height="100%" fill="#777" /></img>
-
-          <div class="container">
-            <div class="carousel-caption text-end">
-              <h1>Trabaja Con Nosotros.</h1>
-              <p>Siempre necesitamos mas instructores. Contactanos para aprender mas.</p>
-              <p><a class="btn btn-lg btn-success" href="#">Contactar</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div> -->
 
 
     <!-- Marketing messaging and featurettes
-  ================================================== -->
+    ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
-
-    <div class="container marketing" id="heading1">
-
-      <!-- Three columns of text below the carousel -->
-      <div class="row" id="tienda">
-        <div class="col-lg-4">
-          <!--  <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg> -->
-          <div class="card bg-dark text-white" style="border: 0rem;">
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fcanasta.jpg?alt=media&token=f9f5d2e7-ef9a-4443-b966-3455df1fc69d"
-              class="card-img" alt="...">
-            <div class="card-img-overlay d-flex align-items-center justify-content-center">
-              <h1 class="card-title">Tenis</h1>
+    <section>
+      <div class="container marketing" id="heading1">
+        <!-- data-aos="fade-up" -->
+        <!-- Three columns of text below the carousel -->
+        <div class="row" id="tienda">
+          <div class="col-lg-4">
+            <!--  <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg> -->
+            <div class="card bg-dark text-white" style="border: 0rem;">
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fcanasta.jpg?alt=media&token=f9f5d2e7-ef9a-4443-b966-3455df1fc69d"
+                class="card-img" alt="Tennis">
+              <div class="card-img-overlay d-flex align-items-center justify-content-center">
+                <h1 class="card-title">Tenis</h1>
+              </div>
             </div>
-          </div>
 
-          <!-- <h2>Heading</h2> 
-        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
-            role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-          </svg> -->
-
-          <div class="card bg-dark text-white" style="border: 0rem;">
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fclasesfoto.jpg?alt=media&token=1b379dde-82ca-4988-8a82-ac7cc60b53d2"
-              class="card-img" alt="...">
-            <div class="card-img-overlay d-flex align-items-center justify-content-center">
-              <h1 class="card-title">Clases</h1>
-            </div>
-          </div>
-          <!-- <h2>Heading</h2>
-          <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.
-          </p>
+            <!-- <h2>Heading</h2> 
+          <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
           <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
-            role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-          </svg> -->
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+              role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+            </svg> -->
 
-          <div class="card bg-dark text-white" style="border: 0rem;">
-            <img
-              src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fsillas.jpg?alt=media&token=d87ac6f4-0ea5-465f-bbd4-b611016d50ed"
-              class="card-img" alt="...">
-            <div class="card-img-overlay d-flex align-items-center justify-content-center">
-              <h1 class="card-title">Instalaciones</h1>
+            <div class="card bg-dark text-white" style="border: 0rem;">
+              <img src="img/pelota.jpg" class="card-img" alt="Clases de Tenis">
+              <div class="card-img-overlay d-flex align-items-center justify-content-center">
+                <h1 class="card-title">Clases</h1>
+              </div>
             </div>
-          </div>
-          <!-- <h2>Heading</h2>
-          <p>And lastly this, the third column of representative placeholder content.</p>
-          <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
+            <!-- <h2>Heading</h2>
+            <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.
+            </p>
+            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p> -->
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+              role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+            </svg> -->
 
+            <div class="card bg-dark text-white" style="border: 0rem;">
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fsillas.jpg?alt=media&token=d87ac6f4-0ea5-465f-bbd4-b611016d50ed"
+                class="card-img" alt="Instalaciones de Baumann Tennis">
+              <div class="card-img-overlay d-flex align-items-center justify-content-center">
+                <h1 class="card-title">Instalaciones</h1>
+              </div>
+            </div>
+            <!-- <h2>Heading</h2>
+            <p>And lastly this, the third column of representative placeholder content.</p>
+            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p> -->
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
 
-      <!-- START THE FEATURETTES -->
-      <!-- HISTORIA ID -->
-      <hr class="featurette-divider" id="historia">
+    </section>
 
+    <!-- START THE FEATURETTES -->
+    <!-- HISTORIA ID -->
+    <!-- <hr class="featurette-divider" id="historia"> -->
+
+    <!-- <section class="container">
       <div class="row featurette">
         <div class="col-md-7">
           <h2 class="featurette-heading">Registrate. <span class="text-muted">Reserva la cancha cuando quieras!</span>
@@ -244,9 +270,9 @@
         <div class="col-md-5 d-flex align-items-between justify-content-between ">
           <div class="card text-center" style="width: 500px; height: 500px;" preserveAspectRatio="xMidYMid slice">
             <div class="card-body">
-              <h5 class="card-title" style="padding-top: 2rem; font-size: 2rem;">Registrar</h5>
+              <h5 class="card-title" style="padding-top: 2rem; font-size: 2rem;">Inscribite</h5>
               <div class="container justify-content" style="padding-top: 2rem;">
-                <img
+                <img alt="Reva app"
                   src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2FReva.png?alt=media&token=6ac2b832-4c35-4995-8d08-c03c18f731b2"
                   style="width: 200px; height: 200px;">
 
@@ -254,13 +280,13 @@
               <div class="container justify-center" style="position: absolute; bottom:0; padding-bottom: 5rem;">
                 <a class="btn-2" href="https://play.google.com/store/apps/details?id=py.com.kynox.pelotajara"
                   target="_blank" role="button">
-                  <span><img
+                  <span><img alt="google play app"
                       src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2Fgoogle-play-badge.png?alt=media&token=b73595de-3bac-48aa-b287-a91ae41676ab"
                       style="height: 70px; width: 165px;"></span>
                 </a>
                 <a class="btn-2" href="https://apps.apple.com/us/app/pelota-jara/id1312023245" target="_blank"
                   role="button">
-                  <span><img
+                  <span><img alt="IOS app store"
                       src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2Fapp-store-badge.png?alt=media&token=65f50f82-d7eb-43a9-9b6f-4f8b511a8690"
                       style="height: 70px; width: 165px;"></span>
                 </a>
@@ -272,59 +298,168 @@
             </div>
           </div>
         </div>
+    </section> -->
 
-        <!-- FILOSOFIA ID  -->
-        <hr class="featurette-divider" id="filosofia">
+    <!-- FILOSOFIA ID  -->
+    <hr class="featurette-divider" id="filosofia">
 
-        <div class="row featurette">
-          <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Filosofia. <span class="text-muted">Aprende de los mejores.</span>
-            </h2>
-            <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this
-              layout would work with some actual real-world content in place.</p>
-          </div>
-          <div class="col-md-5 order-md-1">
-            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-              height="500"
-              src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FRegistrar%2Fgrupales.jpg?alt=media&token=4cfbdea5-c663-47de-9d01-c9f7e81458c5"
-              role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em"></text>
-            </img>
-          </div>
+    <section class="container">
+      <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading">Filosofia. <span class="text-muted">Aprende de los mejores.</span>
+          </h2>
+          <p class="lead">
+            Tenis: El deporte ideal para los tiempos que corren, es al aire libre y las personas se sienten más seguros
+            afuera y pueden familiarizarse con el tenis, No es necesario tener un nivel de habilidad para jugar.
+            No hay contacto físico entre participantes.
+            Te esperamos en Baumann Tennis. Puedes <a href="#contacto">escribirnos</a> para más información
+          </p>
         </div>
-
-        <!-- CONTACT ID -->
-        <hr class="featurette-divider" id="contact">
-
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-            <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really
-              intended to be actually read, simply here to give you a better view of what this would look like with some
-              actual content. Your content.</p>
-          </div>
-          <div class="col-md-5">
-            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-              height="500"
-              src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FRegistrar%2Fninos.jpg?alt=media&token=e3094131-037b-4bbb-9cad-755b40a956da"
-              role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em"></text>
-            </img>
-          </div>
+        <div class="col-md-5 order-md-1">
+          <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+            height="500" alt="philosophy"
+            src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FRegistrar%2Fgrupales.jpg?alt=media&token=4cfbdea5-c663-47de-9d01-c9f7e81458c5"
+            role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em"></text>
+          </img>
         </div>
-        <hr class="featurette-divider">
-        <!-- /END THE FEATURETTES -->
       </div>
 
-      <!-- Container (Contact Section) -->
-      <div id="member" class="container" style="padding-bottom: 5rem;">
-        <h3 class="text-center">Contactos</h3>
+    </section>
+    <!-- CONTACT ID -->
+    <hr class="featurette-divider" id="">
+
+    <!-- <section class="container">
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+          <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really
+            intended to be actually read, simply here to give you a better view of what this would look like with some
+            actual content. Your content.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+            height="500"
+            src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FRegistrar%2Fninos.jpg?alt=media&token=e3094131-037b-4bbb-9cad-755b40a956da"
+            role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em"></text>
+          </img>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      </div>
+    </section> -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Preguntas Frecuentes</h2>
+        </div>
+
+        <ul class="faq-list accordion" data-aos="fade-up">
+
+          <li>
+            <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq1">Non consectetur a erat nam at lectus
+              urna duis? <i class="fa fa-arrow-down icon-show"></i><i class="fa fa-times icon-close"></i></a>
+            <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur
+                gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <a data-bs-toggle="collapse" data-bs-target="#faq2" class="collapsed">Feugiat scelerisque varius morbi enim
+              nunc faucibus a pellentesque? <i class="fa fa-arrow-down icon-show"></i><i
+                class="fa fa-times icon-close"></i></a>
+            <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id
+                donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit
+                ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <a data-bs-toggle="collapse" data-bs-target="#faq3" class="collapsed">Dolor sit amet consectetur adipiscing
+              elit pellentesque habitant morbi? <i class="fa fa-arrow-down icon-show"></i><i
+                class="fa fa-times icon-close"></i></a>
+            <div id="faq3" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum
+                integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt.
+                Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <a data-bs-toggle="collapse" data-bs-target="#faq4" class="collapsed">Ac odio tempor orci dapibus. Aliquam
+              eleifend mi in nulla? <i class="fa fa-arrow-down icon-show"></i><i class="fa fa-times icon-close"></i></a>
+            <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id
+                donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit
+                ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <a data-bs-toggle="collapse" data-bs-target="#faq5" class="collapsed">Tempus quam pellentesque nec nam
+              aliquam sem et tortor consequat? <i class="fa fa-arrow-down icon-show"></i><i
+                class="fa fa-times icon-close"></i></a>
+            <div id="faq5" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc
+                vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus
+                gravida quis blandit turpis cursus in
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <a data-bs-toggle="collapse" data-bs-target="#faq6" class="collapsed">Tortor vitae purus faucibus ornare.
+              Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="fa fa-arrow-down icon-show"></i><i
+                class="fa fa-times icon-close"></i></a>
+            <div id="faq6" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada
+                nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis
+                tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas
+                fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
+              </p>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <hr class="featurette-divider" id="contact">
+    <!-- Container (Contact Section) -->
+    <section>
+
+      <div class="section-title">
+        <h2>Contactos</h2>
+        <p>
+          <i>un hermoso paraiso</i>
+        </p>
+      </div>
+
+      <div id="member" class="container">
+        <h3 class="text-center"></h3>
         <div class="card mb-8">
           <img
             src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FLa_Casa.png?alt=media&token=1e2f4d4c-fbe7-40d4-abfc-7cfac0924748"
-            class="card-img-top" alt="...">
+            class="card-img-top" alt="Ubicacion de Baumann Tennis">
           <div class="card-body">
             <h5 class="card-title">Asuncion, Paraguay</h5>
             <p class="card-text">Ubicada en un ambiente acogedor y rodeada de naturaleza,
@@ -340,296 +475,410 @@
           </div>
         </div>
       </div>
+    </section>
 
-      <hr class="featurette-divider">
+    <!-- <div class="text-center">
+          <a class="button1"
+            href="mailto:baumannkev@gmail.com?&subject=Preguntas Para BaumannTennis&body=Equipo BaumannTennis ">
+            Contactanos por Email</a>
+        </div> -->
 
-      <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+    <!-- ======= Contact Section ======= -->
+    <section class="contact" id = "contacto">
+      <div class="container" data-aos="fade-up">
 
-      <!-- BOOKING -->
-      <div class="container" style="padding-bottom: 5rem;">
-        <!-- Title -->
-        <h2>BAUMANN TENNIS</h2>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
-              role="tab" aria-controls="home" aria-selected="true">Alquilar Cancha</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="clases-tab" data-bs-toggle="tab" data-bs-target="#clases" type="button"
-              role="tab" aria-controls="clases" aria-selected="false">Clases</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#something" type="button"
-              role="tab" aria-controls="contact" aria-selected="false">Contact</button>
-          </li>
-        </ul>
+        <div class="section-title">
+        </div>
 
-        <div class="tab-content" id="myTabContent">
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
 
-          <!-- Alquilar Canchas -->
+          <!-- 6 to make it half 50%-->
+          <div class="col-lg-6">
 
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="container" style="padding-top: 2rem;">
-              <div class="row">
-                <div class='col-md-8'>
-                  <div class="form-group">
-                    <!-- DATE INPUT -->
-                    <div class="input-grp">
-                      <!-- <label></label> -->
-                      <input type="text" id="dateInput" value="" placeholder="Hoy" onfocus="(this.type='date')"
-                        onblur="if(this.value==''){this.type='text'}" class="form-select"
-                        style="margin-top: 1rem; height: 2.5rem;">
-                    </div>
-                  </div>
-                </div>
-                <!-- Time -->
-                <!-- Button trigger modal -->
-                <div class="col-6 col-md-4">
-                  <button type="" class="btn border shadow" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    style="margin-top: 1rem;"><span class="fas fa-hourglass-end hourglass"
-                      style="color: green; font-size: 1rem !important;"></span>
-                    <span type="text" class="time" id='timeToPlay' style="padding-left: 1rem; font-size: 1rem;">1
-                    </span><span>
-                      h.</span>
-                  </button>
-                </div>
-                <!-- Modal for number of hours to play -->
-                <script>
-                  function changeText(timeInputted) {
-                    document.getElementById('timeToPlay').innerHTML = timeInputted;
-                  }
-                </script>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title text-center" id="exampleModalLabel">Cuanto tiempo queres jugar?</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body text-center">
-                        <div class="d-grid gap-2">
-                          <button class="btn btn-lg border" data-bs-toggle="button" autocomplete="off"
-                            aria-pressed="true" onclick='changeText(1)'>1 hora</button>
-                          <button class="btn btn-lg border" autocomplete="off" data-bs-toggle="button"
-                            onclick='changeText("1.5")'>1.5
-                            horas</button>
-                          <button class="btn btn-lg border" autocomplete="off" data-bs-toggle="button"
-                            onclick='changeText(2)'>2 horas</button>
-                          <button class="btn btn-lg border" autocomplete="off" data-bs-toggle="button"
-                            onclick='changeText(2.5)'>2.5
-                            horas</button>
-                          <button class="btn btn-lg border" autocomplete="off" data-bs-toggle="button"
-                            onclick='changeText(3)'>3 horas</button>
-                          <button class="btn btn-lg border" autocomplete="off" data-bs-toggle="button"
-                            onclick='changeText(3.5)'>3.5
-                            horas</button>
-                          <button class="btn btn-lg border" autocomplete="off" data-bs-toggle="button"
-                            onclick='changeText(4)'>4 horas</button>
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                      </div>
-                    </div>
-                  </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="info-box">
+                  <a href="https://g.page/baumann-tennis?share" target="_blank">
+                    <i class="fa fa-map"></i>
+                  </a>
+                  <h3>Nuestra ubicacion</h3>
+                  <p>Presidente Juan Manuel Frutos 2925 e/ Dr. Bernardino Caballero, <br>Asuncion, Paraguay </p>
                 </div>
               </div>
-
-              <script>
-                function changeHoursTime(timeInputted) {
-                  document.getElementById('hoursToPlay').innerHTML = timeInputted;
-                }
-              </script>
-              <!-- Choose the time -->
-              <div class="container" style="padding-top: 2rem;">
-                <h3>ELEGI UN HORARIO</h3>
-                <div class="container times">
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("06:00-07:00")'>06:00-07:00</button>
-                  <button class="btn border d-inline p-2 item" onclick='changeHoursTime("07:00-08:00")'>07:00-08:00
-                  </button>
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("08:00-09:00")'>08:00-09:00</button>
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("09:00-10:00")'>09:00-10:00</button>
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("10:00-11:00")'>10:00-11:00</button>
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("11:00-12:00")'>11:00-12:00</button>
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("12:00-13:00")'>12:00-13:00</button>
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("13:00-14:00")'>13:00-14:00</button>
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("14:00-12:00")'>14:00-12:00</button>
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("15:00-16:00")'>15:00-16:00</button>
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("16:00-17:00")'>16:00-17:00</button>
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("17:00-18:00")'>17:00-18:00</button>
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("18:00-19:00")'>18:00-19:00</button>
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("19:00-20:00")'>19:00-20:00</button>
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("20:00-21:00")'>20:00-21:00</button>
-                  <button class="btn border d-inline p-2 item"
-                    onclick='changeHoursTime("21:00-22:00")'>21:00-22:00</button>
-                </div>
-                <div class="col-6 col-md-4">
-                  <button type="" class="btn border shadow" style="margin-top: 1rem;"><span
-                      class="fas fa-hourglass-end hourglass" style="color: green; font-size: 1rem !important;"></span>
-                    <span class="time" id='hoursToPlay' style="padding-left: 1rem; font-size: 1rem;"
-                      disabled>06:00-07:00</span>
-                  </button>
+              <div class="col-md-6">
+                <div class="info-box mt-4">
+                  <a href="mailto:Info@baumanntennis.com">
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                  <h3>Email</h3>
+                  <p>info@baumanntennis.com
+                    <!-- <br>contact@example.com -->
+                  </p>
                 </div>
               </div>
-              <!-- NAME FORMS -->
-              <form class="needs-validation" style="padding-top: 2rem" novalidate>
-                <div class="col-md-4">
-                  <label for="email" class="form-label">Email</label>
-                  <div class="input-group has-validation">
-                    <input type="text" class="form-control" id="emailInput" aria-describedby="inputGroupPrepend"
-                      required>
-                    <div class="invalid-feedback">
-                      Por favor escribi tu email.
-                    </div>
-                  </div>
+              <div class="col-md-6">
+                <div class="info-box mt-4">
+                  <a href="https://api.whatsapp.com/message/GDPS56AEKFB2M1" target="_blank">
+                    <i class="fa fa-phone"></i>
+                  </a>
+                  <h3>Llamanos</h3>
+                  <p> +595 982367638
+                    <!-- <br>+1 6678 254445 41 -->
+                  </p>
                 </div>
-                <div class="col-md-4">
-                  <label for="firstName" class="form-label">Nombre</label>
-                  <div class="input-group has-validation">
-                    <input type="text" class="form-control" id="firstName" aria-describedby="inputGroupPrepend" value=""
-                      required>
-                    <div class="invalid-feedback">
-                      Por favor escribi tu nombre.
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <label for="lastName" class="form-label">Apellido</label>
-                  <div class="input-group has-validation">
-                    <input type="email" class="form-control" id="lastName" aria-describedby="inputGroupPrepend"
-                      required>
-                    <!-- <div class="invalid-feedback">
-                      Por favor escribi tu apellido.
-                    </div> -->
-                  </div>
-                </div>
-                <!-- Save Button -->
-                <!-- Get Date from User -->
-                <script>
-                  function changeDay() {
-                    var variable = document.getElementById('dateInput').value;
-                    document.getElementById('dayInput').innerHTML = variable;
-                  }
-                  // <!-- Get Hours from User -->
-                  function changeHours() {
-                    var elem = document.getElementById('timeToPlay');
-                    var txt = elem.innerText;
-                    document.getElementById('hoursInput').innerHTML = txt;
-                  }
-                  // <!-- Get Hour of day from User -->
-                  function changeHourofDay() {
-                    var elem = document.getElementById('hoursToPlay');
-                    var txt = elem.innerText;
-                    document.getElementById('hoursofDay').innerHTML = txt;
-                  }
-                  //  <!-- Get firstName from User -->
-                  function changeFirstName() {
-                    var variable = document.getElementById('firstName').value;
-                    document.getElementById('firstNameConfirm').innerHTML = variable;
-                  }
-                  //  <!-- Get lastName from User -->
-                  function changeLastName() {
-                    var variable = document.getElementById('lastName').value;
-                    document.getElementById('lastNameConfirm').innerHTML = variable;
-                  }
-                  //  <!-- Get email from User -->
-                  function changeEmail() {
-                    var variable = document.getElementById('emailInput').value;
-                    document.getElementById('emailConfirm').innerHTML = variable;
-                  }
-
-                </script>
-                <!-- Button trigger modal -->
-                <div class="col-6 col-md-4">
-                  <button type="submit" class="btn border shadow" data-bs-toggle="modal" data-bs-target="#confirmar"
-                    style="margin-top: 1rem;"
-                    onclick='changeDay(), changeHours(), changeHourofDay(), changeFirstName(), changeLastName(), changeEmail()'>
-                    <span class="" id='registrarConfirm'>Alquilar</span>
-                  </button>
-                </div>
-                <!-- Modal to confirm information for registrar -->
-                <div class="modal fade" id="confirmar" tabindex="-1" aria-labelledby="confirmarLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title text-center" id="confirmarLabel">Asegura que toda tu informacion este
-                          correcta.</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body text-center">
-                        <div class="d-grid gap-2">
-                          <p class="">Fecha: <span id="dayInput"> </span></p>
-                          <p class="">Tiempo: <span id="hoursInput"> </span> h.</p>
-                          <p class="">Hora: <span id="hoursofDay"> </span></p>
-                          <p class="">Email: <span id="emailConfirm"> </span></p>
-                          <p class="">Nombre: <span id="firstNameConfirm"> </span></p>
-                          <p class="">Apellido: <span id="lastNameConfirm"> </span></p>
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal"
-                          id="confirmButton">Confirmar</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
+              </div>
             </div>
+
+          </div>
+
+          <div class="col-lg-6">
+            <form method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col form-group">
+                  <input type="text" name="name" class="form-control" id="firstName" placeholder="Nombre" required>
+                </div>
+                <div class="col form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="col form-group">
+                  <input type="text" class="form-control" name="phone" id="phone" placeholder="Celular" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" id="message" placeholder="Mensaje"
+                  required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit" id="btnSubmit" formmethod="POST">Mandar Mensaje</button>
+              </div>
+              <div class="text-center" id="confirm-message"></div>
+            </form>
           </div>
 
           <script>
-            (function () {
-              'use strict'
-              // Fetch all the forms we want to apply custom Bootstrap validation styles to
-              var forms = document.querySelectorAll('.needs-validation')
-              var submitButton = document.getElementById('confirmButton')
-              // Loop over them and prevent submission
-              Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                  form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                      event.preventDefault()
-                      event.stopPropagation()
-                    }
-                    form.classList.add('was-validated')
-                  }, false)
-                })
-            })()
+
+            $(function () {
+              $("#btnSubmit").click(function (e) {
+                event.preventDefault(event);
+                var name = $("#firstName").val().trim();
+                var email = $("#email").val().trim();
+                var phone = $("#phone").val();
+                var subject = $("#subject").val().trim();
+                var message = $("#message").val();
+
+
+                // console.log("Name: ", name);
+                // console.log("Email: ", email);
+                // console.log("Subject: ", subject);
+                // console.log("Phone: ", phone);
+                // console.log("Message: ", message);
+
+                if ((email && name && subject && message && phone) !== "") {
+                  document.getElementById("confirm-message").innerHTML = "Mensaje mandado!";
+                }
+                sendEmail(name, email, subject, message, phone);
+
+              });
+            });
+
+            function sendEmail(name, email, subject, message, phone) {
+              Email.send({
+                Host: "smtp.gmail.com",
+                Username: 'baumannkev@gmail.com',
+                Password: "aipodisikqqzckav",
+                To: "baumannkev@gmail.com",
+                // To: "nuestrasaludinfo@gmail.com",
+                From: email,
+                Subject: subject,
+                Body: `
+                  <div style="container" style="margin: 50px; background: #E9E9E9; border:#161414">
+                    <div style="margin: 1rem 1rem 1rem 1rem ;">
+                      <p> ${name} te mando un mensaje!</p></br>
+                      <h2 style="text-align:center">Mensaje de formulario de contacto:</h2></br>
+                      <div class ="container"><h4>Nombre: ${name}</h4><h4>Celular: ${phone}</h4><h4>Email: ${email}</h4><h4>Mensaje: ${message}</h4></div>
+                    <div>
+                  </div>`,
+              });
+            }
 
           </script>
-          <!-- ---------------------------------------------------------------- -->
-          <!-- ANOTHER TAB / Clases  -->
-          <div class="tab-pane fade" id="clases" role="tabpanel" aria-labelledby="clases-tab">
-            <div class="container">
-              Clases para adultos
-            </div>
-          </div>
-          <div class="tab-pane fade" id="something" role="tabpanel" aria-labelledby="contact-tab">
-            Clases para ninos
-          </div>
         </div>
       </div>
-    </div>
-
+    </section><!-- End Contact Section -->
 
     <hr class="featurette-divider">
+
+    <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+    <!-- BOOKING -->
+    <!-- <div class="container" style="padding-bottom: 5rem;"> -->
+    <!-- Title -->
+    <!-- <h2>BAUMANN TENNIS</h2>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                role="tab" aria-controls="home" aria-selected="true">Alquilar Cancha</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="clases-tab" data-bs-toggle="tab" data-bs-target="#clases" type="button"
+                role="tab" aria-controls="clases" aria-selected="false">Clases</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#something" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">Contact</button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="myTabContent">
+
+
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="container" style="padding-top: 2rem;">
+                <div class="row">
+                  <div class='col-md-8'>
+                    <div class="form-group">
+                      <div class="input-grp">
+                        <input type="text" id="dateInput" value="" placeholder="Hoy" onfocus="(this.type='date')"
+                          onblur="if(this.value==''){this.type='text'}" class="form-select"
+                          style="margin-top: 1rem; height: 2.5rem;">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4">
+                    <button type="" class="btn border shadow" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                      style="margin-top: 1rem;"><span class="fas fa-hourglass-end hourglass"
+                        style="color: green; font-size: 1rem !important;"></span>
+                      <span type="text" class="time" id='timeToPlay' style="padding-left: 1rem; font-size: 1rem;">1
+                      </span><span>
+                        h.</span>
+                    </button>
+                  </div>
+                  <script>
+                    function changeText(timeInputted) {
+                      document.getElementById('timeToPlay').innerHTML = timeInputted;
+                    }
+                  </script>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title text-center" id="exampleModalLabel">Cuanto tiempo queres jugar?</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                          <div class="d-grid gap-2">
+                            <button class="btn btn-lg border" data-bs-toggle="button" autocomplete="off"
+                              aria-pressed="true" onclick='changeText(1)'>1 hora</button>
+                            <button class="btn btn-lg border" autocomplete="off" data-bs-toggle="button"
+                              onclick='changeText("1.5")'>1.5
+                              horas</button>
+                            <button class="btn btn-lg border" autocomplete="off" data-bs-toggle="button"
+                              onclick='changeText(2)'>2 horas</button>
+                            <button class="btn btn-lg border" autocomplete="off" data-bs-toggle="button"
+                              onclick='changeText(2.5)'>2.5
+                              horas</button>
+                            <button class="btn btn-lg border" autocomplete="off" data-bs-toggle="button"
+                              onclick='changeText(3)'>3 horas</button>
+                            <button class="btn btn-lg border" autocomplete="off" data-bs-toggle="button"
+                              onclick='changeText(3.5)'>3.5
+                              horas</button>
+                            <button class="btn btn-lg border" autocomplete="off" data-bs-toggle="button"
+                              onclick='changeText(4)'>4 horas</button>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <script>
+                  function changeHoursTime(timeInputted) {
+                    document.getElementById('hoursToPlay').innerHTML = timeInputted;
+                  }
+                </script>
+                <div class="container" style="padding-top: 2rem;">
+                  <h3>ELEGI UN HORARIO</h3>
+                  <div class="container times">
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("06:00-07:00")'>06:00-07:00</button>
+                    <button class="btn border d-inline p-2 item" onclick='changeHoursTime("07:00-08:00")'>07:00-08:00
+                    </button>
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("08:00-09:00")'>08:00-09:00</button>
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("09:00-10:00")'>09:00-10:00</button>
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("10:00-11:00")'>10:00-11:00</button>
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("11:00-12:00")'>11:00-12:00</button>
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("12:00-13:00")'>12:00-13:00</button>
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("13:00-14:00")'>13:00-14:00</button>
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("14:00-12:00")'>14:00-12:00</button>
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("15:00-16:00")'>15:00-16:00</button>
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("16:00-17:00")'>16:00-17:00</button>
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("17:00-18:00")'>17:00-18:00</button>
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("18:00-19:00")'>18:00-19:00</button>
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("19:00-20:00")'>19:00-20:00</button>
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("20:00-21:00")'>20:00-21:00</button>
+                    <button class="btn border d-inline p-2 item"
+                      onclick='changeHoursTime("21:00-22:00")'>21:00-22:00</button>
+                  </div>
+                  <div class="col-6 col-md-4">
+                    <button type="" class="btn border shadow" style="margin-top: 1rem;"><span
+                        class="fas fa-hourglass-end hourglass" style="color: green; font-size: 1rem !important;"></span>
+                      <span class="time" id='hoursToPlay' style="padding-left: 1rem; font-size: 1rem;"
+                        disabled>06:00-07:00</span>
+                    </button>
+                  </div>
+                </div>
+                <form class="needs-validation" style="padding-top: 2rem" novalidate>
+                  <div class="col-md-4">
+                    <label for="email" class="form-label">Email</label>
+                    <div class="input-group has-validation">
+                      <input type="text" class="form-control" id="emailInput" aria-describedby="inputGroupPrepend"
+                        required>
+                      <div class="invalid-feedback">
+                        Por favor escribi tu email.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="firstName" class="form-label">Nombre</label>
+                    <div class="input-group has-validation">
+                      <input type="text" class="form-control" id="firstName" aria-describedby="inputGroupPrepend" value=""
+                        required>
+                      <div class="invalid-feedback">
+                        Por favor escribi tu nombre.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="lastName" class="form-label">Apellido</label>
+                    <div class="input-group has-validation">
+                      <input type="email" class="form-control" id="lastName" aria-describedby="inputGroupPrepend"
+                        required>
+                    </div>
+                  </div>
+                  <script>
+                    function changeDay() {
+                      var variable = document.getElementById('dateInput').value;
+                      document.getElementById('dayInput').innerHTML = variable;
+                    }
+                    function changeHours() {
+                      var elem = document.getElementById('timeToPlay');
+                      var txt = elem.innerText;
+                      document.getElementById('hoursInput').innerHTML = txt;
+                    }
+                    function changeHourofDay() {
+                      var elem = document.getElementById('hoursToPlay');
+                      var txt = elem.innerText;
+                      document.getElementById('hoursofDay').innerHTML = txt;
+                    }
+                    function changeFirstName() {
+                      var variable = document.getElementById('firstName').value;
+                      document.getElementById('firstNameConfirm').innerHTML = variable;
+                    }
+                    function changeLastName() {
+                      var variable = document.getElementById('lastName').value;
+                      document.getElementById('lastNameConfirm').innerHTML = variable;
+                    }
+                    function changeEmail() {
+                      var variable = document.getElementById('emailInput').value;
+                      document.getElementById('emailConfirm').innerHTML = variable;
+                    }
+
+                  </script>
+                  <div class="col-6 col-md-4">
+                    <button type="submit" class="btn border shadow" data-bs-toggle="modal" data-bs-target="#confirmar"
+                      style="margin-top: 1rem;"
+                      onclick='changeDay(), changeHours(), changeHourofDay(), changeFirstName(), changeLastName(), changeEmail()'>
+                      <span class="" id='registrarConfirm'>Alquilar</span>
+                    </button>
+                  </div>
+                  <div class="modal fade" id="confirmar" tabindex="-1" aria-labelledby="confirmarLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title text-center" id="confirmarLabel">Asegura que toda tu informacion este
+                            correcta.</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                          <div class="d-grid gap-2">
+                            <p class="">Fecha: <span id="dayInput"> </span></p>
+                            <p class="">Tiempo: <span id="hoursInput"> </span> h.</p>
+                            <p class="">Hora: <span id="hoursofDay"> </span></p>
+                            <p class="">Email: <span id="emailConfirm"> </span></p>
+                            <p class="">Nombre: <span id="firstNameConfirm"> </span></p>
+                            <p class="">Apellido: <span id="lastNameConfirm"> </span></p>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                          <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal"
+                            id="confirmButton">Confirmar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <script>
+              (function () {
+                'use strict'
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.querySelectorAll('.needs-validation')
+                var submitButton = document.getElementById('confirmButton')
+                // Loop over them and prevent submission
+                Array.prototype.slice.call(forms)
+                  .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                      if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                      }
+                      form.classList.add('was-validated')
+                    }, false)
+                  })
+              })()
+
+            </script>
+            <div class="tab-pane fade" id="clases" role="tabpanel" aria-labelledby="clases-tab">
+              <div class="container">
+                Clases para adultos
+              </div>
+            </div>
+            <div class="tab-pane fade" id="something" role="tabpanel" aria-labelledby="contact-tab">
+              Clases para ninos
+            </div>
+          </div>
+        </div> -->
+    </div>
+
+    <!-- <hr class="featurette-divider"> -->
 
     <!--Google map-->
     <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
@@ -639,56 +888,139 @@
     </div>
     <!--Google Maps-->
 
-    <!-- FOOTER -->
-    <footer class="blog-footer">
-      <h3 class="icons_bt" style="vertical-align: middle;">
-        <div class="row row-cols-1 row-cols-lg-4 g-4 g-lg-4" id=""
-          style="padding-bottom: 2rem; padding-right: 0rem; text-align: center; vertical-align: middle;">
-          <div class="col-3">
-            <p class="card-text"><small class="text-muted">
-                <a class="button1" href="https://instagram.com/baumanntennis?igshid=1se5twpjgogen" data-toggle="tooltip"
-                  title="@baumanntennis" target="_blank">
-                  <span class="fab fa-instagram"></span></a></small>
-            </p>
-          </div>
-          <div class="col-3">
-            <p class="card-text"><small class="text-muted">
-                <a class="button1" href="https://api.whatsapp.com/message/GDPS56AEKFB2M1" data-toggle="tooltip"
-                  title="@baumanntennis" target="_blank">
-                  <span class="fab fa-whatsapp"></span></a></small>
-            </p>
-          </div>
-          <div class="col-3">
-            <p class="mr-2"><small class="text-muted">
-                <a class="button1" href="https://www.facebook.com/baumanntennisacademia/" data-toggle="tooltip"
-                  title="@baumanntennis" target="_blank">
-                  <span class="fab fa-facebook-f"></span></a></small>
-            </p>
-          </div>
-          <div class="col-3">
-            <p class="card-text"><small class="text-muted"></small>
-              <a class="button1" href="mailto:Info@baumanntennis.com" data-toggle="tooltip"
-                title="Info@baumanntennis.com"><span class="fas fa-envelope"></span></a></small>
-            </p>
-          </div>
-        </div>
-      </h3>
-      </div>
-      <footer style="vertical-align: middle; text-align: center;">
-        <h2> Presidente Juan Manuel Frutos 2925 e/ Dr. Bernardino Caballero, <br>Asuncion, Paraguay</h2>
-        <p>
-          <a href="#">De Vuelta al Inicio</a>
-        </p>
-        <p><br><br>Website built by Kevin Baumann</p>
-        <a class="button1" href="mailto:baumannkev@gmail.com">Contact me at baumannkev@gmail.com</a>
-      </footer>
-    </footer>
   </main>
 
+  <!-- FOOTER -->
+  <footer class="blog-footer">
+    <h3 class="icons_bt" style="vertical-align: middle;">
+      <div class="row row-cols-1 row-cols-lg-4 g-4 g-lg-4" id=""
+        style="padding-bottom: 2rem; padding-right: 0rem; text-align: center; vertical-align: middle;">
+        <div class="col-3">
+          <p class="card-text"><small class="text-muted">
+              <a class="button1" href="https://instagram.com/baumanntennis?igshid=1se5twpjgogen" data-toggle="tooltip"
+                title="@baumanntennis" target="_blank">
+                <span class="fab fa-instagram"></span></a></small>
+          </p>
+        </div>
+        <div class="col-3">
+          <p class="card-text"><small class="text-muted">
+              <a class="button1" href="https://api.whatsapp.com/message/GDPS56AEKFB2M1" data-toggle="tooltip"
+                title="@baumanntennis" target="_blank">
+                <span class="fab fa-whatsapp"></span></a></small>
+          </p>
+        </div>
+        <div class="col-3">
+          <p class="mr-2"><small class="text-muted">
+              <a class="button1" href="https://www.facebook.com/baumanntennisacademia/" data-toggle="tooltip"
+                title="@baumanntennis" target="_blank">
+                <span class="fab fa-facebook-f"></span></a></small>
+          </p>
+        </div>
+        <div class="col-3">
+          <p class="card-text"><small class="text-muted"></small>
+            <a class="button1" href="mailto:Info@baumanntennis.com" data-toggle="tooltip"
+              title="Info@baumanntennis.com"><span class="fas fa-envelope"></span></a></small>
+          </p>
+        </div>
+      </div>
+    </h3>
+    </div>
+
+  </footer>
+  <!-- <footer style="vertical-align: middle; text-align: center;">
+
+          <h2> Presidente Juan Manuel Frutos 2925 e/ Dr. Bernardino Caballero, <br>Asuncion, Paraguay</h2>
+          <p>
+            <a href="#">De Vuelta al Inicio</a>
+          </p>
+          <p><br><br>Website built by Kevin Baumann</p>
+          <a class="button1"
+            href="mailto:baumannkev@gmail.com?&subject=Preguntas Para BaumannTennis&body=Equipo BaumannTennis ">
+            Contactame aqui baumannkev@gmail.com</a> -->
+  <!-- <a class="button1" href="mailto:baumannkev@gmail.com">Contact me at baumannkev@gmail.com</a> -->
+  <!-- </footer> -->
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Baumann Tennis<span></span></h3>
+            <p>
+              Presidente Juan Manuel Frutos 2925<br>
+              e/ Dr. Bernardino Caballero<br>
+              Asuncion<br>
+              Paraguay <br><br>
+              <strong>Phone:</strong> +595 982367638<br>
+              <strong>Email:</strong> info@baumanntennis.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Paginas Utiles</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="inscribite.html">Inscribite</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="abouttheprofs.html">Los Profes</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Nuestros Servicios</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Tenis</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Colonia de Ingles</a></li>
+            </ul>
+          </div>
+
+          <!-- <div class="col-lg-4 col-md-6 footer-newsletter">
+              <h4>Join Our Newsletter</h4>
+              <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+              <form action="" method="post">
+                <input type="email" name="email"><input type="submit" value="Subscribe">
+              </form>
+            </div> -->
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <!-- <div class="copyright">
+          &copy; Copyright <strong><span>Kevin Baumann</span></strong>. All Rights Reserved
+        </div> -->
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          Designed by <a href="https://www.linkedin.com/in/kevinbau/" target="_blank">Kevin Baumann</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-end pt-3 pt-md-0">
+        <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> -->
+        <a href="https://www.facebook.com/baumanntennisacademia/" target="_blank" class="facebook"><i
+            class="fa fa-facebook"></i></a>
+        <a href="https://instagram.com/baumanntennis?igshid=1se5twpjgogen" target="_blank" class="instagram"><i
+            class="fa fa-instagram"></i></a>
+        <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> -->
+        <a href="https://api.whatsapp.com/message/GDPS56AEKFB2M1" target="_blank" class="linkedin"><i
+            class="fa fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-right"><i class="fa fa-arrow-up"></i></a>
+
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Your own Firebase API key information -->
   <script src="scripts/firebase_api_baumanntennis.js"> </script>
+
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6108361918d81fd3"></script>
 
 </body>
 

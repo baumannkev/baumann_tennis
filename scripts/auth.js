@@ -1,45 +1,55 @@
+const loggedOutLinks = document.querySelectorAll('.logged-out');
+const loggedInLinks = document.querySelectorAll('.logged-in');
+const accountDetails = document.querySelector('.account-details');
+const welcomeUser = document.querySelector('.usersName');
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if (user) {
     db.collection('classes').onSnapshot(snapshot => {
-      // setupGuides(snapshot.docs);
-      // setupRegisterTimes(snapshot.docs);
       setupUI(user);
       setupUIRegister(user);
       getUserName(user);
-      setupRegisterTimes(user);
     }, err => console.log(err.message));
   } else {
-    setupUIRegister();
-    setupUI();
-    getUserName();
-    setupRegisterTimes(user);
-    // setupRegisterTimes([]);
-
-    // setupGuides([]);
+    setupUI(user);
+    setupUIRegister(user);
+    getUserName(user);
   }
 });
 
-// // create new guide
-// const createForm = document.querySelector('#create-form');
-// createForm.addEventListener('submit', (e) => {
-//   e.preventDefault();
-//   db.collection('guides').add({
-//     title: createForm.title.value,
-//     content: createForm.content.value
-//   }).then(() => {
-//     // close the create modal & reset form
-//     const modal = document.querySelector('#modal-create');
-//     M.Modal.getInstance(modal).close();
-//     createForm.reset();
-//   }).catch(err => {
-//     console.log(err.message);
-//   });
-// });
+window.setupUI = (user) => {
+  if (user) {
+    // account info
+    db.collection('users').doc(user.uid).get().then((doc) => {
+      const html = `
+        <div>Iniciado como: ${user.email}</div>
+        <div>Nombre: <span class ="firstName">${doc.data().firstName}</span></div>
+        <div>Apellido: <span class ="lastName">${doc.data().lastName}</span></div>
+        <div>Numero Celular: ${doc.data().userPhone}</div>
+      `;
+      accountDetails.innerHTML = html;
+      const htmlName = `
+      <div style="color: rgb(39,57,82);">Bienvenido ${doc.data().firstName} ${doc.data().lastName}</div>
+      `;
+      welcomeUser.innerHTML = htmlName;
+    });
+    // toggle user UI elements
+    loggedInLinks.forEach(item => item.style.display = 'block');
+    loggedOutLinks.forEach(item => item.style.display = 'none');
+  } else {
+    // clear account info
+    accountDetails.innerHTML = '';
+    // toggle user elements
+    welcomeUser.innerHTML = '<h5 class="center-align">Inicia sesion o crea tu cuenta para registrar</h5>';
+    loggedInLinks.forEach(item => item.style.display = 'none');
+    loggedOutLinks.forEach(item => item.style.display = 'block');
+  }
+};
 
 // signup
 const signupForm = document.querySelector('#signup-form');
 const invalidFeedback = document.querySelector('#invalid-feedback');
+const invalidFeedbackSignup = document.querySelector('.invalid-feedback-signup');
 signupForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -54,6 +64,7 @@ signupForm.addEventListener('submit', (e) => {
       lastName: signupForm['signup-lastName'].value,
       userEmail: signupForm['signup-email'].value,
       userPhone: signupForm['signup-phone'].value,
+      clasesRegistered: "0",
     });
   }).then(() => {
     // close the signup modal & reset form
@@ -62,6 +73,15 @@ signupForm.addEventListener('submit', (e) => {
     // $("#modal-signup").attr("data-bs-dismiss", "modal");
     $('#modal-signup').modal('hide');
     signupForm.reset();
+  }).catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorMessage);
+    const html = `
+        <div class = "danger">${errorMessage}</div>
+      `;
+    invalidFeedbackSignup.innerHTML = html;
+    console.log(error);
   });
 });
 
@@ -71,6 +91,16 @@ logout.addEventListener('click', (e) => {
   e.preventDefault();
   auth.signOut();
 });
+
+// Login with Google
+// logout
+// const googleSignin = document.querySelector('#loginGoogle');
+// googleSignin.addEventListener('click', (e) => {
+//   const GoogleAuth = new firebase.auth.GoogleAuthProvider();
+//   //To sign in with pop-up.
+//   firebase.auth().signInWithPopup(GoogleAuth);
+// });
+
 
 // login
 const loginForm = document.querySelector('#login-form');
@@ -129,7 +159,7 @@ const resetLoginForm = document.querySelector('#reset-login-pass');
 const successfullReset = document.querySelector('#succesfull-reset-email-login');
 resetLoginForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const email = resetLoginForm['reset-password'].value;
+  const email = resetLoginForm['reset-password-login'].value;
 
   firebase.auth().sendPasswordResetEmail(email)
     .then(() => {

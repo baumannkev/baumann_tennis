@@ -62,13 +62,13 @@
       .modal_book{
         position: fixed;
         left: 0;
-        top: 0;
+        top: 5%;
         width: 100%;
         /* width: auto; */
         height: 100%;
         /* height: auto; */
         /* background-color: rgba(0, 0, 0, 0.3); */
-        opacity: 0;
+        opacity: 80%;
         visibility: hidden;
       }
       
@@ -78,12 +78,14 @@
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: white;
-        padding: 1rem 1.5rem;
+        padding: 1rem 1rem;
         /* width: 24rem; */
-        width: auto;
+        /* width: auto; */
+        width: 80%;
         border-radius: 0.5rem;
         border: 1px solid;
         border-color: #000;
+        opacity: 95%;
       }
       
       .close-button {
@@ -93,11 +95,12 @@
         text-align: center;
         cursor: pointer;
         border-radius: 0.25rem;
-        background-color: lightgray;
+        background-color: #75da7c;
+        color: #47844c
       }
 
       .show-modal {
-        opacity: 1;
+        opacity: 98%;
         visibility: visible;
         transform: scale(1.0);
       }

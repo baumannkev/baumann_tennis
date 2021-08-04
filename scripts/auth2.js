@@ -1,12 +1,19 @@
+// const loggedOutLinks = document.querySelectorAll('.logged-out');
+// const loggedInLinks = document.querySelectorAll('.logged-in');
+// const accountDetails = document.querySelector('.account-details');
+// const welcomeUser = document.querySelector('.usersName');
+
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if (user) {
     db.collection('classes').onSnapshot(snapshot => {
       setupRegisterTimes(user);
       setupUI(user);
+      // getClassesRegistered(user);
     }, err => console.log(err.message));
   } else {
     setupRegisterTimes(user);
+    setupUI(user);
   }
 });
 
