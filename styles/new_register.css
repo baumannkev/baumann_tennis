@@ -62,30 +62,60 @@
       .modal_book{
         position: fixed;
         left: 0;
+        right: 0;
         top: 5%;
-        width: 100%;
-        /* width: auto; */
+        width: 100%; 
+        
+        /* width: auto; --------*/
         height: 100%;
-        /* height: auto; */
-        /* background-color: rgba(0, 0, 0, 0.3); */
-        opacity: 80%;
+        /* height: auto; --------*/
+        /* background-color: rgba(0, 0, 0, 0.3); --------*/
+        /* opacity: 95%; */
         visibility: hidden;
-      }
+
+        background: rgba( 255, 255, 255, 0.20 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 0.0px );
+        -webkit-backdrop-filter: blur( 0.0px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+       }
+
+      /* .modal {
+        display: none; 
+        position: fixed;   
+        padding-top: 100px; 
+        left: 0;
+        right:0; 
+        top: 0;
+        bottom: 0; 
+        overflow: auto; 
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4); 
+        z-index: 9999; 
+    } */
       
       .modal-box {
         position: absolute;
-        top: 50%;
+        top: 48%;
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: white;
         padding: 1rem 1rem;
-        /* width: 24rem; */
-        /* width: auto; */
-        width: 80%;
+        width: 100%;
+        height: 100%;
         border-radius: 0.5rem;
         border: 1px solid;
         border-color: #000;
-        opacity: 95%;
+        /* opacity: 95%; */
+
+        background: rgba( 255, 255, 255, 1.00 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 10.0px );
+        -webkit-backdrop-filter: blur( 10.0px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
       }
       
       .close-button {
@@ -95,8 +125,19 @@
         text-align: center;
         cursor: pointer;
         border-radius: 0.25rem;
-        background-color: #75da7c;
-        color: #47844c
+        background-color: #a6d388;
+        color: #77b255;
+      }
+
+      .close-button:hover {
+        float: right;
+        width: 2.5rem;
+        line-height: 2.5rem;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        background-color: #77b255;
+        color: #a6d388;
       }
 
       .show-modal {

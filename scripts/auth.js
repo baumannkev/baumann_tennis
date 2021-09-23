@@ -29,7 +29,8 @@ window.setupUI = (user) => {
       `;
       accountDetails.innerHTML = html;
       const htmlName = `
-      <div style="color: rgb(39,57,82);">Bienvenido ${doc.data().firstName} ${doc.data().lastName}</div>
+      <div style="color: rgb(39,57,82);"><h1 class ="display-6">Bienvenido ${doc.data().firstName} ${doc.data().lastName}</h1></div>
+      <div class="container"><p class="lead">Las clases en donde te inscribis son para la semana que viene!</p></div>
       `;
       welcomeUser.innerHTML = htmlName;
     });
@@ -46,6 +47,19 @@ window.setupUI = (user) => {
   }
 };
 
+$('#signup-form input[type=text]').on('change invalid', function () {
+  var textfield = $(this).get(0);
+
+  // 'setCustomValidity not only sets the message, but also marks
+  // the field as invalid. In order to see whether the field really is
+  // invalid, we have to remove the message first
+  textfield.setCustomValidity('');
+
+  if (!textfield.validity.valid) {
+    textfield.setCustomValidity('Rellene este campo por favor');
+  }
+});
+
 // signup
 const signupForm = document.querySelector('#signup-form');
 const invalidFeedback = document.querySelector('#invalid-feedback');
@@ -56,6 +70,9 @@ signupForm.addEventListener('submit', (e) => {
   // get user info
   const email = signupForm['signup-email'].value;
   const password = signupForm['signup-password'].value;
+  const usersFirstName = signupForm['signup-firstName'].value;
+  const usersLastName = signupForm['signup-lastName'].value;
+  const usersPhone = signupForm['signup-phone'].value;
 
   // sign up the user & add firestore data
   auth.createUserWithEmailAndPassword(email, password).then(cred => {
@@ -91,16 +108,6 @@ logout.addEventListener('click', (e) => {
   e.preventDefault();
   auth.signOut();
 });
-
-// Login with Google
-// logout
-// const googleSignin = document.querySelector('#loginGoogle');
-// googleSignin.addEventListener('click', (e) => {
-//   const GoogleAuth = new firebase.auth.GoogleAuthProvider();
-//   //To sign in with pop-up.
-//   firebase.auth().signInWithPopup(GoogleAuth);
-// });
-
 
 // login
 const loginForm = document.querySelector('#login-form');
@@ -179,6 +186,31 @@ resetLoginForm.addEventListener('submit', (e) => {
     });
 
 });
+
+//Sign in with googleSignin
+// var provider = new firebase.auth.GoogleAuthProvider();
+
+// firebase.auth()
+//   .signInWithPopup(provider)
+//   .then((result) => {
+//     /** @type {firebase.auth.OAuthCredential} */
+//     var credential = result.credential;
+
+//     // This gives you a Google Access Token. You can use it to access the Google API.
+//     var token = credential.accessToken;
+//     // The signed-in user info.
+//     var user = result.user;
+//     // ...
+//   }).catch((error) => {
+//     // Handle Errors here.
+//     var errorCode = error.code;
+//     var errorMessage = error.message;
+//     // The email of the user's account used.
+//     var email = error.email;
+//     // The firebase.auth.AuthCredential type that was used.
+//     var credential = error.credential;
+//     // ...
+//   });
 
 
 // Register For Class

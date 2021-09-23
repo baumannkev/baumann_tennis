@@ -76,6 +76,7 @@ var dayOfWeek;
 		var col_name_day_user = $(this).closest('a').attr('row_day');
 		var col_val = $(col_name_time_user).html();
 
+		console.log( "Date Check: ", col_name_day_user);
 		console.log("Member count: " + memberCount);
 		// Get time
 		console.log(col_name_time_user);
@@ -101,7 +102,7 @@ var dayOfWeek;
 
 			//out put to show
 			// $('.details').html('<pre>' + '<div>Hora: ' + time_id +'</div>' + "</br>" + JSON.stringify(arr_register, null, 1) + '</pre>')
-			$('.details').html('<div class = "container"></br>' + '<div>Dia: ' + day_value + '</br>Hora: ' + time_id + '</div>' + "" + "Descripción: " + col_val_register + '</div></br>')
+			$('.details').html('<div class = ""></br>' + '<div>Dia: ' + day_value + '</br>Hora: ' + time_id + '</div>' + "" + "Descripción: " + col_val_register + '</div></br>')
 
 			console.log(col_name_register_user);
 			// updateTheDatabase(col_val_register_user, col_name_register_user);
@@ -123,6 +124,8 @@ var dayOfWeek;
 		document.querySelector('#days').textContent = "";
 		document.querySelector('#to-date').textContent = "";
 		document.querySelector('#total-price').textContent = "";
+		document.querySelector('#weeks').textContent = "";
+		document.getElementById("select1").value = 0;
 	});
 	$(document).on('click', '.delete-member', function (event) {
 		event.preventDefault();
@@ -209,70 +212,75 @@ var dayOfWeek;
 		toDate = document.querySelector("#to-date").textContent;
 		var totalPrice = document.querySelector("#total-price").textContent;
 
-		var incremented = increment_alphanumeric_str(memberCount);
-		// var decreased = decrement_alphanumeric_str()
-		// var decreased = decrement_alphanumeric_str(memberCount);
-		// "url2"
+		if (toDate !== "") {
 
-		// console.log("Registered at " + col_name_registers);
-		console.log("Registered at " + valueForFirebase);
-		// var time = new Date();
-		let current = new Date();
-		let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
-		let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
-		let dateTime = cDate + ' ' + cTime;
-		console.log(dateTime);
-		var time = dateTime;
-		console.log("Time Registered at " + time);
-		time = time.toString();
+			var incremented = increment_alphanumeric_str(memberCount);
+			// var decreased = decrement_alphanumeric_str()
+			// var decreased = decrement_alphanumeric_str(memberCount);
+			// "url2"
 
-		// var patronNum = 2;
-		// var database = firebase.database().ref('classes/' + col_name_registers + '/patrons');
-		var database = firebase.database().ref('classes/' + valueForFirebase + '/patrons/patron' + incremented + '');
-		var newUserRegisterRef = database.push();
-		newUserRegisterRef.set({
-			timeRegistered: time,
-			firstName: userFirstName,
-			lastName: userLastName,
-			email: usersEmails,
-			phone: userPhone,
-			from: fromDate,
-			to: toDate,
-			total: totalPrice,
-		});
-		// patronNum++;
+			// console.log("Registered at " + col_name_registers);
+			console.log("Registered at " + valueForFirebase);
+			// var time = new Date();
+			let current = new Date();
+			let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+			let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+			let dateTime = cDate + ' ' + cTime;
+			console.log(dateTime);
+			var time = dateTime;
+			console.log("Time Registered at " + time);
+			time = time.toString();
 
-		var registerRef = firebase.database().ref('classes/' + valueForFirebase + '/patrons');
-		registerRef.on('child_added', (data) => {
-			firebase.database().ref('classes/' + valueForFirebase + '/').update({
-				miembros: incremented,
-			}).then(() => {
-				console.log("Added Miembros")
+			// var patronNum = 2;
+			// var database = firebase.database().ref('classes/' + col_name_registers + '/patrons');
+			var database = firebase.database().ref('classes/' + valueForFirebase + '/patrons/patron' + incremented + '');
+			var newUserRegisterRef = database.push();
+			newUserRegisterRef.set({
+				timeRegistered: time,
+				firstName: userFirstName,
+				lastName: userLastName,
+				email: usersEmails,
+				phone: userPhone,
+				from: fromDate,
+				to: toDate,
+				total: totalPrice,
 			});
-		});
+			// patronNum++;
+
+			var registerRef = firebase.database().ref('classes/' + valueForFirebase + '/patrons');
+			registerRef.on('child_added', (data) => {
+				firebase.database().ref('classes/' + valueForFirebase + '/').update({
+					miembros: incremented,
+				}).then(() => {
+					console.log("Added Miembros")
+				});
+			});
 
 
-		// var registerRefRemoved = firebase.database().ref('classes/' + valueForFirebase + '/patrons');
-		// registerRefRemoved.on('child_removed', (data) => {
-		// 	firebase.database().ref('classes/' + valueForFirebase + '/').update({
-		// 		miembros: decreased,
-		// 	}).then(() => {
-		// 		console.log("Removed Miembros")
-		// 	});
-		// });
+			// var registerRefRemoved = firebase.database().ref('classes/' + valueForFirebase + '/patrons');
+			// registerRefRemoved.on('child_removed', (data) => {
+			// 	firebase.database().ref('classes/' + valueForFirebase + '/').update({
+			// 		miembros: decreased,
+			// 	}).then(() => {
+			// 		console.log("Removed Miembros")
+			// 	});
+			// });
 
-		writeUserRegistration(time);
-		sendEmailRegister(time);
-		// sendEmailAdmin(time);
+			writeUserRegistration(time);
+			sendEmailRegister(time);
+			// sendEmailAdmin(time);
 
-		// var registerRefRemoved = firebase.database().ref('classes/' + valueForFirebase + '/patrons');
-		// registerRefRemoved.on('child_removed', (data) => {
-		// 	firebase.database().ref('classes/' + valueForFirebase + '/').update({
-		// 		miembros: decreased,
-		// 	}).then(() => {
-		// 		console.log("Removed Miembros")
-		// 	});
-		// });
+			// var registerRefRemoved = firebase.database().ref('classes/' + valueForFirebase + '/patrons');
+			// registerRefRemoved.on('child_removed', (data) => {
+			// 	firebase.database().ref('classes/' + valueForFirebase + '/').update({
+			// 		miembros: decreased,
+			// 	}).then(() => {
+			// 		console.log("Removed Miembros")
+			// 	});
+			// });
+		} else {
+			document.querySelector('#warning-messages').innerHTML = '<div class="">Por favor seleciona el numero de meses primero</div>';
+		}
 	});
 
 	// $(document).on('click', '.confirm-weeks', function (event) {
@@ -422,7 +430,7 @@ var usersLastName;
 var usersPhone;
 
 window.setupUIRegister = (user) => {
-// const setupUIRegister = (user) => {
+	// const setupUIRegister = (user) => {
 	if (user) {
 		// account info
 		db.collection('users').doc(user.uid).get().then((doc) => {
@@ -530,6 +538,8 @@ function getOption() {
 function closest_tuesday_or_friday(dayOfTheWeek) {
 	var today = new Date(), monday, tuesday, wednesday, thursday, friday, saturday, sunday, day, closest;
 
+	console.log("Day of Week:-" + dayOfTheWeek + "-");
+
 	if (dayOfTheWeek == "Lunes") {
 		if (today.getDay() == 1) {
 			if (today.getHours() < 0001) {
@@ -548,6 +558,7 @@ function closest_tuesday_or_friday(dayOfTheWeek) {
 			closest = new Date(today.setDate(monday));
 		}
 		return closest.getFullYear() + "/" + (closest.getMonth() + 1) + "/" + closest.getDate();
+
 	} else if (dayOfTheWeek == "Martes") {
 		if (today.getDay() == 2) {
 			if (today.getHours() < 0001) {
@@ -566,11 +577,14 @@ function closest_tuesday_or_friday(dayOfTheWeek) {
 			closest = new Date(today.setDate(tuesday));
 		}
 		return closest.getFullYear() + "/" + (closest.getMonth() + 1) + "/" + closest.getDate();
-	} else if (dayOfTheWeek == "Miercoles") {
+	} else if (dayOfTheWeek === "Miercoles") {
+		console.log("Here")
 		if (today.getDay() == 3) {
+			console.log("Second else")
 			if (today.getHours() < 0001) {
 				return today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
 			} else {
+				console.log("Second else")
 				day = today.getDay();
 				wednesday = today.getDate() - day + (day === 0 ? -6 : 3);
 				wednesday += 7;
@@ -578,12 +592,16 @@ function closest_tuesday_or_friday(dayOfTheWeek) {
 			}
 		}
 		else {
+			console.log("Second else")
 			day = today.getDay();
 			wednesday = today.getDate() - day + (day === 0 ? -6 : 3);
 			wednesday += 7;
 			closest = new Date(today.setDate(wednesday));
 		}
+		console.log("here")
+		console.log(closest.getFullYear() + "/" + (closest.getMonth() + 1) + "/" + closest.getDate())
 		return closest.getFullYear() + "/" + (closest.getMonth() + 1) + "/" + closest.getDate();
+
 	} else if (dayOfTheWeek == "Jueves") {
 		if (today.getDay() == 4) {
 			if (today.getHours() < 0001) {
@@ -651,15 +669,23 @@ function closest_tuesday_or_friday(dayOfTheWeek) {
 		}
 		else {
 			day = today.getDay();
-			sunday = today.getDate() - day + (day === 0 ? -6 : 7);
+			sunday = today.getDate() - day + (day === 0 ? -6 : 0);
 			sunday += 7;
 			closest = new Date(today.setDate(sunday));
 		}
 		return closest.getFullYear() + "/" + (closest.getMonth() + 1) + "/" + closest.getDate();
+	} else{
+		console.log("Wrong")
 	}
 }
 
 function sendEmailRegister(time) {
+	moment.locale("es");
+	var from = moment(fromDate).format('LLLL');
+	var to = moment(toDate).format('LLLL');
+
+	var timeOfReg = moment(time).format('LLLL')
+
 	Email.send({
 		Host: "smtp.gmail.com",
 		Username: 'baumannkev@gmail.com',
@@ -673,10 +699,10 @@ function sendEmailRegister(time) {
 			<div><h3 style="text-align:center">Inscribsion: </h3><h4>${claseRegistrada}</h4></div>
 			<div><h3 style="text-align:center">Hora: </h3>${hora}</p></div>
 			<div><h3 style="text-align:center">Fecha: </h3><p>${fecha}</p></div>
-			<div><h3 style="text-align:center">Desde: </h3><p>${fromDate}</p></div>
-			<div><h3 style="text-align:center">Hasta: </h3><p>${toDate}</p></div>
+			<div><h3 style="text-align:center">Desde: </h3><p>${from}</p></div>
+			<div><h3 style="text-align:center">Hasta: </h3><p>${to}</p></div>
 			<div><h3 style="text-align:center">Precio Total: </h3><p>${price}</p></div>
-			<div><h5 style="text-align:center">Hora de registracion: </h3><p>${time}</p></div>
+			<div><h5 style="text-align:center">Hora de registracion: </h3><p>${timeOfReg}</p></div>
 			<a style="text-align:center" href = "https://baumanntennis.com"><b>Baumann Tennis<b></a>
 			<div class="col-md-5 order-md-1" style="text-align:center">
 				<img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="250"

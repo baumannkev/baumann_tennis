@@ -116,6 +116,10 @@ function AddItemsToTable(
 ) {
   var tbody = document.getElementById('tbody1');
   var trow = document.createElement('tr');
+
+  var colorRed = "#FF0F0F"
+  var colorWhite = "#FFFFFF";
+
   trow.classList.add("row100");
   var td0 = document.createElement('td');
   var td1 = document.createElement('td');
@@ -164,8 +168,25 @@ function AddItemsToTable(
 
           var phone = childSnapshot.val().phone;
 
+          var colorMon;
+
+          var today = new Date();
+          var fechaToDate = new Date(to);
+          console.log("Today: ", today.getTime())
+          console.log("Fecha: ", fechaToDate.getTime());
+
+          moment.locale("es");
+          var fromDate = moment(from).format('ll');
+          var toDate = moment(to).format('ll');
+
+          if (fechaToDate.getTime() > today.getTime()) {
+            colorMon = colorWhite;
+          } else {
+            colorMon = colorRed;
+          }
+
           // var patronNum = 0;
-          ul1.innerHTML += '<dl class="row_data_delete" row_patron_num ="' + patronNum + '" row_members_delete ="' + monday07MembersNumbers + '" col_name_delete_user="' + AMTimeNumber + rowCounter + AMTime + '/monday"><dt>Miembro</dt><dd class="">Nombre: ' + firstName + '</dd><dd class="">Apellido: ' + lastName + '</dd><dd class="">Email: ' + email + '</dd><dd class="">Cel: ' + phone + '</dd><dd class="">Desde: ' + from + '</dd><dd class="">Hasta: ' + to + '</dd><a href ="https://console.firebase.google.com/project/baumanntennis-af590/database/baumanntennis-af590-default-rtdb/data" target = "_blank"><button class="btn">Borrar</button></a><dl>';
+          ul1.innerHTML += '<dl style="color: ' + colorMon + '" class="row_data_delete" row_patron_num ="' + patronNum + '" row_members_delete ="' + monday07MembersNumbers + '" col_name_delete_user="' + AMTimeNumber + rowCounter + AMTime + '/monday"><dt>Miembro</dt><dd class="">Nombre: ' + firstName + '</dd><dd class="">Apellido: ' + lastName + '</dd><dd class="">Email: ' + email + '</dd><dd class="">Cel: ' + phone + '</dd><dd class="">Desde: ' + fromDate + '</dd><dd class="">Hasta: ' + toDate + '</dd><a href ="https://console.firebase.google.com/project/baumanntennis-af590/database/baumanntennis-af590-default-rtdb/data" target = "_blank"><button class="btn">Borrar</button></a><dl>';
           patronNum++;
           td1.appendChild(ul1);
 
@@ -193,8 +214,24 @@ function AddItemsToTable(
 
           var phone = childSnapshot.val().phone;
 
+          var colorTues;
+
+          moment.locale("es");
+          var fromDate = moment(from).format('ll');
+          var toDate = moment(to).format('ll');
+
+          var today = new Date();
+          var fechaToDate = new Date(to);
+          console.log("Today: ", today.getTime())
+          console.log("Fecha: ", fechaToDate.getTime())
+          if (fechaToDate.getTime() > today.getTime()) {
+            colorTues = colorWhite;
+          } else {
+            colorTues = colorRed;
+          }
+
           // var patronNum = 0;
-          ul2.innerHTML += '<dl class="row_data_delete" row_patron_num ="' + patronNum + '" row_members_delete ="' + tuesday07MembersNumbers + '" col_name_delete_user="' + AMTimeNumber + rowCounter + AMTime + '/tuesday"><dt>Miembro</dt><dd class="">Nombre: ' + firstName + '</dd><dd class="">Apellido: ' + lastName + '</dd><dd class="">Email: ' + email + '</dd><dd class="">Cel: ' + phone + '</dd><dd class="">Desde: ' + from + '</dd><dd class="">Hasta: ' + to + '</dd><a href ="https://console.firebase.google.com/project/baumanntennis-af590/database/baumanntennis-af590-default-rtdb/data" target = "_blank"><button class="btn">Borrar</button></a><dl>';
+          ul2.innerHTML += '<dl style="color: ' + colorTues + '" class="row_data_delete" row_patron_num ="' + patronNum + '" row_members_delete ="' + tuesday07MembersNumbers + '" col_name_delete_user="' + AMTimeNumber + rowCounter + AMTime + '/tuesday"><dt>Miembro</dt><dd class="">Nombre: ' + firstName + '</dd><dd class="">Apellido: ' + lastName + '</dd><dd class="">Email: ' + email + '</dd><dd class="">Cel: ' + phone + '</dd><dd class="">Desde: ' + fromDate + '</dd><dd class="">Hasta: ' + toDate + '</dd><a href ="https://console.firebase.google.com/project/baumanntennis-af590/database/baumanntennis-af590-default-rtdb/data" target = "_blank"><button class="btn">Borrar</button></a><dl>';
           patronNum++;
           td2.appendChild(ul2);
 
@@ -231,8 +268,24 @@ function AddItemsToTable(
 
           var phone = childSnapshot.val().phone;
 
+          var colorWed;
+
+          moment.locale("es");
+          var fromDate = moment(from).format('ll');
+          var toDate = moment(to).format('ll');
+
+          var today = new Date();
+          var fechaToDate = new Date(to);
+          console.log("Today: ", today.getTime())
+          console.log("Fecha: ", fechaToDate.getTime())
+          if (fechaToDate.getTime() > today.getTime()) {
+            colorWed = colorWhite;
+          } else {
+            colorWed = colorRed;
+          }
+
           // var patronNum = 0;
-          ul3.innerHTML += '<dl class="row_data_delete" row_patron_num ="' + patronNum + '" row_members_delete ="' + wed07MembersNumbers + '" col_name_delete_user="' + AMTimeNumber + rowCounter + AMTime + '/wednesday"><dt>Miembro</dt><dd class="">Nombre: ' + firstName + '</dd><dd class="">Apellido: ' + lastName + '</dd><dd class="">Email: ' + email + '</dd><dd class="">Cel: ' + phone + '</dd><dd class="">Desde: ' + from + '</dd><dd class="">Hasta: ' + to + '</dd><a href ="https://console.firebase.google.com/project/baumanntennis-af590/database/baumanntennis-af590-default-rtdb/data" target = "_blank"><button class="btn">Borrar</button></a><dl>';
+          ul3.innerHTML += '<dl style="color: ' + colorWed + '" class="row_data_delete" row_patron_num ="' + patronNum + '" row_members_delete ="' + wed07MembersNumbers + '" col_name_delete_user="' + AMTimeNumber + rowCounter + AMTime + '/wednesday"><dt>Miembro</dt><dd class="">Nombre: ' + firstName + '</dd><dd class="">Apellido: ' + lastName + '</dd><dd class="">Email: ' + email + '</dd><dd class="">Cel: ' + phone + '</dd><dd class="">Desde: ' + fromDate + '</dd><dd class="">Hasta: ' + toDate + '</dd><a href ="https://console.firebase.google.com/project/baumanntennis-af590/database/baumanntennis-af590-default-rtdb/data" target = "_blank"><button class="btn">Borrar</button></a><dl>';
           patronNum++;
           td3.appendChild(ul3);
 
@@ -269,8 +322,24 @@ function AddItemsToTable(
 
           var phone = childSnapshot.val().phone;
 
+          var colorThurs;
+
+          moment.locale("es");
+          var fromDate = moment(from).format('ll');
+          var toDate = moment(to).format('ll');
+
+          var today = new Date();
+          var fechaToDate = new Date(to);
+          console.log("Today: ", today.getTime())
+          console.log("Fecha: ", fechaToDate.getTime())
+          if (fechaToDate.getTime() > today.getTime()) {
+            colorThurs = colorWhite;
+          } else {
+            colorThurs = colorRed;
+          }
+
           // var patronNum = 0;
-          ul4.innerHTML += '<dl class="row_data_delete" row_patron_num ="' + patronNum + '" row_members_delete ="' + thurs07MembersNumbers + '" col_name_delete_user="' + AMTimeNumber + rowCounter + AMTime + '/thursday"><dt>Miembro</dt><dd class="">Nombre: ' + firstName + '</dd><dd class="">Apellido: ' + lastName + '</dd><dd class="">Email: ' + email + '</dd><dd class="">Cel: ' + phone + '</dd><dd class="">Desde: ' + from + '</dd><dd class="">Hasta: ' + to + '</dd><a href ="https://console.firebase.google.com/project/baumanntennis-af590/database/baumanntennis-af590-default-rtdb/data" target = "_blank"><button class="btn">Borrar</button></a><dl>';
+          ul4.innerHTML += '<dl style="color: ' + colorThurs + '" class="row_data_delete" row_patron_num ="' + patronNum + '" row_members_delete ="' + thurs07MembersNumbers + '" col_name_delete_user="' + AMTimeNumber + rowCounter + AMTime + '/thursday"><dt>Miembro</dt><dd class="">Nombre: ' + firstName + '</dd><dd class="">Apellido: ' + lastName + '</dd><dd class="">Email: ' + email + '</dd><dd class="">Cel: ' + phone + '</dd><dd class="">Desde: ' + fromDate + '</dd><dd class="">Hasta: ' + toDate + '</dd><a href ="https://console.firebase.google.com/project/baumanntennis-af590/database/baumanntennis-af590-default-rtdb/data" target = "_blank"><button class="btn">Borrar</button></a><dl>';
           patronNum++;
           td4.appendChild(ul4);
 
@@ -307,8 +376,24 @@ function AddItemsToTable(
 
           var phone = childSnapshot.val().phone;
 
+          moment.locale("es");
+          var fromDate = moment(from).format('ll');
+          var toDate = moment(to).format('ll');
+
+          var colorFri;
+
+          var today = new Date();
+          var fechaToDate = new Date(to);
+          console.log("Today: ", today.getTime())
+          console.log("Fecha: ", fechaToDate.getTime())
+          if (fechaToDate.getTime() > today.getTime()) {
+            colorFri = colorWhite;
+          } else {
+            colorFri = colorRed;
+          }
+
           // var patronNum = 0;
-          ul5.innerHTML += '<dl class="row_data_delete" row_patron_num ="' + patronNum + '" row_members_delete ="' + fri07MembersNumbers + '" col_name_delete_user="' + AMTimeNumber + rowCounter + AMTime + '/friday"><dt>Miembro</dt><dd class="">Nombre: ' + firstName + '</dd><dd class="">Apellido: ' + lastName + '</dd><dd class="">Email: ' + email + '</dd><dd class="">Cel: ' + phone + '</dd><dd class="">Desde: ' + from + '</dd><dd class="">Hasta: ' + to + '</dd><a href ="https://console.firebase.google.com/project/baumanntennis-af590/database/baumanntennis-af590-default-rtdb/data" target = "_blank"><button class="btn">Borrar</button></a><dl>';
+          ul5.innerHTML += '<dl style="color: ' + colorFri + '" class="row_data_delete" row_patron_num ="' + patronNum + '" row_members_delete ="' + fri07MembersNumbers + '" col_name_delete_user="' + AMTimeNumber + rowCounter + AMTime + '/friday"><dt>Miembro</dt><dd class="">Nombre: ' + firstName + '</dd><dd class="">Apellido: ' + lastName + '</dd><dd class="">Email: ' + email + '</dd><dd class="">Cel: ' + phone + '</dd><dd class="">Desde: ' + fromDate + '</dd><dd class="">Hasta: ' + toDate + '</dd><a href ="https://console.firebase.google.com/project/baumanntennis-af590/database/baumanntennis-af590-default-rtdb/data" target = "_blank"><button class="btn">Borrar</button></a><dl>';
           patronNum++;
           td5.appendChild(ul5);
 
@@ -345,8 +430,24 @@ function AddItemsToTable(
 
           var phone = childSnapshot.val().phone;
 
+          moment.locale("es");
+          var fromDate = moment(from).format('ll');
+          var toDate = moment(to).format('ll');
+
+          var colorSat;
+
+          var today = new Date();
+          var fechaToDate = new Date(to);
+          console.log("Today: ", today.getTime())
+          console.log("Fecha: ", fechaToDate.getTime())
+          if (fechaToDate.getTime() > today.getTime()) {
+            colorSat = colorWhite;
+          } else {
+            colorSat = colorRed;
+          }
+
           // var patronNum = 0;
-          ul6.innerHTML += '<dl class="row_data_delete" row_patron_num ="' + patronNum + '" row_members_delete ="' + sat07MembersNumbers + '" col_name_delete_user="' + AMTimeNumber + rowCounter + AMTime + '/saturday"><dt>Miembro</dt><dd class="">Nombre: ' + firstName + '</dd><dd class="">Apellido: ' + lastName + '</dd><dd class="">Email: ' + email + '</dd><dd class="">Cel: ' + phone + '</dd><dd class="">Desde: ' + from + '</dd><dd class="">Hasta: ' + to + '</dd><a href ="https://console.firebase.google.com/project/baumanntennis-af590/database/baumanntennis-af590-default-rtdb/data" target = "_blank"><button class="btn">Borrar</button></a><dl>';
+          ul6.innerHTML += '<dl style="color: ' + colorSat + '" class="row_data_delete" row_patron_num ="' + patronNum + '" row_members_delete ="' + sat07MembersNumbers + '" col_name_delete_user="' + AMTimeNumber + rowCounter + AMTime + '/saturday"><dt>Miembro</dt><dd class="">Nombre: ' + firstName + '</dd><dd class="">Apellido: ' + lastName + '</dd><dd class="">Email: ' + email + '</dd><dd class="">Cel: ' + phone + '</dd><dd class="">Desde: ' + fromDate + '</dd><dd class="">Hasta: ' + toDate + '</dd><a href ="https://console.firebase.google.com/project/baumanntennis-af590/database/baumanntennis-af590-default-rtdb/data" target = "_blank"><button class="btn">Borrar</button></a><dl>';
           patronNum++;
           td6.appendChild(ul6);
 
@@ -383,8 +484,24 @@ function AddItemsToTable(
 
           var phone = childSnapshot.val().phone;
 
+          var colorSun;
+
+          moment.locale("es");
+          var fromDate = moment(from).format('ll');
+          var toDate = moment(to).format('ll');
+
+          var today = new Date();
+          var fechaToDate = new Date(to);
+          console.log("Today: ", today.getTime())
+          console.log("Fecha: ", fechaToDate.getTime())
+          if (fechaToDate.getTime() > today.getTime()) {
+            colorSun = colorWhite;
+          } else {
+            colorSun = colorRed;
+          }
+
           // var patronNum = 0;
-          ul7.innerHTML += '<dl class="row_data_delete" row_patron_num ="' + patronNum + '" row_members_delete ="' + sun07MembersNumbers + '" col_name_delete_user="' + AMTimeNumber + rowCounter + AMTime + '/sunday"><dt>Miembro</dt><dd class="">Nombre: ' + firstName + '</dd><dd class="">Apellido: ' + lastName + '</dd><dd class="">Email: ' + email + '</dd><dd class="">Cel: ' + phone + '</dd><dd class="">Desde: ' + from + '</dd><dd class="">Hasta: ' + to + '</dd><a href ="https://console.firebase.google.com/project/baumanntennis-af590/database/baumanntennis-af590-default-rtdb/data" target = "_blank"><button class="btn">Borrar</button></a><dl>';
+          ul7.innerHTML += '<dl style="color: ' + colorSun + '" class="row_data_delete" row_patron_num ="' + patronNum + '" row_members_delete ="' + sun07MembersNumbers + '" col_name_delete_user="' + AMTimeNumber + rowCounter + AMTime + '/sunday"><dt>Miembro</dt><dd class="">Nombre: ' + firstName + '</dd><dd class="">Apellido: ' + lastName + '</dd><dd class="">Email: ' + email + '</dd><dd class="">Cel: ' + phone + '</dd><dd class="">Desde: ' + fromDate + '</dd><dd class="">Hasta: ' + toDate + '</dd><a href ="https://console.firebase.google.com/project/baumanntennis-af590/database/baumanntennis-af590-default-rtdb/data" target = "_blank"><button class="btn">Borrar</button></a><dl>';
           patronNum++;
           td7.appendChild(ul7);
 

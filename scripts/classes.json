@@ -1,0 +1,158 @@
+{
+    "classes": {
+        "kids": {
+            "precio": {
+                "once": 140000,
+                "twice": 280000,
+                "thrice": 420000,
+                "four": 560000,
+                "five": 700000
+            },
+            "baby": {
+                "description": "3-4 años",
+                "monday": {
+                    "capacity": 2,
+                    "hours": "14:00"
+                },
+                "tuesday": {
+                    "capacity": 2,
+                    "hours": "14:00"
+                },
+                "wednesday": {
+                    "capacity": 2,
+                    "hours": "14:00"
+                },
+                "thursday": {
+                    "capacity": 2,
+                    "hours": "14:00"
+                },
+                "friday": {
+                    "capacity": 2,
+                    "hours": "14:00"
+                },
+                "saturday": {
+                    "capacity": 2,
+                    "hours": "09:00"
+                },
+                "sunday": {}
+            },
+            "rojo": {
+                "description": "5-7 años",
+                "monday": {
+                    "capacity": 2,
+                    "hours": "16:00"
+                },
+                "tuesday": {
+                    "capacity": 2,
+                    "hours": "15:00"
+                },
+                "wednesday": {
+                    "capacity": 2,
+                    "hours": "15:00"
+                },
+                "thursday": {
+                    "capacity": 2,
+                    "hours": "16:00"
+                },
+                "friday": {},
+                "saturday": {
+                    "capacity": 2,
+                    "hours": "10:00"
+                },
+                "sunday": {}
+            },
+            "amarillo": {
+                "description": "8-10 años",
+                "monday": {
+                    "capacity": 2,
+                    "hours": "15:00"
+                },
+                "tuesday": {
+                    "capacity": 2,
+                    "hours": "16:00"
+                },
+                "wednesday": {
+                    "capacity": 2,
+                    "hours": "16:00"
+                },
+                "thursday": {
+                    "capacity": 2,
+                    "hours": "15:00"
+                },
+                "friday": {},
+                "saturday": {
+                    "capacity": 2,
+                    "hours": "10:00"
+                },
+                "sunday": {}
+            },
+            "naranja": {
+                "description": "11-13 años",
+                "monday": {
+                    "capacity": 2,
+                    "hours": "17:00"
+                },
+                "tuesday": {
+                    "capacity": 2,
+                    "hours": "16:00"
+                },
+                "wednesday": {},
+                "thursday": {
+                    "capacity": 2,
+                    "hours": "17:00"
+                },
+                "friday": {},
+                "saturday": {
+                    "capacity": 2,
+                    "hours": "11:00"
+                },
+                "sunday": {}
+            },
+            "verde": {
+                "description": "14-16 años",
+                "monday": {},
+                "tuesday": {},
+                "wednesday": {
+                    "capacity": 2,
+                    "hours": "16:00"
+                },
+                "thursday": {
+                    "capacity": 2,
+                    "hours": "17:00"
+                },
+                "friday": {
+                    "capacity": 2,
+                    "hours": "15:00"
+                },
+                "saturday": {
+                    "capacity": 2,
+                    "hours": "13:00"
+                },
+                "sunday": {}
+            }
+        },
+        "adultos": {
+            "singular": {
+                "precio": {
+                    "once": 365000,
+                    "twice": 730000,
+                    "thrice": 1095000
+                }
+            },
+            "2 personas": {
+                "precio": {
+                    "once": 235000,
+                    "twice": 470000,
+                    "thrice": 705000
+                }
+            },
+            "4 personas": {
+                "precio": {
+                    "once": 180000,
+                    "twice": 360000,
+                    "thrice": 540000
+                }
+            }
+        }
+    }
+}

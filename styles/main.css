@@ -129,39 +129,82 @@ table {
   background-color: #fff;
 }
 
+th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  /* z-index: 2; */
+}
+
 th, td {
   font-weight: unset;
   padding-right: 10px;
 }
 
 .column100 {
-  width: 130px;
-  padding-left: 25px;
+  /* width: 10px; */
+  /* padding-left: 25px; */
+  /* position: inherit; */
+  /* position: sticky !important;
+  top: 0px !important;
+  z-index: 2 !important; */
 }
 
-.column100.column1 {
-  width: 265px;
-  padding-left: 42px;
+ .column100.column1, column100.column2, column100.column3,column100.column4,column100.column5, column100.column6, column100.column7, column100.column8 {
+  /* width: 195px !important; */
+  /* overflow: scroll !important; */
+  position: sticky !important;
+  top: 0px !important;
+  /* z-index: 2 !important; */
+  /* padding-left: 42px; */
+  /* position: absolute; */
+ } 
+
+.table.head{
+  position: sticky !important;
+  top: 0px !important;
+  /* z-index: 2 !important; */
 }
 
 .row100.head th {
   background-color: #47844c;
-  padding-top: 24px;
-  padding-bottom: 20px;
+  /* padding-top: 24px; */
+  /* padding-bottom: 20px; */
+  position: sticky !important;
+	position: -webkit-sticky;
+	top: 0px !important;
+	/* z-index: 2 !important; */
+}
+
+th[scope="row"] {
+	position: sticky !important;
+	position: -webkit-sticky;
+	left: 0px !important;
+	/* z-index: 2 !important; */
+}
+
+thead{
+  position: sticky !important;
+	position: -webkit-sticky;
+	top: 0px !important;
+	/* z-index: 2 !important; */
 }
 
 .row100 td {
-  padding-top: 18px;
-  padding-bottom: 14px;
+  /* padding-top: 18px; */
+  /* padding-bottom: 14px; */
+  position: sticky !important;
+  top: 0px !important;
+  /* z-index: 2 !important; */
 }
 
 /*==================================================================
 [ Ver6 ]*/
 
 .table100.ver6 {
-  border-radius: 16px;
-  overflow: hidden;
-  
+  /* border-radius: 16px; */
+  /* overflow-y: scroll;
+  position: absolute; */
   /* background: #7918f2; 
   background: -webkit-linear-gradient(-68deg, #fffb00 , #ff6200);
   background: -o-linear-gradient(-68deg, #fffb00 , #ff6200);
@@ -199,6 +242,9 @@ th, td {
   color: #fff;
   line-height: 1.4;
   text-transform: uppercase;
+  position: sticky !important;
+  top: 0px !important;
+  /* z-index: 2 !important; */
 
   /* background-color: rgba(255,255,255,0.32); */
 }

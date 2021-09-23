@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-    content="Practica y mejora tu tenis en una de la mejor cancha en Asuncion en el sitio de Baumann Tennis">
+    content="Practica y toma clases de tenis en una de la mejor cancha en Asuncion en el sitio de Baumann Tennis">
   <meta content="Baumann Tennis" name="keywords">
-  <meta content="Clases, clases, de, tenis, Tenis, asuncion, Asuncion " name="keywords">
+  <meta content="Clases, clases, de, tenis, Tenis, asuncion, Asuncion" name="keywords">
   <meta content="de" name="keywords">
   <meta content="Tenis" name="keywords">
   <meta content="Asuncion" name="keywords">
@@ -28,6 +28,9 @@
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="styles/index.css" rel="stylesheet">
+  <!-- https://webkul.github.io/micron/docs.html#getting-started -->
+  <link href="https://unpkg.com/webkul-micron@1.1.6/dist/css/micron.min.css" type="text/css" rel="stylesheet">
+  <script src="https://unpkg.com/webkul-micron@1.1.6/dist/script/micron.min.js" type="text/javascript"></script>
 
   <!-- <link href="vendor/aos/aos.css" rel="stylesheet"> -->
 
@@ -56,23 +59,155 @@
     });
       // DOMContentLoaded  end
   </script>
+  <style>
+    #myBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      /* right: 300px; */
+      left: 30px;
+      float: left;
+      z-index: 19;
+      font-size: 15px;
+      border: none;
+      outline: none;
+      background-color: rgb(119, 178, 85);
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 54px;
+    }
+
+    #myBtn:hover {
+      background-color: rgb(166, 211, 136);
+    }
+  </style>
 </head>
 
+<style>
+  /* html {
+      background: src("https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2FReva.png?alt=media&token=6ac2b832-4c35-4995-8d08-c03c18f731b2") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+  } */
+
+  /* body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+  }
+
+  html {
+      box-sizing: border-box;
+      background: url("https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fclasesfoto.jpg?alt=media&token=1b379dde-82ca-4988-8a82-ac7cc60b53d2") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+  } */
+
+  /* *,
+  *:before,
+  *:after {
+      box-sizing: inherit;
+  } */
+
+  #profCol {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+
+  #profCard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+  }
+
+  /* .about-section {
+      padding: 50px;
+      text-align: center;
+      background-color: #474e5d;
+      color: white;
+  } */
+
+  #profContain {
+    padding: 0 16px;
+  }
+
+  #profContain::after,
+  #profRow::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  #profTit {
+    color: grey;
+  }
+
+  #profButton {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  #profButton:hover {
+    background-color: #555;
+  }
+
+  @media screen and (max-width: 650px) {
+    #profCol {
+      width: 100%;
+      display: block;
+    }
+  }
+</style>
+
 <body data-bs-spy="scroll" data-bs-target="#navbarCollapse" data-bs-offset="auto" tabindex="0">
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Arriba</button>
+  <script>
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light rounded">
       <div class="container-fluid">
-        <a class="navbar-brand" style="color: rgb(39,57,82);" href="index.html"><img
+        <a class="navbar-brand" data-micron="bounce" style="color: rgb(39,57,82);" href="index.html"><img
             src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2FBAUMANN%20TENNIS.png?alt=media&token=ed3487eb-d643-4b5d-b8d3-bdf18d768a1f"
             alt="Logo de Baumann Tennis" width="60" height="70.97" class="d-inline-block align-text-center">
-          Baumann Tennis</a>
+          <span class="the-title">Baumann Tennis</span></a>
+        <div id="anim" class="anim"></div>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
           aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div id="navbarCollapse" class="navbar-collapse collapse justify-content-end ">
-
           <ul class="navbar-nav">
             <li class="nav-item d-flex">
               <a class="nav-link scrollto" href="#">Inicio</a>
@@ -87,11 +222,14 @@
               <a class="nav-link scrollto" href="#filosofia">Filosofia</a>
             </li>
             <li class="nav-item d-flex">
-              <a class="nav-link scrollto" href="#contact">Contactos</a>
+              <a class="nav-link scrollto" href="#profes">Los Profes</a>
             </li>
             <li class="nav-item d-flex">
-              <a class="nav-link" href="sobrelosprofes.html">Los Profes</a>
+              <a class="nav-link scrollto" href="#contact">Contactos</a>
             </li>
+            <!-- <li class="nav-item d-flex">
+              <a class="nav-link" href="sobrelosprofes.html">Los Profes</a>
+            </li> -->
             <li class="nav-item d-flex">
               <a class="nav-link" href="inscribite.html">Inscribite</a>
             </li>
@@ -108,27 +246,21 @@
         <div class="col-xl-6">
           <h1>Baumann Tennis</h1>
           <h2>Te esperamos para que disfrutes de nuestras instalaciones, veni a a practicar tenis en un ambiente
-            agradable y seguro</h2>
-          <a href="inscribite.html"><button class="btn-get-started">Inscribite</button></a>
+            agradable y seguro, inscribite en una clase de tenis aca en Asuncion!</h2>
+          <a href="inscribite.html" data-micron="bounce"><button class="btn-get-started">Inscribite</button></a>
         </div>
       </div>
     </div>
 
   </section><!-- End Hero -->
-
   <main>
     <!-- <div id="google_translate_element">
-
-
         <script type="text/javascript">
           function googleTranslateElementInit() {
             new google.translate.TranslateElement({ pageLanguage: 'es' }, 'google_translate_element');
           }
         </script>
-
-
       </div> -->
-
     <!-- <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
@@ -142,7 +274,6 @@
               src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/Fotos%20Buenas%20para%20Website%2FHome%20Page.jpg?alt=media&token=ba76ede8-dfa5-47e7-b29b-ede8b0b6ae26"
               alt="Cancha de Baumann Tennis" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
             <rect width="100%" height="100%" fill="#777" /></img>
-
             <div class="container">
               <div class="carousel-caption text-start">
                 <h1>Clases de Tenis</h1>
@@ -156,7 +287,6 @@
               src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/Fotos%20Buenas%20para%20Website%2FOther%202.jpg?alt=media&token=253c0094-6115-4757-8fde-2de3d63381ca"
               alt="Cancha de Baumann Tennis" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
             <rect width="100%" height="100%" fill="#777" /></img>
-
             <div class="container">
               <div class="carousel-caption">
                 <h1>Alquileres de Cancha.</h1>
@@ -170,7 +300,6 @@
               src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/Fotos%20Buenas%20para%20Website%2FPANO_20210417_170835%20(3).jpg?alt=media&token=38e84773-aba8-45f0-8ecf-8ec582079e0b"
               alt="Cancha de Baumann Tennis" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
             <rect width="100%" height="100%" fill="#777" /></img>
-
             <div class="container">
               <div class="carousel-caption text-end">
                 <h1>Trabaja Con Nosotros.</h1>
@@ -189,18 +318,135 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div> -->
-
-
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
+
     <section>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <div class="cards-wrapper">
+              <div class="cardo">
+                <img src="img/side.jpg" class="card-img-top" id="cardoPhotos" alt="Pelota de tenis">
+                <!-- <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div> -->
+              </div>
+              <div class="cardo d-none d-md-block">
+                <img src="img/pelota.jpg" class="card-img-top" id="cardoPhotos" alt="Pelota de tenis">
+                <!-- <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div> -->
+              </div>
+              <div class="cardo d-none d-md-block">
+                <img src="img/pile.jpg" class="card-img-top" id="cardoPhotos" alt="Pileta">
+                <!-- <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="10000">
+            <div class="cards-wrapper">
+              <div class="cardo">
+                <img src="img/sillas.jpg" class="card-img-top" id="cardoPhotos" alt="Sillas">
+                <!-- <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div> -->
+              </div>
+              <div class="cardo d-none d-md-block">
+                <img src="img/futbol.jpg" class="card-img-top" id="cardoPhotos" alt="Futbol">
+                <!-- <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div> -->
+              </div>
+              <div class="cardo d-none d-md-block">
+                <img src="img/rosa.jpg" class="card-img-top" id="cardoPhotos" alt="Flor de Rosa">
+                <!-- <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="10000">
+            <div class="cards-wrapper">
+              <div class="cardo">
+                <img src="img/pano.jpg" class="card-img-top" id="cardoPhotos" alt="Panorama">
+                <!-- <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div> -->
+              </div>
+              <div class="card d-none d-md-block">
+                <img src="img/flor.jpg" class="card-img-top" id="cardoPhotos" alt="Flor">
+                <!-- <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div> -->
+              </div>
+              <div class="cardo d-none d-md-block">
+                <img src="img/FotoPerfil2.jpg" class="card-img-top" id="cardoPhotos" alt="Cancha">
+                <!-- <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn"><a href="fotos.html" style="color: white;">Ver mas fotos</a></button>
+      </div>
+    </section>
+
+    <!-- <section>
       <div class="container marketing" id="heading1">
-        <!-- data-aos="fade-up" -->
-        <!-- Three columns of text below the carousel -->
         <div class="row" id="tienda">
           <div class="col-lg-4">
-            <!--  <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg> -->
             <div class="card bg-dark text-white" style="border: 0rem;">
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fcanasta.jpg?alt=media&token=f9f5d2e7-ef9a-4443-b966-3455df1fc69d"
@@ -209,36 +455,16 @@
                 <h1 class="card-title">Tenis</h1>
               </div>
             </div>
-
-            <!-- <h2>Heading</h2> 
-          <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-          <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p> -->
-          </div><!-- /.col-lg-4 -->
+          </div>
           <div class="col-lg-4">
-            <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
-              role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-            </svg> -->
-
             <div class="card bg-dark text-white" style="border: 0rem;">
-              <img src="img/pelota.jpg" class="card-img" alt="Clases de Tenis">
+              <img src="img/singulares.jpg" class="card-img" alt="clases de tenis">
               <div class="card-img-overlay d-flex align-items-center justify-content-center">
-                <h1 class="card-title">Clases</h1>
+                <h1 class="card-title">Clases de Tenis</h1>
               </div>
             </div>
-            <!-- <h2>Heading</h2>
-            <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.
-            </p>
-            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p> -->
-          </div><!-- /.col-lg-4 -->
+          </div>
           <div class="col-lg-4">
-            <!-- <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
-              role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
-            </svg> -->
-
             <div class="card bg-dark text-white" style="border: 0rem;">
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2Fsillas.jpg?alt=media&token=d87ac6f4-0ea5-465f-bbd4-b611016d50ed"
@@ -247,13 +473,10 @@
                 <h1 class="card-title">Instalaciones</h1>
               </div>
             </div>
-            <!-- <h2>Heading</h2>
-            <p>And lastly this, the third column of representative placeholder content.</p>
-            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p> -->
-          </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
 
-    </section>
+          </div>
+        </div>
+    </section> -->
 
     <!-- START THE FEATURETTES -->
     <!-- HISTORIA ID -->
@@ -328,8 +551,102 @@
 
     </section>
     <!-- CONTACT ID -->
-    <hr class="featurette-divider" id="">
+    <hr class="featurette-divider" id="profes">
 
+    <div class="container" id="profContain" style="margin-top: 5rem;">
+
+      <div class="section-title">
+        <h2 style="color: rgb(39,57,82);">Nuestro Equipo</h2>
+      </div>
+
+      <div class="row " id="profRow">
+
+        <div class="column" id="profCol">
+          <div class="card" id="profCard">
+            <img src="img/profes/profe1.jpg" alt="Prof 1" style="width:100%">
+            <div class="container">
+              <h2>Arnaldo Guerrero</h2>
+              <p class="title" id="profTit">Profesor</p>
+              <p>Profesor y entrenador con certificación ITF (integración federal de tenis) Nivel 1 y nivel 2 para
+                formación y pre competitiva.. cursos en tenis inclusivo, play and stand, tenis de niños de 3 años en
+                adelante</p>
+              <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                aria-controls="collapseExample">
+                Detalles
+              </a>
+              <div class="collapse" id="collapseExample">
+                <div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Lo que más me gusta del tenis es el perfecto estilo de Roger Federer.. y
+                      poder trasmitir eso mismo a los niños y jóvenes</li>
+                    <li class="list-group-item">Mi golpe favorito sería el revés a una mano</li>
+                    <li class="list-group-item">Mi grand slam favorito seria seria el Wimbledon</li>
+                    <li class="list-group-item">Másters me gustan todos</li>
+                    <li class="list-group-item">Mi grip favorito sería la western</li>
+                  </ul>
+                </div>
+              </div>
+              <!-- <p>Some text that describes me lorem ipsum ipsum lorem.</p> -->
+              <!-- <p>jane@example.com</p> -->
+              <!-- <div class="text-center" style="padding-bottom: 1rem; "><button class="btn "
+                  style="color: white; width: 100%">Contact</button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="column" id="profCol">
+          <div class="card" id="profCard">
+            <img src="img/profes/profe2.jpg" alt="Prof 1" style="width:100%">
+            <div class="container">
+              <h2>Edgar Aguayo</h2>
+              <p class="title" id="profTit">Profesor</p>
+              <p>Profesor y entrenador con certificación ITF (International Tennis Federation) Nivel 1 y 2 para
+                formación y pre-competitiva. Cursos en tenis inclusivo, play and stand, Especializado en tenis de niños
+                de 3 años en adelante</p>
+              <a class="" data-bs-toggle="collapse" href="#collapse2Example" role="button" aria-expanded="false"
+                aria-controls="collapse2Example">
+                Detalles
+              </a>
+              <div class="collapse" id="collapse2Example">
+                <div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Lo que más me gusta del tenis es el perfecto estilo de Roger Federer, y
+                      poder trasmitir el mismo a los niños y a los jóvenes</li>
+                    <li class="list-group-item">Golpe Favorito : Revés a una mano</li>
+                    <li class="list-group-item">Grand Slam Favorito: Wimbledon</li>
+                    <li class="list-group-item">Masters 1000 Favorito: Todos</li>
+                    <li class="list-group-item">Grip Favorito: Western</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="column" id="profCol">
+          <div class="card" id="profCard">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/Coaches%2Fcoach1.jpg?alt=media&token=c414df61-742c-47a5-b74e-9f1ea431c6c8"
+              alt="Prof 1" style="width:100%">
+            <div class="container">
+              <h2>Mateo Medina</h2>
+              <p class="title" id="profTit">Profesor</p>
+              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+              <p>jane@example.com</p>
+              <div class="text-center" style="padding-bottom: 1rem; "><button id="" class="btn "
+                  style="color: white; width: 100%">Contact</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+
+      </div>
+      <!-- REGISTRAR CLASES -->
+    </div>
+
+    <hr class="featurette-divider" id="">
     <!-- <section class="container">
       <div class="row featurette">
         <div class="col-md-7">
@@ -357,39 +674,35 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Preguntas Frecuentes</h2>
+          <h2 style="color: rgb(39,57,82);">Preguntas Frecuentes</h2>
         </div>
 
         <ul class="faq-list accordion" data-aos="fade-up">
 
           <li>
-            <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq1">Non consectetur a erat nam at lectus
-              urna duis? <i class="fa fa-arrow-down icon-show"></i><i class="fa fa-times icon-close"></i></a>
+            <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq1">A que hora estan abierto? <i
+                class="fa fa-arrow-down icon-show"></i><i class="fa fa-times icon-close"></i></a>
             <div id="faq1" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur
-                gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                Nuestro horario de clases son 6:00hs - 22:00hs lunes a sabado.
               </p>
             </div>
           </li>
 
           <li>
-            <a data-bs-toggle="collapse" data-bs-target="#faq2" class="collapsed">Feugiat scelerisque varius morbi enim
-              nunc faucibus a pellentesque? <i class="fa fa-arrow-down icon-show"></i><i
-                class="fa fa-times icon-close"></i></a>
+            <a data-bs-toggle="collapse" data-bs-target="#faq2" class="collapsed">Donde estan ubicado?<i
+                class="fa fa-arrow-down icon-show"></i><i class="fa fa-times icon-close"></i></a>
             <div id="faq2" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id
-                donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit
-                ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                Presidente Juan Manuel Frutos 2925 esquina Dr. Bernardino Caballero - Barrio Herrera - A dos cuadras del
+                Biggie de Denis Roa.
               </p>
             </div>
           </li>
 
           <li>
-            <a data-bs-toggle="collapse" data-bs-target="#faq3" class="collapsed">Dolor sit amet consectetur adipiscing
-              elit pellentesque habitant morbi? <i class="fa fa-arrow-down icon-show"></i><i
-                class="fa fa-times icon-close"></i></a>
+            <a data-bs-toggle="collapse" data-bs-target="#faq3" class="collapsed">Precio? <i
+                class="fa fa-arrow-down icon-show"></i><i class="fa fa-times icon-close"></i></a>
             <div id="faq3" class="collapse" data-bs-parent=".faq-list">
               <p>
                 Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum
@@ -400,13 +713,11 @@
           </li>
 
           <li>
-            <a data-bs-toggle="collapse" data-bs-target="#faq4" class="collapsed">Ac odio tempor orci dapibus. Aliquam
-              eleifend mi in nulla? <i class="fa fa-arrow-down icon-show"></i><i class="fa fa-times icon-close"></i></a>
+            <a data-bs-toggle="collapse" data-bs-target="#faq4" class="collapsed">Necisto una raqueta? <i
+                class="fa fa-arrow-down icon-show"></i><i class="fa fa-times icon-close"></i></a>
             <div id="faq4" class="collapse" data-bs-parent=".faq-list">
               <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id
-                donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit
-                ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                Necesitamos
               </p>
             </div>
           </li>
@@ -448,7 +759,7 @@
     <section>
 
       <div class="section-title">
-        <h2>Contactos</h2>
+        <h2 style="color: rgb(39,57,82);">Contactos</h2>
         <p>
           <i>un hermoso paraiso</i>
         </p>
@@ -484,7 +795,7 @@
         </div> -->
 
     <!-- ======= Contact Section ======= -->
-    <section class="contact" id = "contacto">
+    <section class="contact" id="contacto">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -499,7 +810,11 @@
               <div class="col-md-12">
                 <div class="info-box">
                   <a href="https://g.page/baumann-tennis?share" target="_blank">
-                    <i class="fa fa-map"></i>
+                    <!-- <i class="fa fa-map"></i> -->
+                    <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+                    <lord-icon src="https://cdn.lordicon.com/zzcjjxew.json" trigger="hover"
+                      colors="primary:#77b255,secondary:#a6d388" style="width:50px;height:50px">
+                    </lord-icon>
                   </a>
                   <h3>Nuestra ubicacion</h3>
                   <p>Presidente Juan Manuel Frutos 2925 e/ Dr. Bernardino Caballero, <br>Asuncion, Paraguay </p>
@@ -508,7 +823,11 @@
               <div class="col-md-6">
                 <div class="info-box mt-4">
                   <a href="mailto:Info@baumanntennis.com">
-                    <i class="fa fa-envelope"></i>
+                    <!-- <i class="fa fa-envelope"></i> -->
+                    <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+                    <lord-icon src="https://cdn.lordicon.com/rhvddzym.json" trigger="hover"
+                      colors="primary:#77b255,secondary:#e83a30" style="width:50px;height:50px">
+                    </lord-icon>
                   </a>
                   <h3>Email</h3>
                   <p>info@baumanntennis.com
@@ -519,7 +838,12 @@
               <div class="col-md-6">
                 <div class="info-box mt-4">
                   <a href="https://api.whatsapp.com/message/GDPS56AEKFB2M1" target="_blank">
-                    <i class="fa fa-phone"></i>
+                    <!-- <i class="fa fa-phone"></i> -->
+                    <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+                    <lord-icon src="https://cdn.lordicon.com/ijtstpbh.json" trigger="hover"
+                      colors="primary:#a6d388,secondary:#77b255" style="width:50px;height:50px">
+                    </lord-icon>
+
                   </a>
                   <h3>Llamanos</h3>
                   <p> +595 982367638
@@ -1021,7 +1345,10 @@
 
   <!-- Go to www.addthis.com/dashboard to customize your tools -->
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6108361918d81fd3"></script>
-
+  <script src="scripts/lottie.js"></script>
+  <script src="scripts/script.js"></script>
+  <script src="scripts/owl.carousel.min.js"></script>
+  <script src="scripts/mains.js"></script>
 </body>
 
 </html>
