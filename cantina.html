@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Baumann Tennis</title>
+    <meta name="author" content="The Baumann Group">
+
+    <!-- Bootstrap for Mobile-first, and JQuery -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+    <link rel="shortcut icon"
+        href="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2Fandroid-chrome-512x512.png?alt=media&token=5f943206-2ca5-4130-881b-e4c4ed1a21e2"
+        type="image/x-icon" />
+
+    <!-- these two lines are for the Auth UI library and CSS-->
+    <!-- <script src="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.js"></script> -->
+    <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css" /> -->
+
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<style>
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        /* right: 300px; */
+        left: 30px;
+        float: left;
+        z-index: 19;
+        font-size: 15px;
+        border: none;
+        outline: none;
+        background-color: rgb(119, 178, 85);
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 54px;
+    }
+
+    #myBtn:hover {
+        background-color: rgb(166, 211, 136);
+    }
+
+    /* html {
+        background: src("https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2FReva.png?alt=media&token=6ac2b832-4c35-4995-8d08-c03c18f731b2") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    } */
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+    }
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+
+    .column {
+        float: left;
+        width: 33.3%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 8px;
+    }
+
+    .about-section {
+        padding: 50px;
+        text-align: center;
+        background-color: #474e5d;
+        color: white;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .container::after,
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .title {
+        color: grey;
+    }
+
+    /* .button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+    } */
+
+    .button:hover {
+        background-color: #555;
+    }
+
+    @media screen and (max-width: 650px) {
+        .column {
+            width: 100%;
+            display: block;
+        }
+
+    }
+</style>
+
+<body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Hace tu pedido aca! <br><span><a class=""
+                href="https://api.whatsapp.com/message/GDPS56AEKFB2M1" data-toggle="tooltip" title="@baumanntennis"
+                target="_blank">
+                <span class="fab fa-whatsapp"></span></a></small></span></button>
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onload = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "block";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- <header>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light rounded">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="color: rgb(39,57,82);" href="index.html"><img
+                        src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2FBAUMANN%20TENNIS.png?alt=media&token=ed3487eb-d643-4b5d-b8d3-bdf18d768a1f"
+                        alt="Baumann Tennis Logo" width="60" height="70.97" class="d-inline-block align-text-center">
+                    Baumann Tennis</a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="navbarCollapse" class="navbar-collapse collapse justify-content-end ">
+                    <ul class="navbar-nav">
+                        <span class="">
+                            <li class="nav-item d-flex">
+                                <a class="nav-link" href="inscribite.html">Inscribite</a>
+                            </li>
+                        </span>
+                        <span class="">
+                            <li class="nav-item d-flex">
+                                <a class="nav-link" href="index.html">Inicio</a>
+                            </li>
+                        </span>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header> -->
+    <main>
+        <!-- <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">Menu de Baumann Tennis</h1>
+                    <p class="lead text-muted">Something short and leading about the collection below—its contents, the
+                        creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
+                        entirely.</p>
+                </div>
+            </div>
+        </section> -->
+
+        <section class="py-5 text-center container menu">
+            <!-- <embed src="img/Menu/la_cantina.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="2000px" /> -->
+            <div class="text-center container">
+                <object data='img/Menu/la_cantina.pdf' type="application/pdf" width="100%" height="900">
+                    <iframe src='img/Menu/la_cantina.pdf' width="100%" height="900">
+                        <p>This browser does not support PDF!</p>
+                    </iframe>
+                </object>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <!-- <footer class="blog-footer">
+            <h3 class="icons_bt" style="vertical-align: middle;">
+                <div class="row row-cols-1 row-cols-lg-4 g-4 g-lg-4" id=""
+                    style="padding-bottom: 2rem; padding-right: 0rem; text-align: center; vertical-align: middle;">
+                    <div class="col-3">
+                        <p class="card-text"><small class="text-muted">
+                                <a class="button1" href="https://instagram.com/baumanntennis?igshid=1se5twpjgogen"
+                                    data-toggle="tooltip" title="@baumanntennis" target="_blank">
+                                    <span class="fab fa-instagram"></span></a></small>
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <p class="card-text"><small class="text-muted">
+                                <a class="button1" href="https://api.whatsapp.com/message/GDPS56AEKFB2M1"
+                                    data-toggle="tooltip" title="@baumanntennis" target="_blank">
+                                    <span class="fab fa-whatsapp"></span></a></small>
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <p class="mr-2"><small class="text-muted">
+                                <a class="button1" href="https://www.facebook.com/baumanntennisacademia/"
+                                    data-toggle="tooltip" title="@baumanntennis" target="_blank">
+                                    <span class="fab fa-facebook-f"></span></a></small>
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <p class="card-text"><small class="text-muted"></small>
+                            <a class="button1" href="mailto:Info@baumanntennis.com" data-toggle="tooltip"
+                                title="Info@baumanntennis.com"><span class="fas fa-envelope"></span></a></small>
+                        </p>
+                    </div>
+                </div>
+            </h3>
+            </div>
+
+        </footer> -->
+        <!-- <footer style="vertical-align: middle; text-align: center;">
+  
+          <h2> Presidente Juan Manuel Frutos 2925 e/ Dr. Bernardino Caballero, <br>Asuncion, Paraguay</h2>
+          <p>
+            <a href="#">De Vuelta al Inicio</a>
+          </p>
+          <p><br><br>Website built by Kevin Baumann</p>
+          <a class="button1"
+            href="mailto:baumannkev@gmail.com?&subject=Preguntas Para BaumannTennis&body=Equipo BaumannTennis ">
+            Contactame aqui baumannkev@gmail.com</a> -->
+        <!-- <a class="button1" href="mailto:baumannkev@gmail.com">Contact me at baumannkev@gmail.com</a> -->
+        <!-- </footer> -->
+        <!-- ======= Footer ======= -->
+        <!-- <footer id="footer">
+
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6 footer-contact">
+                            <h3>Baumann Tennis<span></span></h3>
+                            <p>
+                                Presidente Juan Manuel Frutos 2925<br>
+                                e/ Dr. Bernardino Caballero<br>
+                                Asuncion<br>
+                                Paraguay <br><br>
+                                <strong>Phone:</strong> +595 982367638<br>
+                                <strong>Email:</strong> info@baumanntennis.com<br>
+                            </p>
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 footer-links">
+                            <h4>Paginas Utiles</h4>
+                            <ul>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="inscribite.html">Inscribite</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="sobrelosprofes.html">Los Profes</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-links">
+                            <h4>Nuestros Servicios</h4>
+                            <ul>
+                                <li><i class="bx bx-chevron-right"></i> <a href="inscribite.html">Tenis</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Colonia de Ingles</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container d-md-flex py-4">
+
+                <div class="me-md-auto text-center text-md-start">
+                    </div> 
+                    <div class="credits">
+                        Designed by <a href="https://www.linkedin.com/in/kevinbau/" target="_blank">Kevin Baumann</a>
+                    </div>
+                </div>
+                <div class="social-links text-center text-md-end pt-3 pt-md-0">
+                    <a href="https://www.facebook.com/baumanntennisacademia/" target="_blank" class="facebook"><i
+                            class="fa fa-facebook"></i></a>
+                    <a href="https://instagram.com/baumanntennis?igshid=1se5twpjgogen" target="_blank"
+                        class="instagram"><i class="fa fa-instagram"></i></a>
+                    <a href="https://api.whatsapp.com/message/GDPS56AEKFB2M1" target="_blank" class="linkedin"><i
+                            class="fa fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </footer> -->
+
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <!-- CSS only -->
+
+    <link href="styles/index.css" rel="stylesheet">
+
+    <link rel="shortcut icon"
+        href="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2Fandroid-chrome-512x512.png?alt=media&token=5f943206-2ca5-4130-881b-e4c4ed1a21e2"
+        type="image/x-icon" />
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/26da0e4274.js" crossorigin="anonymous"></script>
+
+    <!-- <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script> -->
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+
+    <!-- this file was moved after the jQuery Datatables library was laoded -->
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6108361918d81fd3"></script>
+</body>
+
+
+</html>

@@ -172,7 +172,7 @@ a:hover {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/FotoPerfil2.jpg") top center no-repeat;
+  background: url("../img/perfil.jpg") top center no-repeat;
   background-size: cover;
   position: relative;
   padding-top: 82px;
