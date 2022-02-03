@@ -13,7 +13,6 @@
     width: 230px;
     height: 80px;
   }
-
 }
 
 @media (max-width: 412px) {
@@ -23,15 +22,15 @@
   .anim {
     margin-left: -50px;
   }
-
 }
 
 @media (max-width: 995px) {
   .anim {
     width: 100px;
   }
-
 }
+
+
 
 /* table {
   margin: 0;
@@ -46,7 +45,7 @@ table th {
   border: 1px solid black;
   padding: 0.5rem 1rem;
 }
-/* table thead th {
+/* table t th {
   padding: 3px;
   position: sticky;
   top: 0 !important;
@@ -399,7 +398,7 @@ a {
 
 body {
   font-family: 'Heebo', sans-serif;
-  padding-top: 3rem;
+  /* padding-top: 3rem; */
   /* padding-bottom: 3rem; */
   color: #5a5a5a;
 }
@@ -483,7 +482,6 @@ button .nav-link {
 }
 
 .navbar {
-  margin-bottom: 0;
   background-color: #2d2d30;
   border: 0;
   opacity: 0.9;
@@ -738,14 +736,6 @@ textarea {
   margin-bottom: 0;
 }
 
-body {
-  padding-bottom: 20px;
-}
-
-.navbar {
-  margin-bottom: 20px;
-}
-
 .button {
   text-decoration: none;
   /* background-color: #EEEEEE; */
@@ -756,7 +746,6 @@ body {
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC; */
 }
-
 
 /* ICONS STYLES */
 .fas .hourglass {
