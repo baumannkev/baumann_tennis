@@ -286,3 +286,9 @@ element {
     word-wrap: break-word;
     font-family: Gotham,sans-serif;
   }
+
+
+  /* KIDS TENNIS */
+  .nav-link active{
+    font-weight: bold;
+  }
