@@ -9,14 +9,12 @@
     <title>Baumann Tennis</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
-    <link href="styles/index.css" rel="stylesheet">
+
+    <link href="../styles/index.css" rel="stylesheet">
     <!-- <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script> -->
 
     <!-- <script src="scripts/auth.js"></script> -->
@@ -26,27 +24,26 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-database.js"></script>
     <!-- <script src="scripts/auth.js"></script> -->
 
-    <link rel="shortcut icon"
-        href="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2Fandroid-chrome-512x512.png?alt=media&token=5f943206-2ca5-4130-881b-e4c4ed1a21e2"
-        type="image/x-icon" />
+    <link rel="shortcut icon" href="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2Fandroid-chrome-512x512.png?alt=media&token=5f943206-2ca5-4130-881b-e4c4ed1a21e2" type="image/x-icon" />
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/26da0e4274.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
     <!-- this file was moved after the jQuery Datatables library was laoded -->
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/dataTables.bootstrap.min.js"></script>
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/animate/animate.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+
+    <link rel="stylesheet" type="text/css" href="../vendor/select2/select2.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="styles/util.css">
-    <link rel="stylesheet" type="text/css" href="styles/main.css">
-    <link rel="stylesheet" type="text/css" href="styles/new_register.css">
+    <link rel="stylesheet" type="text/css" href="../styles/util.css">
+    <link rel="stylesheet" type="text/css" href="../styles/main.css">
+    <link rel="stylesheet" type="text/css" href="../styles/new_register.css">
     <!--===============================================================================================-->
 
     <script src="https://unpkg.com/sticky-table-headers"></script>
@@ -77,11 +74,11 @@
             padding: 15px;
             border-radius: 54px;
         }
-
+        
         #myBtns:hover {
             background-color: rgb(166, 211, 136);
         }
-
+        
         select {
             width: 140px !important;
             height: 35px;
@@ -98,17 +95,17 @@
             appearance: none;
             cursor: pointer;
         }
-
+        
         select:hover {
             background: rgb(119, 178, 85) !important;
             cursor: pointer !important;
         }
-
+        
         option {
             background: rgb(166, 211, 136) !important;
             cursor: pointer !important;
         }
-
+        
         option:hover {
             background: rgb(119, 178, 85) !important;
         }
@@ -122,7 +119,9 @@
         var mybutton = document.getElementById("myBtns");
 
         // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function () { scrollFunction() };
+        window.onscroll = function() {
+            scrollFunction()
+        };
 
         function scrollFunction() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -141,13 +140,8 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
             <div class="container-fluid">
-                <a class="navbar-brand" data-micron="bounce" style="color: rgb(39,57,82);" href="index.html"><img
-                        src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2FBAUMANN%20TENNIS.png?alt=media&token=ed3487eb-d643-4b5d-b8d3-bdf18d768a1f"
-                        alt="Baumann Tennis Logo" width="60" height="70.97" class="d-inline-block align-text-center">
-                    Baumann Tennis</a>
-                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <a class="navbar-brand" data-micron="bounce" style="color: rgb(39,57,82);" href="index.html"><img src="https://firebasestorage.googleapis.com/v0/b/baumanntennis-af590.appspot.com/o/pictures%2FIcons%2FBAUMANN%20TENNIS.png?alt=media&token=ed3487eb-d643-4b5d-b8d3-bdf18d768a1f" alt="Baumann Tennis Logo" width="60" height="70.97" class="d-inline-block align-text-center">                    Baumann Tennis</a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div id="navbarCollapse" class="navbar-collapse collapse justify-content-end ">
@@ -208,26 +202,17 @@
                     <div class="wrap-table100">
                         <div class="table100 ver6 m-b-110">
                             <div class="table-responsive">
-                                <table id="tbl1" class="table table-bordered" data-vertable="ver6"
-                                    style="overflow-y: scroll; border-collapse: collapse; ">
-                                    <thead id="myHeader" >
+                                <table id="tbl1" class="table table-bordered" data-vertable="ver6" style="overflow-y: scroll; border-collapse: collapse; ">
+                                    <thead id="myHeader">
                                         <tr class="row100 head text-center">
-                                            <th class="column100 column1 text-center" data-micron="bounce"
-                                                data-column="column1">Hora</th>
-                                            <th class="column100 column2 text-center" data-micron="bounce"
-                                                data-column="column2">Lunes</th>
-                                            <th class="column100 column3 text-center" data-micron="bounce"
-                                                data-column="column3">Martes</th>
-                                            <th class="column100 column4 text-center" data-micron="bounce"
-                                                data-column="column4">Miercoles</th>
-                                            <th class="column100 column5 text-center" data-micron="bounce"
-                                                data-column="column5">Jueves</th>
-                                            <th class="column100 column6 text-center" data-micron="bounce"
-                                                data-column="column6">Viernes</th>
-                                            <th class="column100 column7 text-center" data-micron="bounce"
-                                                data-column="column7">Sabado</th>
-                                            <th class="column100 column8 text-center" data-micron="bounce"
-                                                data-column="column8">Domingo</th>
+                                            <th class="column100 column1 text-center" data-micron="bounce" data-column="column1">Hora</th>
+                                            <th class="column100 column2 text-center" data-micron="bounce" data-column="column2">Lunes</th>
+                                            <th class="column100 column3 text-center" data-micron="bounce" data-column="column3">Martes</th>
+                                            <th class="column100 column4 text-center" data-micron="bounce" data-column="column4">Miercoles</th>
+                                            <th class="column100 column5 text-center" data-micron="bounce" data-column="column5">Jueves</th>
+                                            <th class="column100 column6 text-center" data-micron="bounce" data-column="column6">Viernes</th>
+                                            <th class="column100 column7 text-center" data-micron="bounce" data-column="column7">Sabado</th>
+                                            <th class="column100 column8 text-center" data-micron="bounce" data-column="column8">Domingo</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tbody1" class="text-center" style="
@@ -245,8 +230,7 @@
             </div>
         </div>
         <!-- SIGN UP MODAL -->
-        <div id="modal-signup" class="modal fade modal-signin" tabindex="-1" aria-labelledby="signUpModalLabel"
-            aria-hidden="true">
+        <div id="modal-signup" class="modal fade modal-signin" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content rounded-5">
                     <div class="modal-header p-5 pb-4 border-bottom-0">
@@ -260,36 +244,31 @@
                                 <div class="form-floating mb-3">
                                     <label for="signup-email" class="form-label">Email</label>
                                     <div class="input-group has-validation">
-                                        <input type="email" id="signup-email" class="form-control" placeholder="Email"
-                                            aria-describedby="inputGroupPrepend" required title="Por favor llena esto">
+                                        <input type="email" id="signup-email" class="form-control" placeholder="Email" aria-describedby="inputGroupPrepend" required title="Por favor llena esto">
                                     </div>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <label for="signup-password" class="form-label">Contraseña</label>
                                     <div class="input-group has-validation">
-                                        <input type="password" id="signup-password" class="form-control"
-                                            placeholder="Contraseña" required title="Por favor llena esto">
+                                        <input type="password" id="signup-password" class="form-control" placeholder="Contraseña" required title="Por favor llena esto">
                                     </div>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <label for="signup-firstName" class="form-label">Nombre</label>
                                     <div class="input-group has-validation">
-                                        <input type="text" id="signup-firstName" class="form-control"
-                                            placeholder="Nombre" required title="Por favor llena esto">
+                                        <input type="text" id="signup-firstName" class="form-control" placeholder="Nombre" required title="Por favor llena esto">
                                     </div>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <label for="signup-lastName" class="form-label">Apellido</label>
                                     <div class="input-group has-validation">
-                                        <input type="text" id="signup-lastName" class="form-control"
-                                            placeholder="Apellido" required title="Por favor llena esto">
+                                        <input type="text" id="signup-lastName" class="form-control" placeholder="Apellido" required title="Por favor llena esto">
                                     </div>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <label for="signup-phone" class="form-label">Numero Celular</label>
                                     <div class="input-group has-validation">
-                                        <input type="text" id="signup-phone" class="form-control"
-                                            placeholder="778-387-5139" required title="Por favor llena esto">
+                                        <input type="text" id="signup-phone" class="form-control" placeholder="778-387-5139" required title="Por favor llena esto">
                                     </div>
                                 </div>
                                 <div class="invalid-feedback-signup text-danger">
@@ -354,8 +333,7 @@
                 </div>
             </div>
         </div> -->
-        <div id="modal-login" class="modal fade modal-signin" tabindex="-1" aria-labelledby="loginModalLabel"
-            aria-hidden="true">
+        <div id="modal-login" class="modal fade modal-signin" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content rounded-5">
                     <!-- container-fluid d-flex justify-content-center align-items-center h-100 -->
@@ -369,14 +347,12 @@
                             <form id="login-form" class="needs-validation" novalidate>
                                 <div class="form-floating mb-3">
                                     <div class="input-group has-validation">
-                                        <input type="email" id="login-email" class="form-control rounded-4"
-                                            placeholder="Email" aria-describedby="inputGroupPrepend" required />
+                                        <input type="email" id="login-email" class="form-control rounded-4" placeholder="Email" aria-describedby="inputGroupPrepend" required />
                                     </div>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <div class="input-group has-validation">
-                                        <input type="password" id="login-password" class="form-control rounded-4"
-                                            placeholder="Contraseña" aria-describedby="inputGroupPrepend" required />
+                                        <input type="password" id="login-password" class="form-control rounded-4" placeholder="Contraseña" aria-describedby="inputGroupPrepend" required />
                                     </div>
                                 </div>
                                 <div id="invalid-feedback" class="text-danger">
@@ -393,8 +369,7 @@
                                 <div class="mb-3">
                                     <label for="reset-password-login" class="form-label">Resetea Contraseña</label>
                                     <div class="input-group has-validation">
-                                        <input type="email" id="reset-password-login" class="form-control"
-                                            placeholder="Email" aria-describedby="inputGroupPrepend" required />
+                                        <input type="email" id="reset-password-login" class="form-control" placeholder="Email" aria-describedby="inputGroupPrepend" required />
                                     </div>
                                     <div id="invalid-feedback" class="text-danger">
 
@@ -426,9 +401,7 @@
                             <div class="mb-3">
                                 <!-- <label for="reset-password" class="form-label">Resetea Contraseña</label> -->
                                 <div class="input-group has-validation">
-                                    <input type="email" id="reset-password" class="form-control rounded-4"
-                                        placeholder="Email" aria-describedby="inputGroupPrepend" required
-                                        title="Por favor llena tu email" />
+                                    <input type="email" id="reset-password" class="form-control rounded-4" placeholder="Email" aria-describedby="inputGroupPrepend" required title="Por favor llena tu email" />
                                 </div>
                                 <div id="invalid-feedback" class="text-danger">
 
@@ -450,12 +423,10 @@
             <div class="modal-box modal-dialog-scrollable">
                 <h3 class="text-center">Confirmar</h3>
                 <span class="close-button">X</span>
-                <p class="text-center visually-hidden" style="font-size: 1px;" id="registerMessage"><span
-                        class="usersNameRegister"></span></p>
+                <p class="text-center visually-hidden" style="font-size: 1px;" id="registerMessage"><span class="usersNameRegister"></span></p>
                 <div class="details"></div>
                 <h5>Elegi los meses que queres jugar</h5>
-                <select id="select1" class="form-select" onchange="getOption(); getDatesAndPrice();"
-                    aria-label="Default select example">
+                <select id="select1" class="form-select" onchange="getOption(); getDatesAndPrice();" aria-label="Default select example">
                     <option disabled selected value="0"></option>
                     <option class="dropdown-item" value="1">1</option>
                     <option value="2">2</option>
@@ -507,8 +478,7 @@
         <!-- FOOTER -->
         <footer class="blog-footer">
             <h3 class="icons_bt" style="vertical-align: middle;">
-                <div class="row row-cols-1 row-cols-lg-4 g-4 g-lg-4" id=""
-                    style="padding-bottom: 2rem; padding-right: 0rem; text-align: center; vertical-align: middle;">
+                <div class="row row-cols-1 row-cols-lg-4 g-4 g-lg-4" id="" style="padding-bottom: 2rem; padding-right: 0rem; text-align: center; vertical-align: middle;">
                     <div class="col-3">
                         <p class="card-text"><small class="text-muted">
                                 <a class="button1" href="https://instagram.com/baumanntennis?igshid=1se5twpjgogen"
@@ -532,8 +502,7 @@
                     </div>
                     <div class="col-3">
                         <p class="card-text"><small class="text-muted"></small>
-                            <a class="button1" href="mailto:Info@baumanntennis.com" data-toggle="tooltip"
-                                title="Info@baumanntennis.com"><span class="fas fa-envelope"></span></a></small>
+                            <a class="button1" href="mailto:Info@baumanntennis.com" data-toggle="tooltip" title="Info@baumanntennis.com"><span class="fas fa-envelope"></span></a></small>
                         </p>
                     </div>
                 </div>
@@ -563,10 +532,8 @@
                         <div class="col-lg-3 col-md-6 footer-contact">
                             <h3>Baumann Tennis<span></span></h3>
                             <p>
-                                Presidente Juan Manuel Frutos 2925<br>
-                                e/ Dr. Bernardino Caballero<br>
-                                Asuncion<br>
-                                Paraguay <br><br>
+                                Presidente Juan Manuel Frutos 2925<br> e/ Dr. Bernardino Caballero<br> Asuncion
+                                <br> Paraguay <br><br>
                                 <strong>Phone:</strong> +595 982367638<br>
                                 <strong>Email:</strong> info@baumanntennis.com<br>
                             </p>
@@ -578,7 +545,8 @@
                             <ul>
                                 <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
                                 <li><i class="bx bx-chevron-right"></i> <a href="inscribite.html">Inscribite</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="sobrelosprofes.html"></a>
+                                <li><i class="bx bx-chevron-right"></i>
+                                    <a href="sobrelosprofes.html"></a>
                                 </li>
                             </ul>
                         </div>
@@ -619,14 +587,14 @@
                     <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> -->
                     <a href="https://www.facebook.com/baumanntennisacademia/" target="_blank" class="facebook"><i
                             class="fa fa-facebook"></i></a>
-                    <a href="https://instagram.com/baumanntennis?igshid=1se5twpjgogen" target="_blank"
-                        class="instagram"><i class="fa fa-instagram"></i></a>
+                    <a href="https://instagram.com/baumanntennis?igshid=1se5twpjgogen" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
                     <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> -->
                     <a href="https://api.whatsapp.com/message/GDPS56AEKFB2M1" target="_blank" class="linkedin"><i
                             class="fa fa-whatsapp"></i></a>
                 </div>
             </div>
-        </footer><!-- End Footer -->
+        </footer>
+        <!-- End Footer -->
 
         <!-- <button class="visually-hidden-focusable" type="button" href=""><a href="admin.html">Admin</a></button> -->
         <a class="visually-hidden" href="admin.html">Admin</a>
@@ -655,22 +623,24 @@
         const auth = firebase.auth();
         const db = firebase.firestore();
         // update firestore settings
-        db.settings({ timestampsInSnapshots: true });
+        db.settings({
+            timestampsInSnapshots: true
+        });
     </script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="scripts/auth.js"></script>
-    <script src="scripts/index.js"></script>
-    <script src="scripts/registrar.js"></script>
-    <script src="scripts/main.js"></script>
+    <script src="../scripts/auth.js"></script>
+    <script src="../scripts/index.js"></script>
+    <script src="../scripts/registrar.js"></script>
+    <script src="../scripts/main.js"></script>
     <!--===============================================================================================-->
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="../styles/vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../styles/vendor/bootstrap/js/popper.js"></script>
+    <script src="../styles/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!--===============================================================================================-->
-    <script src="vendor/select2/select2.min.js"></script>
+    <script src="../styles/vendor/select2/select2.min.js"></script>
     <!--===============================================================================================-->
 
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
