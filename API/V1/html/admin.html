@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="LoginWidget">
+    <form id="LoginForm">
+      <label for="Username">Username: </label>
+      <input id="Username" type="text" placeholder="Username"/>
+      <label for="Password">Password: </label>
+      <input id="Password" type="password" placeholder="Password"/>
+      <label for="Submit">Login: </label>
+      <input id="Submit" type="submit" value="Login"/>
+    </form>
+  </div>
+
+  <div id="AdminPage" style="display: none;">
+    <button onclick="refresh()">Refresh Statistics</button>
+    <div id="Stats">
+    </div>
+  </div>
+  <script src="../js/client.js"></script>
+
+</body>
+</html>
