@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- You MUST include jQuery before Fomantic -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js"></script>
+
+    <title>Baumann Tennis</title>
+</head>
+
+<body>
+
+    <div class="ui container">
+        <h1>Book a court</h1>
+
+        <!-- <div class="card"> -->
+        <h3>Select date</h3>
+        <div class="ui calendar" id="spanish_calendar">
+            <div class="ui input">
+                <input type="text" id="inputID" placeholder="Date">
+            </div>
+        </div>
+        <script>
+            let inputVal = document.getElementById("inputID").value;
+            console.log(inputVal)
+        </script>
+        <!-- </div> -->
+        <br />
+
+    </div>
+    <script src="inscribir.js"></script>
+</body>
+
+</html>
