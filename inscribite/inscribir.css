@@ -1,0 +1,10 @@
+#dateSelected {
+    color: yellow;
+    background-color: yellow !important;
+}
+
+@media (max-width: 600px) {
+    .headClass {
+        margin-top: 30%;
+    }
+}

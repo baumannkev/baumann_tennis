@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -7,29 +7,62 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js"></script>
+    <link rel="" stylesheet type="text/css" href="inscribir.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+    <link rel="shortcut icon" href="../img/logos/tennis-ball.png" type="image/x-icon" />
     <title>Baumann Tennis</title>
 </head>
 
 <body>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <div class="ui container">
-        <h1>Book a court</h1>
-
-        <!-- <div class="card"> -->
-        <h3>Select date</h3>
-        <div class="ui calendar" id="spanish_calendar">
-            <div class="ui input">
-                <input type="text" id="inputID" placeholder="Date">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light rounded">
+            <div class="container-fluid">
+                <a class="navbar-brand" data-micron="bounce" style="color: rgb(39,57,82);" href="baumanntennis.com"><img src="../img/logos/BAUMANN TENNIS.png" alt="Logo de Baumann Tennis" width="60" height="70.97" class="d-inline-block align-text-center">
+                    <span class="the-title">Baumann Tennis</span></a>
+                <div id="anim" class="anim"></div>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+                <div id="navbarCollapse" class="navbar-collapse collapse justify-content-end ">
+                    <ul class="navbar-nav">
+                        <li class="nav-item d-flex">
+                            <a class="nav-link scrollto" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item d-flex">
+                            <a class="nav-link scrollto" href="../servicios/juga.html">Juga</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <script>
-            let inputVal = document.getElementById("inputID").value;
-            console.log(inputVal)
-        </script>
-        <!-- </div> -->
-        <br />
+        </nav>
+    </header>
+    <div class="container headClass" style="margin-top: 20%;">
+        <h1>Welcome! Check to see what times are available to book a court</h1>
+        <div class="ui container" style="padding: 10p2">
 
+            <!-- <div class="card"> -->
+            <h3>Select date</h3>
+            <div class="ui calendar" id="spanish_calendar">
+                <div class="ui input">
+                    <input type="text" id="inputID" placeholder="Date">
+                </div>
+            </div>
+            <br>
+            <div class="card border-secondary mb-3" style="max-width: auto;">
+                <div class="card-header">Date Selected: <span id="dateSelected"></span></div>
+                <div class="card-body text-secondary">
+                    <!-- <h5 class="card-title">Secondary card title</h5> -->
+                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                </div>
+            </div>
+            <!-- </div> -->
+            <br />
+
+        </div>
     </div>
     <script src="inscribir.js"></script>
 </body>
