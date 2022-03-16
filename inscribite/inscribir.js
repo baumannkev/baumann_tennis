@@ -2,7 +2,17 @@ var today = new Date();
 
 var arr = [0, 1, 2, 3, 4, 5];
 
-$(".table2").hide();
+$(".cardDate").hide();
+$(".cardMember").hide();
+$(".successMessage").hide();
+
+function showMember() {
+    $(".cardMember").show();
+}
+
+function showSuccess() {
+    $(".successMessage").show();
+}
 // $('#spanish_calendar').calendar('disableMinute', ('true'))
 $('#spanish_calendar')
     .calendar({
@@ -13,7 +23,7 @@ $('#spanish_calendar')
         inline: "true",
         closable: "false",
         onChange: function changeDateSelected() {
-            $(".table2").show();
+            $(".cardDate").show();
             let inputVal = document.getElementById("inputID").value;
             console.log(inputVal)
             $('#dateSelected').text(inputVal);
@@ -127,4 +137,10 @@ $('#spanish_calendar')
             }
 
         ]
+    });
+
+$('#year_first_calendar')
+    .calendar({
+        startMode: 'year',
+        type: 'date'
     });

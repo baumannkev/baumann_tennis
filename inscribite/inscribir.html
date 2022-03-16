@@ -57,13 +57,13 @@
                 </div>
             </div>
             <br>
-            <div class="card border-secondary mb-3">
+            <div class="card border-secondary mb-3 cardDate">
                 <div class="card-header">Date Selected: <span id="dateSelected"></span></div>
                 <div class="card-body text-secondary">
 
                     <!-- <h5 class="card-title">Secondary card title</h5> -->
                     <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                    <table class="ui very compact table table2">
+                    <table class="ui very compact table">
                         <thead>
                             <!-- <tr>
                                 <th>Name</th>
@@ -74,8 +74,9 @@
                         <tbody>
                             <tr>
                                 <td><span class="day2"></span>,</br> 7 AM to 8 AM </td>
-                                <td>Availability </br> <span style="color:red">Full. Please make a different selection</span></td>
-                                <td><button class="ui primary button">Select</button></td>
+                                <td>Availability </br> <span style="color:red">Full. Please make a different
+                                        selection</span></td>
+                                <td><button class="ui primary button" onclick="showMember()">Select</button></td>
                             </tr>
                             <tr>
                                 <td><span class="day2"></span>,</br> 8 AM to 9 AM</td>
@@ -89,7 +90,8 @@
                             </tr>
                             <tr>
                                 <td><span class="day2"></span>,</br> 11 AM to 12 PM </td>
-                                <td>Availability </br> <span style="color:red">Full. Please make a different selection</span></td>
+                                <td>Availability </br> <span style="color:red">Full. Please make a different
+                                        selection</span></td>
                                 <td><button class="ui primary button">Select</button></td>
                             </tr>
                             <tr>
@@ -104,6 +106,42 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="card cardMember border-secondary mb-3">
+                <div class="card-header">Member</div>
+                <div class="card-body text-secondary">
+                    <div class="ui form success">
+                        <div class="fields">
+                            <div class="required field">
+                                <label>First name</label>
+                                <input type="text" placeholder="First Name">
+                            </div>
+                            <div class="field">
+                                <label>Middle name</label>
+                                <input type="text" placeholder="Middle Name">
+                            </div>
+                            <div class="required field">
+                                <label>Last name</label>
+                                <input type="text" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="ui calendar" id="year_first_calendar">
+                            <div class="ui input left icon">
+                                <i class="birthday icon"></i>
+                                <input type="text" placeholder="Birth Date">
+                            </div>
+                        </div>
+                        <div class="required field">
+                            <label>E-mail</label>
+                            <input type="email" placeholder="info@baumanntennis.com">
+                        </div>
+                        <div class="ui success message successMessage">
+                            <div class="header">Booking Completed</div>
+                            <p>You're all signed up for the booking. You'll receive an email shortly with instructions</p>
+                        </div>
+                        <div class="ui submit button" onclick="showSuccess()">Submit</div>
+                    </div>
                 </div>
             </div>
             <!-- </div> -->
