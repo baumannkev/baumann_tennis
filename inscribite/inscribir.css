@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap');
 #dateSelected {
-    color: yellow;
     background-color: yellow !important;
+    font-weight: 700;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
     .headClass {
-        margin-top: 30%;
+        margin-top: 120px;
     }
+}
+
+.headClass {
+    margin-top: 120px;
 }

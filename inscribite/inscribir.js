@@ -1,16 +1,23 @@
 var today = new Date();
 
+var arr = [0, 1, 2, 3, 4, 5];
 
+$(".table2").hide();
 // $('#spanish_calendar').calendar('disableMinute', ('true'))
 $('#spanish_calendar')
     .calendar({
         // today: "true",
+        formatInput: "false",
+        disableYear: "true",
+        disableMonth: "true",
         inline: "true",
         closable: "false",
         onChange: function changeDateSelected() {
+            $(".table2").show();
             let inputVal = document.getElementById("inputID").value;
             console.log(inputVal)
             $('#dateSelected').text(inputVal);
+            $('.day2').text(inputVal);
         },
         type: 'date',
         on: "hover",
@@ -26,8 +33,20 @@ $('#spanish_calendar')
             am: 'AM',
             pm: 'PM',
         },
-        eventDates: [{
-                date: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+        eventDates: [
+            //     arr.forEach(function(item) {
+            //         console.log(item);
+
+            //         eventDates += [{
+
+            //             date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + this),
+            //             message: 'Available',
+            //             class: 'green'
+            //         }]
+            //     })
+            // ]
+            {
+                date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 0),
                 message: 'Available',
                 class: 'green'
             },
@@ -45,6 +64,67 @@ $('#spanish_calendar')
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 3),
                 message: 'Full',
                 class: 'red'
+            },
+            {
+                date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 4),
+                message: 'Available',
+                class: 'green'
+            },
+            {
+                date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 5),
+                message: 'Available',
+                class: 'green'
+            },
+            {
+                date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 6),
+                message: 'Available',
+                class: 'green'
+            },
+            {
+                date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7),
+                message: 'Available',
+                class: 'green'
+            },
+            {
+                date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 8),
+                message: 'Available',
+                class: 'green'
+            },
+            {
+                date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 9),
+                message: 'Available',
+                class: 'green'
+            },
+            {
+                date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 10),
+                message: 'Available',
+                class: 'green'
+            },
+            {
+                date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 11),
+                message: 'Available',
+                class: 'green'
+            },
+            {
+                date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 12),
+                message: 'Available',
+                class: 'green'
+            },
+            {
+                date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 13),
+                message: 'Available',
+                class: 'green'
+            },
+            {
+                date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 14),
+                message: 'Available',
+                class: 'green'
+            },
+            {
+                date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 15),
+                message: 'Available',
+                class: 'green'
             }
+
         ]
     });
