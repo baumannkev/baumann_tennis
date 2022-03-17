@@ -1,11 +1,21 @@
 const mysql = require('mysql')
 const bodyParser = require("body-parser");
 const express = require('express');
+const path = require('path');
 
 
 const app = express();
 const endpoint = '/';
+const updir = '..';
 const port = 30005;
+app.use('/html', express.static(path.join(__dirname, "html")));
+app.use('/css', express.static(path.join(__dirname, "css")));
+app.use('/images', express.static(path.join("../../", __dirname, "images")));
+app.use('/js', express.static(path.join(__dirname, "js")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.engine('html', require('ejs').renderFile);
 const connection = mysql.createConnection({
   host: "127.0.0.1",//"67.205.142.54",
   user: "root",//"baumanntennisapi",
@@ -24,6 +34,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
+
+app.get(endpoint + "admin_statistics", (req, res) => {
+  // looks in base path /views by default, either change filedir or do it like this
+  res.render(updir + '/html/admin.html');
+});
 
 app.get(endpoint + "admin", (req, res) => {
   connection.query(`UPDATE endpoints SET Hits = Hits + 1 WHERE Endpoint = 'Admin'`, (err, result) => {
