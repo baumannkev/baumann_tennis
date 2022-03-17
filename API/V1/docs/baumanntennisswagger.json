@@ -1,0 +1,249 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Simple API for Baumann Tennis Academy",
+        "version": "1",
+        "title": "BaumannTennis API Documentation",
+        "contact": {
+            "email": "baumannkev@gmail.com"
+        }
+    },
+    "tags": [{
+            "name": "admin_register",
+            "description": "Registers a user as an administrator"
+        },
+        {
+            "name": "admin_login",
+            "description": "Logs in to server using admin credentials"
+        },
+        {
+            "name": "player_register",
+            "description": "Registers a user as a player"
+        },
+        {
+            "name": "player_login",
+            "description": "Logs in to server using player credentials"
+        },
+        {
+            "name": "players",
+            "description": "Access to playerss"
+        }
+    ],
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/admin_register": {
+            "post": {
+                "tags": [
+                    "admin_register"
+                ],
+                "summary": "Register user as administrator",
+                "description": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "username",
+                        "in": "body",
+                        "description": "Username of the admin account to register",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "body",
+                        "description": "Password of the admin account to register",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Admin successfully registered"
+                    },
+                    "400": {
+                        "description": "User already exists"
+                    },
+                    "500": {
+                        "description": "Error with registartion"
+                    }
+                }
+            }
+        },
+        "/admin_login": {
+            "post": {
+                "tags": [
+                    "admin_login"
+                ],
+                "summary": "Log in as the administrator",
+                "description": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "username",
+                        "in": "body",
+                        "description": "Username of the admin account",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "body",
+                        "description": "Password of the admin account",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Administrator logged in"
+                    },
+                    "400": {
+                        "description": "Incorrect userame or password"
+                    },
+                    "500": {
+                        "description": "Server error; cannot login with credentials"
+                    }
+                }
+            }
+        },
+        "/player_register": {
+            "post": {
+                "tags": [
+                    "player_register"
+                ],
+                "summary": "Register user as player",
+                "description": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "username",
+                        "in": "body",
+                        "description": "Username of the player account to register",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "body",
+                        "description": "Password of the player account to register",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Player successfully registered"
+                    },
+                    "400": {
+                        "description": "User already exists"
+                    },
+                    "500": {
+                        "description": "Error with registartion"
+                    }
+                }
+            }
+        },
+        "/player_login": {
+            "post": {
+                "tags": [
+                    "player_login"
+                ],
+                "summary": "Log in as a player",
+                "description": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "name": "username",
+                        "in": "body",
+                        "description": "Username of the player account",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "body",
+                        "description": "Password of the player account",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Player logged in"
+                    },
+                    "400": {
+                        "description": "Incorrect userame or password"
+                    },
+                    "500": {
+                        "description": "Server error; cannot login with credentials"
+                    }
+                }
+            }
+        },
+        "/players": {
+            "get": {
+                "tags": [
+                    "players"
+                ],
+                "operationId": "getPlayersV1",
+                "summary": "Gets all players",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 OK",
+                        "examples": {
+                            "id": 1,
+                            "name": "John Smith",
+                            "email": "johnsmith@gmail.com",
+                            "username": "johnsmith123",
+                            "age": "22",
+                            "skill": "intermediate"
+                        }
+                    },
+                    "404": {
+                        "description": "404 Not Found"
+                    }
+                }
+            }
+        },
+        "/players{playerID}": {
+            "get": {
+                "tags": [
+                    "players"
+                ],
+                "operationId": "getPlayerV1",
+                "summary": "Gets a specific player",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "200 OK",
+                        "examples": {
+                            "id": 2,
+                            "name": "Sally Smith",
+                            "email": "sallysmith@gmail.com",
+                            "username": "sallysmith123",
+                            "age": "20",
+                            "skill": "beginner"
+                        }
+                    },
+                    "404": {
+                        "description": "404 Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Baumann Tennis",
+        "url": "https://baumanntennis.com"
+    }
+}
