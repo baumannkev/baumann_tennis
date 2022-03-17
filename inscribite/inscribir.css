@@ -13,3 +13,7 @@
 .headClass {
     margin-top: 120px;
 }
+
+a.availability {
+    color: white !important;
+}

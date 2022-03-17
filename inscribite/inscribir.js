@@ -1,7 +1,8 @@
 var today = new Date();
 
 var arr = [0, 1, 2, 3, 4, 5];
-
+$('.ui.dropdown')
+    .dropdown();
 $(".cardDate").hide();
 $(".cardMember").hide();
 $(".successMessage").hide();
@@ -17,6 +18,7 @@ function showSuccess() {
 $('#spanish_calendar')
     .calendar({
         // today: "true",
+        touchReadonly: "true",
         formatInput: "false",
         disableYear: "true",
         disableMonth: "true",
@@ -143,4 +145,50 @@ $('#year_first_calendar')
     .calendar({
         startMode: 'year',
         type: 'date'
+    });
+
+$('.ui.form')
+    .form({
+        fields: {
+            name: {
+                identifier: 'name',
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Please enter your name'
+                }]
+            },
+            gender: {
+                identifier: 'gender',
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Please select a gender'
+                }]
+            },
+            username: {
+                identifier: 'email',
+                rules: [{
+                    type: 'email',
+                    prompt: 'Please enter a valid e-mail'
+                }]
+            },
+            password: {
+                identifier: 'password',
+                rules: [{
+                        type: 'empty',
+                        prompt: 'Please enter a password'
+                    },
+                    {
+                        type: 'minLength[6]',
+                        prompt: 'Your password must be at least {ruleValue} characters'
+                    }
+                ]
+            },
+            terms: {
+                identifier: 'terms',
+                rules: [{
+                    type: 'checked',
+                    prompt: 'You must agree to the terms and conditions'
+                }]
+            }
+        }
     });

@@ -46,7 +46,17 @@
             </div>
         </nav>
     </header>
+
     <div class="container headClass">
+        <div class="ui selection dropdown">
+            <input type="hidden" name="pet">
+            <i class="dropdown icon"></i>
+            <div class="default text">Type</div>
+            <div class="scrollhint menu">
+                <div class="item" data-value="0">Book a court</div>
+                <div class="item" data-value="1">Register for classes</div>
+            </div>
+        </div>
         <h1>Welcome! Check to see what times are available to book a court</h1>
         <h5>All bookings go live 30 days prior to the event</h5>
         <div class="ui container">
@@ -76,71 +86,94 @@
                                 <td><span class="day2"></span>,</br> 7 AM to 8 AM </td>
                                 <td>Availability </br> <span style="color:red">Full. Please make a different
                                         selection</span></td>
-                                <td><button class="ui primary button" onclick="showMember()">Select</button></td>
+                                <td><a class="availability scrollto" href="#cardMemberID"><button
+                                            class="ui primary button" onclick="showMember()">
+                                            Select</button></a></td>
                             </tr>
                             <tr>
                                 <td><span class="day2"></span>,</br> 8 AM to 9 AM</td>
                                 <td>Availability </br> <span>Available</span>
-                                    <td><button class="ui primary button">Select</button></td>
+                                    <td><a class="availability scrollto" href="#cardMemberID"><button
+                                            class="ui primary button" onclick="showMember()">
+                                            Select</button></a></td>
                             </tr>
                             <tr>
                                 <td><span class="day2"></span>,</br> 10 AM to 11 AM</td>
                                 <td>Availability </br> <span>Available</span>
-                                    <td><button class="ui primary button">Select</button></td>
+                                    <td><a class="availability scrollto" href="#cardMemberID"><button
+                                            class="ui primary button" onclick="showMember()">
+                                            Select</button></a></td>
                             </tr>
                             <tr>
                                 <td><span class="day2"></span>,</br> 11 AM to 12 PM </td>
                                 <td>Availability </br> <span style="color:red">Full. Please make a different
                                         selection</span></td>
-                                <td><button class="ui primary button">Select</button></td>
+                                <td><a class="availability scrollto" href="#cardMemberID"><button
+                                            class="ui primary button" onclick="showMember()">
+                                            Select</button></a></td>
                             </tr>
                             <tr>
                                 <td><span class="day2"></span>,</br> 12 PM to 1 PM</td>
                                 <td>Availability </br> <span>Available</span>
-                                    <td><button class="ui primary button">Select</button></td>
+                                    <td><a class="availability scrollto" href="#cardMemberID"><button
+                                            class="ui primary button" onclick="showMember()">
+                                            Select</button></a></td>
                             </tr>
                             <tr>
                                 <td><span class="day2"></span>,</br> 1 PM to 2 PM</td>
                                 <td>Availability </br> <span>Available</span>
-                                    <td><button class="ui primary button">Select</button></td>
+                                    <td><a class="availability scrollto" href="#cardMemberID"><button
+                                            class="ui primary button" onclick="showMember()">
+                                            Select</button></a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="card cardMember border-secondary mb-3">
-                <div class="card-header">Member</div>
-                <div class="card-body text-secondary">
-                    <div class="ui form success">
-                        <div class="fields">
-                            <div class="required field">
-                                <label>First name</label>
-                                <input type="text" placeholder="First Name">
+            <div class="cardMember">
+                <div id="cardMemberID" style="padding-bottom: 10rem;">
+
+                </div>
+                <h3>Confirm your Personal Information</h3>
+                <div class="card border-secondary mb-3">
+                    <div class="card-header">Member</div>
+                    <div class="card-body text-secondary">
+                        <form class="ui form segment">
+                            <p>Tell Us About Yourself</p>
+                            <div class="two fields">
+                                <div class="field">
+                                    <label>Name</label>
+                                    <input placeholder="First Name" name="name" type="text">
+                                </div>
+                                <div class="field">
+                                    <label>Gender</label>
+                                    <select class="ui dropdown" name="gender">
+                                        <option value="">Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="field">
-                                <label>Middle name</label>
-                                <input type="text" placeholder="Middle Name">
+                            <div class="two fields">
+                                <div class="field">
+                                    <label>Email</label>
+                                    <input placeholder="Email" name="email" type="email">
+                                </div>
+                                <div class="field">
+                                    <label>Password</label>
+                                    <input type="password" name="password">
+                                </div>
                             </div>
-                            <div class="required field">
-                                <label>Last name</label>
-                                <input type="text" placeholder="Last Name">
+
+                            <div class="inline field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" name="terms">
+                                    <label>I agree to the terms and conditions</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="ui calendar" id="year_first_calendar">
-                            <div class="ui input left icon">
-                                <i class="birthday icon"></i>
-                                <input type="text" placeholder="Birth Date">
-                            </div>
-                        </div>
-                        <div class="required field">
-                            <label>E-mail</label>
-                            <input type="email" placeholder="info@baumanntennis.com">
-                        </div>
-                        <div class="ui success message successMessage">
-                            <div class="header">Booking Completed</div>
-                            <p>You're all signed up for the booking. You'll receive an email shortly with instructions</p>
-                        </div>
-                        <div class="ui submit button" onclick="showSuccess()">Submit</div>
+                            <div class="ui primary submit button">Submit</div>
+                            <div class="ui error message"></div>
+                        </form>
                     </div>
                 </div>
             </div>
