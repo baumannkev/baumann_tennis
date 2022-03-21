@@ -1,9 +1,38 @@
 var today = new Date();
 
+var optionSelected = 'book';
+var bookSelectedText = 'Welcome! Check to see what times are available to book a court';
+$('#welcome').text(bookSelectedText)
+
 var arr = [0, 1, 2, 3, 4, 5];
-$('.ui.dropdown')
-    .dropdown();
-$(".cardDate").hide();
+$('.ui.dropdown.booking')
+    .dropdown({
+        values: [{
+                name: 'Book a court',
+                value: 'book',
+                selected: true,
+                description: "Times available to book a court"
+            },
+            {
+                name: 'Register for classes',
+                value: 'register',
+                description: 'Times available to register for classes'
+
+            }
+        ],
+        onChange: function(value, text, $selectedItem) {
+            $(".cardDateBook").hide();
+            $(".cardDateRegister").hide();
+            console.log(value);
+            optionSelected = value;
+            $('#welcome').text(optionSelected)
+            $(".cardMember").hide();
+        },
+    }, );
+
+
+$(".cardDateBook").hide();
+$(".cardDateRegister").hide();
 $(".cardMember").hide();
 $(".successMessage").hide();
 
@@ -14,10 +43,9 @@ function showMember() {
 function showSuccess() {
     $(".successMessage").show();
 }
-// $('#spanish_calendar').calendar('disableMinute', ('true'))
 $('#spanish_calendar')
     .calendar({
-        // today: "true",
+        today: "true",
         touchReadonly: "true",
         formatInput: "false",
         disableYear: "true",
@@ -25,10 +53,17 @@ $('#spanish_calendar')
         inline: "true",
         closable: "false",
         onChange: function changeDateSelected() {
-            $(".cardDate").show();
+            if (optionSelected === 'book') {
+                $(".cardDateBook").show();
+                $(".cardDateRegister").hide();
+            } else {
+                $(".cardDateRegister").show();
+                $(".cardDateBook").hide();
+            }
             let inputVal = document.getElementById("inputID").value;
             console.log(inputVal)
-            $('#dateSelected').text(inputVal);
+            $('#dateSelectedBooking').text(inputVal);
+            $('#dateSelectedRegister').text(inputVal);
             $('.day2').text(inputVal);
         },
         type: 'date',
@@ -45,6 +80,12 @@ $('#spanish_calendar')
             am: 'AM',
             pm: 'PM',
         },
+        disabledDates: [{
+            date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 3),
+            message: 'Full',
+            // inverted: true,
+            class: 'red'
+        }, ],
         eventDates: [
             //     arr.forEach(function(item) {
             //         console.log(item);
@@ -72,11 +113,12 @@ $('#spanish_calendar')
                 message: 'Available',
                 class: 'green'
             },
-            {
-                date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 3),
-                message: 'Full',
-                class: 'red'
-            },
+            // {
+            //     date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 3),
+            //     message: 'Full',
+            //     class: 'red',
+            //     disable: 'true'
+            // },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 4),
                 message: 'Available',
