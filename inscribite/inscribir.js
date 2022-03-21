@@ -38,6 +38,14 @@ $(".successMessage").hide();
 
 function showMember() {
     $(".cardMember").show();
+    $("tr.bookTable").click(function() {
+        var tableData = $(this).children("td").map(function() {
+            return $(this).text();
+        }).get();
+
+        $(".details").text($.trim(tableData[0]) + " , " + $.trim(tableData[1]));
+        console.log("Your data is: " + $.trim(tableData[0]) + " , " + $.trim(tableData[1]));
+    });
 }
 
 function showSuccess() {

@@ -70,48 +70,48 @@
             <div class="card border-secondary mb-3 cardDateBook">
                 <div class="card-header">Booking</br>Date Selected: <span id="dateSelectedBooking"></span></div>
                 <div class="card-body text-secondary">
-                    <table class="ui very compact table">
+                    <table class="ui very compact table tableSelect">
                         <tbody>
-                            <tr>
+                            <tr class="bookTable">
                                 <td><span class="day2"></span>,</br> 7 AM to 8 AM </td>
-                                <td>Availability </br> <span style="color:red">Full. Please make a different
+                                <td><span style="color:red">Full. Please make a different
                                         selection</span></td>
                                 <td><a class="availability scrollto" href="#cardMemberID"><button
                                             class="ui primary button" onclick="showMember()">
                                             Select</button></a></td>
                             </tr>
-                            <tr>
+                            <tr class="bookTable">
                                 <td><span class="day2"></span>,</br> 8 AM to 9 AM</td>
-                                <td>Availability </br> <span>Available</span></td>
+                                <td><span>Court Booking</span></td>
                                 <td><a class="availability scrollto" href="#cardMemberID"><button
                                             class="ui primary button" onclick="showMember()">
                                             Select</button></a></td>
                             </tr>
-                            <tr>
+                            <tr class="bookTable">
                                 <td><span class="day2"></span>,</br> 10 AM to 11 AM</td>
-                                <td>Availability </br> <span>Available</span></td>
+                                <td><span>Court Booking</span></td>
                                 <td><a class="availability scrollto" href="#cardMemberID"><button
                                             class="ui primary button" onclick="showMember()">
                                             Select</button></a></td>
                             </tr>
-                            <tr>
+                            <tr class="bookTable">
                                 <td><span class="day2"></span>,</br> 11 AM to 12 PM </td>
-                                <td>Availability </br> <span style="color:red">Full. Please make a different
+                                <td><span style="color:red">Full. Please make a different
                                         selection</span></td>
                                 <td><a class="availability scrollto" href="#cardMemberID"><button
                                             class="ui primary button" onclick="showMember()">
                                             Select</button></a></td>
                             </tr>
-                            <tr>
+                            <tr class="bookTable">
                                 <td><span class="day2"></span>,</br> 12 PM to 1 PM</td>
-                                <td>Availability </br> <span>Available</span></td>
+                                <td><span>Court Booking</span></td>
                                 <td><a class="availability scrollto" href="#cardMemberID"><button
                                             class="ui primary button" onclick="showMember()">
                                             Select</button></a></td>
                             </tr>
-                            <tr>
+                            <tr class="bookTable">
                                 <td><span class="day2"></span>,</br> 1 PM to 2 PM</td>
-                                <td>Availability </br> <span>Available</span></td>
+                                <td><span>Court Booking</span></td>
                                 <td><a class="availability scrollto" href="#cardMemberID"><button
                                             class="ui primary button" onclick="showMember()">
                                             Select</button></a></td>
@@ -124,9 +124,9 @@
             <div class="card border-secondary mb-3 cardDateRegister">
                 <div class="card-header">Register for classes</br>Date Selected: <span id="dateSelectedRegister"></span></div>
                 <div class="card-body text-secondary">
-                    <table class="ui very compact table">
+                    <table class="ui very compact table tableSelect">
                         <tbody>
-                            <tr>
+                            <tr class="bookTable">
                                 <td><span class="day2"></span>,</br> 7 AM to 8 AM </td>
                                 <td>Availability </br> <span style="color:red">Full. Please make a different
                                         selection</span></td>
@@ -134,21 +134,21 @@
                                             class="ui primary button" onclick="showMember()">
                                             Select</button></a></td>
                             </tr>
-                            <tr>
+                            <tr class="bookTable">
                                 <td><span class="day2"></span>,</br> 8 AM to 9 AM</td>
-                                <td>Availability </br> <span>Available</span><br>Kids Groups of 4</td>
+                                <td>Kids Groups of 4</td>
                                 <td><a class="availability scrollto" href="#cardMemberID"><button
                                             class="ui primary button" onclick="showMember()">
                                             Select</button></a></td>
                             </tr>
-                            <tr>
+                            <tr class="bookTable">
                                 <td><span class="day2"></span>,</br> 10 AM to 11 AM</td>
-                                <td>Availability </br> <span>Available</span><br>Kids Groups of 4</td>
+                                <td>Kids Groups of 4</td>
                                 <td><a class="availability scrollto" href="#cardMemberID"><button
                                             class="ui primary button" onclick="showMember()">
                                             Select</button></a></td>
                             </tr>
-                            <tr>
+                            <tr class="bookTable">
                                 <td><span class="day2"></span>,</br> 11 AM to 12 PM </td>
                                 <td>Availability </br> <span style="color:red">Full. Please make a different
                                         selection</span></td>
@@ -156,16 +156,16 @@
                                             class="ui primary button" onclick="showMember()">
                                             Select</button></a></td>
                             </tr>
-                            <tr>
+                            <tr class="bookTable">
                                 <td><span class="day2"></span>,</br> 12 PM to 1 PM</td>
-                                <td>Availability </br> <span>Available</span><br>Kids Groups of 4</td>
+                                <td>Kids Groups of 4</td>
                                 <td><a class="availability scrollto" href="#cardMemberID"><button
                                             class="ui primary button" onclick="showMember()">
                                             Select</button></a></td>
                             </tr>
-                            <tr>
+                            <tr class="bookTable">
                                 <td><span class="day2"></span>,</br> 1 PM to 2 PM</td>
-                                <td>Availability </br> <span>Available</span><br>Kids Groups of 4</td>
+                                <td>Kids Groups of 4</td>
                                 <td><a class="availability scrollto" href="#cardMemberID"><button
                                             class="ui primary button" onclick="showMember()">
                                             Select</button></a></td>
@@ -179,9 +179,21 @@
 
                 </div>
                 <h3>Confirm your Personal Information</h3>
+
                 <div class="card border-secondary mb-3">
                     <div class="card-header">Member</div>
                     <div class="card-body text-secondary">
+                        <div class="ui card">
+                            <div class="content">
+                                <div class="header">Confirm Details</div>
+                            </div>
+                            <div class="content">
+                                You selected:
+                            </div>
+                            <div class="content details">
+
+                            </div>
+                        </div>
                         <form class="ui form segment">
                             <p>Tell Us About Yourself</p>
                             <div class="two fields">
