@@ -42,9 +42,10 @@ function showMember() {
         var tableData = $(this).children("td").map(function() {
             return $(this).text();
         }).get();
-
-        $(".details").text($.trim(tableData[0]) + " , " + $.trim(tableData[1]));
-        console.log("Your data is: " + $.trim(tableData[0]) + " , " + $.trim(tableData[1]));
+        if ($.trim(tableData[1]) !== 'Lleno') {
+            $(".details").text($.trim(tableData[0]) + " , " + $.trim(tableData[2]));
+            console.log("Your data is: " + $.trim(tableData[0]) + " , " + $.trim(tableData[2]));
+        }
     });
 }
 
