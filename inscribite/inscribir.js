@@ -1,22 +1,22 @@
 var today = new Date();
 
 var optionSelected = 'book';
-var bookSelectedText = 'Welcome! Check to see what times are available to book a court';
+var bookSelectedText = 'Bienvenido! Elegi la hora disponible para alquilar la cancha';
 $('#welcome').text(bookSelectedText)
 
 var arr = [0, 1, 2, 3, 4, 5];
 $('.ui.dropdown.booking')
     .dropdown({
         values: [{
-                name: 'Book a court',
+                name: 'Alquila la cancha',
                 value: 'book',
                 selected: true,
-                description: "Times available to book a court"
+                description: "Horas disponibles para alquilar"
             },
             {
-                name: 'Register for classes',
+                name: 'Inscribite a clases',
                 value: 'register',
-                description: 'Times available to register for classes'
+                description: 'Horas disponibles para clases'
 
             }
         ],
@@ -80,6 +80,7 @@ $('#spanish_calendar')
         minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
         maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30),
         text: {
+            eventClass: 'inverted green',
             days: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
             months: ['Enero', 'Febrero', 'Marzo', 'Avril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
             monthsShort: ['Ene', 'Feb', 'Mar', 'Avr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -90,9 +91,8 @@ $('#spanish_calendar')
         },
         disabledDates: [{
             date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 3),
-            message: 'Full',
-            // inverted: true,
-            class: 'red'
+            message: 'Llena',
+            inverted: true,
         }, ],
         eventDates: [
             //     arr.forEach(function(item) {
@@ -108,17 +108,17 @@ $('#spanish_calendar')
             // ]
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 0),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 2),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             },
             // {
@@ -129,62 +129,62 @@ $('#spanish_calendar')
             // },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 4),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 5),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 6),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 8),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 9),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 10),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 11),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 12),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 13),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 14),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             },
             {
                 date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 15),
-                message: 'Available',
+                message: 'Disponible',
                 class: 'green'
             }
 
