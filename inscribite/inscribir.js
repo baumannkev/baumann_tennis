@@ -3,7 +3,7 @@ var today = new Date();
 var optionSelected = 'book';
 var bookSelectedText = 'Bienvenido! Elegi la hora disponible para alquilar la cancha';
 $('#welcome').text(bookSelectedText)
-
+    // $('.full').disable();
 var arr = [0, 1, 2, 3, 4, 5];
 $('.ui.dropdown.booking')
     .dropdown({
@@ -82,7 +82,7 @@ $('#spanish_calendar')
         text: {
             eventClass: 'inverted green',
             days: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
-            months: ['Enero', 'Febrero', 'Marzo', 'Avril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
             monthsShort: ['Ene', 'Feb', 'Mar', 'Avr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
             today: 'Hoy',
             now: 'Ahora',
