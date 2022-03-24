@@ -55,7 +55,7 @@ function showSuccess() {
 $('#spanish_calendar')
     .calendar({
         today: "true",
-        touchReadonly: "true",
+        touchReadonly: "false",
         formatInput: "false",
         disableYear: "true",
         disableMonth: "true",

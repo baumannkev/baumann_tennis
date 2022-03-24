@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Baumann Tennis</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!-- You MUST include jQuery before Fomantic -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js"></script>
@@ -60,7 +60,7 @@
         <h5>Todas las reservas se ponen en marcha 30 días antes del evento</h5>
         <div class="ui container">
             <h3>Elejir Fecha</h3>
-            <div class="ui calendar" id="spanish_calendar">
+            <div class="ui calendar" id="spanish_calendar" style="overflow-y: scroll;">
                 <div class="ui input">
                     <input type="text" id="inputID" placeholder="Date">
                 </div>
@@ -350,6 +350,8 @@
         </div>
     </footer>
     <script src="inscribir.js"></script>
+    <script src="../scripts/lottie.js"></script>
+    <script src="../scripts/script.js"></script>
 </body>
 
 </html>

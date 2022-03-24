@@ -3,5 +3,5 @@ var animation = bodymovin.loadAnimation({
     rederer: 'svg',
     loop: true,
     autoplay: true,
-    path: 'scripts/data.json'
+    path: '../scripts/data.json'
 });
