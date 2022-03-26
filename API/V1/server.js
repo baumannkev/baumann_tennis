@@ -126,7 +126,7 @@ app.post(endpoint + "signUp", async (req, res) => {
 
         
         const password = bcrypt.hash(req.body.password, saltRounds, (err, salt) => {
-            connection.query(`INSERT INTO Users ('Email', 'Password', 'Phone Number', 'Full Name', 'Address', 'Insurance Provider') VALUES (${email}, ${password}, ${phoneNumber}, ${name}, ${address}, ${insurance});`, (err, result) => {
+            connection.query(`INSERT INTO Users ('Email', 'Password', 'Phone Number', 'Full Name', 'Address', 'Insurance Provider') VALUES (${email}, ${salt}, ${phoneNumber}, ${name}, ${address}, ${insurance});`, (err, result) => {
                 if (err) throw err;
                 let token = generateLoginToken();
                 connection.query(`UPDATE Users SET 'Login Token' = ${token} WHERE 'Email' = ${email}`, (err, result) => {
@@ -158,7 +158,7 @@ app.post(endpoint + "login", (error, result) => {
                 expiresIn: "12h",
             }));
         }
-    })
+    });
 });
 
 app.listen(port, (err) => {
