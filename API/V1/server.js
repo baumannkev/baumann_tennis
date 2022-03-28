@@ -123,23 +123,58 @@ app.post(endpoint + "signUp", async (req, res) => {
         const skill = req.body.skill;
         const allergies = req.body.allergies;
         const emergency = req.body.emergency;
-
+        const relationship = req.body.relationship;
         
-        const password = bcrypt.hash(req.body.password, saltRounds, (err, salt) => {
-            connection.query(`INSERT INTO Users ('Email', 'Password', 'Phone Number', 'Full Name', 'Address', 'Insurance Provider') VALUES (${email}, ${salt}, ${phoneNumber}, ${name}, ${address}, ${insurance});`, (err, result) => {
-                if (err) throw err;
-                let token = generateLoginToken();
-                connection.query(`UPDATE Users SET 'Login Token' = ${token} WHERE 'Email' = ${email}`, (err, result) => {
+        bcrypt.hash(req.body.password, saltRounds, (err, salt) => {
+            connection.query(`INSERT INTO parent (ParentID, FullName, PhoneNumber, Email, Password, Address, Insurance) VALUES (UUID(), '${name}', '${phoneNumber}', '${email}', '${salt}', '${address}', '${insurance}');`, (err, result) => {
+                try {
                     if (err) throw err;
-                    connection.query(`INSERT INTO Players ('Player ID', 'Full Name', 'DOB', 'Sex', 'Skill Level', 'Allergies/Medication', 'Emergency Contact Number', 'Email')
-                        VALUES (NULL, ${name}, ${dateOfBirth}, ${sex}, ${skill}, ${allergies}, ${emergency}, ${email});`, (err, result) => {
-                        if (err) throw err;
-                        res.send({
-                            code: 200,
-                            message: token
-                        });
+                    connection.query(`INSERT INTO player (PlayerID, FullName, DOB, Sex, SkillLevel, AllergiesMedication, ECN) VALUES (UUID(), ${name}, ${dateOfBirth}, ${sex}, ${skill}, ${allergies}, ${emergency})`, (err, result) => {
+                        try {
+                            connection.query(`SELECT parent.ParentID, player.PlayerID
+                                FROM parent
+                                LEFT JOIN player ON parent.Email = player.Email
+                                WHERE Email='${email}' AND Password='${salt}'`, (err, result) => {
+                                try {
+                                    if (err) throw err;
+                                    let parentID = result[0].ParentID;
+                                    let playerID = result[0].PlayerID;
+                                    connection.query(`INSERT INTO playerparentlink (PlayerID, ParentID, Relationship) VALUES (${playerID}, ${parentID}, ${relationship})`, (err, result) => {
+                                        try {
+                                            if (err) throw err;
+                                            res.json({
+                                                token: jwt.sign({
+                                                    ParentID: parentID
+                                                })
+                                            });
+                                        } catch (e) {
+                                            res.status(500);
+                                            res.json({
+                                                message: "Failed to associate the player and user."
+                                            });
+                                        }
+                                    });
+                                } catch (e) {
+                                    res.status(500);
+                                    res.json({
+                                        message: "Failed to retrieve player and/or user id."
+                                    });
+                                }
+                            });
+                        } catch (e) {
+                            res.status(500);
+                            res.json({
+                                message: "Failed to create new player."
+                            });
+                        }
                     });
-                });
+                    
+                } catch {
+                    res.status(500);
+                    res.json({
+                        message: "Failed to create new user."
+                    });
+                }
             });
         });
     } catch {
@@ -150,13 +185,19 @@ app.post(endpoint + "signUp", async (req, res) => {
     }
 });
 
-app.post(endpoint + "login", (error, result) => {
-    connection.query(`SELECT Password FROM Users WHERE Email '= ${req.body.email}'`, (e, r) => {
+app.post(endpoint + "login", (req, res) => {
+
+    connection.query(`SELECT Password, ParentID FROM parent WHERE Email='${req.body.email}`, (e, r) => {
         if (e) throw e;
-        if (bcrypt.compareSync(req.body.password, r)) {
-            res.send(jwt.sign(r, secretKey, {
-                expiresIn: "12h",
-            }));
+        if (bcrypt.compareSync(req.body.password, r[0].Password)) {
+            let token = {
+                token: jwt.sign({
+                    ParentID: r[0].ParentID
+                }, secretKey, {
+                    expiresIn: "12h",
+                })
+            }
+            res.json(token);
         }
     });
 });
