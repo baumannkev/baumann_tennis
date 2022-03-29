@@ -14,17 +14,24 @@ const saltRounds = 12;
 const secretKey = "rml5tqsC2K4OGzpLQWPM";
 
 app.use('/html', express.static(path.join(__dirname, "html")));
-app.use('/css', express.static(path.join(__dirname, "css")));
-app.use('/images', express.static(path.join("../../", __dirname, "images")));
+app.use('/css', express.static(path.join("../../", __dirname, "styles")));
+app.use('/img', express.static(path.join("../../", __dirname, "images")));
 app.use('/js', express.static(path.join(__dirname, "js")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.engine('html', require('ejs').renderFile);
+
+
+// const connection = mysql.createConnection({
+//     host: "137.184.30.51",
+//     user: "baumanntennisapi",
+//     password: "B2TjEenFCPGkAdGp",
+//     database: "baumanntennisapi"
+// });
 const connection = mysql.createConnection({
-    host: "137.184.30.51",
-    user: "baumanntennisapi",
-    password: "B2TjEenFCPGkAdGp",
+    host: "127.0.0.1",
+    user: "root",
+    password: "",
     database: "baumanntennisapi"
 });
 connection.connect();
@@ -126,7 +133,7 @@ app.post(endpoint + "signUp", async (req, res) => {
         const relationship = req.body.relationship;
         
         bcrypt.hash(req.body.password, saltRounds, (err, salt) => {
-            connection.query(`INSERT INTO parent (ParentID, FullName, PhoneNumber, Email, Password, Address, Insurance) VALUES (UUID(), '${name}', '${phoneNumber}', '${email}', '${salt}', '${address}', '${insurance}');`, (err, result) => {
+            connection.query(`INSERT INTO account (AccountID, FullName, PhoneNumber, Email, Password, Address, Insurance) VALUES (UUID(), '${name}', '${phoneNumber}', '${email}', '${salt}', '${address}', '${insurance}');`, (err, result) => {
                 try {
                     if (err) throw err;
                     connection.query(`INSERT INTO player (PlayerID, FullName, DOB, Sex, SkillLevel, AllergiesMedication, ECN) VALUES (UUID(), ${name}, ${dateOfBirth}, ${sex}, ${skill}, ${allergies}, ${emergency})`, (err, result) => {
@@ -187,17 +194,26 @@ app.post(endpoint + "signUp", async (req, res) => {
 
 app.post(endpoint + "login", (req, res) => {
 
-    connection.query(`SELECT Password, ParentID FROM parent WHERE Email='${req.body.email}`, (e, r) => {
+    connection.query(`SELECT Password, AccountID, Permissions FROM parent WHERE Email='${req.body.email}`, (e, r) => {
+        try {
         if (e) throw e;
-        if (bcrypt.compareSync(req.body.password, r[0].Password)) {
-            let token = {
-                token: jwt.sign({
-                    ParentID: r[0].ParentID
-                }, secretKey, {
-                    expiresIn: "12h",
-                })
+            if (bcrypt.compareSync(req.body.password, r[0].Password)) {
+                let token = {
+                    token: jwt.sign({
+                        AccountID: r[0].AccountID,
+                        Permissions: r[0].Permissions
+                    }, secretKey, {
+                        expiresIn: "12h",
+                    }),
+                    success: true
+                }
+                res.json(token);
             }
-            res.json(token);
+        } catch (e) {
+            res.status(500);
+            res.json({
+                message: "Unable to retrieve email."
+            });
         }
     });
 });

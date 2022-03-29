@@ -1,11 +1,11 @@
 $('#LoginForm')
     .form({
         fields: {
-            username: {
-                identifier: 'username',
+            email: {
+                identifier: 'Email',
                 rules: [{
                     type: 'empty',
-                    prompt: 'Please enter a username'
+                    prompt: 'Please enter a valid email'
                 }]
             },
             password: {
@@ -58,11 +58,11 @@ if ($('.ui.form').form('is valid')) {
 
     const login = () => {
         const xhttp = new XMLHttpRequest();
-        let resource = "/adminlogin";
+        let resource = "/login";
         const url = endPointRoot + resource;
 
         let LoginInfo = {
-            username: document.getElementById("Username").value,
+            email: document.getElementById("Email").value,
             password: document.getElementById("Password").value
         }
 
