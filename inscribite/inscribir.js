@@ -48,6 +48,8 @@ function showMember() {
         }
     });
 }
+$('.test.modal')
+    .modal('attach events', '.test.button', 'show');
 $("#signUpTarget").click(function() {
     $("#loginForm").hide();
     $("#signUpForm").show();
@@ -56,6 +58,15 @@ $("#signUpTarget").click(function() {
 $("#loginTarget").click(function() {
     $("#loginForm").show();
     $("#signUpForm").hide();
+});
+$("#signUpTargetModal").click(function() {
+    $("#loginFormModal").hide();
+    $("#signUpFormModal").show();
+});
+
+$("#loginTargetModal").click(function() {
+    $("#loginFormModal").show();
+    $("#signUpFormModal").hide();
 });
 
 function showSuccess() {
