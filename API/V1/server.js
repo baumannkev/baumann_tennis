@@ -1,24 +1,26 @@
 const mysql = require('mysql')
 const bodyParser = require("body-parser");
-const express = require('express');
 const path = require('path');
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const express = require('express');
 
 
 const app = express();
 const endpoint = '/';
 const updir = '..';
 const port = 30005;
-const saltRounds = 12;
-const secretKey = "rml5tqsC2K4OGzpLQWPM";
-
+// console.log('Path of file in parent dir:', require('path').resolve(__dirname, '../html'));
 app.use('/html', express.static(path.join(__dirname, "html")));
-app.use('/css', express.static(path.join("../../", __dirname, "styles")));
-app.use('/img', express.static(path.join("../../", __dirname, "images")));
-app.use('/js', express.static(path.join(__dirname, "js")));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use('/css', express.static(path.join(__dirname, "css")));
+app.use('/img', express.static(path.join(__dirname, "images")));
+// app.use('/js', express.static(path.join(__dirname, "js")));
+// app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+// var dir = path.join(__dirname, 'styles');
+
+// app.use(express.static(dir));
+
 app.engine('html', require('ejs').renderFile);
 
 
@@ -34,7 +36,7 @@ const connection = mysql.createConnection({
     password: "",
     database: "baumanntennisapi"
 });
-connection.connect();
+// connection.connect();
 
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -48,8 +50,8 @@ app.use(bodyParser.json());
 
 
 app.get(endpoint + "admin_statistics", (req, res) => {
-  // looks in base path /views by default, either change filedir or do it like this
-  res.render(updir + '/html/admin.html');
+    // looks in base path /views by default, either change filedir or do it like this
+    res.render(updir + '/html/admin.html');
 });
 
 app.get(endpoint + "admin", (req, res) => {
@@ -66,7 +68,7 @@ app.post(endpoint + "adminlogin", (req, res) => {
     connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'Admin Login'`, (err, result) => {
         if (err) throw err;
     });
-    connection.query(`SELECT * FROM AdminAccount WHERE username = '${req.body.username}' AND password = '${req.body.password}'`, (err, result) => {
+    connection.query(`SELECT * FROM AdminAccount WHERE username LIKE '${req.body.username}' AND password LIKE '${req.body.password}'`, (err, result) => {
         if (err) throw err;
         if (result == null) {
             res.send({
@@ -224,3 +226,16 @@ app.listen(port, (err) => {
 })
 
 console.log('Server is running and listening on port ', port);
+
+
+
+const adminLogin = function(username, password) {
+    connection.query(`SELECT * FROM AdminAccount WHERE username LIKE '${req.body.username}' AND password LIKE '${req.body.password}'`, (err, result) => {
+        if (err) throw err;
+        if (result == null) {
+            return false;
+        } else {
+            return true;
+        }
+    });
+}

@@ -48,10 +48,44 @@ function showMember() {
         }
     });
 }
+$('.test.modal')
+    .modal('attach events', '.test.button', 'show');
+$("#signUpTarget").click(function() {
+    $("#loginForm").hide();
+    $("#signUpForm").show();
+});
+
+$("#loginTarget").click(function() {
+    $("#loginForm").show();
+    $("#signUpForm").hide();
+});
+$("#signUpTargetModal").click(function() {
+    $("#loginFormModal").hide();
+    $("#signUpFormModal").show();
+});
+
+$("#loginTargetModal").click(function() {
+    $("#loginFormModal").show();
+    $("#signUpFormModal").hide();
+});
 
 function showSuccess() {
     $(".successMessage").show();
 }
+$('.birthdate').calendar({
+    type: 'date',
+    text: {
+        eventClass: 'inverted green',
+        days: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+        months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthsShort: ['Ene', 'Feb', 'Mar', 'Avr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
+        today: 'Hoy',
+        now: 'Ahora',
+        am: 'AM',
+        pm: 'PM',
+    },
+})
+$(".signup").hide()
 $('#spanish_calendar')
     .calendar({
         today: "true",
@@ -205,7 +239,7 @@ $('.ui.form')
                 identifier: 'name',
                 rules: [{
                     type: 'empty',
-                    prompt: 'Please enter your name'
+                    prompt: 'Por favor, escriba su nombre'
                 }]
             },
             gender: {
@@ -219,27 +253,20 @@ $('.ui.form')
                 identifier: 'email',
                 rules: [{
                     type: 'email',
-                    prompt: 'Please enter a valid e-mail'
+                    prompt: 'Por favor introduzca una dirección de correo electrónico válida'
                 }]
             },
             password: {
                 identifier: 'password',
                 rules: [{
                         type: 'empty',
-                        prompt: 'Please enter a password'
+                        prompt: 'Por favor ingrese una contraseña'
                     },
                     {
                         type: 'minLength[6]',
-                        prompt: 'Your password must be at least {ruleValue} characters'
+                        prompt: 'Su contraseña debe tener al menos {ruleValue} caracteres'
                     }
                 ]
             },
-            terms: {
-                identifier: 'terms',
-                rules: [{
-                    type: 'checked',
-                    prompt: 'You must agree to the terms and conditions'
-                }]
-            }
         }
     });
