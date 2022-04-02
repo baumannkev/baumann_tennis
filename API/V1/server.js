@@ -51,7 +51,7 @@ app.use(bodyParser.json());
 
 app.get(endpoint + "admin_statistics", (req, res) => {
     // looks in base path /views by default, either change filedir or do it like this
-    res.render(updir + '/html/admin.html');
+    res.render(updir + '../html/admin.html');
 });
 
 app.get(endpoint + "admin", (req, res) => {
@@ -117,7 +117,7 @@ app.post(endpoint + "setprices", (req, res) => {
     })
 })
 
-app.post(endpoint + "signUp", async (req, res) => {
+app.post(endpoint + "signUp", async(req, res) => {
     try {
         connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'Signup'`, (err, result) => {
             if (err) throw err;
@@ -133,7 +133,7 @@ app.post(endpoint + "signUp", async (req, res) => {
         const allergies = req.body.allergies;
         const emergency = req.body.emergency;
         const relationship = req.body.relationship;
-        
+
         bcrypt.hash(req.body.password, saltRounds, (err, salt) => {
             connection.query(`INSERT INTO account (AccountID, FullName, PhoneNumber, Email, Password, Address, Insurance) VALUES (UUID(), '${name}', '${phoneNumber}', '${email}', '${salt}', '${address}', '${insurance}');`, (err, result) => {
                 try {
@@ -177,7 +177,7 @@ app.post(endpoint + "signUp", async (req, res) => {
                             });
                         }
                     });
-                    
+
                 } catch {
                     res.status(500);
                     res.json({
@@ -198,7 +198,7 @@ app.post(endpoint + "login", (req, res) => {
 
     connection.query(`SELECT Password, AccountID, Permissions FROM parent WHERE Email='${req.body.email}`, (e, r) => {
         try {
-        if (e) throw e;
+            if (e) throw e;
             if (bcrypt.compareSync(req.body.password, r[0].Password)) {
                 let token = {
                     token: jwt.sign({

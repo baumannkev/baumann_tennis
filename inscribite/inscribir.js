@@ -55,11 +55,6 @@ var databaseDates = [{
             message: 'Disponible',
             class: 'green'
         },
-        // {
-        //     date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7),
-        //     message: 'Disponible',
-        //     class: 'green'
-        // },
 
     ]
     //first add an event listener for page load
@@ -76,13 +71,13 @@ var dateExamples = [{
     "week": [{
         "sunday": [{
             "scheduledTime": "7AM a 8AM",
-            "level": "Verde 1",
-            "currentPlayers": 4,
+            "level": "Alquiler",
+            "currentPlayers": 0,
             "maxPlayers": 4,
-            "availability": "Lleno",
+            "availability": "Disponible",
         }, {
             "scheduledTime": "8AM a 9AM",
-            "level": "Rojo 1",
+            "level": "Alquiler",
             "currentPlayers": 3,
             "maxPlayers": 4,
             "availability": "Disponible",
@@ -187,16 +182,42 @@ var dateExamples = [{
             "maxPlayers": 4,
             "availability": "Disponible",
         }, ],
+        "friday": [{
+            "scheduledTime": "8AM a 9AM",
+            "level": "Naranja 2",
+            "currentPlayers": 2,
+            "maxPlayers": 4,
+            "availability": "Disponible",
+        }, {
+            "scheduledTime": "9AM a 10AM",
+            "level": "Naranja 2",
+            "currentPlayers": 3,
+            "maxPlayers": 4,
+            "availability": "Disponible",
+        }, ],
+        "saturday": [{
+            "scheduledTime": "8AM a 9AM",
+            "level": "Naranja 2",
+            "currentPlayers": 2,
+            "maxPlayers": 4,
+            "availability": "Disponible",
+        }, {
+            "scheduledTime": "9AM a 10AM",
+            "level": "Naranja 2",
+            "currentPlayers": 3,
+            "maxPlayers": 4,
+            "availability": "Disponible",
+        }, ],
     }]
 }];
 
 function get_json_data(daySelected) {
-    const weekday = ["sunday", "monday", "tuesday", "wednesday", "Thursday", "Friday", "Saturday"];
+    const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
     let day = weekday[daySelected.getDay()];
     // var data = $.getJSON('data.json')
     var dateSelected = dateExamples[0].week[0][day]
         // console.log("Date Selected: ", dateSelected)
-    var test = dateExamples[0].week[0][day][0]
+        // var test = dateExamples[0].week[0][day][0]
         // append_json_data(test)
     append_json_data(dateSelected)
 
@@ -218,20 +239,13 @@ function append_json_data(data) {
             availabilityColor = "blue"
         }
 
-
-        // var table = document.createElement("table");
-        // table.classList.add("ui", "very", "compact", "table", "tableSelect");
-        // dataObject.forEach(function(object) {
-        // var tr = document.createElement('tr');
         tableDiv.innerHTML += '<tr class="bookTable">' +
             '<td><span class="day2"></span>,</br>' + data[i].scheduledTime + '</td>' +
             '<td><span style="color: ' + availabilityColor + ' ">' + data[i].availability + '</td>' +
             '<td>' + data[i].level + '</td>' +
             '<td><a class = "availability scrollto" href="#cardMemberID"><button class="ui primary button" onclick="showMember()">Select</button></a></td>' +
             '</tr>';
-        // tableDiv.appendChild(table);
     }
-    // });
 }
 $('.ui.dropdown.booking')
     .dropdown({
@@ -342,7 +356,7 @@ $('#spanish_calendar')
         on: "hover",
         // disableMinute: "true",
         minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
-        maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30),
+        maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 6),
         text: {
             eventClass: 'inverted green',
             days: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
