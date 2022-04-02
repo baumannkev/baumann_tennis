@@ -167,18 +167,27 @@
             <br>
             <!-- Table for bookings -->
             <div class="card border-secondary mb-3 cardDateBook">
+                <div class="card-body text-secondary">
+                    <table class="ui very compact table tableSelect">
+                        <tbody id="dateBooking">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card border-secondary mb-3 cardDateBook2">
                 <div class="card-header">Booking</br>Date Selected: <span id="dateSelectedBooking"></span></div>
                 <div class="card-body text-secondary">
                     <table class="ui very compact table tableSelect">
                         <tbody>
-                            <tr class="bookTable">
-                                <td><span class="day2"></span>,</br> 7 AM a 8 AM</td>
+                            <!-- <tr class="bookTable"> -->
+                            <!-- <td><span class="day2"></span>,</br> 7 AM a 8 AM</td>
                                 <td>Disponible</td>
                                 <td><span>Alquiler de Cancha</span></td>
                                 <td><a class="availability scrollto" href="#cardMemberID"><button
                                             class="ui primary button" onclick="showMember()">
-                                            Select</button></a></td>
-                            </tr>
+                                            Select</button></a></td> -->
+                            <!-- </tr> -->
                             <tr class="bookTable">
                                 <td><span class="day2"></span>,</br> 8 AM a 9 AM </td>
                                 <td><span style="color:red">Lleno</span></td>
@@ -230,7 +239,7 @@
                 <div class="card-body text-secondary">
                     <table class="ui very compact table tableSelect">
                         <tbody>
-                            <tr class="bookTable">
+                            <tr class="bookTable" id="bookTable1">
                                 <td><span class="day2"></span>,</br> 7 AM a 8 AM </td>
                                 <td><span style="color:red">Lleno</span></td>
                                 <td><span style="color:red">Por favor, haga una selección

@@ -1,0 +1,101 @@
+{
+    "week": [{
+        "monday": [{
+                "scheduledTime": "7AM a 8AM",
+                "level": "Beginner",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno"
+            },
+            {
+                "scheduledTime": "9AM a 10AM",
+                "level": "Intermediate",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible"
+            }
+        ],
+        "tuesday": [{
+                "scheduledTime": "8AM a 9AM",
+                "level": "Advanced",
+                "currentPlayers": 2,
+                "maxPlayers": 4,
+                "availability": "Disponible"
+            },
+            {
+                "scheduledTime": "9AM a 10AM",
+                "level": "Intermediate",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible"
+            }
+        ]
+    }]
+} {
+    "abc6": {
+        "qh": "abc6",
+        "qt": 1,
+        "qti": [{
+            "i": [
+                "kdsa17"
+            ]
+        }]
+    },
+    "abc7": {
+        "qh": "abc7",
+        "qt": 2,
+        "qti": [{
+            "i": [
+                [
+                    "kdsa22",
+                    "kdsa23"
+                ]
+            ]
+        }]
+    },
+    "abc5": {
+        "qh": "abc5",
+        "qt": 1,
+        "qti": [{
+            "i": [
+                "kdsa14"
+            ]
+        }]
+    },
+    "abc2": {
+        "qh": "abc2",
+        "qt": 1,
+        "qti": [{
+            "i": [
+                "kdsa7"
+            ]
+        }]
+    },
+    "abc3": {
+        "qh": "abc3",
+        "qt": 0,
+        "qti": [{
+            "i": [
+                "sadsa"
+            ]
+        }]
+    },
+    "abc4": {
+        "qh": "abc4",
+        "qt": 0,
+        "qti": [{
+            "i": [
+                "adasd"
+            ]
+        }]
+    },
+    "abc1": {
+        "qh": "abc1",
+        "qt": 1,
+        "qti": [{
+            "i": [
+                "kdsa4"
+            ]
+        }]
+    }
+}
