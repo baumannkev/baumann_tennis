@@ -3,7 +3,8 @@ var today = new Date();
 var optionSelected = 'book';
 var bookSelectedText = 'Bienvenido! Elegi la hora disponible para alquilar la cancha';
 $('#welcome').text(bookSelectedText)
-    // $('.full').disable();
+
+// $('.full').disable();
 var arr = [0, 1, 2, 3, 4, 5];
 $(".cardDateBook2").hide();
 let dropValues = [{
@@ -70,180 +71,613 @@ var test = [
 var dateExamples = [{
     "week": [{
         "sunday": [{
-            "scheduledTime": "7AM a 8AM",
-            "level": "Alquiler",
-            "currentPlayers": 0,
-            "maxPlayers": 4,
-            "availability": "Disponible",
-        }, {
-            "scheduledTime": "8AM a 9AM",
-            "level": "Alquiler",
-            "currentPlayers": 3,
-            "maxPlayers": 4,
-            "availability": "Disponible",
-        }, ],
+                "scheduledTime": "7AM a 8AM",
+                "level": "Alquiler",
+                "currentPlayers": 0,
+                "maxPlayers": 1,
+                "availability": "Disponible",
+            }, {
+                "scheduledTime": "8AM a 9AM",
+                "level": "Alquiler",
+                "currentPlayers": 0,
+                "maxPlayers": 1,
+                "availability": "Disponible",
+            },
+            {
+                "scheduledTime": "9AM a 10AM",
+                "level": "Alquiler",
+                "currentPlayers": 0,
+                "maxPlayers": 1,
+                "availability": "Disponible",
+            }, {
+                "scheduledTime": "11AM a 12PM",
+                "level": "Alquiler",
+                "currentPlayers": 0,
+                "maxPlayers": 1,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "12PM a 1PM",
+                "level": "Alquiler",
+                "currentPlayers": 0,
+                "maxPlayers": 1,
+                "availability": "Disponible",
+            }, {
+                "scheduledTime": "1PM a 2PM",
+                "level": "Alquiler",
+                "currentPlayers": 0,
+                "maxPlayers": 1,
+                "availability": "Disponible",
+            },
+        ],
         "monday": [{
-            "scheduledTime": "7AM a 8AM",
-            "level": "Amarillo 2",
-            "currentPlayers": 4,
-            "maxPlayers": 4,
-            "availability": "Lleno",
-        }, {
-            "scheduledTime": "8AM a 9AM",
-            "level": "Naranja 2",
-            "currentPlayers": 4,
-            "maxPlayers": 4,
-            "availability": "Lleno",
-        }, {
-            "scheduledTime": "9AM a 10AM",
-            "level": "Naranja 2",
-            "currentPlayers": 3,
-            "maxPlayers": 4,
-            "availability": "Disponible",
-        }, {
-            "scheduledTime": "10AM a 11AM",
-            "level": "Naranja 2",
-            "currentPlayers": 4,
-            "maxPlayers": 4,
-            "availability": "Lleno",
-        }, {
-            "scheduledTime": "11AM a 12PM",
-            "level": "Naranja 2",
-            "currentPlayers": 4,
-            "maxPlayers": 4,
-            "availability": "Lleno",
-        }, {
-            "scheduledTime": "12PM a 1PM",
-            "level": "Naranja 2",
-            "currentPlayers": 3,
-            "maxPlayers": 4,
-            "availability": "Disponible",
-        }, ],
+                "scheduledTime": "7AM a 8AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "8AM a 9AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "9AM a 10AM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            }, {
+                "scheduledTime": "10AM a 11AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "11AM a 12PM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "12PM a 1PM",
+                "level": "Azul 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+            {
+                "scheduledTime": "1PM a 2PM",
+                "level": "Amarillo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "2PM a 3PM",
+                "level": "Verde 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "3PM a 4PM",
+                "level": "Naranja 1",
+                "currentPlayers": 3,
+                "maxPlayers": 6,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "4PM a 5PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 6,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "5PM a 6PM",
+                "level": "Verde 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "6PM a 7PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+        ],
         "tuesday": [{
-            "scheduledTime": "7AM a 8AM",
-            "level": "Naranja 2",
-            "currentPlayers": 4,
-            "maxPlayers": 4,
-            "availability": "Lleno",
-        }, {
-            "scheduledTime": "8AM a 9AM",
-            "level": "Naranja 2",
-            "currentPlayers": 4,
-            "maxPlayers": 4,
-            "availability": "Lleno",
-        }, {
-            "scheduledTime": "9AM a 10AM",
-            "level": "Naranja 2",
-            "currentPlayers": 3,
-            "maxPlayers": 4,
-            "availability": "Disponible",
-        }, {
-            "scheduledTime": "10AM a 11AM",
-            "level": "Naranja 2",
-            "currentPlayers": 4,
-            "maxPlayers": 4,
-            "availability": "Lleno",
-        }, {
-            "scheduledTime": "11AM a 12PM",
-            "level": "Naranja 2",
-            "currentPlayers": 4,
-            "maxPlayers": 4,
-            "availability": "Lleno",
-        }, {
-            "scheduledTime": "12PM a 1PM",
-            "level": "Naranja 2",
-            "currentPlayers": 3,
-            "maxPlayers": 4,
-            "availability": "Disponible",
-        }, ],
+                "scheduledTime": "7AM a 8AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "8AM a 9AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "9AM a 10AM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            }, {
+                "scheduledTime": "10AM a 11AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "11AM a 12PM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "12PM a 1PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+            {
+                "scheduledTime": "1PM a 2PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "2PM a 3PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "3PM a 4PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 6,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "4PM a 5PM",
+                "level": "Verde 1",
+                "currentPlayers": 3,
+                "maxPlayers": 6,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "5PM a 6PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "6PM a 7PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+        ],
         "wednesday": [{
-            "scheduledTime": "7AM a 8AM",
-            "level": "Naranja 2",
-            "currentPlayers": 4,
-            "maxPlayers": 4,
-            "availability": "Lleno",
-        }, {
-            "scheduledTime": "9AM a 10AM",
-            "level": "Naranja 2",
-            "currentPlayers": 3,
-            "maxPlayers": 4,
-            "availability": "Disponible",
-        }, ],
+                "scheduledTime": "7AM a 8AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "8AM a 9AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "9AM a 10AM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            }, {
+                "scheduledTime": "10AM a 11AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "11AM a 12PM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "12PM a 1PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+            {
+                "scheduledTime": "1PM a 2PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "2PM a 3PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "3PM a 4PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 6,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "4PM a 5PM",
+                "level": "Azul 1",
+                "currentPlayers": 3,
+                "maxPlayers": 6,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "5PM a 6PM",
+                "level": "Verde 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "6PM a 7PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+        ],
         "thursday": [{
-            "scheduledTime": "8AM a 9AM",
-            "level": "Naranja 2",
-            "currentPlayers": 2,
-            "maxPlayers": 4,
-            "availability": "Disponible",
-        }, {
-            "scheduledTime": "9AM a 10AM",
-            "level": "Naranja 2",
-            "currentPlayers": 3,
-            "maxPlayers": 4,
-            "availability": "Disponible",
-        }, ],
+                "scheduledTime": "7AM a 8AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "8AM a 9AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "9AM a 10AM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            }, {
+                "scheduledTime": "10AM a 11AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "11AM a 12PM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "12PM a 1PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+            {
+                "scheduledTime": "1PM a 2PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "2PM a 3PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "3PM a 4PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 6,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "4PM a 5PM",
+                "level": "Verde 1",
+                "currentPlayers": 3,
+                "maxPlayers": 6,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "5PM a 6PM",
+                "level": "Verde 2",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "6PM a 7PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+        ],
         "friday": [{
-            "scheduledTime": "8AM a 9AM",
-            "level": "Naranja 2",
-            "currentPlayers": 2,
-            "maxPlayers": 4,
-            "availability": "Disponible",
-        }, {
-            "scheduledTime": "9AM a 10AM",
-            "level": "Naranja 2",
-            "currentPlayers": 3,
-            "maxPlayers": 4,
-            "availability": "Disponible",
-        }, ],
+                "scheduledTime": "7AM a 8AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "8AM a 9AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "9AM a 10AM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            }, {
+                "scheduledTime": "10AM a 11AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "11AM a 12PM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "12PM a 1PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+            {
+                "scheduledTime": "1PM a 2PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "2PM a 3PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "3PM a 4PM",
+                "level": "Azul 1",
+                "currentPlayers": 3,
+                "maxPlayers": 6,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "4PM a 5PM",
+                "level": "Azul 1",
+                "currentPlayers": 3,
+                "maxPlayers": 6,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "5PM a 6PM",
+                "level": "Verde 2",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "6PM a 7PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+        ],
         "saturday": [{
-            "scheduledTime": "8AM a 9AM",
-            "level": "Naranja 2",
-            "currentPlayers": 2,
-            "maxPlayers": 4,
-            "availability": "Disponible",
-        }, {
-            "scheduledTime": "9AM a 10AM",
-            "level": "Naranja 2",
-            "currentPlayers": 3,
-            "maxPlayers": 4,
-            "availability": "Disponible",
-        }, ],
+                "scheduledTime": "7AM a 8AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "8AM a 9AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "9AM a 10AM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            }, {
+                "scheduledTime": "10AM a 11AM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "11AM a 12PM",
+                "level": "Rojo 1",
+                "currentPlayers": 4,
+                "maxPlayers": 4,
+                "availability": "Lleno",
+            }, {
+                "scheduledTime": "12PM a 1PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+            {
+                "scheduledTime": "1PM a 2PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "2PM a 3PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "3PM a 4PM",
+                "level": "Azul 1",
+                "currentPlayers": 3,
+                "maxPlayers": 6,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "4PM a 5PM",
+                "level": "Azul 1",
+                "currentPlayers": 3,
+                "maxPlayers": 6,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "5PM a 6PM",
+                "level": "Verde 2",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+
+            {
+                "scheduledTime": "6PM a 7PM",
+                "level": "Rojo 1",
+                "currentPlayers": 3,
+                "maxPlayers": 4,
+                "availability": "Disponible",
+            },
+        ],
     }]
 }];
 
 function get_json_data(daySelected) {
     const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
     let day = weekday[daySelected.getDay()];
-    // var data = $.getJSON('data.json')
     var dateSelected = dateExamples[0].week[0][day]
-        // console.log("Date Selected: ", dateSelected)
-        // var test = dateExamples[0].week[0][day][0]
-        // append_json_data(test)
     append_json_data(dateSelected)
 
 }
 
 function append_json_data(data) {
     var tableDiv = document.getElementById('dateBooking');
-    console.log(data[0])
-    console.log(data[1])
-    console.log(data.length)
     tableDiv.innerHTML = ""
-        // var dataObject = JSON.parse(data)
     for (var i = 0; i < data.length; i++) {
-        // console.log(i + " : " + data[i])
         var availabilityColor = ""
+        var disabledSelect = ""
+        var backgroundSkillColor = ""
+        skillColor = ""
+
+        var fullClass = "Por favor, haga una selección diferente"
+
         if (data[i].availability == 'Lleno') {
-            availabilityColor = "red"
+            availabilityColor = "#E24D4D"
+            disabledSelect = "disabled"
+            data[i].level = fullClass
+            skillColor = availabilityColor
         } else {
-            availabilityColor = "blue"
+            availabilityColor = "#2185D0"
+        }
+
+        if (data[i].level == 'Azul 1' || data[i].level == 'Azul 2') {
+            backgroundSkillColor = '#DDF4FF'
+            skillColor = '#2185D0'
+        }
+        if (data[i].level == 'Rojo 1' || data[i].level == 'Rojo 2') {
+            backgroundSkillColor = '#FFE1DF'
+            skillColor = '#E24D4D'
+        }
+        if (data[i].level == 'Verde 1' || data[i].level == 'Verde 2') {
+            backgroundSkillColor = '#D5F5D9'
+            skillColor = '#41C750'
+        }
+        if (data[i].level == 'Naranja 1' || data[i].level == 'Naranja 2') {
+            backgroundSkillColor = '#FFE7D1'
+            skillColor = '#F2711C'
+        }
+        if (data[i].level == 'Amarillo 1' || data[i].level == 'Amarillo 2') {
+            backgroundSkillColor = '#FFF9D2'
+            skillColor = '#BF9122'
         }
 
         tableDiv.innerHTML += '<tr class="bookTable">' +
             '<td><span class="day2"></span>,</br>' + data[i].scheduledTime + '</td>' +
             '<td><span style="color: ' + availabilityColor + ' ">' + data[i].availability + '</td>' +
-            '<td>' + data[i].level + '</td>' +
-            '<td><a class = "availability scrollto" href="#cardMemberID"><button class="ui primary button" onclick="showMember()">Select</button></a></td>' +
+            '<td><span style="color:  ' + skillColor + '; background-color: ' + backgroundSkillColor + ' ">' + data[i].level + '</td>' +
+            '<td><a class = "availability scrollto" href="#cardMemberID"><button class="ui primary button ' + disabledSelect + '" onclick="showMember()">Seleccionar</button></a></td>' +
             '</tr>';
     }
 }
@@ -289,7 +723,7 @@ $("#loginTarget").click(function() {
     $("#signUpForm").hide();
 });
 $("#signUpTargetModal").click(function() {
-    $("#loginFormModal").hide();
+    $("#loginFormModal").hide()
     $("#signUpFormModal").show();
 });
 
@@ -315,7 +749,8 @@ $('.birthdate').calendar({
     },
 })
 $(".signup").hide()
-$('#spanish_calendar')
+
+$('.calendar')
     .calendar({
         today: "true",
         touchReadonly: "false",
@@ -358,7 +793,7 @@ $('#spanish_calendar')
         minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
         maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 6),
         text: {
-            eventClass: 'inverted green',
+            eventClass: 'inverted red',
             days: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
             months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
             monthsShort: ['Ene', 'Feb', 'Mar', 'Avr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
