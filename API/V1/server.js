@@ -528,7 +528,7 @@ app.post(endpoint + "register", (req, res) => {
 app.post(endpoint + "getPlayers", (req, res) => {
     let permission = jwt.verify(req.body.token, secretKey);
     if (permission) {
-        connection.query(`SELECT player.* FROM player LEFT JOIN playeraccountlink on player.PlayerID=playeraccountlink.PlayerID LEFT JOIN account on playeraccountlink.AccountID=account.AccountID WHERE account.AccountID=${permission.AccountID}`, (err, result) => {
+        connection.query(`SELECT player.* FROM player LEFT JOIN playeraccountlink on player.PlayerID=playeraccountlink.PlayerID LEFT JOIN account on playeraccountlink.AccountID=account.AccountID WHERE account.AccountID='${permission.AccountID}'`, (err, result) => {
             try {
                 if (err) throw err;
                 res.json(result);
