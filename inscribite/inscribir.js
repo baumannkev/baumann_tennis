@@ -103,14 +103,19 @@ const login = () => {
         password: document.getElementById("loginPassword").value
     }
 
+    LoginInfo = JSON.stringify(LoginInfo)
+
     console.log("Info ", LoginInfo)
 
     xhttp.open(POST, url, true);
+    xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(LoginInfo);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (JSON.parse(this.response).success) {
-                document.getElementById("loginSuccess").innerHTML = 'test'
+                $("#loginForm").hide();
+                $('#confirmBookDiv').show();
+                // document.getElementById("confirmBookDiv").innerHTML = 'test'
                 console.log("here")
             } else {
                 alert("Login unsuccessful, please try again");
@@ -137,19 +142,6 @@ const signUp = () => {
         // insurance: document.getElementById("signUpInsurance").value,
         password: document.getElementById("signUpPassword").value,
     }
-
-    // let SignUpInfo = {
-    //     email: "kevin1@test.test",
-    //     phoneNumber: "1234567890",
-    //     name: "kevin",
-    //     address: "1 test ln",
-    //     dob: "1999-01-01",
-    //     sex: "Male",
-    //     skill: "Beginner",
-    //     emergency: "tester1",
-    //     relationship: "tester1",
-    //     password: "tester1"
-    // }
 
     console.log("Info ", SignUpInfo)
     SignUpInfo = JSON.stringify(SignUpInfo)
