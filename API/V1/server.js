@@ -12,7 +12,7 @@ const updir = '..';
 const port = 30005;
 const saltRounds = 12;
 const secretKey = "v1KnQJA9Q0"
-// console.log('Path of file in account dir:', require('path').resolve(__dirname, '../html'));
+    // console.log('Path of file in account dir:', require('path').resolve(__dirname, '../html'));
 app.use('/html', express.static(path.join(__dirname, "html")));
 // app.use('/css', express.static(path.join(__dirname, "css")));
 app.use('/img', express.static(path.join(__dirname, "images")));
@@ -379,7 +379,7 @@ app.get(endpoint + "getCalendar", (req, res) => {
     });
 })
 
-app.post(endpoint + "updateCalendar", async (req, res) => {
+app.post(endpoint + "updateCalendar", async(req, res) => {
     connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'updateCalendar'`, (err, result) => {
         try {
             if (err) throw err;
@@ -417,7 +417,7 @@ app.post(endpoint + "updateCalendar", async (req, res) => {
                             res.json(e);
                         }
                     })
-                    
+
                     break;
                 case "DELETE":
                     connection.query(`DELETE FROM dayofweek WHERE TimeslotID = ${req.body.timeslotID}`, (err, result) => {

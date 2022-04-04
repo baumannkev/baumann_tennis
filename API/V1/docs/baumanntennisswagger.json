@@ -9,55 +9,35 @@
         }
     },
     "tags": [{
-            "name": "admin_register",
-            "description": "Registers a user as an administrator"
+            "name": "admin",
+            "description": "Administrator with special privileges"
         },
         {
-            "name": "admin_login",
-            "description": "Logs in to server using admin credentials"
-        },
-        {
-            "name": "player_register",
-            "description": "Registers a user as a player"
-        },
-        {
-            "name": "player_login",
-            "description": "Logs in to server using player credentials"
-        },
-        {
-            "name": "players",
-            "description": "Access to playerss"
+            "name": "account",
+            "description": "Access to user account"
         }
     ],
     "schemes": [
         "https"
     ],
     "paths": {
-        "/admin_register": {
-            "post": {
+        "/admin": {
+            "get": {
                 "tags": [
-                    "admin_register"
+                    "admin"
                 ],
-                "summary": "Register user as administrator",
+                "summary": "Gets an admin",
                 "description": "",
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [{
-                        "name": "username",
-                        "in": "body",
-                        "description": "Username of the admin account to register",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "password",
-                        "in": "body",
-                        "description": "Password of the admin account to register",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
+                    "name": "username",
+                    "in": "body",
+                    "description": "Username of the admin account to register",
+                    "required": true,
+                    "type": "string"
+                }],
                 "responses": {
                     "200": {
                         "description": "Admin successfully registered"
@@ -74,9 +54,9 @@
         "/admin_login": {
             "post": {
                 "tags": [
-                    "admin_login"
+                    "admin"
                 ],
-                "summary": "Log in as the administrator",
+                "summary": "Log in as an administrator",
                 "description": "",
                 "produces": [
                     "application/json"
@@ -109,134 +89,170 @@
                 }
             }
         },
-        "/player_register": {
+        "/signUp": {
             "post": {
                 "tags": [
-                    "player_register"
+                    "account"
                 ],
-                "summary": "Register user as player",
+                "summary": "Sign up for an account",
                 "description": "",
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [{
-                        "name": "username",
+                        "name": "email",
                         "in": "body",
-                        "description": "Username of the player account to register",
+                        "description": "Email of the user account",
                         "required": true,
-                        "type": "string"
+                        "type": "email"
                     },
                     {
                         "name": "password",
                         "in": "body",
-                        "description": "Password of the player account to register",
+                        "description": "Password of the account",
+                        "required": true,
+                        "type": "password"
+                    },
+                    {
+                        "name": "phonenumber",
+                        "in": "body",
+                        "description": "Phone number of the user",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "name",
+                        "in": "body",
+                        "description": "Name of the user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "address",
+                        "in": "body",
+                        "description": "Address of the user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "insurance",
+                        "in": "body",
+                        "description": "Insurance provider of the user",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dateOfBirth",
+                        "in": "body",
+                        "description": "Date of birth of the user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sex",
+                        "in": "body",
+                        "description": "Sex of the user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "allergies",
+                        "in": "body",
+                        "description": "Allergies level of the user",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "emergency",
+                        "in": "body",
+                        "description": "Emergency contant number of the user",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "relationship",
+                        "in": "body",
+                        "description": "Relationship of the emergency contact number of the user",
                         "required": true,
                         "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Player successfully registered"
+                        "description": "User account created"
                     },
                     "400": {
-                        "description": "User already exists"
+                        "description": "An error occurred. :("
                     },
                     "500": {
-                        "description": "Error with registartion"
+                        "description": "Failed to associate the player and user"
                     }
                 }
             }
         },
-        "/player_login": {
+        "/login": {
             "post": {
                 "tags": [
-                    "player_login"
+                    "account"
                 ],
-                "summary": "Log in as a player",
-                "description": "",
+                "operationId": "login",
+                "summary": "Login to your account",
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [{
-                        "name": "username",
-                        "in": "body",
-                        "description": "Username of the player account",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "password",
-                        "in": "body",
-                        "description": "Password of the player account",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
+                    "name": "email",
+                    "in": "body",
+                    "description": "Email of the user account",
+                    "required": true,
+                    "type": "email"
+                }],
                 "responses": {
                     "200": {
-                        "description": "Player logged in"
-                    },
-                    "400": {
-                        "description": "Incorrect userame or password"
+                        "description": "Logged in successfully"
                     },
                     "500": {
-                        "description": "Server error; cannot login with credentials"
+                        "description": "Unable to retrieve email"
                     }
                 }
             }
         },
-        "/players": {
-            "get": {
+        "/getCalendar": {
+            "post": {
                 "tags": [
-                    "players"
+                    "account"
                 ],
-                "operationId": "getPlayersV1",
-                "summary": "Gets all players",
+                "operationId": "getCalendar",
+                "summary": "Get the calendar from the database",
                 "produces": [
                     "application/json"
                 ],
                 "responses": {
                     "200": {
-                        "description": "200 OK",
-                        "examples": {
-                            "id": 1,
-                            "name": "John Smith",
-                            "email": "johnsmith@gmail.com",
-                            "username": "johnsmith123",
-                            "age": "22",
-                            "skill": "intermediate"
-                        }
+                        "description": "successfully retrieved calendar"
                     },
-                    "404": {
-                        "description": "404 Not Found"
+                    "500": {
+                        "description": "Unable to retrieve calendar"
                     }
                 }
             }
         },
-        "/players{playerID}": {
-            "get": {
+        "/updateCalendar": {
+            "put": {
                 "tags": [
-                    "players"
+                    "account"
                 ],
-                "operationId": "getPlayerV1",
-                "summary": "Gets a specific player",
+                "operationId": " updateCalendar",
+                "summary": "Update the calendar when someone registers for a class or rents",
                 "produces": [
                     "application/json"
                 ],
                 "responses": {
                     "200": {
-                        "description": "200 OK",
-                        "examples": {
-                            "id": 2,
-                            "name": "Sally Smith",
-                            "email": "sallysmith@gmail.com",
-                            "username": "sallysmith123",
-                            "age": "20",
-                            "skill": "beginner"
-                        }
+                        "description": "successfully updated calendar"
                     },
-                    "404": {
-                        "description": "404 Not Found"
+                    "500": {
+                        "description": "Unable to update calendar"
                     }
                 }
             }

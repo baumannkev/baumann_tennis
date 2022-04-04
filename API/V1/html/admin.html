@@ -49,7 +49,7 @@
         <h3>Login</h3>
 
         <div class="card border-secondary mb-3">
-            <div class="card-body text-secondary" id="LoginWidget">
+            <div class="card-body text-secondary" id="LoginWidget" style="display: block">
                 <form class="ui form segment" id="LoginForm">
                     <div class="two fields">
                         <div class="field">
@@ -61,9 +61,16 @@
                             <input id="Password" type="password" name="password" placeholder="Password">
                         </div>
                     </div>
-                    <div class="ui primary submit button" id="submit">Login</div>
-                    <div class="ui error message"></div>
+                    <label for="Submit">Login: </label>
+                    <input id="Submit" type="submit" value="Login" />
+                    <!-- <div class="ui primary submit button" id="submit">Login</div>
+                    <div class="ui error message"></div> -->
                 </form>
+            </div>
+        </div>
+        <div class="card" id="AdminPage" style="display: block;">
+            <button onclick="refresh()">Refresh Statistics</button>
+            <div id="Stats">
             </div>
         </div>
     </div>
@@ -78,14 +85,8 @@
         </form>
     </div> -->
 
-    <div id="AdminPage" style="display: none;">
-        <button onclick="refresh()">Refresh Statistics</button>
-        <div id="Stats">
-        </div>
-    </div>
-
     <!-- ======= Footer ======= -->
-    <footer id="footer">
+    <!-- <footer id="footer">
 
         <div class="footer-top">
             <div class="container">
@@ -106,8 +107,6 @@
                         <ul>
                             <li><i class="bx bx-chevron-right"></i> <a href="https://baumanntennis.com">Inicio</a>
                             </li>
-                            <!-- <li><i class="bx bx-chevron-right"></i> <a href="inscribite.html">Inscribite</a></li> -->
-                            <!-- <li><i class="bx bx-chevron-right"></i> <a href="sobrelosprofes.html">Los Profes</a> -->
                             </li>
                         </ul>
                     </div>
@@ -134,22 +133,19 @@
 
             <div class="me-md-auto text-center text-md-start">
                 <div class="credits">
-                    <!-- All the links in the footer should remain intact. -->
                     Designed by <a href="https://www.linkedin.com/in/kevinbau/" target="_blank">Kevin Baumann</a>
                 </div>
             </div>
             <div class="social-links text-center text-md-end pt-3 pt-md-0">
-                <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> -->
                 <a href="https://www.facebook.com/baumanntennisacademia/" target="_blank" class="facebook"><i
                         class="fa fa-facebook"></i></a>
                 <a href="https://instagram.com/baumanntennis?igshid=1se5twpjgogen" target="_blank" class="instagram"><i
                         class="fa fa-instagram"></i></a>
-                <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> -->
                 <a href="https://api.whatsapp.com/message/GDPS56AEKFB2M1" target="_blank" class="linkedin"><i
                         class="fa fa-whatsapp"></i></a>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <script src="../js/admin.js"></script>
 </body>
