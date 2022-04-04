@@ -65,6 +65,30 @@ app.get(endpoint + "admin_statistics", (req, res) => {
     res.render(updir + '/html/admin.html');
 });
 
+app.get(endpoint + "documentation", (req, res) => {
+    connection.query(`UPDATE endpoints SET Hits = Hits + 1 WHERE Endpoint = 'documentation'`, (err, result) => {
+        try {
+            if (err) throw err;
+        } catch (e) {
+            res.json(e);
+        }
+    });
+    // looks in base path /views by default, either change filedir or do it like this
+    res.render(updir + '/docs/documentation.html');
+});
+
+app.get(endpoint + "inscribir", (req, res) => {
+    connection.query(`UPDATE endpoints SET Hits = Hits + 1 WHERE Endpoint = 'inscribir'`, (err, result) => {
+        try {
+            if (err) throw err;
+        } catch (e) {
+            res.json(e);
+        }
+    });
+    // looks in base path /views by default, either change filedir or do it like this
+    res.render(updir + '/../../inscribite/inscribir.html');
+});
+
 app.get(endpoint + "admin", (req, res) => {
     connection.query(`UPDATE endpoints SET Hits = Hits + 1 WHERE Endpoint = 'admin'`, (err, result) => {
         try {
