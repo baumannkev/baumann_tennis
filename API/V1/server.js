@@ -8,7 +8,7 @@ const app = express();
 const endpoint = '/';
 const updir = '..';
 const port = 30005;
-// console.log('Path of file in parent dir:', require('path').resolve(__dirname, '../html'));
+// console.log('Path of file in account dir:', require('path').resolve(__dirname, '../html'));
 app.use('/html', express.static(path.join(__dirname, "html")));
 // app.use('/css', express.static(path.join(__dirname, "css")));
 app.use('/img', express.static(path.join(__dirname, "images")));
@@ -36,7 +36,7 @@ const connection = mysql.createConnection({
     password: "",
     database: "baumanntennisapi"
 });
-// connection.connect();
+connection.connect();
 
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -140,20 +140,20 @@ app.post(endpoint + "signUp", async (req, res) => {
                     if (err) throw err;
                     connection.query(`INSERT INTO player (PlayerID, FullName, DOB, Sex, SkillLevel, AllergiesMedication, ECN) VALUES (UUID(), ${name}, ${dateOfBirth}, ${sex}, ${skill}, ${allergies}, ${emergency})`, (err, result) => {
                         try {
-                            connection.query(`SELECT parent.ParentID, player.PlayerID
-                                FROM parent
-                                LEFT JOIN player ON parent.Email = player.Email
+                            connection.query(`SELECT account.accountID, player.PlayerID
+                                FROM account
+                                LEFT JOIN player ON account.Email = player.Email
                                 WHERE Email='${email}' AND Password='${salt}'`, (err, result) => {
                                 try {
                                     if (err) throw err;
-                                    let parentID = result[0].ParentID;
+                                    let accountID = result[0].accountID;
                                     let playerID = result[0].PlayerID;
-                                    connection.query(`INSERT INTO playerparentlink (PlayerID, ParentID, Relationship) VALUES (${playerID}, ${parentID}, ${relationship})`, (err, result) => {
+                                    connection.query(`INSERT INTO playeraccountlink (PlayerID, accountID, Relationship) VALUES (${playerID}, ${accountID}, ${relationship})`, (err, result) => {
                                         try {
                                             if (err) throw err;
                                             res.json({
                                                 token: jwt.sign({
-                                                    ParentID: parentID
+                                                    accountID: accountID
                                                 })
                                             });
                                         } catch (e) {
@@ -196,7 +196,7 @@ app.post(endpoint + "signUp", async (req, res) => {
 
 app.post(endpoint + "login", (req, res) => {
 
-    connection.query(`SELECT Password, AccountID, Permissions FROM parent WHERE Email='${req.body.email}`, (e, r) => {
+    connection.query(`SELECT Password, AccountID, Permissions FROM account WHERE Email='${req.body.email}`, (e, r) => {
         try {
         if (e) throw e;
             if (bcrypt.compareSync(req.body.password, r[0].Password)) {
@@ -239,3 +239,60 @@ const adminLogin = function(username, password) {
         }
     });
 }
+
+
+// editDatabase
+app.post(endpoint + "loadPlayer", (req, res) => {
+    connection.query('SELECT * FROM player', (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.post(endpoint + "loadInstructor", (req, res) => {
+    connection.query('SELECT * FROM instructor', (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.post(endpoint + "loadCourt", (req, res) => {
+    connection.query('SELECT * FROM court', (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.post(endpoint + "loadClass", (req, res) => {
+    connection.query('SELECT * FROM class', (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.post(endpoint + "loadReservation", (req, res) => {
+    connection.query('SELECT * FROM reservation', (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.post(endpoint + "removeReservation", (req, res) => {
+    let body = "";
+    req.on('data', function(chunk){
+        if (chunk != null) {
+            body+= chunk;
+        }
+    });
+    connection.query('DELETE from reservation where scheduledTime = "'+body+'"', (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+
+
+
+
+
+
