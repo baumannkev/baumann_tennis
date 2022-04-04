@@ -2,6 +2,7 @@ var today = new Date();
 var optionSelected = 'book';
 var bookSelectedText = 'Bienvenido! Elegi la hora disponible para alquilar la cancha';
 $('#welcome').text(bookSelectedText)
+$('#confirmBookDiv').hide();
 
 // $('.full').disable();
 var arr = [0, 1, 2, 3, 4, 5];
@@ -102,14 +103,19 @@ const login = () => {
         password: document.getElementById("loginPassword").value
     }
 
+    LoginInfo = JSON.stringify(LoginInfo)
+
     console.log("Info ", LoginInfo)
 
     xhttp.open(POST, url, true);
+    xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(LoginInfo);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (JSON.parse(this.response).success) {
-                document.getElementById("loginSuccess").innerHTML = 'test'
+                $("#loginForm").hide();
+                $('#confirmBookDiv').show();
+                // document.getElementById("confirmBookDiv").innerHTML = 'test'
                 console.log("here")
             } else {
                 alert("Login unsuccessful, please try again");
@@ -138,13 +144,19 @@ const signUp = () => {
     }
 
     console.log("Info ", SignUpInfo)
+    SignUpInfo = JSON.stringify(SignUpInfo)
+
 
     xhttp.open(POST, url, true);
+    // xhttp.setRequestHeader("Accept", "application/json");
+    xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(SignUpInfo);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log("Test ", this.response)
-            document.getElementById("signUpTest").innerHTML = 'test'
+            console.log("Test ", JSON.parse(this.response))
+            $("#signUpForm").hide();
+            $('#confirmBookDiv').show();
+            document.getElementById("signUpTest").innerHTML = 'You are in'
             console.log("here")
         };
     };
@@ -163,10 +175,10 @@ function get_json_data(daySelected) {
     }
     var dbData = httpGet('http://localhost:30005/getCalendar');
     const jsonData = JSON.parse(dbData)
-    console.log("DATA 1", jsonData)
+        // console.log("DATA 1", jsonData)
         // console.log("test ", jsonData)
         // console.log(httpGet('http://localhost:30005/getCalendar'));
-    console.log("DAY " + day)
+        // console.log("DAY " + day)
         // console.log("DATA ", jsonData[day])
     var dateSelected = jsonData[day];
 
@@ -179,9 +191,9 @@ function append_json_data(data) {
     var tableDiv = document.getElementById('dateBooking');
     tableDiv.innerHTML = ""
     for (var i = 0; i < data.length; i++) {
-        console.log("scheduled time: ", data[i].scheduledTime);
-        console.log("level: ", data[i].level);
-        console.log("availability: ", data[i].availability);
+        // console.log("scheduled time: ", data[i].scheduledTime);
+        // console.log("level: ", data[i].level);
+        // console.log("availability: ", data[i].availability);
         var availabilityColor = ""
         var disabledSelect = ""
         var backgroundSkillColor = ""
@@ -243,7 +255,7 @@ function showMember() {
         }).get();
         if ($.trim(tableData[1]) !== 'Lleno') {
             $(".details").text($.trim(tableData[0]) + " , " + $.trim(tableData[2]));
-            console.log("Your data is: " + $.trim(tableData[0]) + " , " + $.trim(tableData[2]));
+            // console.log("Your data is: " + $.trim(tableData[0]) + " , " + $.trim(tableData[2]));
         }
     });
 }

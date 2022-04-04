@@ -163,6 +163,7 @@ app.post(endpoint + "setprices", (req, res) => {
 })
 
 app.post(endpoint + "signUp", (req, res) => {
+    console.log("respo", req.body);
     try {
         connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'signUp'`, (err, result) => {
             try {
@@ -229,7 +230,7 @@ app.post(endpoint + "signUp", (req, res) => {
                                     });
                                 }
                             });
-                            
+
                         } catch {
                             res.status(500);
                             res.json({
@@ -249,6 +250,7 @@ app.post(endpoint + "signUp", (req, res) => {
         });
     }
 });
+
 
 app.post(endpoint + "login", (req, res) => {
     connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'login'`, (err, result) => {
@@ -295,123 +297,123 @@ app.get(endpoint + "getCalendar", (req, res) => {
                         LEFT JOIN reservation ON dayofweek.ReservationID = reservation.ReservationID
                         LEFT JOIN account ON account.AccountID = reservation.AccountID
                         LEFT JOIN levels on reservation.Type = levels.Type`, (err, result) => {
-                            try {
-                                if (err) throw err;
-                                let Sunday = [];
-                                let Monday = [];
-                                let Tuesday = [];
-                                let Wednesday = [];
-                                let Thursday = [];
-                                let Friday = [];
-                                let Saturday = [];
-                                result.forEach(element => {
-                                    if (element.CurrentPlayers >= element.MaxPlayers) {
-                                        var Full = "Unavailable";
-                                    } else {
-                                        var Full = "Available";
-                                    }
-                                    switch (element.Weekday) {
-                                        case "Sunday":
-                                            Sunday.push({
-                                                scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                                                level: element.Type,
-                                                currentPlayers: element.CurrentPlayers,
-                                                maxPlayers: element.MaxPlayers,
-                                                availability: Full,
-                                                backgroundColour: element.BackgroundColour,
-                                                colour: element.Colour,
-                                                timeslotID: element.TimeslotID,
-                                                reservationID: element.ReservationID
-                                            });
-                                            break;
-                                        case "Monday":
-                                            Monday.push({
-                                                scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                                                level: element.Type,
-                                                currentPlayers: element.CurrentPlayers,
-                                                maxPlayers: element.MaxPlayers,
-                                                backgroundColour: element.BackgroundColour,
-                                                colour: element.Colour,
-                                                timeslotID: element.TimeslotID,
-                                                reservationID: element.ReservationID
-                                            });
-                                            break;
-                                        case "Tuesday":
-                                            Tuesday.push({
-                                                scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                                                level: element.Type,
-                                                currentPlayers: element.CurrentPlayers,
-                                                maxPlayers: element.MaxPlayers,
-                                                backgroundColour: element.BackgroundColour,
-                                                colour: element.Colour,
-                                                timeslotID: element.TimeslotID,
-                                                reservationID: element.ReservationID
-                                            });
-                                            break;
-                                        case "Wednesday":
-                                            Wednesday.push({
-                                                scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                                                level: element.Type,
-                                                currentPlayers: element.CurrentPlayers,
-                                                maxPlayers: element.MaxPlayers,
-                                                backgroundColour: element.BackgroundColour,
-                                                colour: element.Colour,
-                                                timeslotID: element.TimeslotID,
-                                                reservationID: element.ReservationID
-                                            });
-                                            break;
-                                        case "Thursday":
-                                            Thursday.push({
-                                                scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                                                level: element.Type,
-                                                currentPlayers: element.CurrentPlayers,
-                                                maxPlayers: element.MaxPlayers,
-                                                backgroundColour: element.BackgroundColour,
-                                                colour: element.Colour,
-                                                timeslotID: element.TimeslotID,
-                                                reservationID: element.ReservationID
-                                            });
-                                            break;
-                                        case "Friday":
-                                            Friday.push({
-                                                scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                                                level: element.Type,
-                                                currentPlayers: element.CurrentPlayers,
-                                                maxPlayers: element.MaxPlayers,
-                                                backgroundColour: element.BackgroundColour,
-                                                colour: element.Colour,
-                                                timeslotID: element.TimeslotID,
-                                                reservationID: element.ReservationID
-                                            });
-                                            break;
-                                        case "Saturday":
-                                            Saturday.push({
-                                                scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                                                level: element.Type,
-                                                currentPlayers: element.CurrentPlayers,
-                                                maxPlayers: element.MaxPlayers,
-                                                backgroundColour: element.BackgroundColour,
-                                                colour: element.Colour,
-                                                timeslotID: element.TimeslotID,
-                                                reservationID: element.ReservationID
-                                            });
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                });
-                                res.json({
-                                    sunday: Sunday,
-                                    monday: Monday,
-                                    tuesday: Tuesday,
-                                    wednesday: Wednesday,
-                                    thursday: Thursday,
-                                    friday: Friday,
-                                    saturday: Saturday
-                                });
-                            } catch (e) {
-                                res.json(e);
-                            }
+        try {
+            if (err) throw err;
+            let Sunday = [];
+            let Monday = [];
+            let Tuesday = [];
+            let Wednesday = [];
+            let Thursday = [];
+            let Friday = [];
+            let Saturday = [];
+            result.forEach(element => {
+                if (element.CurrentPlayers >= element.MaxPlayers) {
+                    var Full = "Unavailable";
+                } else {
+                    var Full = "Available";
+                }
+                switch (element.Weekday) {
+                    case "Sunday":
+                        Sunday.push({
+                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                            level: element.Type,
+                            currentPlayers: element.CurrentPlayers,
+                            maxPlayers: element.MaxPlayers,
+                            availability: Full,
+                            backgroundColour: element.BackgroundColour,
+                            colour: element.Colour,
+                            timeslotID: element.TimeslotID,
+                            reservationID: element.ReservationID
+                        });
+                        break;
+                    case "Monday":
+                        Monday.push({
+                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                            level: element.Type,
+                            currentPlayers: element.CurrentPlayers,
+                            maxPlayers: element.MaxPlayers,
+                            backgroundColour: element.BackgroundColour,
+                            colour: element.Colour,
+                            timeslotID: element.TimeslotID,
+                            reservationID: element.ReservationID
+                        });
+                        break;
+                    case "Tuesday":
+                        Tuesday.push({
+                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                            level: element.Type,
+                            currentPlayers: element.CurrentPlayers,
+                            maxPlayers: element.MaxPlayers,
+                            backgroundColour: element.BackgroundColour,
+                            colour: element.Colour,
+                            timeslotID: element.TimeslotID,
+                            reservationID: element.ReservationID
+                        });
+                        break;
+                    case "Wednesday":
+                        Wednesday.push({
+                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                            level: element.Type,
+                            currentPlayers: element.CurrentPlayers,
+                            maxPlayers: element.MaxPlayers,
+                            backgroundColour: element.BackgroundColour,
+                            colour: element.Colour,
+                            timeslotID: element.TimeslotID,
+                            reservationID: element.ReservationID
+                        });
+                        break;
+                    case "Thursday":
+                        Thursday.push({
+                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                            level: element.Type,
+                            currentPlayers: element.CurrentPlayers,
+                            maxPlayers: element.MaxPlayers,
+                            backgroundColour: element.BackgroundColour,
+                            colour: element.Colour,
+                            timeslotID: element.TimeslotID,
+                            reservationID: element.ReservationID
+                        });
+                        break;
+                    case "Friday":
+                        Friday.push({
+                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                            level: element.Type,
+                            currentPlayers: element.CurrentPlayers,
+                            maxPlayers: element.MaxPlayers,
+                            backgroundColour: element.BackgroundColour,
+                            colour: element.Colour,
+                            timeslotID: element.TimeslotID,
+                            reservationID: element.ReservationID
+                        });
+                        break;
+                    case "Saturday":
+                        Saturday.push({
+                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                            level: element.Type,
+                            currentPlayers: element.CurrentPlayers,
+                            maxPlayers: element.MaxPlayers,
+                            backgroundColour: element.BackgroundColour,
+                            colour: element.Colour,
+                            timeslotID: element.TimeslotID,
+                            reservationID: element.ReservationID
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            });
+            res.json({
+                sunday: Sunday,
+                monday: Monday,
+                tuesday: Tuesday,
+                wednesday: Wednesday,
+                thursday: Thursday,
+                friday: Friday,
+                saturday: Saturday
+            });
+        } catch (e) {
+            res.json(e);
+        }
     });
 })
 
