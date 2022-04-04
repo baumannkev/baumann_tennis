@@ -176,7 +176,6 @@ app.post(endpoint + "signUp", (req, res) => {
                                             if (err) throw err;
                                             connection.query(`SELECT Permissions FROM account WHERE AccountID='${aID}'`, (err, result) => {
                                                 try {
-                                                    console.log(result);
                                                     res.json({
                                                         token: jwt.sign({
                                                             AccountID: aID,
@@ -282,11 +281,10 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                 let Friday = [];
                                 let Saturday = [];
                                 result.forEach(element => {
-                                    console.log(element);
                                     if (element.CurrentPlayers >= element.MaxPlayers) {
-                                        let Full = "Unavailable";
+                                        var Full = "Unavailable";
                                     } else {
-                                        let Full = "Available";
+                                        var Full = "Available";
                                     }
                                     switch (element.Weekday) {
                                         case "Sunday":
