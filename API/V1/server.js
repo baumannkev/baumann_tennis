@@ -58,7 +58,7 @@ app.get(endpoint + "admin_statistics", (req, res) => {
         if (err) throw err;
     });
     // looks in base path /views by default, either change filedir or do it like this
-    res.render(updir + '/html/admin.html');
+    res.render(updir + '../html/admin.html');
 });
 
 app.get(endpoint + "admin", (req, res) => {
@@ -122,7 +122,7 @@ app.post(endpoint + "signUp", (req, res) => {
         const allergies = req.body.allergies;
         const emergency = req.body.emergency;
         const relationship = req.body.relationship;
-        
+
         bcrypt.hash(req.body.password, saltRounds, (err, salt) => {
             if (err) throw err;
             connection.query(`SELECT UUID() AS AccountID, UUID() AS PlayerID`, (err, result) => {
@@ -193,7 +193,7 @@ app.post(endpoint + "login", (req, res) => {
     });
     connection.query(`SELECT Password, AccountID, Permissions FROM account WHERE Email='${req.body.email}'`, (e, r) => {
         try {
-        if (e) throw e;
+            if (e) throw e;
             if (bcrypt.compareSync(req.body.password, r[0].Password)) {
                 let token = {
                     token: jwt.sign({
