@@ -2,13 +2,17 @@ const mysql = require('mysql')
 const bodyParser = require("body-parser");
 const path = require('path');
 const express = require('express');
+const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
 
 
 const app = express();
 const endpoint = '/';
 const updir = '..';
 const port = 30005;
-// console.log('Path of file in parent dir:', require('path').resolve(__dirname, '../html'));
+const saltRounds = 12;
+const secretKey = "v1KnQJA9Q0"
+// console.log('Path of file in account dir:', require('path').resolve(__dirname, '../html'));
 app.use('/html', express.static(path.join(__dirname, "html")));
 // app.use('/css', express.static(path.join(__dirname, "css")));
 app.use('/img', express.static(path.join(__dirname, "images")));
@@ -36,7 +40,7 @@ const connection = mysql.createConnection({
     password: "",
     database: "baumanntennisapi"
 });
-// connection.connect();
+connection.connect();
 
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -50,12 +54,15 @@ app.use(bodyParser.json());
 
 
 app.get(endpoint + "admin_statistics", (req, res) => {
+    connection.query(`UPDATE endpoints SET Hits = Hits + 1 WHERE Endpoint = 'admin_statistics'`, (err, result) => {
+        if (err) throw err;
+    });
     // looks in base path /views by default, either change filedir or do it like this
     res.render(updir + '/html/admin.html');
 });
 
 app.get(endpoint + "admin", (req, res) => {
-    connection.query(`UPDATE endpoints SET Hits = Hits + 1 WHERE Endpoint = 'Admin'`, (err, result) => {
+    connection.query(`UPDATE endpoints SET Hits = Hits + 1 WHERE Endpoint = 'admin'`, (err, result) => {
         if (err) throw err;
     });
     connection.query(`SELECT * FROM Endpoints`, (err, result) => {
@@ -64,26 +71,8 @@ app.get(endpoint + "admin", (req, res) => {
     });
 });
 
-app.post(endpoint + "adminlogin", (req, res) => {
-    connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'Admin Login'`, (err, result) => {
-        if (err) throw err;
-    });
-    connection.query(`SELECT * FROM AdminAccount WHERE username LIKE '${req.body.username}' AND password LIKE '${req.body.password}'`, (err, result) => {
-        if (err) throw err;
-        if (result == null) {
-            res.send({
-                success: false
-            })
-        } else {
-            res.send({
-                success: true
-            })
-        }
-    });
-});
-
 app.get(endpoint + "getprices", (req, res) => {
-    connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'Get Prices'`, (err, result) => {
+    connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'getprices'`, (err, result) => {
         if (err) throw err;
     });
     connection.query(`SELECT * FROM Pricing`), (err, result) => {
@@ -93,7 +82,7 @@ app.get(endpoint + "getprices", (req, res) => {
 })
 
 app.post(endpoint + "setprices", (req, res) => {
-    connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'Set Prices'`, (err, result) => {
+    connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'setprices'`, (err, result) => {
         if (err) throw err;
     });
     connection.query(`SELECT * FROM AdminAccount WHERE username LIKE '${req.body.username}' AND password LIKE '${req.body.password}'`, (err, result) => {
@@ -117,9 +106,9 @@ app.post(endpoint + "setprices", (req, res) => {
     })
 })
 
-app.post(endpoint + "signUp", async (req, res) => {
+app.post(endpoint + "signUp", (req, res) => {
     try {
-        connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'Signup'`, (err, result) => {
+        connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'signUp'`, (err, result) => {
             if (err) throw err;
         });
         const email = req.body.email;
@@ -135,68 +124,74 @@ app.post(endpoint + "signUp", async (req, res) => {
         const relationship = req.body.relationship;
         
         bcrypt.hash(req.body.password, saltRounds, (err, salt) => {
-            connection.query(`INSERT INTO account (AccountID, FullName, PhoneNumber, Email, Password, Address, Insurance) VALUES (UUID(), '${name}', '${phoneNumber}', '${email}', '${salt}', '${address}', '${insurance}');`, (err, result) => {
-                try {
-                    if (err) throw err;
-                    connection.query(`INSERT INTO player (PlayerID, FullName, DOB, Sex, SkillLevel, AllergiesMedication, ECN) VALUES (UUID(), ${name}, ${dateOfBirth}, ${sex}, ${skill}, ${allergies}, ${emergency})`, (err, result) => {
-                        try {
-                            connection.query(`SELECT parent.ParentID, player.PlayerID
-                                FROM parent
-                                LEFT JOIN player ON parent.Email = player.Email
-                                WHERE Email='${email}' AND Password='${salt}'`, (err, result) => {
-                                try {
-                                    if (err) throw err;
-                                    let parentID = result[0].ParentID;
-                                    let playerID = result[0].PlayerID;
-                                    connection.query(`INSERT INTO playerparentlink (PlayerID, ParentID, Relationship) VALUES (${playerID}, ${parentID}, ${relationship})`, (err, result) => {
-                                        try {
-                                            if (err) throw err;
-                                            res.json({
-                                                token: jwt.sign({
-                                                    ParentID: parentID
-                                                })
-                                            });
-                                        } catch (e) {
-                                            res.status(500);
-                                            res.json({
-                                                message: "Failed to associate the player and user."
-                                            });
-                                        }
-                                    });
-                                } catch (e) {
-                                    res.status(500);
-                                    res.json({
-                                        message: "Failed to retrieve player and/or user id."
-                                    });
-                                }
-                            });
-                        } catch (e) {
-                            res.status(500);
-                            res.json({
-                                message: "Failed to create new player."
-                            });
-                        }
-                    });
-                    
-                } catch {
-                    res.status(500);
-                    res.json({
-                        message: "Failed to create new user."
-                    });
-                }
-            });
+            if (err) throw err;
+            connection.query(`SELECT UUID() AS AccountID, UUID() AS PlayerID`, (err, result) => {
+                let aID = result[0].AccountID;
+                let pID = result[0].PlayerID;
+                connection.query(`INSERT INTO account (AccountID, FullName, PhoneNumber, Email, Password, Address, Insurance) VALUES ('${aID}', '${name}', '${phoneNumber}', '${email}', '${salt}', '${address}', '${insurance}');`, (err, result) => {
+                    try {
+                        if (err) throw err;
+                        connection.query(`INSERT INTO player (PlayerID, FullName,  DOB, Sex, SkillLevel, AllergiesMedication, ECN) VALUES ('${pID}', '${name}', '${dateOfBirth}', '${sex}', '${skill}', '${allergies}', '${emergency}')`, (err, result) => {
+                            try {
+                                if (err) throw err;
+                                connection.query(`INSERT INTO playeraccountlink (PlayerID, AccountID, Relationship) VALUES ('${pID}', '${aID}', '${relationship}')`, (err, result) => {
+                                    try {
+                                        if (err) throw err;
+                                        connection.query(`SELECT Permissions FROM account WHERE AccountID='${aID}'`, (err, result) => {
+                                            try {
+                                                console.log(result);
+                                                res.json({
+                                                    token: jwt.sign({
+                                                        AccountID: aID,
+                                                        Permission: result[0].Permissions
+                                                    }, secretKey, {
+                                                        expiresIn: "12h"
+                                                    })
+                                                });
+                                            } catch (e) {
+                                                res.status(500);
+                                                res.json({
+                                                    message: "Died at the end: " + e.message
+                                                });
+                                            }
+                                        });
+                                    } catch (e) {
+                                        res.status(500);
+                                        res.json({
+                                            message: "Died at the 3rd: " + e.message
+                                        });
+                                    }
+                                });
+                            } catch (e) {
+                                res.status(500);
+                                res.json({
+                                    message: "Died at the 1st: " + e.message
+                                });
+                            }
+                        });
+                        
+                    } catch {
+                        res.status(500);
+                        res.json({
+                            message: "Failed to create new user."
+                        });
+                    }
+                });
+            })
         });
-    } catch {
+    } catch (e) {
+        res.status(500);
         res.send({
-            code: 400,
-            message: "An error occurred. :("
+            message: e.message
         });
     }
 });
 
 app.post(endpoint + "login", (req, res) => {
-
-    connection.query(`SELECT Password, AccountID, Permissions FROM parent WHERE Email='${req.body.email}`, (e, r) => {
+    connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'login'`, (err, result) => {
+        if (err) throw err;
+    });
+    connection.query(`SELECT Password, AccountID, Permissions FROM account WHERE Email='${req.body.email}'`, (e, r) => {
         try {
         if (e) throw e;
             if (bcrypt.compareSync(req.body.password, r[0].Password)) {
@@ -220,22 +215,181 @@ app.post(endpoint + "login", (req, res) => {
     });
 });
 
+app.get(endpoint + "getCalendar", (req, res) => {
+    connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'getCalendar'`, (err, result) => {
+        if (err) throw err;
+    });
+    connection.query(`SELECT dayofweek.Weekday, TIME_FORMAT(dayofweek.StartTime, "%h%p") as StartTime, TIME_FORMAT(dayofweek.EndTime, "%h%p") as EndTime, reservation.Type, reservation.CurrentPlayers, reservation.MaxPlayers, player.FullName, levels.Colour, levels.BackgroundColour, dayofweek.TimeslotID, dayofweek.ReservationID
+                        FROM dayofweek
+                        LEFT JOIN reservation ON dayofweek.ReservationID = reservation.ReservationID
+                        LEFT JOIN player ON player.PlayerID = reservation.PlayerID
+                        LEFT JOIN levels on reservation.Type = levels.Type`, (err, result) => {
+                            if (err) throw err;
+                            let Sunday = [];
+                            let Monday = [];
+                            let Tuesday = [];
+                            let Wednesday = [];
+                            let Thursday = [];
+                            let Friday = [];
+                            let Saturday = [];
+                            result.forEach(element => {
+                                console.log(element);
+                                if (element.CurrentPlayers >= element.MaxPlayers) {
+                                    let Full = "Unavailable";
+                                } else {
+                                    let Full = "Available";
+                                }
+                                switch (element.Weekday) {
+                                    case "Sunday":
+                                        Sunday.push({
+                                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                                            level: element.Type,
+                                            currentPlayers: element.CurrentPlayers,
+                                            maxPlayers: element.MaxPlayers,
+                                            booker: element.FullName,
+                                            availability: Full,
+                                            backgroundColour: element.BackgroundColour,
+                                            colour: element.Colour
+                                        });
+                                        break;
+                                    case "Monday":
+                                        Monday.push({
+                                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                                            level: element.Type,
+                                            currentPlayers: element.CurrentPlayers,
+                                            maxPlayers: element.MaxPlayers,
+                                            booker: element.FullName,
+                                            backgroundColour: element.BackgroundColour,
+                                            colour: element.Colour
+                                        });
+                                        break;
+                                    case "Tuesday":
+                                        Tuesday.push({
+                                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                                            level: element.Type,
+                                            currentPlayers: element.CurrentPlayers,
+                                            maxPlayers: element.MaxPlayers,
+                                            booker: element.FullName,
+                                            backgroundColour: element.BackgroundColour,
+                                            colour: element.Colour
+                                        });
+                                        break;
+                                    case "Wednesday":
+                                        Wednesday.push({
+                                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                                            level: element.Type,
+                                            currentPlayers: element.CurrentPlayers,
+                                            maxPlayers: element.MaxPlayers,
+                                            booker: element.FullName,
+                                            backgroundColour: element.BackgroundColour,
+                                            colour: element.Colour
+                                        });
+                                        break;
+                                    case "Thursday":
+                                        Thursday.push({
+                                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                                            level: element.Type,
+                                            currentPlayers: element.CurrentPlayers,
+                                            maxPlayers: element.MaxPlayers,
+                                            booker: element.FullName,
+                                            backgroundColour: element.BackgroundColour,
+                                            colour: element.Colour
+                                        });
+                                        break;
+                                    case "Friday":
+                                        Friday.push({
+                                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                                            level: element.Type,
+                                            currentPlayers: element.CurrentPlayers,
+                                            maxPlayers: element.MaxPlayers,
+                                            booker: element.FullName,
+                                            backgroundColour: element.BackgroundColour,
+                                            colour: element.Colour
+                                        });
+                                        break;
+                                    case "Saturday":
+                                        Saturday.push({
+                                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                                            level: element.Type,
+                                            currentPlayers: element.CurrentPlayers,
+                                            maxPlayers: element.MaxPlayers,
+                                            booker: element.FullName,
+                                            backgroundColour: element.BackgroundColour,
+                                            colour: element.Colour
+                                        });
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            });
+                            res.json({
+                                sunday: Sunday,
+                                monday: Monday,
+                                tuesday: Tuesday,
+                                wednesday: Wednesday,
+                                thursday: Thursday,
+                                friday: Friday,
+                                saturday: Saturday
+                            });
+    })
+})
+
+app.post(endpoint + "updateCalendar", async (req, res) => {
+    connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'updateCalendar'`, (err, result) => {
+        if (err) throw err;
+    });
+    let permission = verify(req.body.token, secretKey);
+    if (permission) {
+        if (permission.Permissions == "Admin" || permission.Permissions == "Instructor") {
+            switch (req.operation) {
+                case "ADD":
+                    connection.query(`SELECT UUID() AS ID`, (err, result) => {
+                        if (err) throw err;
+                        let UUID = result[0].ID;
+                        connection.query(`INSERT INTO reservation (ReservationID, AccountID, Type, MaxPlayers) VALUES (${UUID}, ${req.body.instructorID}, ${req.body.classType}, ${req.body.maxPlayers})`, (err, result) => {
+                            if (err) throw err;
+                            connection.query(`INSERT INTO dayofweek (Weekday, StartTime, EndTime, ReservationID, TimeslotID) VALUES (${req.body.weekday}, ${req.body.startTime}, ${req.body.endTime}, ${UUID}, UUID())`, (err, result) => {
+                                if (err) throw err;
+                                res.json({
+                                    message: "Successfully added class/reservation"
+                                })
+                            });
+                        })
+                    })
+                    
+                    break;
+                case "DELETE":
+                    connection.query(`DELETE FROM dayofweek WHERE TimeslotID = ${req.body.timeslotID}`, (err, result) => {
+                        if (err) throw err;
+                        res.json({
+                            message: "Successfully deleted class/reservation"
+                        })
+                    });
+                    break;
+                case "UPDATE":
+                    connection.query(`UPDATE dayofweek SET StartTime = ${req.body.startTime}, EndTime = ${req.body.endTime} WHERE TimeslotID = ${req.body.timeslotID}`, (err, result) => {
+                        if (err) throw err;
+                    });
+                    await connection.query(`UPDATE reservation SET Type = ${req.body.type}, CurrentPlayers = ${req.body.currentPlayers}, MaxPlayers = ${req.body.maxPlayers} WHERE ReservationID = ${req.body.reservationID}`, (err, result) => {
+                        if (err) throw err;
+                    });
+                    res.json({
+                        message: "Successfully updated class/reservation"
+                    })
+                    break;
+                default:
+                    res.json({
+                        message: "Unable to complete operation"
+                    })
+                    break;
+            }
+        }
+    }
+})
+
 app.listen(port, (err) => {
     if (err) throw err;
     console.log("Listening to port ", port);
 })
 
 console.log('Server is running and listening on port ', port);
-
-
-
-const adminLogin = function(username, password) {
-    connection.query(`SELECT * FROM AdminAccount WHERE username LIKE '${req.body.username}' AND password LIKE '${req.body.password}'`, (err, result) => {
-        if (err) throw err;
-        if (result == null) {
-            return false;
-        } else {
-            return true;
-        }
-    });
-}
