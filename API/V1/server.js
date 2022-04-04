@@ -295,7 +295,9 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                                 maxPlayers: element.MaxPlayers,
                                                 availability: Full,
                                                 backgroundColour: element.BackgroundColour,
-                                                colour: element.Colour
+                                                colour: element.Colour,
+                                                timeslotID: element.TimeslotID,
+                                                reservationID: element.ReservationID
                                             });
                                             break;
                                         case "Monday":
@@ -305,7 +307,9 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                                 currentPlayers: element.CurrentPlayers,
                                                 maxPlayers: element.MaxPlayers,
                                                 backgroundColour: element.BackgroundColour,
-                                                colour: element.Colour
+                                                colour: element.Colour,
+                                                timeslotID: element.TimeslotID,
+                                                reservationID: element.ReservationID
                                             });
                                             break;
                                         case "Tuesday":
@@ -315,7 +319,9 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                                 currentPlayers: element.CurrentPlayers,
                                                 maxPlayers: element.MaxPlayers,
                                                 backgroundColour: element.BackgroundColour,
-                                                colour: element.Colour
+                                                colour: element.Colour,
+                                                timeslotID: element.TimeslotID,
+                                                reservationID: element.ReservationID
                                             });
                                             break;
                                         case "Wednesday":
@@ -325,7 +331,9 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                                 currentPlayers: element.CurrentPlayers,
                                                 maxPlayers: element.MaxPlayers,
                                                 backgroundColour: element.BackgroundColour,
-                                                colour: element.Colour
+                                                colour: element.Colour,
+                                                timeslotID: element.TimeslotID,
+                                                reservationID: element.ReservationID
                                             });
                                             break;
                                         case "Thursday":
@@ -335,7 +343,9 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                                 currentPlayers: element.CurrentPlayers,
                                                 maxPlayers: element.MaxPlayers,
                                                 backgroundColour: element.BackgroundColour,
-                                                colour: element.Colour
+                                                colour: element.Colour,
+                                                timeslotID: element.TimeslotID,
+                                                reservationID: element.ReservationID
                                             });
                                             break;
                                         case "Friday":
@@ -345,7 +355,9 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                                 currentPlayers: element.CurrentPlayers,
                                                 maxPlayers: element.MaxPlayers,
                                                 backgroundColour: element.BackgroundColour,
-                                                colour: element.Colour
+                                                colour: element.Colour,
+                                                timeslotID: element.TimeslotID,
+                                                reservationID: element.ReservationID
                                             });
                                             break;
                                         case "Saturday":
@@ -355,7 +367,9 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                                 currentPlayers: element.CurrentPlayers,
                                                 maxPlayers: element.MaxPlayers,
                                                 backgroundColour: element.BackgroundColour,
-                                                colour: element.Colour
+                                                colour: element.Colour,
+                                                timeslotID: element.TimeslotID,
+                                                reservationID: element.ReservationID
                                             });
                                             break;
                                         default:
