@@ -237,10 +237,6 @@
                 }
             }
         },
-        //         {
-        //     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SUQiOiI0OTUwM2NiMS1iM2MzLTExZWMtOGNiZC1kODUwZTZkM2QxYTUiLCJQZXJtaXNzaW9uIjoiUGxheWVyIiwiaWF0IjoxNjQ5MDQxMTkwLCJleHAiOjE2NDkwODQzOTB9.wM2TU5TZhQoahZeLzixUEtuUUEiWzZnW_doTiL6HBg0"
-        // } 
-        // "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBY2NvdW50SUQiOiI0OTUwM2NiMS1iM2MzLTExZWMtOGNiZC1kODUwZTZkM2QxYTUiLCJQZXJtaXNzaW9ucyI6IlBsYXllciIsImlhdCI6MTY0OTA0MTIzNSwiZXhwIjoxNjQ5MDg0NDM1fQ.xV06i0KE2-JG7k7HBXERQaLYWBQWJlh18BuWt1FguQw",
         "/updateCalendar": {
             "put": {
                 "tags": [

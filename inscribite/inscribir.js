@@ -703,20 +703,7 @@ function append_json_data(data) {
             '</tr>';
     }
 }
-// $('.ui.dropdown.booking')
-//     .dropdown({
-//         values: dropValues,
-//         onChange: function(value, text, $selectedItem) {
-//             $(".cardDateBook").hide();
-//             $(".cardDateRegister").hide();
-//             console.log(value);
-//             optionSelected = value;
-//             $('#welcome').text(optionSelected)
-//             $(".cardMember").hide();
-//         },
-//     }, );
 
-// $(".cardDateBook").hide();
 $(".cardDateRegister").hide();
 $(".cardMember").hide();
 $(".successMessage").hide();
@@ -785,7 +772,6 @@ $('.calendar')
         formatter: {
             date: function(date, settings) {
                 if (!date) return '';
-                // console.log(date)
                 dates = date;
                 var day = date.getDate();
                 var month = date.getMonth() + 1;
@@ -795,26 +781,14 @@ $('.calendar')
         },
         onChange: function changeDateSelected() {
 
-            // if (optionSelected === 'book') {
-            //     $(".cardDateBook").show();
-            //     $(".cardDateRegister").hide();
-            // } else {
-            //     $(".cardDateRegister").show();
-            //     $(".cardDateBook").hide();
-            // }
             $(".cardDateRegister").show();
             let inputVal = document.getElementById("inputID").value;
             let newDate = new Date(inputVal);
 
-            // console.log("Date: ", newDate);
-            // console.log("Day of week ", newDate.getDay())
-            // console.log(inputVal.toString())
             get_json_data(newDate)
-                // $('#dateSelectedBooking').text(inputVal);
             let now = new Date();
             inputVal.toString()
 
-            // console.log(dates)
             $('#dateSelectedRegister').text(inputVal);
             $('.day2').text(inputVal);
         },

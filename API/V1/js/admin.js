@@ -31,7 +31,8 @@ if ($('.ui.form').form('is valid')) {
     const GET = "GET";
     const POST = "POST";
 
-    document.querySelector("#LoginForm").addEventListener('submit', (e) => {
+    // document.querySelector("#LoginForm").addEventListener('submit', (e) => {
+    document.querySelector("#LoginWidget").addEventListener('submit', (e) => {
         e.preventDefault();
         login();
         refresh();
