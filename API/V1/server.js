@@ -331,17 +331,18 @@ app.post(endpoint + "updateCalendar", async (req, res) => {
     connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'updateCalendar'`, (err, result) => {
         if (err) throw err;
     });
-    let permission = verify(req.body.token, secretKey);
+    let permission = jwt.verify(req.body.token, secretKey);
     if (permission) {
         if (permission.Permissions == "Admin" || permission.Permissions == "Instructor") {
-            switch (req.operation) {
+            console.log(req.body);
+            switch (req.body.operation) {
                 case "ADD":
                     connection.query(`SELECT UUID() AS ID`, (err, result) => {
                         if (err) throw err;
                         let UUID = result[0].ID;
-                        connection.query(`INSERT INTO reservation (ReservationID, AccountID, Type, MaxPlayers) VALUES (${UUID}, ${req.body.instructorID}, ${req.body.classType}, ${req.body.maxPlayers})`, (err, result) => {
+                        connection.query(`INSERT INTO reservation (ReservationID, AccountID, Type, MaxPlayers) VALUES ('${UUID}', '${req.body.instructorID}', '${req.body.classType}', '${req.body.maxPlayers}')`, (err, result) => {
                             if (err) throw err;
-                            connection.query(`INSERT INTO dayofweek (Weekday, StartTime, EndTime, ReservationID, TimeslotID) VALUES (${req.body.weekday}, ${req.body.startTime}, ${req.body.endTime}, ${UUID}, UUID())`, (err, result) => {
+                            connection.query(`INSERT INTO dayofweek (Weekday, StartTime, EndTime, ReservationID, TimeslotID) VALUES ('${req.body.weekday}', '${req.body.startTime}', '${req.body.endTime}', '${UUID}', UUID())`, (err, result) => {
                                 if (err) throw err;
                                 res.json({
                                     message: "Successfully added class/reservation"
