@@ -2,6 +2,7 @@ var today = new Date();
 var optionSelected = 'book';
 var bookSelectedText = 'Bienvenido! Elegi la hora disponible para alquilar la cancha';
 $('#welcome').text(bookSelectedText)
+$('#confirmBookDiv').hide();
 
 // $('.full').disable();
 var arr = [0, 1, 2, 3, 4, 5];
@@ -137,14 +138,33 @@ const signUp = () => {
         password: document.getElementById("signUpPassword").value,
     }
 
+    // let SignUpInfo = {
+    //     email: "kevin1@test.test",
+    //     phoneNumber: "1234567890",
+    //     name: "kevin",
+    //     address: "1 test ln",
+    //     dob: "1999-01-01",
+    //     sex: "Male",
+    //     skill: "Beginner",
+    //     emergency: "tester1",
+    //     relationship: "tester1",
+    //     password: "tester1"
+    // }
+
     console.log("Info ", SignUpInfo)
+    SignUpInfo = JSON.stringify(SignUpInfo)
+
 
     xhttp.open(POST, url, true);
+    // xhttp.setRequestHeader("Accept", "application/json");
+    xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(SignUpInfo);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log("Test ", this.response)
-            document.getElementById("signUpTest").innerHTML = 'test'
+            console.log("Test ", JSON.parse(this.response))
+            $("#signUpForm").hide();
+            $('#confirmBookDiv').show();
+            document.getElementById("signUpTest").innerHTML = 'You are in'
             console.log("here")
         };
     };
@@ -163,10 +183,10 @@ function get_json_data(daySelected) {
     }
     var dbData = httpGet('http://localhost:30005/getCalendar');
     const jsonData = JSON.parse(dbData)
-    console.log("DATA 1", jsonData)
+        // console.log("DATA 1", jsonData)
         // console.log("test ", jsonData)
         // console.log(httpGet('http://localhost:30005/getCalendar'));
-    console.log("DAY " + day)
+        // console.log("DAY " + day)
         // console.log("DATA ", jsonData[day])
     var dateSelected = jsonData[day];
 
@@ -179,9 +199,9 @@ function append_json_data(data) {
     var tableDiv = document.getElementById('dateBooking');
     tableDiv.innerHTML = ""
     for (var i = 0; i < data.length; i++) {
-        console.log("scheduled time: ", data[i].scheduledTime);
-        console.log("level: ", data[i].level);
-        console.log("availability: ", data[i].availability);
+        // console.log("scheduled time: ", data[i].scheduledTime);
+        // console.log("level: ", data[i].level);
+        // console.log("availability: ", data[i].availability);
         var availabilityColor = ""
         var disabledSelect = ""
         var backgroundSkillColor = ""
@@ -243,7 +263,7 @@ function showMember() {
         }).get();
         if ($.trim(tableData[1]) !== 'Lleno') {
             $(".details").text($.trim(tableData[0]) + " , " + $.trim(tableData[2]));
-            console.log("Your data is: " + $.trim(tableData[0]) + " , " + $.trim(tableData[2]));
+            // console.log("Your data is: " + $.trim(tableData[0]) + " , " + $.trim(tableData[2]));
         }
     });
 }
