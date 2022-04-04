@@ -1,12 +1,11 @@
 var today = new Date();
-
 var optionSelected = 'book';
 var bookSelectedText = 'Bienvenido! Elegi la hora disponible para alquilar la cancha';
 $('#welcome').text(bookSelectedText)
 
 // $('.full').disable();
 var arr = [0, 1, 2, 3, 4, 5];
-$(".cardDateBook2").hide();
+// $(".cardDateBook2").hide();
 let dropValues = [{
         name: 'Alquila la cancha',
         value: 'book',
@@ -625,9 +624,26 @@ var dateExamples = [{
 }];
 
 function get_json_data(daySelected) {
+    console.log("day selected ", daySelected)
     const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
     let day = weekday[daySelected.getDay()];
-    var dateSelected = dateExamples[0].week[0][day]
+
+    function httpGet(theUrl) {
+        let xmlHttpReq = new XMLHttpRequest();
+        xmlHttpReq.open("GET", theUrl, false);
+        xmlHttpReq.send(null);
+        return xmlHttpReq.responseText;
+    }
+    var dbData = httpGet('http://localhost:30005/getCalendar');
+    const jsonData = JSON.parse(dbData)
+        // console.log("DATA 1", jsonData)
+        // console.log("test ", jsonData)
+        // console.log(httpGet('http://localhost:30005/getCalendar'));
+    console.log("DAY " + day)
+        // console.log("DATA ", jsonData[day])
+    var dateSelected = jsonData[day];
+
+    // var dateSelected = dateExamples[0].week[0][day]
     append_json_data(dateSelected)
 
 }
@@ -636,18 +652,24 @@ function append_json_data(data) {
     var tableDiv = document.getElementById('dateBooking');
     tableDiv.innerHTML = ""
     for (var i = 0; i < data.length; i++) {
+        console.log("scheduled time: ", data[i].scheduledTime);
+        console.log("level: ", data[i].level);
+        console.log("availability: ", data[i].availability);
         var availabilityColor = ""
         var disabledSelect = ""
         var backgroundSkillColor = ""
-        skillColor = ""
+        var skillColor = ""
+        var full = "Disponible"
 
         var fullClass = "Por favor, haga una selección diferente"
 
-        if (data[i].availability == 'Lleno') {
+        if (data[i].availability == 'Unavailable') {
             availabilityColor = "#E24D4D"
             disabledSelect = "disabled"
             data[i].level = fullClass
             skillColor = availabilityColor
+            full = "Lleno"
+                // data[i].availability = 'No disponible'
         } else {
             availabilityColor = "#2185D0"
         }
@@ -656,11 +678,11 @@ function append_json_data(data) {
             backgroundSkillColor = '#DDF4FF'
             skillColor = '#2185D0'
         }
-        if (data[i].level == 'Rojo 1' || data[i].level == 'Rojo 2') {
+        if (data[i].level == 'Red1' || data[i].level == 'Red2') {
             backgroundSkillColor = '#FFE1DF'
             skillColor = '#E24D4D'
         }
-        if (data[i].level == 'Verde 1' || data[i].level == 'Verde 2') {
+        if (data[i].level == 'Green1' || data[i].level == 'Green2') {
             backgroundSkillColor = '#D5F5D9'
             skillColor = '#41C750'
         }
@@ -675,26 +697,26 @@ function append_json_data(data) {
 
         tableDiv.innerHTML += '<tr class="bookTable">' +
             '<td><span class="day2"></span>,</br>' + data[i].scheduledTime + '</td>' +
-            '<td><span style="color: ' + availabilityColor + ' ">' + data[i].availability + '</td>' +
+            '<td><span style="color: ' + availabilityColor + ' ">' + full + '</td>' +
             '<td><span style="color:  ' + skillColor + '; background-color: ' + backgroundSkillColor + ' ">' + data[i].level + '</td>' +
             '<td><a class = "availability scrollto" href="#cardMemberID"><button class="ui primary button ' + disabledSelect + '" onclick="showMember()">Seleccionar</button></a></td>' +
             '</tr>';
     }
 }
-$('.ui.dropdown.booking')
-    .dropdown({
-        values: dropValues,
-        onChange: function(value, text, $selectedItem) {
-            $(".cardDateBook").hide();
-            $(".cardDateRegister").hide();
-            console.log(value);
-            optionSelected = value;
-            $('#welcome').text(optionSelected)
-            $(".cardMember").hide();
-        },
-    }, );
+// $('.ui.dropdown.booking')
+//     .dropdown({
+//         values: dropValues,
+//         onChange: function(value, text, $selectedItem) {
+//             $(".cardDateBook").hide();
+//             $(".cardDateRegister").hide();
+//             console.log(value);
+//             optionSelected = value;
+//             $('#welcome').text(optionSelected)
+//             $(".cardMember").hide();
+//         },
+//     }, );
 
-$(".cardDateBook").hide();
+// $(".cardDateBook").hide();
 $(".cardDateRegister").hide();
 $(".cardMember").hide();
 $(".successMessage").hide();
@@ -749,6 +771,7 @@ $('.birthdate').calendar({
     },
 })
 $(".signup").hide()
+var dates = ""
 
 $('.calendar')
     .calendar({
@@ -762,6 +785,8 @@ $('.calendar')
         formatter: {
             date: function(date, settings) {
                 if (!date) return '';
+                // console.log(date)
+                dates = date;
                 var day = date.getDate();
                 var month = date.getMonth() + 1;
                 var year = date.getFullYear();
@@ -769,21 +794,27 @@ $('.calendar')
             }
         },
         onChange: function changeDateSelected() {
-            if (optionSelected === 'book') {
-                $(".cardDateBook").show();
-                $(".cardDateRegister").hide();
-            } else {
-                $(".cardDateRegister").show();
-                $(".cardDateBook").hide();
-            }
 
+            // if (optionSelected === 'book') {
+            //     $(".cardDateBook").show();
+            //     $(".cardDateRegister").hide();
+            // } else {
+            //     $(".cardDateRegister").show();
+            //     $(".cardDateBook").hide();
+            // }
+            $(".cardDateRegister").show();
             let inputVal = document.getElementById("inputID").value;
             let newDate = new Date(inputVal);
 
             // console.log("Date: ", newDate);
             // console.log("Day of week ", newDate.getDay())
+            // console.log(inputVal.toString())
             get_json_data(newDate)
-            $('#dateSelectedBooking').text(inputVal);
+                // $('#dateSelectedBooking').text(inputVal);
+            let now = new Date();
+            inputVal.toString()
+
+            // console.log(dates)
             $('#dateSelectedRegister').text(inputVal);
             $('.day2').text(inputVal);
         },
@@ -830,21 +861,21 @@ $('.ui.form')
                 identifier: 'gender',
                 rules: [{
                     type: 'empty',
-                    prompt: 'Please select a gender'
+                    prompt: 'Por favor, seleciona tu sexo'
                 }]
             },
             username: {
                 identifier: 'email',
                 rules: [{
                     type: 'email',
-                    prompt: 'Por favor introduzca una dirección de correo electrónico válida'
+                    prompt: 'Por favor, introduzca una dirección de correo electrónico válida'
                 }]
             },
             password: {
                 identifier: 'password',
                 rules: [{
                         type: 'empty',
-                        prompt: 'Por favor ingrese una contraseña'
+                        prompt: 'Por favor, ingrese una contraseña'
                     },
                     {
                         type: 'minLength[6]',

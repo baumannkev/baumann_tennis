@@ -12,7 +12,7 @@ const updir = '..';
 const port = 30005;
 const saltRounds = 12;
 const secretKey = "v1KnQJA9Q0"
-// console.log('Path of file in account dir:', require('path').resolve(__dirname, '../html'));
+    // console.log('Path of file in account dir:', require('path').resolve(__dirname, '../html'));
 app.use('/html', express.static(path.join(__dirname, "html")));
 // app.use('/css', express.static(path.join(__dirname, "css")));
 app.use('/img', express.static(path.join(__dirname, "images")));
@@ -169,7 +169,7 @@ app.post(endpoint + "signUp", (req, res) => {
                                 });
                             }
                         });
-                        
+
                     } catch {
                         res.status(500);
                         res.json({
@@ -224,110 +224,116 @@ app.get(endpoint + "getCalendar", (req, res) => {
                         LEFT JOIN reservation ON dayofweek.ReservationID = reservation.ReservationID
                         LEFT JOIN account ON account.AccountID = reservation.AccountID
                         LEFT JOIN levels on reservation.Type = levels.Type`, (err, result) => {
-                            if (err) throw err;
-                            let Sunday = [];
-                            let Monday = [];
-                            let Tuesday = [];
-                            let Wednesday = [];
-                            let Thursday = [];
-                            let Friday = [];
-                            let Saturday = [];
-                            result.forEach(element => {
-                                console.log(element);
-                                if (element.CurrentPlayers >= element.MaxPlayers) {
-                                    let Full = "Unavailable";
-                                } else {
-                                    let Full = "Available";
-                                }
-                                switch (element.Weekday) {
-                                    case "Sunday":
-                                        Sunday.push({
-                                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                                            level: element.Type,
-                                            currentPlayers: element.CurrentPlayers,
-                                            maxPlayers: element.MaxPlayers,
-                                            availability: Full,
-                                            backgroundColour: element.BackgroundColour,
-                                            colour: element.Colour
-                                        });
-                                        break;
-                                    case "Monday":
-                                        Monday.push({
-                                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                                            level: element.Type,
-                                            currentPlayers: element.CurrentPlayers,
-                                            maxPlayers: element.MaxPlayers,
-                                            backgroundColour: element.BackgroundColour,
-                                            colour: element.Colour
-                                        });
-                                        break;
-                                    case "Tuesday":
-                                        Tuesday.push({
-                                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                                            level: element.Type,
-                                            currentPlayers: element.CurrentPlayers,
-                                            maxPlayers: element.MaxPlayers,
-                                            backgroundColour: element.BackgroundColour,
-                                            colour: element.Colour
-                                        });
-                                        break;
-                                    case "Wednesday":
-                                        Wednesday.push({
-                                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                                            level: element.Type,
-                                            currentPlayers: element.CurrentPlayers,
-                                            maxPlayers: element.MaxPlayers,
-                                            backgroundColour: element.BackgroundColour,
-                                            colour: element.Colour
-                                        });
-                                        break;
-                                    case "Thursday":
-                                        Thursday.push({
-                                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                                            level: element.Type,
-                                            currentPlayers: element.CurrentPlayers,
-                                            maxPlayers: element.MaxPlayers,
-                                            backgroundColour: element.BackgroundColour,
-                                            colour: element.Colour
-                                        });
-                                        break;
-                                    case "Friday":
-                                        Friday.push({
-                                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                                            level: element.Type,
-                                            currentPlayers: element.CurrentPlayers,
-                                            maxPlayers: element.MaxPlayers,
-                                            backgroundColour: element.BackgroundColour,
-                                            colour: element.Colour
-                                        });
-                                        break;
-                                    case "Saturday":
-                                        Saturday.push({
-                                            scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                                            level: element.Type,
-                                            currentPlayers: element.CurrentPlayers,
-                                            maxPlayers: element.MaxPlayers,
-                                            backgroundColour: element.BackgroundColour,
-                                            colour: element.Colour
-                                        });
-                                        break;
-                                    default:
-                                        break;
-                                }
-                            });
-                            res.json({
-                                sunday: Sunday,
-                                monday: Monday,
-                                tuesday: Tuesday,
-                                wednesday: Wednesday,
-                                thursday: Thursday,
-                                friday: Friday,
-                                saturday: Saturday
-                            });
+        if (err) throw err;
+        let Sunday = [];
+        let Monday = [];
+        let Tuesday = [];
+        let Wednesday = [];
+        let Thursday = [];
+        let Friday = [];
+        let Saturday = [];
+        result.forEach(element => {
+            console.log(element);
+            if (element.CurrentPlayers >= element.MaxPlayers) {
+                var Full = "Unavailable";
+            } else {
+                var Full = "Available";
+            }
+            switch (element.Weekday) {
+                case "Sunday":
+                    Sunday.push({
+                        scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                        level: element.Type,
+                        currentPlayers: element.CurrentPlayers,
+                        maxPlayers: element.MaxPlayers,
+                        availability: Full,
+                        backgroundColour: element.BackgroundColour,
+                        colour: element.Colour
+                    });
+                    break;
+                case "Monday":
+                    Monday.push({
+                        scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                        level: element.Type,
+                        currentPlayers: element.CurrentPlayers,
+                        maxPlayers: element.MaxPlayers,
+                        availability: Full,
+                        backgroundColour: element.BackgroundColour,
+                        colour: element.Colour
+                    });
+                    break;
+                case "Tuesday":
+                    Tuesday.push({
+                        scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                        level: element.Type,
+                        currentPlayers: element.CurrentPlayers,
+                        maxPlayers: element.MaxPlayers,
+                        availability: Full,
+                        backgroundColour: element.BackgroundColour,
+                        colour: element.Colour
+                    });
+                    break;
+                case "Wednesday":
+                    Wednesday.push({
+                        scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                        level: element.Type,
+                        currentPlayers: element.CurrentPlayers,
+                        maxPlayers: element.MaxPlayers,
+                        availability: Full,
+                        backgroundColour: element.BackgroundColour,
+                        colour: element.Colour
+                    });
+                    break;
+                case "Thursday":
+                    Thursday.push({
+                        scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                        level: element.Type,
+                        currentPlayers: element.CurrentPlayers,
+                        maxPlayers: element.MaxPlayers,
+                        availability: Full,
+                        backgroundColour: element.BackgroundColour,
+                        colour: element.Colour
+                    });
+                    break;
+                case "Friday":
+                    Friday.push({
+                        scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                        level: element.Type,
+                        currentPlayers: element.CurrentPlayers,
+                        maxPlayers: element.MaxPlayers,
+                        availability: Full,
+                        backgroundColour: element.BackgroundColour,
+                        colour: element.Colour
+                    });
+                    break;
+                case "Saturday":
+                    Saturday.push({
+                        scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                        level: element.Type,
+                        currentPlayers: element.CurrentPlayers,
+                        maxPlayers: element.MaxPlayers,
+                        availability: Full,
+                        backgroundColour: element.BackgroundColour,
+                        colour: element.Colour
+                    });
+                    break;
+                default:
+                    break;
+            }
+        });
+        res.json({
+            sunday: Sunday,
+            monday: Monday,
+            tuesday: Tuesday,
+            wednesday: Wednesday,
+            thursday: Thursday,
+            friday: Friday,
+            saturday: Saturday
+        });
     })
 })
 
-app.post(endpoint + "updateCalendar", async (req, res) => {
+app.post(endpoint + "updateCalendar", async(req, res) => {
     connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'updateCalendar'`, (err, result) => {
         if (err) throw err;
     });
@@ -342,7 +348,7 @@ app.post(endpoint + "updateCalendar", async (req, res) => {
                         let UUID = result[0].ID;
                         connection.query(`INSERT INTO reservation (ReservationID, AccountID, Type, MaxPlayers) VALUES ('${UUID}', '${req.body.instructorID}', '${req.body.classType}', '${req.body.maxPlayers}')`, (err, result) => {
                             if (err) throw err;
-                            connection.query(`INSERT INTO dayofweek (Weekday, StartTime, EndTime, ReservationID, TimeslotID) VALUES ('${req.body.weekday}', '${req.body.startTime}', '${req.body.endTime}', '${UUID}', UUID())`, (err, result) => {
+                            connection.query(`INSERT INTO dayofweek (Weekday, StartTime, EndTime, ReservationID, TimeslotID) VALUES ('${req.body.weekday}', '${req.body.StartTime}', '${req.body.endTime}', '${UUID}', UUID())`, (err, result) => {
                                 if (err) throw err;
                                 res.json({
                                     message: "Successfully added class/reservation"
@@ -350,7 +356,7 @@ app.post(endpoint + "updateCalendar", async (req, res) => {
                             });
                         })
                     })
-                    
+
                     break;
                 case "DELETE":
                     connection.query(`DELETE FROM dayofweek WHERE TimeslotID = ${req.body.timeslotID}`, (err, result) => {
@@ -361,7 +367,7 @@ app.post(endpoint + "updateCalendar", async (req, res) => {
                     });
                     break;
                 case "UPDATE":
-                    connection.query(`UPDATE dayofweek SET StartTime = ${req.body.startTime}, EndTime = ${req.body.endTime} WHERE TimeslotID = ${req.body.timeslotID}`, (err, result) => {
+                    connection.query(`UPDATE dayofweek SET StartTime = ${req.body.StartTime}, EndTime = ${req.body.endTime} WHERE TimeslotID = ${req.body.timeslotID}`, (err, result) => {
                         if (err) throw err;
                     });
                     await connection.query(`UPDATE reservation SET Type = ${req.body.type}, CurrentPlayers = ${req.body.currentPlayers}, MaxPlayers = ${req.body.maxPlayers} WHERE ReservationID = ${req.body.reservationID}`, (err, result) => {

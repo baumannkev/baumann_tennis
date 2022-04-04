@@ -3,8 +3,6 @@
 
 <head>
     <title>BaumannTennis API Documentation</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
         body {
             font-family: Trebuchet MS, sans-serif;
@@ -190,7 +188,7 @@
     <h1>BaumannTennis API Documentation</h1>
     <div class="app-desc">Simple API for Baumann Tennis Academy</div>
     <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
-    <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="baumannkev@gmail.com">baumannkev@gmail.com</a></div>
     <div class="app-desc">Version: 1</div>
     <div class="app-desc">BasePath:</div>
     <div class="license-info">All rights reserved</div>
@@ -202,23 +200,37 @@
 
     <h3>Table of Contents </h3>
     <div class="method-summary"></div>
-    <h4><a href="#Players">Players</a></h4>
+    <h4><a href="#Account">Account</a></h4>
     <ul>
-        <li><a href="#getPlayerV1"><code><span class="http-method">get</span> /players{playerID}</code></a></li>
-        <li><a href="#getPlayersV1"><code><span class="http-method">get</span> /players</code></a></li>
+        <li><a href="#login"><code><span class="http-method">post</span> /login</code></a></li>
+        <li><a href="#signUpPost"><code><span class="http-method">post</span> /signUp</code></a></li>
+    </ul>
+    <h4><a href="#Admin">Admin</a></h4>
+    <ul>
+        <li><a href="#adminGet"><code><span class="http-method">get</span> /admin</code></a></li>
+        <li><a href="#adminLoginPost"><code><span class="http-method">post</span> /admin_login</code></a></li>
     </ul>
 
-    <h1><a name="Players">Players</a></h1>
-    <div class="method"><a name="getPlayerV1" />
+    <h1><a name="Account">Account</a></h1>
+    <div class="method"><a name="login" />
         <div class="method-path">
             <a class="up" href="#__Methods">Up</a>
-            <pre class="get"><code class="huge"><span class="http-method">get</span> /players{playerID}</code></pre>
+            <pre class="post"><code class="huge"><span class="http-method">post</span> /login</code></pre>
         </div>
-        <div class="method-summary">Gets a specific player (<span class="nickname">getPlayerV1</span>)</div>
+        <div class="method-summary">Login to your account (<span class="nickname">login</span>)</div>
         <div class="method-notes"></div>
 
 
 
+        <h3 class="field-label">Request body</h3>
+        <div class="field-items">
+            <div class="param">email (required)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Email of the user account
+            </div>
+
+        </div>
+        <!-- field-items -->
 
 
 
@@ -235,36 +247,67 @@
 
         <h3 class="field-label">Responses</h3>
         <h4 class="field-label">200</h4>
-        200 OK
+        Logged in successfully
         <a href="#"></a>
-        <h3 class="field-label">Example data</h3>
-        <div class="example-data-content-type">Content-Type: id</div>
-        <pre class="example"><code>2</code></pre>
-        <h3 class="field-label">Example data</h3>
-        <div class="example-data-content-type">Content-Type: name</div>
-        <pre class="example"><code>Sally Smith</code></pre>
-        <h3 class="field-label">Example data</h3>
-        <div class="example-data-content-type">Content-Type: age</div>
-        <pre class="example"><code>20</code></pre>
-        <h3 class="field-label">Example data</h3>
-        <div class="example-data-content-type">Content-Type: skill</div>
-        <pre class="example"><code>beginner</code></pre>
-        <h4 class="field-label">404</h4>
-        404 Not Found
+        <h4 class="field-label">500</h4>
+        Unable to retrieve email
         <a href="#"></a>
     </div>
     <!-- method -->
     <hr />
-    <div class="method"><a name="getPlayersV1" />
+    <div class="method"><a name="signUpPost" />
         <div class="method-path">
             <a class="up" href="#__Methods">Up</a>
-            <pre class="get"><code class="huge"><span class="http-method">get</span> /players</code></pre>
+            <pre class="post"><code class="huge"><span class="http-method">post</span> /signUp</code></pre>
         </div>
-        <div class="method-summary">Gets all players (<span class="nickname">getPlayersV1</span>)</div>
+        <div class="method-summary">Sign up for an account (<span class="nickname">signUpPost</span>)</div>
         <div class="method-notes"></div>
 
 
 
+        <h3 class="field-label">Request body</h3>
+        <div class="field-items">
+            <div class="param">email (required)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Email of the user account
+            </div>
+            <div class="param">password (required)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Password of the account
+            </div>
+            <div class="param">phonenumber (required)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Phone number of the user
+            </div>
+            <div class="param">name (required)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Name of the user </div>
+            <div class="param">address (required)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Address of the user </div>
+            <div class="param">insurance (optional)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Insurance provider of the user </div>
+            <div class="param">dateOfBirth (required)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Date of birth of the user
+            </div>
+            <div class="param">sex (required)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Sex of the user </div>
+            <div class="param">allergies (optional)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Allergies level of the user
+            </div>
+            <div class="param">emergency (required)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Emergency contant number of the user </div>
+            <div class="param">relationship (required)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Relationship of the emergency contact number of the user </div>
+
+        </div>
+        <!-- field-items -->
 
 
 
@@ -281,22 +324,112 @@
 
         <h3 class="field-label">Responses</h3>
         <h4 class="field-label">200</h4>
-        200 OK
+        User account created
         <a href="#"></a>
-        <h3 class="field-label">Example data</h3>
-        <div class="example-data-content-type">Content-Type: id</div>
-        <pre class="example"><code>1</code></pre>
-        <h3 class="field-label">Example data</h3>
-        <div class="example-data-content-type">Content-Type: name</div>
-        <pre class="example"><code>John Smith</code></pre>
-        <h3 class="field-label">Example data</h3>
-        <div class="example-data-content-type">Content-Type: age</div>
-        <pre class="example"><code>22</code></pre>
-        <h3 class="field-label">Example data</h3>
-        <div class="example-data-content-type">Content-Type: skill</div>
-        <pre class="example"><code>intermediate</code></pre>
-        <h4 class="field-label">404</h4>
-        404 Not Found
+        <h4 class="field-label">400</h4>
+        An error occurred. :(
+        <a href="#"></a>
+        <h4 class="field-label">500</h4>
+        Failed to associate the player and user
+        <a href="#"></a>
+    </div>
+    <!-- method -->
+    <hr />
+    <h1><a name="Admin">Admin</a></h1>
+    <div class="method"><a name="adminGet" />
+        <div class="method-path">
+            <a class="up" href="#__Methods">Up</a>
+            <pre class="get"><code class="huge"><span class="http-method">get</span> /admin</code></pre>
+        </div>
+        <div class="method-summary">Gets an admin (<span class="nickname">adminGet</span>)</div>
+        <div class="method-notes"></div>
+
+
+
+        <h3 class="field-label">Request body</h3>
+        <div class="field-items">
+            <div class="param">username (required)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Username of the admin account to register </div>
+            <div class="param">password (required)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Password of the admin account to register </div>
+
+        </div>
+        <!-- field-items -->
+
+
+
+
+
+        <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+        <h3 class="field-label">Produces</h3>
+        This API call produces the following media types according to the <span class="header">Accept</span> request header; the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+        <ul>
+            <li><code>application/json</code></li>
+        </ul>
+
+        <h3 class="field-label">Responses</h3>
+        <h4 class="field-label">200</h4>
+        Admin successfully registered
+        <a href="#"></a>
+        <h4 class="field-label">400</h4>
+        User already exists
+        <a href="#"></a>
+        <h4 class="field-label">500</h4>
+        Error with registartion
+        <a href="#"></a>
+    </div>
+    <!-- method -->
+    <hr />
+    <div class="method"><a name="adminLoginPost" />
+        <div class="method-path">
+            <a class="up" href="#__Methods">Up</a>
+            <pre class="post"><code class="huge"><span class="http-method">post</span> /admin_login</code></pre>
+        </div>
+        <div class="method-summary">Log in as the administrator (<span class="nickname">adminLoginPost</span>)</div>
+        <div class="method-notes"></div>
+
+
+
+        <h3 class="field-label">Request body</h3>
+        <div class="field-items">
+            <div class="param">username (required)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Username of the admin account
+            </div>
+            <div class="param">password (required)</div>
+
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Password of the admin account
+            </div>
+
+        </div>
+        <!-- field-items -->
+
+
+
+
+
+        <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+        <h3 class="field-label">Produces</h3>
+        This API call produces the following media types according to the <span class="header">Accept</span> request header; the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+        <ul>
+            <li><code>application/json</code></li>
+        </ul>
+
+        <h3 class="field-label">Responses</h3>
+        <h4 class="field-label">200</h4>
+        Administrator logged in
+        <a href="#"></a>
+        <h4 class="field-label">400</h4>
+        Incorrect userame or password
+        <a href="#"></a>
+        <h4 class="field-label">500</h4>
+        Server error; cannot login with credentials
         <a href="#"></a>
     </div>
     <!-- method -->
