@@ -55,61 +55,97 @@ app.use(bodyParser.json());
 
 app.get(endpoint + "admin_statistics", (req, res) => {
     connection.query(`UPDATE endpoints SET Hits = Hits + 1 WHERE Endpoint = 'admin_statistics'`, (err, result) => {
-        if (err) throw err;
+        try {
+            if (err) throw err;
+        } catch (e) {
+            res.json(e);
+        }
     });
     // looks in base path /views by default, either change filedir or do it like this
-    res.render(updir + '../html/admin.html');
+    res.render(updir + '/html/admin.html');
 });
 
 app.get(endpoint + "admin", (req, res) => {
     connection.query(`UPDATE endpoints SET Hits = Hits + 1 WHERE Endpoint = 'admin'`, (err, result) => {
-        if (err) throw err;
+        try {
+            if (err) throw err;
+        } catch (e) {
+            res.json(e);
+        }
     });
     connection.query(`SELECT * FROM Endpoints`, (err, result) => {
-        if (err) throw err;
-        res.send(JSON.stringify(result));
+        try {
+            if (err) throw err;
+            res.send(JSON.stringify(result));
+        } catch (e) {
+            res.json(e);
+        }
     });
 });
 
 app.get(endpoint + "getprices", (req, res) => {
     connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'getprices'`, (err, result) => {
-        if (err) throw err;
+        try {
+            if (err) throw err;
+        } catch (e) {
+            res.json(e);
+        }
     });
     connection.query(`SELECT * FROM Pricing`), (err, result) => {
-        if (err) throw err;
-        res.send(JSON.stringify(result));
+        try {
+            if (err) throw err;
+            res.send(JSON.stringify(result));
+        } catch (e) {
+            res.json(e);
+        }
     };
 })
 
 app.post(endpoint + "setprices", (req, res) => {
     connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'setprices'`, (err, result) => {
-        if (err) throw err;
+        try {
+            if (err) throw err;
+        } catch (e) {
+            res.json(e);
+        }
     });
     connection.query(`SELECT * FROM AdminAccount WHERE username LIKE '${req.body.username}' AND password LIKE '${req.body.password}'`, (err, result) => {
-        if (err) throw err;
-        if (result == null) {
-            res.send({
-                success: false
-            })
-        } else {
-            res.send({
-                success: true
-            })
+        try {
+            if (err) throw err;
+            if (result == null) {
+                res.send({
+                    success: false
+                })
+            } else {
+                res.send({
+                    success: true
+                })
+            }
+        } catch (e) {
+            res.json(e);
         }
     });
     connection.query(`UPDATE Pricing SET Cost = ${req.body.cost} WHERE Class = ${req.body.cost}`, (err, result) => {
-        if (err) throw err;
-        res.send({
-            code: 200,
-            message: "Successfully updated prices"
-        })
+        try {
+            if (err) throw err;
+            res.send({
+                code: 200,
+                message: "Successfully updated prices"
+            });
+        } catch (e) {
+            res.json(e);
+        }
     })
 })
 
 app.post(endpoint + "signUp", (req, res) => {
     try {
         connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'signUp'`, (err, result) => {
-            if (err) throw err;
+            try {
+                if (err) throw err;
+            } catch (e) {
+                res.json(e);
+            }
         });
         const email = req.body.email;
         const phoneNumber = req.body.phoneNumber;
@@ -124,60 +160,64 @@ app.post(endpoint + "signUp", (req, res) => {
         const relationship = req.body.relationship;
 
         bcrypt.hash(req.body.password, saltRounds, (err, salt) => {
-            if (err) throw err;
-            connection.query(`SELECT UUID() AS AccountID, UUID() AS PlayerID`, (err, result) => {
-                let aID = result[0].AccountID;
-                let pID = result[0].PlayerID;
-                connection.query(`INSERT INTO account (AccountID, FullName, PhoneNumber, Email, Password, Address, Insurance) VALUES ('${aID}', '${name}', '${phoneNumber}', '${email}', '${salt}', '${address}', '${insurance}');`, (err, result) => {
-                    try {
-                        if (err) throw err;
-                        connection.query(`INSERT INTO player (PlayerID, FullName,  DOB, Sex, SkillLevel, AllergiesMedication, ECN) VALUES ('${pID}', '${name}', '${dateOfBirth}', '${sex}', '${skill}', '${allergies}', '${emergency}')`, (err, result) => {
-                            try {
-                                if (err) throw err;
-                                connection.query(`INSERT INTO playeraccountlink (PlayerID, AccountID, Relationship) VALUES ('${pID}', '${aID}', '${relationship}')`, (err, result) => {
-                                    try {
-                                        if (err) throw err;
-                                        connection.query(`SELECT Permissions FROM account WHERE AccountID='${aID}'`, (err, result) => {
-                                            try {
-                                                console.log(result);
-                                                res.json({
-                                                    token: jwt.sign({
-                                                        AccountID: aID,
-                                                        Permission: result[0].Permissions
-                                                    }, secretKey, {
-                                                        expiresIn: "12h"
-                                                    })
-                                                });
-                                            } catch (e) {
-                                                res.status(500);
-                                                res.json({
-                                                    message: "Died at the end: " + e.message
-                                                });
-                                            }
-                                        });
-                                    } catch (e) {
-                                        res.status(500);
-                                        res.json({
-                                            message: "Died at the 3rd: " + e.message
-                                        });
-                                    }
-                                });
-                            } catch (e) {
-                                res.status(500);
-                                res.json({
-                                    message: "Died at the 1st: " + e.message
-                                });
-                            }
-                        });
-
-                    } catch {
-                        res.status(500);
-                        res.json({
-                            message: "Failed to create new user."
-                        });
-                    }
-                });
-            })
+            try {
+                if (err) throw err;
+                connection.query(`SELECT UUID() AS AccountID, UUID() AS PlayerID`, (err, result) => {
+                    let aID = result[0].AccountID;
+                    let pID = result[0].PlayerID;
+                    connection.query(`INSERT INTO account (AccountID, FullName, PhoneNumber, Email, Password, Address, Insurance) VALUES ('${aID}', '${name}', '${phoneNumber}', '${email}', '${salt}', '${address}', '${insurance}');`, (err, result) => {
+                        try {
+                            if (err) throw err;
+                            connection.query(`INSERT INTO player (PlayerID, FullName,  DOB, Sex, SkillLevel, AllergiesMedication, ECN) VALUES ('${pID}', '${name}', '${dateOfBirth}', '${sex}', '${skill}', '${allergies}', '${emergency}')`, (err, result) => {
+                                try {
+                                    if (err) throw err;
+                                    connection.query(`INSERT INTO playeraccountlink (PlayerID, AccountID, Relationship) VALUES ('${pID}', '${aID}', '${relationship}')`, (err, result) => {
+                                        try {
+                                            if (err) throw err;
+                                            connection.query(`SELECT Permissions FROM account WHERE AccountID='${aID}'`, (err, result) => {
+                                                try {
+                                                    console.log(result);
+                                                    res.json({
+                                                        token: jwt.sign({
+                                                            AccountID: aID,
+                                                            Permission: result[0].Permissions
+                                                        }, secretKey, {
+                                                            expiresIn: "12h"
+                                                        })
+                                                    });
+                                                } catch (e) {
+                                                    res.status(500);
+                                                    res.json({
+                                                        message: "Died at the end: " + e.message
+                                                    });
+                                                }
+                                            });
+                                        } catch (e) {
+                                            res.status(500);
+                                            res.json({
+                                                message: "Died at the 3rd: " + e.message
+                                            });
+                                        }
+                                    });
+                                } catch (e) {
+                                    res.status(500);
+                                    res.json({
+                                        message: "Died at the 1st: " + e.message
+                                    });
+                                }
+                            });
+                            
+                        } catch {
+                            res.status(500);
+                            res.json({
+                                message: "Failed to create new user."
+                            });
+                        }
+                    });
+                })
+            } catch (e) {
+                res.json(e);
+            }
         });
     } catch (e) {
         res.status(500);
@@ -189,7 +229,11 @@ app.post(endpoint + "signUp", (req, res) => {
 
 app.post(endpoint + "login", (req, res) => {
     connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'login'`, (err, result) => {
-        if (err) throw err;
+        try {
+            if (err) throw err;
+        } catch (e) {
+            res.json(e);
+        }
     });
     connection.query(`SELECT Password, AccountID, Permissions FROM account WHERE Email='${req.body.email}'`, (e, r) => {
         try {
@@ -217,161 +261,190 @@ app.post(endpoint + "login", (req, res) => {
 
 app.get(endpoint + "getCalendar", (req, res) => {
     connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'getCalendar'`, (err, result) => {
-        if (err) throw err;
+        try {
+            if (err) throw err;
+        } catch (e) {
+            res.json(e);
+        }
     });
     connection.query(`SELECT dayofweek.Weekday, TIME_FORMAT(dayofweek.StartTime, "%h%p") as StartTime, TIME_FORMAT(dayofweek.EndTime, "%h%p") as EndTime, reservation.Type, reservation.CurrentPlayers, reservation.MaxPlayers, levels.Colour, levels.BackgroundColour, dayofweek.TimeslotID, dayofweek.ReservationID
                         FROM dayofweek
                         LEFT JOIN reservation ON dayofweek.ReservationID = reservation.ReservationID
                         LEFT JOIN account ON account.AccountID = reservation.AccountID
                         LEFT JOIN levels on reservation.Type = levels.Type`, (err, result) => {
-        if (err) throw err;
-        let Sunday = [];
-        let Monday = [];
-        let Tuesday = [];
-        let Wednesday = [];
-        let Thursday = [];
-        let Friday = [];
-        let Saturday = [];
-        result.forEach(element => {
-            console.log(element);
-            if (element.CurrentPlayers >= element.MaxPlayers) {
-                var Full = "Unavailable";
-            } else {
-                var Full = "Available";
-            }
-            switch (element.Weekday) {
-                case "Sunday":
-                    Sunday.push({
-                        scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                        level: element.Type,
-                        currentPlayers: element.CurrentPlayers,
-                        maxPlayers: element.MaxPlayers,
-                        availability: Full,
-                        backgroundColour: element.BackgroundColour,
-                        colour: element.Colour
-                    });
-                    break;
-                case "Monday":
-                    Monday.push({
-                        scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                        level: element.Type,
-                        currentPlayers: element.CurrentPlayers,
-                        maxPlayers: element.MaxPlayers,
-                        availability: Full,
-                        backgroundColour: element.BackgroundColour,
-                        colour: element.Colour
-                    });
-                    break;
-                case "Tuesday":
-                    Tuesday.push({
-                        scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                        level: element.Type,
-                        currentPlayers: element.CurrentPlayers,
-                        maxPlayers: element.MaxPlayers,
-                        availability: Full,
-                        backgroundColour: element.BackgroundColour,
-                        colour: element.Colour
-                    });
-                    break;
-                case "Wednesday":
-                    Wednesday.push({
-                        scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                        level: element.Type,
-                        currentPlayers: element.CurrentPlayers,
-                        maxPlayers: element.MaxPlayers,
-                        availability: Full,
-                        backgroundColour: element.BackgroundColour,
-                        colour: element.Colour
-                    });
-                    break;
-                case "Thursday":
-                    Thursday.push({
-                        scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                        level: element.Type,
-                        currentPlayers: element.CurrentPlayers,
-                        maxPlayers: element.MaxPlayers,
-                        availability: Full,
-                        backgroundColour: element.BackgroundColour,
-                        colour: element.Colour
-                    });
-                    break;
-                case "Friday":
-                    Friday.push({
-                        scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                        level: element.Type,
-                        currentPlayers: element.CurrentPlayers,
-                        maxPlayers: element.MaxPlayers,
-                        availability: Full,
-                        backgroundColour: element.BackgroundColour,
-                        colour: element.Colour
-                    });
-                    break;
-                case "Saturday":
-                    Saturday.push({
-                        scheduledTime: `${element.StartTime} a ${element.EndTime}`,
-                        level: element.Type,
-                        currentPlayers: element.CurrentPlayers,
-                        maxPlayers: element.MaxPlayers,
-                        availability: Full,
-                        backgroundColour: element.BackgroundColour,
-                        colour: element.Colour
-                    });
-                    break;
-                default:
-                    break;
-            }
-        });
-        res.json({
-            sunday: Sunday,
-            monday: Monday,
-            tuesday: Tuesday,
-            wednesday: Wednesday,
-            thursday: Thursday,
-            friday: Friday,
-            saturday: Saturday
-        });
-    })
+                            try {
+                                if (err) throw err;
+                                let Sunday = [];
+                                let Monday = [];
+                                let Tuesday = [];
+                                let Wednesday = [];
+                                let Thursday = [];
+                                let Friday = [];
+                                let Saturday = [];
+                                result.forEach(element => {
+                                    console.log(element);
+                                    if (element.CurrentPlayers >= element.MaxPlayers) {
+                                        let Full = "Unavailable";
+                                    } else {
+                                        let Full = "Available";
+                                    }
+                                    switch (element.Weekday) {
+                                        case "Sunday":
+                                            Sunday.push({
+                                                scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                                                level: element.Type,
+                                                currentPlayers: element.CurrentPlayers,
+                                                maxPlayers: element.MaxPlayers,
+                                                availability: Full,
+                                                backgroundColour: element.BackgroundColour,
+                                                colour: element.Colour
+                                            });
+                                            break;
+                                        case "Monday":
+                                            Monday.push({
+                                                scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                                                level: element.Type,
+                                                currentPlayers: element.CurrentPlayers,
+                                                maxPlayers: element.MaxPlayers,
+                                                backgroundColour: element.BackgroundColour,
+                                                colour: element.Colour
+                                            });
+                                            break;
+                                        case "Tuesday":
+                                            Tuesday.push({
+                                                scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                                                level: element.Type,
+                                                currentPlayers: element.CurrentPlayers,
+                                                maxPlayers: element.MaxPlayers,
+                                                backgroundColour: element.BackgroundColour,
+                                                colour: element.Colour
+                                            });
+                                            break;
+                                        case "Wednesday":
+                                            Wednesday.push({
+                                                scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                                                level: element.Type,
+                                                currentPlayers: element.CurrentPlayers,
+                                                maxPlayers: element.MaxPlayers,
+                                                backgroundColour: element.BackgroundColour,
+                                                colour: element.Colour
+                                            });
+                                            break;
+                                        case "Thursday":
+                                            Thursday.push({
+                                                scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                                                level: element.Type,
+                                                currentPlayers: element.CurrentPlayers,
+                                                maxPlayers: element.MaxPlayers,
+                                                backgroundColour: element.BackgroundColour,
+                                                colour: element.Colour
+                                            });
+                                            break;
+                                        case "Friday":
+                                            Friday.push({
+                                                scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                                                level: element.Type,
+                                                currentPlayers: element.CurrentPlayers,
+                                                maxPlayers: element.MaxPlayers,
+                                                backgroundColour: element.BackgroundColour,
+                                                colour: element.Colour
+                                            });
+                                            break;
+                                        case "Saturday":
+                                            Saturday.push({
+                                                scheduledTime: `${element.StartTime} a ${element.EndTime}`,
+                                                level: element.Type,
+                                                currentPlayers: element.CurrentPlayers,
+                                                maxPlayers: element.MaxPlayers,
+                                                backgroundColour: element.BackgroundColour,
+                                                colour: element.Colour
+                                            });
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                });
+                                res.json({
+                                    sunday: Sunday,
+                                    monday: Monday,
+                                    tuesday: Tuesday,
+                                    wednesday: Wednesday,
+                                    thursday: Thursday,
+                                    friday: Friday,
+                                    saturday: Saturday
+                                });
+                            } catch (e) {
+                                res.json(e);
+                            }
+    });
 })
 
 app.post(endpoint + "updateCalendar", async(req, res) => {
     connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'updateCalendar'`, (err, result) => {
-        if (err) throw err;
+        try {
+            if (err) throw err;
+        } catch (e) {
+            res.json(e);
+        }
     });
     let permission = jwt.verify(req.body.token, secretKey);
     if (permission) {
         if (permission.Permissions == "Admin" || permission.Permissions == "Instructor") {
-            console.log(req.body);
             switch (req.body.operation) {
                 case "ADD":
                     connection.query(`SELECT UUID() AS ID`, (err, result) => {
-                        if (err) throw err;
-                        let UUID = result[0].ID;
-                        connection.query(`INSERT INTO reservation (ReservationID, AccountID, Type, MaxPlayers) VALUES ('${UUID}', '${req.body.instructorID}', '${req.body.classType}', '${req.body.maxPlayers}')`, (err, result) => {
+                        try {
                             if (err) throw err;
-                            connection.query(`INSERT INTO dayofweek (Weekday, StartTime, EndTime, ReservationID, TimeslotID) VALUES ('${req.body.weekday}', '${req.body.StartTime}', '${req.body.endTime}', '${UUID}', UUID())`, (err, result) => {
-                                if (err) throw err;
-                                res.json({
-                                    message: "Successfully added class/reservation"
-                                })
-                            });
-                        })
+                            let UUID = result[0].ID;
+                            connection.query(`INSERT INTO reservation (ReservationID, AccountID, Type, MaxPlayers) VALUES ('${UUID}', '${req.body.instructorID}', '${req.body.classType}', '${req.body.maxPlayers}')`, (err, result) => {
+                                try {
+                                    if (err) throw err;
+                                    connection.query(`INSERT INTO dayofweek (Weekday, StartTime, EndTime, ReservationID, TimeslotID) VALUES ('${req.body.weekday}', '${req.body.startTime}', '${req.body.endTime}', '${UUID}', UUID())`, (err, result) => {
+                                        try {
+                                            if (err) throw err;
+                                            res.json({
+                                                message: "Successfully added class/reservation"
+                                            })
+                                        } catch (e) {
+                                            res.json(e);
+                                        }
+                                    });
+                                } catch (e) {
+                                    res.json(e);
+                                }
+                            })
+                        } catch (e) {
+                            res.json(e);
+                        }
                     })
 
                     break;
                 case "DELETE":
                     connection.query(`DELETE FROM dayofweek WHERE TimeslotID = ${req.body.timeslotID}`, (err, result) => {
-                        if (err) throw err;
-                        res.json({
-                            message: "Successfully deleted class/reservation"
-                        })
+                        try {
+                            if (err) throw err;
+                            res.json({
+                                message: "Successfully deleted class/reservation"
+                            });
+                        } catch (e) {
+                            res.json(e);
+                        }
                     });
                     break;
                 case "UPDATE":
-                    connection.query(`UPDATE dayofweek SET StartTime = ${req.body.StartTime}, EndTime = ${req.body.endTime} WHERE TimeslotID = ${req.body.timeslotID}`, (err, result) => {
-                        if (err) throw err;
+                    connection.query(`UPDATE dayofweek SET StartTime = ${req.body.startTime}, EndTime = ${req.body.endTime} WHERE TimeslotID = ${req.body.timeslotID}`, (err, result) => {
+                        try {
+                            if (err) throw err;
+                        } catch (e) {
+                            res.json(e);
+                        }
                     });
                     await connection.query(`UPDATE reservation SET Type = ${req.body.type}, CurrentPlayers = ${req.body.currentPlayers}, MaxPlayers = ${req.body.maxPlayers} WHERE ReservationID = ${req.body.reservationID}`, (err, result) => {
-                        if (err) throw err;
+                        try {
+                            if (err) throw err;
+                        } catch (e) {
+                            res.json(e);
+                        }
                     });
                     res.json({
                         message: "Successfully updated class/reservation"
@@ -385,10 +458,41 @@ app.post(endpoint + "updateCalendar", async(req, res) => {
             }
         }
     }
-})
+});
+
+app.post(endpoint + "register", (req, res) => {
+    connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'register'`, (err, result) => {
+        try {
+            if (err) throw err;
+        } catch (e) {
+            res.json(e);
+        }
+    });
+    let permission = jwt.verify(req.body.token, secretKey);
+    if (permission) {
+        connection.query(`INSERT INTO registeredplayer (PlayerID, ReservationID) VALUES (${req.body.playerID}, ${req.body.reservationID})`, (err, result) => {
+            try {
+                if (err) throw err;
+                connection.query(`UPDATE reservation SET CurrentPlayers=CurrentPlayers + 1 WHERE ReservationID = ${req.body.reservationID}`, (err, result) => {
+                    try {
+                        if (err) throw err;
+                    } catch (e) {
+                        res.json(e);
+                    }
+                });
+            } catch (e) {
+                res.json(e);
+            }
+        });
+    }
+});
 
 app.listen(port, (err) => {
-    if (err) throw err;
+    try {
+        if (err) throw err;
+    } catch (e) {
+        res.json(e);
+    }
     console.log("Listening to port ", port);
 })
 
