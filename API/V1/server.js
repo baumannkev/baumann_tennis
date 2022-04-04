@@ -219,10 +219,10 @@ app.get(endpoint + "getCalendar", (req, res) => {
     connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'getCalendar'`, (err, result) => {
         if (err) throw err;
     });
-    connection.query(`SELECT dayofweek.Weekday, TIME_FORMAT(dayofweek.StartTime, "%h%p") as StartTime, TIME_FORMAT(dayofweek.EndTime, "%h%p") as EndTime, reservation.Type, reservation.CurrentPlayers, reservation.MaxPlayers, player.FullName, levels.Colour, levels.BackgroundColour, dayofweek.TimeslotID, dayofweek.ReservationID
+    connection.query(`SELECT dayofweek.Weekday, TIME_FORMAT(dayofweek.StartTime, "%h%p") as StartTime, TIME_FORMAT(dayofweek.EndTime, "%h%p") as EndTime, reservation.Type, reservation.CurrentPlayers, reservation.MaxPlayers, levels.Colour, levels.BackgroundColour, dayofweek.TimeslotID, dayofweek.ReservationID
                         FROM dayofweek
                         LEFT JOIN reservation ON dayofweek.ReservationID = reservation.ReservationID
-                        LEFT JOIN player ON player.PlayerID = reservation.PlayerID
+                        LEFT JOIN account ON account.AccountID = reservation.AccountID
                         LEFT JOIN levels on reservation.Type = levels.Type`, (err, result) => {
                             if (err) throw err;
                             let Sunday = [];
@@ -246,7 +246,6 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                             level: element.Type,
                                             currentPlayers: element.CurrentPlayers,
                                             maxPlayers: element.MaxPlayers,
-                                            booker: element.FullName,
                                             availability: Full,
                                             backgroundColour: element.BackgroundColour,
                                             colour: element.Colour
@@ -258,7 +257,6 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                             level: element.Type,
                                             currentPlayers: element.CurrentPlayers,
                                             maxPlayers: element.MaxPlayers,
-                                            booker: element.FullName,
                                             backgroundColour: element.BackgroundColour,
                                             colour: element.Colour
                                         });
@@ -269,7 +267,6 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                             level: element.Type,
                                             currentPlayers: element.CurrentPlayers,
                                             maxPlayers: element.MaxPlayers,
-                                            booker: element.FullName,
                                             backgroundColour: element.BackgroundColour,
                                             colour: element.Colour
                                         });
@@ -280,7 +277,6 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                             level: element.Type,
                                             currentPlayers: element.CurrentPlayers,
                                             maxPlayers: element.MaxPlayers,
-                                            booker: element.FullName,
                                             backgroundColour: element.BackgroundColour,
                                             colour: element.Colour
                                         });
@@ -291,7 +287,6 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                             level: element.Type,
                                             currentPlayers: element.CurrentPlayers,
                                             maxPlayers: element.MaxPlayers,
-                                            booker: element.FullName,
                                             backgroundColour: element.BackgroundColour,
                                             colour: element.Colour
                                         });
@@ -302,7 +297,6 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                             level: element.Type,
                                             currentPlayers: element.CurrentPlayers,
                                             maxPlayers: element.MaxPlayers,
-                                            booker: element.FullName,
                                             backgroundColour: element.BackgroundColour,
                                             colour: element.Colour
                                         });
@@ -313,7 +307,6 @@ app.get(endpoint + "getCalendar", (req, res) => {
                                             level: element.Type,
                                             currentPlayers: element.CurrentPlayers,
                                             maxPlayers: element.MaxPlayers,
-                                            booker: element.FullName,
                                             backgroundColour: element.BackgroundColour,
                                             colour: element.Colour
                                         });
