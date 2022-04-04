@@ -29,12 +29,6 @@
     }
 }
 
-*/ table tbody th {
-    /* position: sticky; */
-    /* top: 0 !important;  */
-    background: white;
-}
-
 .card {
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
