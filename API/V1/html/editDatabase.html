@@ -27,7 +27,7 @@
             padding: 2px;
         }
 
-        .editCalendar{
+        .editCalendar,.editPlayer{
             visibility: hidden;
             top: 50px;
             border: 2px black solid;
@@ -71,10 +71,24 @@
         </nav>
     </header>
 
-
     <div class="container" style="padding-bottom: 10rem;">
 
-
+    </div>
+    <div class="editPlayer" id="editPlayer">
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required>
+        <label for="dob">DOB</label>
+        <input type="date" id="dob" name="dob" required>
+        <label for="skillLevel">Skill Level:</label>
+        <select id="skillLevel" name="skillLevel" required>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        <label for="med">Allergies & Medication:</label>
+        <input type="text" id="med" name="med" required>
+        <input type="submit" onclick="savePlayerEdit()">    
+        <input type="button" name="delete" id="deletePlayer" value="Delete" onclick="deletePlayer()">
     </div>
 
     <div id="edit_players" class="content">
@@ -84,9 +98,9 @@
 
     <div class="editCalendar" id="editCalendar">
         <label for="startTime">Start Time:</label>
-        <input type="time" id="startTime" name="startTime" min="00:00" max="24:00" required>
+        <input type="time" id="startTime" name="startTime" min="00:00" max="24:00" value="00:00" required>
         <label for="endTime">End Time:</label>
-        <input type="time" id="endTime" name="endTime" min="00:00" max="24:00" required>
+        <input type="time" id="endTime" name="endTime" min="00:00" max="24:00" value="00:00" required>
         <label for="appt">Level:</label>
         <select id="level" name="level" required>
             <option value="Red1">Red1</option>

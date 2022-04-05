@@ -574,6 +574,68 @@ app.post(endpoint + "addPlayer", (req, res) => {
     
 })
 
+
+app.post(endpoint + "updatePlayer", async(req, res) => {
+    connection.query(`UPDATE Endpoints SET Hits = Hits + 1 WHERE Endpoint = 'updateCalendar'`, (err, result) => {
+        try {
+            if (err) throw err;
+        } catch (e) {
+            res.json(e);
+        }
+    });
+    let permission = jwt.verify(req.body.token, secretKey);
+    if (permission) {
+        // if (permission.Permissions == "Admin" || permission.Permissions == "Instructor") {
+            if (permission.Permissions == "Admin" || permission.Permissions == "Instructor" || permission.Permissions == "Player") {
+            switch (req.body.operation) {
+                case "DELETE":
+                    connection.query(`DELETE FROM player WHERE PlayerID = '${req.body.playerID}'`, (err, result) => {
+                        try {
+                            if (err) throw err;
+                            res.json({
+                                message: "Successfully deleted player"
+                            });
+                        } catch (e) {
+                            res.json(e);
+                        }
+                    });
+                    break;
+                case "UPDATE":
+                    connection.query(`UPDATE player SET FullName = '${req.body.fullname}', DOB = '${req.body.dob}', SkillLevel = '${req.body.skillLevel}', AllergiesMedication = '${req.body.med}' WHERE PlayerID = '${req.body.playerID}'`, (err, result) => {
+                        try {
+                            if (err) throw err;
+                            res.json({
+                                message: "Successfully updated player"
+                            });
+                        } catch (e) {
+                            res.json(e);
+                        }
+                    });
+                    break;
+                default:
+                    res.json({
+                        message: "Unable to complete operation"
+                    })
+                    break;
+            }
+        }
+    }
+});
+
+app.post(endpoint + "loadPlayers", (req, res) => {
+    let permission = jwt.verify(req.body.token, secretKey);
+    if (permission) {
+        connection.query(`SELECT * FROM player`, (err, result) => {
+            try {
+                if (err) throw err;
+                res.json(result);
+            } catch (e) {
+                res.json(e);
+            }
+        });
+    }
+});
+
 app.listen(port, (err) => {
     try {
         if (err) throw err;
