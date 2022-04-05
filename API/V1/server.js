@@ -541,13 +541,23 @@ app.post(endpoint + "getPlayers", (req, res) => {
 
 app.post(endpoint + "addPlayer", (req, res) => {
     connection.query(`SELECT UUID() AS ID`, (err, result) => {
-        let pID = result[0].ID;
-        connection.query(`INSERT INTO player (PlayerID, FullName,  DOB, Sex, SkillLevel, AllergiesMedication, ECN) VALUES ('${pID}', '${req.body.name}', '${req.body.dateOfBirth}', '${req.body.sex}', '${req.body.skill}', '${req.body.allergies}', '${req.body.emergency}')`, (err, result) => {
-            res.json({
-                message: "Successfully added player!",
-                PlayerID: pID
+        try {
+            if (err) throw err;
+            let pID = result[0].ID;
+            connection.query(`INSERT INTO player (PlayerID, FullName,  DOB, Sex, SkillLevel, AllergiesMedication, ECN) VALUES ('${pID}', '${req.body.name}', '${req.body.dateOfBirth}', '${req.body.sex}', '${req.body.skill}', '${req.body.allergies}', '${req.body.emergency}')`, (err, result) => {
+                try {
+                    if (err) throw err;
+                    res.json({
+                        message: "Successfully added player!",
+                        PlayerID: pID
+                    });
+                } catch (e) {
+                    res.json(e);
+                }
             });
-        });
+        } catch (e) {
+            res.json(e);
+        }
     })
     
 })
