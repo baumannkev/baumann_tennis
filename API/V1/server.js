@@ -4,6 +4,7 @@ const path = require('path');
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
+const { CLIENT_LONG_PASSWORD } = require('mysql/lib/protocol/constants/client');
 
 
 const app = express();
@@ -427,7 +428,8 @@ app.post(endpoint + "updateCalendar", async(req, res) => {
     });
     let permission = jwt.verify(req.body.token, secretKey);
     if (permission) {
-        if (permission.Permissions == "Admin" || permission.Permissions == "Instructor") {
+        // if (permission.Permissions == "Admin" || permission.Permissions == "Instructor") {
+            if (permission.Permissions == "Admin" || permission.Permissions == "Instructor" || permission.Permissions == "Player") {
             switch (req.body.operation) {
                 case "ADD":
                     connection.query(`SELECT UUID() AS ID`, (err, result) => {

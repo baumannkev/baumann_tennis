@@ -11,7 +11,6 @@ function createTableHeader(endpoints, tableName) {
     tableRow.appendChild(tableData);
   }
   document.getElementById(tableName).appendChild(tableRow);
-  console.log(tableName);
 }
 
 function createTableData(endpoints, tableName) {
@@ -27,16 +26,46 @@ function createTableData(endpoints, tableName) {
   });
 }
 
-function loadPlayers() {
-  let resource = "/loadPlayer";
+function login() {
+  let resource = "/login";
   const url = endPointRoot + resource;
   const xhttp = new XMLHttpRequest();
   xhttp.open(POST, url, true);
-  //localStorage.getItem("BaumannTennisToken")
-  xhttp.send();
+  xhttp.setRequestHeader("Content-Type", "application/json");
+  let loginInfo = {
+    "email": "tester1@test.test",
+    "phoneNumber": "1234567890",
+    "name": "tester1",
+    "address": "1 test ln",
+    "dob": "1999-01-01",
+    "sex": "Male",
+    "skill": "Beginner",
+    "emergency": "tester1",
+    "relationship": "tester1",
+    "password": "tester1",
+  };
+  xhttp.send(JSON.stringify(loginInfo));
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
+      let endpoints = JSON.parse(this.response);
+      localStorage.setItem("BaumannTennisToken", endpoints.token);
+    };
+  };
+}
 
+function loadPlayers() {
+  let resource = "/getPlayers";
+  const url = endPointRoot + resource;
+  const xhttp = new XMLHttpRequest();
+  xhttp.open(POST, url, true);
+  xhttp.setRequestHeader("Content-Type", "application/json");
+  let token = localStorage.getItem("BaumannTennisToken");
+  let tokenJson = {
+    "token": token
+  };
+  xhttp.send(JSON.stringify(tokenJson));
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
       let endpoints = JSON.parse(this.response);
       if (endpoints.length == 0) {
         throw ("No Player data");
@@ -47,49 +76,11 @@ function loadPlayers() {
   };
 }
 
-function loadInstructor() {
-  let resource = "/loadInstructor";
+function loadCalendar() {
+  let resource = "/getCalendar";
   const url = endPointRoot + resource;
   const xhttp = new XMLHttpRequest();
-  xhttp.open(POST, url, true);
-  //localStorage.getItem("BaumannTennisToken")
-  xhttp.send();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      let endpoints = JSON.parse(this.response);
-      if (endpoints.length == 0) {
-        throw ("No instructor data");
-      }
-      createTableHeader(endpoints, "instructorTable");
-      createTableData(endpoints, "instructorTable");
-    };
-  };
-}
-
-function loadCourt() {
-  let resource = "/loadCourt";
-  const url = endPointRoot + resource;
-  const xhttp = new XMLHttpRequest();
-  xhttp.open(POST, url, true);
-  //localStorage.getItem("BaumannTennisToken")
-  xhttp.send();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      let endpoints = JSON.parse(this.response);
-      if (endpoints.length == 0) {
-        throw ("No Court data");
-      }
-      createTableHeader(endpoints, "courtTable");
-      createTableData(endpoints, "courtTable");
-    };
-  };
-}
-
-function loadClass() {
-  let resource = "/loadClass";
-  const url = endPointRoot + resource;
-  const xhttp = new XMLHttpRequest();
-  xhttp.open(POST, url, true);
+  xhttp.open(GET, url, true);
   //localStorage.getItem("BaumannTennisToken")
   xhttp.send();
   xhttp.onreadystatechange = function () {
@@ -98,76 +89,113 @@ function loadClass() {
       if (endpoints.length == 0) {
         throw ("No class data");
       }
-      createTableHeader(endpoints, "classTable");
-      createTableData(endpoints, "classTable");
+
+      let displayingData = ["scheduledTime", "level", "currentPlayers", "maxPlayers", "availability"];
+
+      for (day in endpoints) {
+        for (class_ in endpoints[day]) {
+          let tablerow = document.createElement("tr");
+          console.log(endpoints[day][class_]);
+
+          displayingData.forEach(key => {
+            let tableData = document.createElement("td");
+            tableData.innerHTML = endpoints[day][class_][key];
+            tablerow.appendChild(tableData);
+          });
+
+          let Editbtn = document.createElement("button");
+          Editbtn.innerHTML = "Edit Class";
+          Editbtn.timeslotID = endpoints[day][class_]["timeslotID"];
+          Editbtn.reservationID = endpoints[day][class_]["reservationID"];
+          Editbtn.addEventListener('click', editClass, false);
+          tablerow.appendChild(Editbtn);
+          
+          document.getElementById("calendarTable").appendChild(tablerow);
+        }
+      }
     };
   };
 }
 
-function loadReservation() {
-  let resource = "/loadReservation";
+function editClass(event) {
+  localStorage.setItem("timeslotID", event.currentTarget.timeslotID);
+  localStorage.setItem("reservationID", event.currentTarget.reservationID);
+  document.getElementById("editCalendar").classList.toggle("show");
+}
+
+function saveCalendarEdit(){
+  let startTime = document.getElementById("startTime").value;
+  let endTime = document.getElementById("endTime").value;
+  let level = document.getElementById("level").value;
+  let maxP = document.getElementById("maxplayers").value;
+  let resource = "/updateCalendar";
+
   const url = endPointRoot + resource;
   const xhttp = new XMLHttpRequest();
   xhttp.open(POST, url, true);
-  //localStorage.getItem("BaumannTennisToken")
-  xhttp.send();
+  xhttp.setRequestHeader("Content-Type", "application/json");
+  let token = localStorage.getItem("BaumannTennisToken");
+  let tokenJson = {
+    "token": token,
+    "operation": "UPDATE",
+    "startTime": startTime,
+    "endTime": endTime,
+    "level": startTime,
+    "type": level,
+    "maxPlayers": maxP,
+    "currentPlayers": 0,
+    "timeslotID": localStorage.getItem("timeslotID"),
+    "reservationID": localStorage.getItem("reservationID")
+  };
+  xhttp.send(JSON.stringify(tokenJson));
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       let endpoints = JSON.parse(this.response);
-      if (endpoints.length == 0) {
-        throw ("No reservation data");
-      }
-      createTableHeader(endpoints, "reservationTable");
-
-      let tableRow;
-      endpoints.forEach(element => {
-        tableRow = document.createElement("tr");
-        for (key in element) {
-          let tableData = document.createElement("td");
-          tableData.innerHTML = element[key];
-          tableRow.appendChild(tableData);
-        }
-        let removeBtn = document.createElement("button");
-        removeBtn.innerHTML = "Remove Reservation";
-        removeBtn.addEventListener('click', function() {
-          removeReservation(element.scheduledTime);
-        });
-        let tableDataBtn = document.createElement("td");
-        tableDataBtn.appendChild(removeBtn);
-        tableRow.appendChild(tableDataBtn);
-
-        document.getElementById("reservationTable").appendChild(tableRow);
-      });    };
+      window.alert(endpoints.message);
+      document.getElementById("editCalendar").classList.toggle("show");
+    loadReservation();
+    };
   };
+
+
 }
 
-function removeReservation(time) {
-  console.log('Remove res: ' + time);
-
-  let resource = "/removeReservation";
+function calendarDelete() {
+  let resource = "/updateCalendar";
   const url = endPointRoot + resource;
   const xhttp = new XMLHttpRequest();
   xhttp.open(POST, url, true);
-  //localStorage.getItem("BaumannTennisToken")
-  xhttp.send(time);
+  xhttp.setRequestHeader("Content-Type", "application/json");
+  let token = localStorage.getItem("BaumannTennisToken");
+  let tokenJson = {
+    "token": token,
+    "timeslotID": localStorage.getItem("timeslotID"),
+    "operation": "DELETE"
+  };
+  xhttp.send(JSON.stringify(tokenJson));
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      console.log("Succesfully Removed");
-      loadReservation();
+      let endpoints = JSON.parse(this.response);
+      window.alert(endpoints.message);
+      document.getElementById("editCalendar").classList.toggle("show");
+    loadReservation();
     };
+    
   };
 }
+
+
 
 
 
 function loadTables() {
+  login();
   loadPlayers();
+  loadCalendar();
   // loadInstructor();
   // loadCourt();
   // loadClass();
-  loadReservation();
+  // loadReservation();
 }
 
 loadTables();
-
-

@@ -21,141 +21,6 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy" rel="stylesheet">
 
 </head>
-<style>
-    .modal {
-        position: relative !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        z-index: 155 !important;
-        display: block !important;
-        /* width: 50% !important; */
-        height: 70%;
-        outline: 0;
-    }
-</style>
-
-<!-- Login / Signup modal -->
-
-<!-- <div class="ui test modal">
-    <div class="center aligned header">Iniciar sesión</div>
-    <div class="content">
-        <form class="ui form attached segment login" id="loginFormModal">
-            <div class="ui attached message">
-                <div class="header">
-                    Es bueno verte de nuevo!
-                </div>
-            </div>
-            <p>Iniciar sesión</p>
-            <div class="two fields">
-                <div class="field">
-                    <label>Email</label>
-                    <input placeholder="Email" name="email" type="email" id="loginEmail">
-                </div>
-                <div class="field">
-                    <label>Contraseña</label>
-                    <input type="password" name="password" id="loginPassword">
-                </div>
-            </div>
-            <input id="Submit" type="submit" value="Login" />
-            <p><i class="icon help"></i> Ya tienes un perfil personal?</p>
-            <div class="ui warning button" id="signUpTargetModal">Regístrate</div>
-            <div class="ui error message"></div>
-        </form>
-        <form class="ui form attached segment signup" id="signUpFormModal">
-            <div class="ui attached message">
-                <div class="header">
-                    Bienvenido a nuestro sitio!
-                </div>
-                <p>Completa el siguiente formulario para registrarse en una nueva cuenta</p>
-            </div>
-            <div class="two fields">
-                <div class="field">
-                    <label>Nombre</label>
-                    <input placeholder="Nombre y Apellido" name="name" type="text">
-                </div>
-                <div class="field">
-                    <label>Sexo</label>
-                    <div class="ui selection dropdown">
-                        <input name="gender" type="hidden">
-                        <div class="default text">Masculino</div>
-                        <i class="dropdown icon"></i>
-                        <div class="menu">
-                            <div class="item" data-value="male">Masculino</div>
-                            <div class="item" data-value="female">Femenino</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="three fields">
-                <div class="field">
-                    <label>Número de teléfono</label>
-                    <input type="number" name="phoneNumber" placeholder="+595 985 734580">
-                </div>
-                <div class="field">
-                    <label>Domicilio</label>
-                    <input type="text" name="address" placeholder="Domicilio">
-                </div>
-                <div class="field">
-                    <label>Seguro de Salud</label>
-                    <input type="text" name="insurance" placeholder="Migone">
-                </div>
-            </div>
-            <div class="three fields">
-                <div class="field">
-                    <label>Skill Level</label>
-                    <div class="ui selection dropdown">
-                        <input name="skill" type="hidden">
-                        <div class="default text">Red1</div>
-                        <i class="dropdown icon"></i>
-                        <div class="menu">
-                            <div class="item" data-value="Red1">Red1</div>
-                            <div class="item" data-value="Red2">Red2</div>
-                            <div class="item" data-value="Orange1">Orange1</div>
-                            <div class="item" data-value="Orange2">Orange2</div>
-                            <div class="item" data-value="Green1">Green1</div>
-                            <div class="item" data-value="Green2">Green2</div>
-                            <div class="item" data-value="Yellow1">Yellow1</div>
-                            <div class="item" data-value="Yellow2">Yellow2</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="field">
-                    <label>Alergias</label>
-                    <input type="text" name="allergy" placeholder="Ninguno">
-                </div>
-                <div class="field">
-                    <label>Contacto de emergencia</label>
-                    <input type="text" name="ECN" placeholder="Nadie">
-                </div>
-                <div class="field">
-                    <label>Relacion de contacto de emergencia</label>
-                    <input type="text" name="relationship" placeholder="Relacion">
-                </div>
-
-            </div>
-            <div class="two fields">
-                <div class="field">
-                    <label>Email</label>
-                    <input placeholder="Email" name="email" type="email">
-                </div>
-                <div class="field">
-                    <label>Contraseña</label>
-                    <input type="password" name="password">
-                </div>
-            </div>
-            <div class="ui primary submit button">Regístrate</div>
-            <p>¿Ya tienes un perfil personal?</p>
-            <div class="ui warning button" id="loginTargetModal">Iniciar sesión</div>
-            <div class="ui error message"></div>
-        </form>
-    </div>
-    <div class="center aligned actions">
-        <div class="ui negative button">Cancel</div>
-        <div class="ui positive button">OK</div>
-    </div>
-</div> -->
 
 <body>
 
@@ -173,9 +38,6 @@
                 </button>
                 <div id="navbarCollapse" class="navbar-collapse collapse justify-content-end ">
                     <ul class="navbar-nav">
-                        <!-- <li class="nav-item d-flex">
-                            <div><a class="nav-link ui test button" id="loginModal">Inicia Sesion</a></div>
-                        </li> -->
                         <li class="nav-item d-flex">
                             <a class="nav-link scrollto" href="../index.html">Inicio</a>
                         </li>
@@ -198,15 +60,6 @@
             </div>
         </div>
         <h2>Bienvenido</h2>
-        <!-- <div class="ui selection dropdown booking">
-            <input type="hidden" name="selection">
-            <i class="dropdown icon"></i>
-            <div class="default text">Type</div>
-            <div class="scrollhint menu">
-                <div class="item" data-value="book">Alquila</div>
-                <div class="item" data-value="register">Regístrese para las clases</div>
-            </div>
-        </div> -->
 
         <div class="ui container">
             <h3>Elegir Fecha</h3>
@@ -278,7 +131,7 @@
                 </table>
 
                 <!-- Table for classes -->
-                <div class="card border-secondary mb-3">
+                <div class="card">
                     <div class="card-header">Regístrese para las clases</br>Fecha seleccionada: <span id="dateSelectedRegister"></span>
                     </div>
                     <div class="card-body text-secondary">
@@ -297,7 +150,7 @@
                 </div>
                 <h3>Confirma tu información personal</h3>
 
-                <div class="card border-secondary mb-3">
+                <div class="card">
                     <div class="card-header">Miembro</div>
                     <div class="card-body text-secondary">
                         <div class="ui card">
@@ -338,17 +191,89 @@
 
                             </div>
                             <div class="field">
-                                <div class="ui selection dropdown">
+                                <div class="ui selection players dropdown">
                                     <input name="player" type="hidden">
                                     <div class="default text">Jugador</div>
                                     <i class="dropdown icon"></i>
                                     <div class="menu" id="playerMenu">
                                     </div>
                                 </div>
+
                             </div>
-                            <form id="bookingConfirm">
+                            <!-- Add a another player -->
+                            <form id="playerAdd" style="margin-top: 2rem; margin-bottom: 2rem;">
+                                <input type="submit" value="Agrega Jugador" />
+                            </form>
+                            <div id="addAnotherPlayer">
+                                <form class="ui form segment addPlayer" id="addPlayerForm">
+                                    <p>Regístrate</p>
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <label>Nombre</label>
+                                            <input placeholder="Nombre y Apellido" name="name" type="text" id="addPlayerName">
+                                        </div>
+                                        <div class="field">
+                                            <label>Sexo</label>
+                                            <div class="ui selection dropdown">
+                                                <input name="gender" type="hidden" id="addPlayerSex">
+                                                <div class="default text">Sexo</div>
+                                                <i class="dropdown icon"></i>
+                                                <div class="menu">
+                                                    <div class="item" data-value="male">Masculino</div>
+                                                    <div class="item" data-value="female">Femenino</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <label>Nivel de Jugador</label>
+                                            <div class="ui selection dropdown">
+                                                <input name="skill" type="hidden" id="addPlayerSkill">
+                                                <div class="default text">Red1</div>
+                                                <i class="dropdown icon"></i>
+                                                <div class="menu">
+                                                    <div class="item" data-value="Red1">Red1</div>
+                                                    <div class="item" data-value="Red2">Red2</div>
+                                                    <div class="item" data-value="Orange1">Orange1</div>
+                                                    <div class="item" data-value="Orange2">Orange2</div>
+                                                    <div class="item" data-value="Green1">Green1</div>
+                                                    <div class="item" data-value="Green2">Green2</div>
+                                                    <div class="item" data-value="Yellow1">Yellow1</div>
+                                                    <div class="item" data-value="Yellow2">Yellow2</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field">
+                                            <label>Fecha de nacimiento</label>
+                                            <div class="ui calendar" id="birthdateCalendarAddPlayer">
+                                                <div class="ui input">
+                                                    <input type="text" id="addPlayerDOB" placeholder="Fecha">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="two fields">
+                                        <div class="field">
+                                            <label>Contacto de Emergencia</label>
+                                            <input placeholder="+595 985 734580" name="emergency" type="text" id="addPlayerECN">
+                                        </div>
+                                        <div class="field">
+                                            <label>Relacion a account holder</label>
+                                            <input placeholder="Padre" name="contactName" type="text" id="addPlayerRelationship">
+                                        </div>
+                                    </div>
+
+                                    <input type="submit" value="Agrega Jugador" />
+
+                                </form>
+                            </div>
+                            <div id="playerAddedSuccess"></div>
+                            <form id="bookingConfirm" style="margin-top: 2rem;">
                                 <input type="submit" value="Confirma Inscripcion" />
                             </form>
+
                             <div id="successBooking"></div>
                         </div>
                         <!-- This is where the user signs up if they're not already -->
@@ -388,7 +313,7 @@
                             </div>
                             <div class="two fields">
                                 <div class="field">
-                                    <label>Skill Level</label>
+                                    <label>Nivel de Jugador</label>
                                     <div class="ui selection dropdown">
                                         <input name="skill" type="hidden" id="signUpSkill">
                                         <div class="default text">Red1</div>
@@ -406,9 +331,10 @@
                                     </div>
                                 </div>
                                 <div class="field">
-                                    <div class="ui birthdate">
+                                    <div class="ui calendar" id="birthdateCalendarSignUp">
+                                        <label>Fecha de nacimiento</label>
                                         <div class="ui input">
-                                            <input type="text" id="signUpDOB" placeholder="Date">
+                                            <input type="text" id="signUpDOB" placeholder="Fecha">
                                         </div>
                                     </div>
                                 </div>

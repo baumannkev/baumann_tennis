@@ -3,8 +3,7 @@ var optionSelected = 'book';
 var bookSelectedText = 'Bienvenido! Elegi la hora disponible para alquilar la cancha';
 $('#welcome').text(bookSelectedText)
 $('#confirmBookDiv').hide();
-$('.ui.players')
-    .dropdown();
+$('#addAnotherPlayer').hide();
 $('.ui.selection')
     .dropdown();
 
@@ -12,8 +11,18 @@ let reservationIDGlobal = "";
 let tokenGlobal = ""
 let playerIDGlobal = ""
 
+$('#playerSelect')
+    .dropdown();
+$('.ui.players')
+    .dropdown({
+        onChange: function changePlayerSelected() {
+
+
+
+        },
+    });
+
 var arr = [0, 1, 2, 3, 4, 5];
-// $(".cardDateBook2").hide();
 let dropValues = [{
         name: 'Alquila la cancha',
         value: 'book',
@@ -68,8 +77,8 @@ var databaseDates = [{
     //first add an event listener for page load
     // document.addEventListener("DOMContentLoaded", get_json_data, false);
 
-const endPointRoot = "http://127.0.0.1:30005";
-// const endPointRoot = "https://API.baumanntennis.com";
+// const endPointRoot = "http://127.0.0.1:30005";
+const endPointRoot = "https://API.baumanntennis.com";
 
 const GET = "GET";
 const POST = "POST";
@@ -87,6 +96,52 @@ document.querySelector("#bookingConfirm").addEventListener('submit', (e) => {
     e.preventDefault();
     register();
 });
+document.querySelector("#playerAdd").addEventListener('submit', (e) => {
+    e.preventDefault();
+    addPlayer();
+});
+
+document.querySelector("#addAnotherPlayer").addEventListener('submit', (e) => {
+    e.preventDefault();
+    addPlayerSubmit();
+});
+
+const addPlayer = () => {
+    $('#addAnotherPlayer').show();
+
+}
+
+const addPlayerSubmit = () => {
+
+    const xhttp = new XMLHttpRequest();
+    let resource = "/addPlayer";
+    const url = endPointRoot + resource;
+
+    let addPlayerInfo = {
+        name: document.getElementById("addPlayerName").value,
+        dob: document.getElementById("addPlayerDOB").value,
+        sex: document.getElementById("addPlayerSex").value,
+        skill: document.getElementById("addPlayerSkill").value,
+        emergency: document.getElementById("addPlayerECN").value,
+        relationship: document.getElementById("addPlayerRelationship").value,
+        token: tokenGlobal
+    }
+
+
+    addPlayerInfo = JSON.stringify(addPlayerInfo)
+
+    xhttp.open(POST, url, true);
+    xhttp.setRequestHeader('Content-Type', 'application/json');
+    xhttp.send(addPlayerInfo);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            $("#addAnotherPlayer").hide();
+            document.getElementById("playerAddedSuccess").innerHTML = '<p>Jugador agregado!</p>'
+
+        };
+    };
+}
+
 const register = () => {
     const xhttp = new XMLHttpRequest();
     let resource = "/register";
@@ -101,15 +156,16 @@ const register = () => {
 
     registerInfo = JSON.stringify(registerInfo)
 
-    console.log("Register ", registerInfo)
 
     xhttp.open(POST, url, true);
     xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(registerInfo);
+    document.getElementById("successBooking").innerHTML = '<p>Gracias por registrar!</p>'
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("successBooking").innerHTML = 'Gracias por registrar!'
+            document.getElementById("successBooking").innerHTML = '<p>Gracias por registrar!</p>'
         };
+        document.getElementById("successBooking").innerHTML = '<p>Gracias por registrar!</p>'
     };
 }
 
@@ -129,13 +185,11 @@ function httpGetPlayerLogin(tokenValue) {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
 
-
             var players = JSON.parse(this.response);
             fullName = JSON.parse(this.response)[0].FullName;
-            console.log("Players ", players)
 
             let selectPlayer = document.getElementById('playerMenu');
-            selectPlayer.innerHTML = ""
+            selectPlayer.innerHTML = ''
 
             for (var i = 0; i < players.length; i++) {
                 playerIDGlobal = players[i].PlayerID
@@ -156,8 +210,6 @@ const login = () => {
     }
 
     LoginInfo = JSON.stringify(LoginInfo)
-
-    console.log("Info ", LoginInfo)
 
     xhttp.open(POST, url, true);
     xhttp.setRequestHeader('Content-Type', 'application/json');
@@ -196,9 +248,6 @@ function httpGetPlayerSignUp(tokenValue) {
 
 
             var players = JSON.parse(this.response);
-            let fullName = "";
-            fullName = JSON.parse(this.response)[0].FullName;
-            console.log("Players ", players)
 
             let selectPlayer = document.getElementById('playerMenu');
             selectPlayer.innerHTML = ""
@@ -230,7 +279,6 @@ const signUp = () => {
         password: document.getElementById("signUpPassword").value,
     }
 
-    console.log("Info ", SignUpInfo)
     SignUpInfo = JSON.stringify(SignUpInfo)
 
     xhttp.open(POST, url, true);
@@ -238,27 +286,23 @@ const signUp = () => {
     xhttp.send(SignUpInfo);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log("Test ", JSON.parse(this.response))
             $("#signUpForm").hide();
             $('#confirmBookDiv').show();
             document.getElementById("signUpTest").innerHTML = 'You are in'
-            console.log("here")
-
             tokenGlobal = JSON.parse(this.response).token
             httpGetPlayerSignUp(JSON.parse(this.response).token)
-
         };
     };
 }
 
 function get_json_data(daySelected) {
-    console.log("day selected ", daySelected)
     const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
     let day = weekday[daySelected.getDay()];
 
     function httpGet(theUrl) {
         let xmlHttpReq = new XMLHttpRequest();
         xmlHttpReq.open("GET", theUrl, false);
+        xmlHttpReq.setRequestHeader('Content-Type', 'application/json');
         xmlHttpReq.send(null);
         return xmlHttpReq.responseText;
     }
@@ -315,12 +359,11 @@ function append_json_data(data) {
             backgroundSkillColor = '#FFF9D2'
             skillColor = '#BF9122'
         }
-        console.log("Reservation ID ", data[i].reservationID)
         reservationIDGlobal = data[i].reservationID
         tableDiv.innerHTML += '<tr class="bookTable" id = "' + data[i].reservationID + '">' +
             '<td><span class="day2"></span>,</br>' + data[i].scheduledTime + '</td>' +
             '<td><span style="color: ' + availabilityColor + ' ">' + full + '</td>' +
-            '<td><span style="color:  ' + skillColor + '; background-color: ' + backgroundSkillColor + ' ">' + data[i].level + '</td>' +
+            '<td><span style="color:  ' + data[i].colour + '; background-color: ' + data[i].backgroundColour + ' ">' + data[i].level + '</td>' +
             '<td><a class = "availability scrollto" href="#cardMemberID"><button class="ui primary button ' + disabledSelect + '" onclick="showMember()">Seleccionar</button></a></td>' +
             '</tr>';
     }
@@ -338,7 +381,6 @@ function showMember() {
         }).get();
         if ($.trim(tableData[1]) !== 'Lleno') {
             $(".details").text($.trim(tableData[0]) + " , " + $.trim(tableData[2]));
-            // console.log("Your data is: " + $.trim(tableData[0]) + " , " + $.trim(tableData[2]));
         }
     });
 }
@@ -366,8 +408,41 @@ $("#loginTargetModal").click(function() {
 function showSuccess() {
     $(".successMessage").show();
 }
-$('.birthdate').calendar({
+$('#birthdateCalendarAddPlayer').calendar({
     type: 'date',
+    formatter: {
+        date: function(date, settings) {
+            if (!date) return '';
+            dates = date;
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            return year + '-' + month + '-' + day;
+        }
+    },
+    text: {
+        eventClass: 'inverted green',
+        days: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+        months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthsShort: ['Ene', 'Feb', 'Mar', 'Avr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dec'],
+        today: 'Hoy',
+        now: 'Ahora',
+        am: 'AM',
+        pm: 'PM',
+    },
+})
+$('#birthdateCalendarSignUp').calendar({
+    type: 'date',
+    formatter: {
+        date: function(date, settings) {
+            if (!date) return '';
+            dates = date;
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            return year + '-' + month + '-' + day;
+        }
+    },
     text: {
         eventClass: 'inverted green',
         days: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
@@ -382,7 +457,7 @@ $('.birthdate').calendar({
 $(".signup").hide()
 var dates = ""
 
-$('.calendar')
+$('#spanish_calendar')
     .calendar({
         today: "true",
         touchReadonly: "false",
