@@ -180,13 +180,22 @@ function loadCalendar() {
       }
 
       for (day in endpoints) {
+        if (endpoints[day].length > 0) {
+          let tableRow = document.createElement("tr");
+          let td = document.createElement("td");
+          td.innerHTML = day;
+          tableRow.appendChild(td);
+          document.getElementById("calendarTable").appendChild(tableRow);
+        }
+
+
         for (class_ in endpoints[day]) {
-          let tablerow = document.createElement("tr");
+          tableRow = document.createElement("tr");
 
           displayingData.forEach(key => {
             let tableData = document.createElement("td");
             tableData.innerHTML = endpoints[day][class_][key];
-            tablerow.appendChild(tableData);
+            tableRow.appendChild(tableData);
           });
 
           let Editbtn = document.createElement("button");
@@ -197,9 +206,9 @@ function loadCalendar() {
           Editbtn.maxplayers = endpoints[day][class_]["maxplayers"];
 
           Editbtn.addEventListener('click', editClass, false);
-          tablerow.appendChild(Editbtn);
+          tableRow.appendChild(Editbtn);
           
-          document.getElementById("calendarTable").appendChild(tablerow);
+          document.getElementById("calendarTable").appendChild(tableRow);
         }
       }
     };
