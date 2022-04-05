@@ -77,8 +77,8 @@ var databaseDates = [{
     //first add an event listener for page load
     // document.addEventListener("DOMContentLoaded", get_json_data, false);
 
-// const endPointRoot = "http://127.0.0.1:30005";
-const endPointRoot = "https://API.baumanntennis.com";
+const endPointRoot = "http://127.0.0.1:30005";
+// const endPointRoot = "https://API.baumanntennis.com";
 
 const GET = "GET";
 const POST = "POST";
@@ -119,7 +119,7 @@ const addPlayerSubmit = () => {
 
     let addPlayerInfo = {
         name: document.getElementById("addPlayerName").value,
-        dob: document.getElementById("addPlayerDOB").value,
+        dateOfBirth: document.getElementById("addPlayerDOB").value,
         sex: document.getElementById("addPlayerSex").value,
         skill: document.getElementById("addPlayerSkill").value,
         emergency: document.getElementById("addPlayerECN").value,
@@ -137,7 +137,7 @@ const addPlayerSubmit = () => {
         if (this.readyState == 4 && this.status == 200) {
             $("#addAnotherPlayer").hide();
             document.getElementById("playerAddedSuccess").innerHTML = '<p>Jugador agregado!</p>'
-
+            httpGetPlayerLogin(tokenGlobal)
         };
     };
 }
@@ -186,7 +186,7 @@ function httpGetPlayerLogin(tokenValue) {
         if (this.readyState == 4 && this.status == 200) {
 
             var players = JSON.parse(this.response);
-            fullName = JSON.parse(this.response)[0].FullName;
+            // fullName = JSON.parse(this.response)[0].FullName;
 
             let selectPlayer = document.getElementById('playerMenu');
             selectPlayer.innerHTML = ''
@@ -296,7 +296,7 @@ const signUp = () => {
 }
 
 function get_json_data(daySelected) {
-    const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+    let weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
     let day = weekday[daySelected.getDay()];
 
     function httpGet(theUrl) {
@@ -309,7 +309,7 @@ function get_json_data(daySelected) {
     let resource = "/getCalendar";
     const url = endPointRoot + resource;
     var dbData = httpGet(url);
-    const jsonData = JSON.parse(dbData)
+    let jsonData = JSON.parse(dbData)
 
     var dateSelected = jsonData[day];
     append_json_data(dateSelected)
@@ -339,28 +339,8 @@ function append_json_data(data) {
             availabilityColor = "#2185D0"
         }
 
-        if (data[i].level == 'Azul 1' || data[i].level == 'Azul 2') {
-            backgroundSkillColor = '#DDF4FF'
-            skillColor = '#2185D0'
-        }
-        if (data[i].level == 'Red1' || data[i].level == 'Red2') {
-            backgroundSkillColor = '#FFE1DF'
-            skillColor = '#E24D4D'
-        }
-        if (data[i].level == 'Green1' || data[i].level == 'Green2') {
-            backgroundSkillColor = '#D5F5D9'
-            skillColor = '#41C750'
-        }
-        if (data[i].level == 'Naranja 1' || data[i].level == 'Naranja 2') {
-            backgroundSkillColor = '#FFE7D1'
-            skillColor = '#F2711C'
-        }
-        if (data[i].level == 'Amarillo 1' || data[i].level == 'Amarillo 2') {
-            backgroundSkillColor = '#FFF9D2'
-            skillColor = '#BF9122'
-        }
-        reservationIDGlobal = data[i].reservationID
-        tableDiv.innerHTML += '<tr class="bookTable" id = "' + data[i].reservationID + '">' +
+        // reservationIDGlobal = data[i].reservationID
+        tableDiv.innerHTML += '<tr btn_id = "' + data[i].reservationID + '" class="bookTable"> ' +
             '<td><span class="day2"></span>,</br>' + data[i].scheduledTime + '</td>' +
             '<td><span style="color: ' + availabilityColor + ' ">' + full + '</td>' +
             '<td><span style="color:  ' + data[i].colour + '; background-color: ' + data[i].backgroundColour + ' ">' + data[i].level + '</td>' +
@@ -379,7 +359,10 @@ function showMember() {
         var tableData = $(this).children("td").map(function() {
             return $(this).text();
         }).get();
+        var resId = $(this).attr('btn_id');
+        reservationIDGlobal = resId;
         if ($.trim(tableData[1]) !== 'Lleno') {
+            console.log("Res id: ", resId);
             $(".details").text($.trim(tableData[0]) + " , " + $.trim(tableData[2]));
         }
     });
