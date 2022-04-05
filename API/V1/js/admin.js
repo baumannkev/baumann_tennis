@@ -68,8 +68,9 @@ const login = () => {
         email: document.getElementById("Email").value,
         password: document.getElementById("Password").value
     }
-
+    LoginInfo = JSON.stringify(LoginInfo)
     xhttp.open(POST, url, true);
+    xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(LoginInfo);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
