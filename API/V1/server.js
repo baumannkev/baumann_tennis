@@ -458,7 +458,7 @@ app.post(endpoint + "updateCalendar", async(req, res) => {
 
                     break;
                 case "DELETE":
-                    connection.query(`DELETE FROM dayofweek WHERE TimeslotID = ${req.body.timeslotID}`, (err, result) => {
+                    connection.query(`DELETE FROM dayofweek WHERE TimeslotID = '${req.body.timeslotID}'`, (err, result) => {
                         try {
                             if (err) throw err;
                             res.json({
@@ -470,14 +470,14 @@ app.post(endpoint + "updateCalendar", async(req, res) => {
                     });
                     break;
                 case "UPDATE":
-                    connection.query(`UPDATE dayofweek SET StartTime = ${req.body.startTime}, EndTime = ${req.body.endTime} WHERE TimeslotID = ${req.body.timeslotID}`, (err, result) => {
+                    connection.query(`UPDATE dayofweek SET StartTime = ${req.body.startTime}, EndTime = ${req.body.endTime} WHERE TimeslotID = '${req.body.timeslotID}'`, (err, result) => {
                         try {
                             if (err) throw err;
                         } catch (e) {
                             res.json(e);
                         }
                     });
-                    await connection.query(`UPDATE reservation SET Type = ${req.body.type}, CurrentPlayers = ${req.body.currentPlayers}, MaxPlayers = ${req.body.maxPlayers} WHERE ReservationID = ${req.body.reservationID}`, (err, result) => {
+                    await connection.query(`UPDATE reservation SET Type = ${req.body.type}, CurrentPlayers = ${req.body.currentPlayers}, MaxPlayers = ${req.body.maxPlayers} WHERE ReservationID = '${req.body.reservationID}'`, (err, result) => {
                         try {
                             if (err) throw err;
                         } catch (e) {
@@ -508,10 +508,10 @@ app.post(endpoint + "register", (req, res) => {
     });
     let permission = jwt.verify(req.body.token, secretKey);
     if (permission) {
-        connection.query(`INSERT INTO registeredplayer (PlayerID, ReservationID) VALUES (${req.body.playerID}, ${req.body.reservationID})`, (err, result) => {
+        connection.query(`INSERT INTO registeredplayer (PlayerID, ReservationID) VALUES ('${req.body.playerID}', '${req.body.reservationID}')`, (err, result) => {
             try {
                 if (err) throw err;
-                connection.query(`UPDATE reservation SET CurrentPlayers=CurrentPlayers + 1 WHERE ReservationID = ${req.body.reservationID}`, (err, result) => {
+                connection.query(`UPDATE reservation SET CurrentPlayers=CurrentPlayers + 1 WHERE ReservationID = '${req.body.reservationID}'`, (err, result) => {
                     try {
                         if (err) throw err;
                     } catch (e) {
@@ -537,6 +537,19 @@ app.post(endpoint + "getPlayers", (req, res) => {
             }
         });
     }
+});
+
+app.post(endpoint + "addPlayer", (req, res) => {
+    connection.query(`SELECT UUID() AS ID`, (err, result) => {
+        let pID = result[0].ID;
+        connection.query(`INSERT INTO player (PlayerID, FullName,  DOB, Sex, SkillLevel, AllergiesMedication, ECN) VALUES ('${pID}', '${req.body.name}', '${req.body.dateOfBirth}', '${req.body.sex}', '${req.body.skill}', '${req.body.allergies}', '${req.body.emergency}')`, (err, result) => {
+            res.json({
+                message: "Successfully added player!",
+                PlayerID: pID
+            });
+        });
+    })
+    
 })
 
 app.listen(port, (err) => {
