@@ -42,10 +42,10 @@ const connection = mysql.createConnection({
 });
 connection.connect();
 
-app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+app.use((req, res, next) => {
+    res.append('Access-Control-Allow-Origin', ['*']);
+    res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.append('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -473,20 +473,20 @@ app.post(endpoint + "updateCalendar", async(req, res) => {
                     connection.query(`UPDATE dayofweek SET StartTime = ${req.body.startTime}, EndTime = ${req.body.endTime} WHERE TimeslotID = '${req.body.timeslotID}'`, (err, result) => {
                         try {
                             if (err) throw err;
+                            connection.query(`UPDATE reservation SET Type = ${req.body.type}, CurrentPlayers = ${req.body.currentPlayers}, MaxPlayers = ${req.body.maxPlayers} WHERE ReservationID = '${req.body.reservationID}'`, (err, result) => {
+                                try {
+                                    if (err) throw err;
+                                    res.json({
+                                        message: "Successfully updated class/reservation"
+                                    });
+                                } catch (e) {
+                                    res.json(e);
+                                }
+                            });
                         } catch (e) {
                             res.json(e);
                         }
                     });
-                    await connection.query(`UPDATE reservation SET Type = ${req.body.type}, CurrentPlayers = ${req.body.currentPlayers}, MaxPlayers = ${req.body.maxPlayers} WHERE ReservationID = '${req.body.reservationID}'`, (err, result) => {
-                        try {
-                            if (err) throw err;
-                        } catch (e) {
-                            res.json(e);
-                        }
-                    });
-                    res.json({
-                        message: "Successfully updated class/reservation"
-                    })
                     break;
                 default:
                     res.json({
