@@ -291,79 +291,6 @@
                 </div>
 
             </div>
-            <!-- <div class="cardDateBook">
-                <div class="card border-secondary mb-3">
-                    <div class="card-header">Alquilar</br>Fecha seleccionada: <span id="dateSelectedBooking"></span>
-                    </div>
-                    <div class="card-body text-secondary">
-                        <table class="ui very compact table tableSelect">
-                            <tbody id="dateRenting">
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div> -->
-            <!-- Table for renting the court  -->
-            <!-- <div class="card border-secondary mb-3 cardDateBook">
-                <div class="card-header">Register for classes</br>Date Selected:
-                </div>
-                <div class="card-body text-secondary">
-                    <table class="ui very compact table tableSelect">
-                        <tbody>
-                            <tr class="bookTable" id="bookTable1">
-                                <td><span class="day2"></span>,</br> 7 AM a 8 AM </td>
-                                <td><span style="color:red">Lleno</span></td>
-                                <td><span style="color:red">Por favor, haga una selección
-                                        diferente.</span></td>
-                                <td><a class="availability scrollto" href="#cardMemberID"><button
-                                            class="ui primary button disabled" onclick="showMember()">
-                                            Select</button></a></td>
-                            </tr>
-                            <tr class="bookTable">
-                                <td><span class="day2"></span>,</br> 8 AM a 9 AM</td>
-                                <td>Disponible</td>
-                                <td>Adultos Principiantes. Grupo de 4</td>
-                                <td><a class="availability scrollto" href="#cardMemberID"><button
-                                            class="ui primary button" onclick="showMember()">
-                                            Select</button></a></td>
-                            </tr>
-                            <tr class="bookTable">
-                                <td><span class="day2"></span>,</br> 10 AM a 11 AM</td>
-                                <td>Disponible</td>
-                                <td>Adultos Principiantes. Grupo de 4</td>
-                                <td><a class="availability scrollto" href="#cardMemberID"><button
-                                            class="ui primary button" onclick="showMember()">
-                                            Select</button></a></td>
-                            </tr>
-                            <tr class="bookTable">
-                                <td><span class="day2"></span>,</br> 11 AM a 12 PM</td>
-                                <td>Disponible</td>
-                                <td>Adultos Intermedios. Grupo de 2</td>
-                                <td><a class="availability scrollto" href="#cardMemberID"><button
-                                            class="ui primary button" onclick="showMember()">
-                                            Select</button></a></td>
-                            </tr>
-                            <tr class="bookTable">
-                                <td><span class="day2"></span>,</br> 12 PM a 1 PM</td>
-                                <td>Disponible</td>
-                                <td>Adultos Intermedio. Grupo de 2</td>
-                                <td><a class="availability scrollto" href="#cardMemberID"><button
-                                            class="ui primary button" onclick="showMember()">
-                                            Select</button></a></td>
-                            </tr>
-                            <tr class="bookTable">
-                                <td><span class="day2"></span>,</br> 1 PM a 2 PM</td>
-                                <td>Disponible</td>
-                                <td>Kids Tennis Principiantes. Grupo de 4</td>
-                                <td><a class="availability scrollto" href="#cardMemberID"><button
-                                            class="ui primary button" onclick="showMember()">
-                                            Select</button></a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div> -->
             <div class="cardMember">
                 <div id="cardMemberID" style="padding-bottom: 10rem;">
 
@@ -384,7 +311,6 @@
 
                             </div>
                         </div>
-                        <!-- This is where the user logs in if they're not already -->
                         <!-- This is where the user logs in if they're not already -->
                         <div id="loginSuccess"> </div>
                         <form class="ui form segment login" id="loginForm">
@@ -407,13 +333,23 @@
                         </form>
                         <div id="confirmBookDiv">
 
-
-                            <!-- <p id="successBooking"></p> -->
                             <div class="field" id="confirmBookPlayer">
-                                <label>Jugador</label>
+                                <label>Elegi quien va jugar</label>
 
                             </div>
-                            <input id="bookingConfirm" type="submit" value="Confirma Inscripcion" />
+                            <div class="field">
+                                <div class="ui selection dropdown">
+                                    <input name="player" type="hidden">
+                                    <div class="default text">Jugador</div>
+                                    <i class="dropdown icon"></i>
+                                    <div class="menu" id="playerMenu">
+                                    </div>
+                                </div>
+                            </div>
+                            <form id="bookingConfirm">
+                                <input type="submit" value="Confirma Inscripcion" />
+                            </form>
+                            <div id="successBooking"></div>
                         </div>
                         <!-- This is where the user signs up if they're not already -->
                         <form class="ui form segment signup" id="signUpForm">
