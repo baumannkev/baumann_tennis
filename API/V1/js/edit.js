@@ -54,6 +54,7 @@ function login() {
 }
 
 function loadPlayers() {
+  document.getElementById("playerTable").innerHTML = "";
   let resource = "/getPlayers";
   const url = endPointRoot + resource;
   const xhttp = new XMLHttpRequest();
@@ -77,6 +78,17 @@ function loadPlayers() {
 }
 
 function loadCalendar() {
+  document.getElementById("calendarTable").innerHTML = "";
+  let tablerow = document.createElement("tr");
+  let th;
+  let displayingData = ["scheduledTime", "level", "currentPlayers", "maxPlayers", "availability"];
+  displayingData.forEach(key => {
+    th  = document.createElement("th");
+    th.innerHTML = key;
+    tablerow.appendChild(th);
+  });
+  document.getElementById("calendarTable").appendChild(tablerow);
+
   let resource = "/getCalendar";
   const url = endPointRoot + resource;
   const xhttp = new XMLHttpRequest();
@@ -90,12 +102,10 @@ function loadCalendar() {
         throw ("No class data");
       }
 
-      let displayingData = ["scheduledTime", "level", "currentPlayers", "maxPlayers", "availability"];
 
       for (day in endpoints) {
         for (class_ in endpoints[day]) {
           let tablerow = document.createElement("tr");
-          console.log(endpoints[day][class_]);
 
           displayingData.forEach(key => {
             let tableData = document.createElement("td");
@@ -120,6 +130,7 @@ function loadCalendar() {
 function editClass(event) {
   localStorage.setItem("timeslotID", event.currentTarget.timeslotID);
   localStorage.setItem("reservationID", event.currentTarget.reservationID);
+  console.log(event.currentTarget.timeslotID);
   document.getElementById("editCalendar").classList.toggle("show");
 }
 
@@ -135,6 +146,7 @@ function saveCalendarEdit(){
   xhttp.open(POST, url, true);
   xhttp.setRequestHeader("Content-Type", "application/json");
   let token = localStorage.getItem("BaumannTennisToken");
+  console.log(localStorage.getItem("timeslotID"));
   let tokenJson = {
     "token": token,
     "operation": "UPDATE",
@@ -153,11 +165,9 @@ function saveCalendarEdit(){
       let endpoints = JSON.parse(this.response);
       window.alert(endpoints.message);
       document.getElementById("editCalendar").classList.toggle("show");
-    loadReservation();
+      loadCalendar();
     };
   };
-
-
 }
 
 function calendarDelete() {
@@ -178,14 +188,11 @@ function calendarDelete() {
       let endpoints = JSON.parse(this.response);
       window.alert(endpoints.message);
       document.getElementById("editCalendar").classList.toggle("show");
-    loadReservation();
+      loadReservation();
     };
     
   };
 }
-
-
-
 
 
 function loadTables() {
