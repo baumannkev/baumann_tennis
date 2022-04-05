@@ -4,7 +4,6 @@ const path = require('path');
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
-const { CLIENT_LONG_PASSWORD } = require('mysql/lib/protocol/constants/client');
 
 
 const app = express();
@@ -548,7 +547,7 @@ app.post(endpoint + "addPlayer", (req, res) => {
             try {
                 if (err) throw err;
                 let pID = result[0].ID;
-                connection.query(`INSERT INTO player (PlayerID, FullName,  DOB, Sex, SkillLevel, AllergiesMedication, ECN) VALUES ('${pID}', '${req.body.name}', '${req.body.dateOfBirth}', '${req.body.sex}', '${req.body.skill}', '${req.body.allergies}', '${req.body.emergency}')`, (err, result) => {
+                connection.query(`INSERT INTO player (PlayerID, FullName, DOB, Sex, SkillLevel, AllergiesMedication, ECN) VALUES ('${pID}', '${req.body.name}', '${req.body.dateOfBirth}', '${req.body.sex}', '${req.body.skill}', '${req.body.allergies}', '${req.body.emergency}')`, (err, result) => {
                     try {
                         if (err) throw err;
                         connection.query(`INSERT INTO playeraccountlink (PlayerID, AccountID, Relationship) VALUES ('${pID}', '${permission.AccountID}', '${req.body.relationship}')`, (err, result) => {
