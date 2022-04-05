@@ -11,21 +11,49 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/26da0e4274.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy"
+        rel="stylesheet">
 
     <link rel="shortcut icon" href="../../../img/logos/tennis-ball.png" type="image/x-icon" />
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid;
+            padding: 2px;
+        }
+
+        .editCalendar{
+            visibility: hidden;
+            top: 50px;
+            border: 2px black solid;
+            background-color: azure;
+        }
+        .content{
+            margin: 2rem;
+        }
+        .show{
+            visibility: visible;
+        }
+    </style>
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light rounded">
             <div class="container-fluid">
-                <a class="navbar-brand" data-micron="bounce" style="color: rgb(39,57,82);" href="../../../index.html"><img src="../../../img/logos/BAUMANN TENNIS.png" alt="Logo de Baumann Tennis" width="60" height="70.97" class="d-inline-block align-text-center">
+                <a class="navbar-brand" data-micron="bounce" style="color: rgb(39,57,82);"
+                    href="../../../index.html"><img src="../../../img/logos/BAUMANN TENNIS.png"
+                        alt="Logo de Baumann Tennis" width="60" height="70.97" class="d-inline-block align-text-center">
                     <span class="the-title">Baumann Tennis</span></a>
                 <div id="anim" class="anim"></div>
-                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div id="navbarCollapse" class="navbar-collapse collapse justify-content-end ">
@@ -44,42 +72,59 @@
 
 
     <div class="container" style="padding-bottom: 10rem;">
-        
+
 
     </div>
 
-    <div id="edit_players">
+    <div id="edit_players" class="content">
         <h3>Player</h3>
         <table id="playerTable"></table>
     </div>
 
-    <div id="edit_players">
-        <h3>Instructor</h3>
-        <table id="instructorTable"></table>
+    <div class="editCalendar" id="editCalendar">
+        <label for="startTime">Start Time:</label>
+        <input type="time" id="startTime" name="startTime" min="00:00" max="24:00" required>
+        <label for="endTime">End Time:</label>
+        <input type="time" id="endTime" name="endTime" min="00:00" max="24:00" required>
+        <label for="appt">Level:</label>
+        <select id="level" name="level" required>
+            <option value="Red1">Red1</option>
+            <option value="Red2">Red2</option>
+            <option value="Orange1">Orange1</option>
+            <option value="Orange1">Orange1</option>
+            <option value="Green1">Green1</option>
+            <option value="Green2">Green2</option>
+            <option value="Yellow1">Yellow1</option>
+            <option value="Yellow2">Yellow2</option>
+            <option value="Reserved">Reserved</option>
+          </select>
+        <label for="maxplayers">Max players:</label>
+        <input type="number" id="maxplayers" name="maxplayers" min=0 max=10 value=4 required>
+        <input type="submit" onclick="saveCalendarEdit()">    
+        <input type="button" name="delete" id="calendarDelete" value="Delete" onclick="calendarDelete()">
     </div>
 
-    <div id="edit_Court">
-        <h3>Court</h3>
-        <table id="courtTable"></table>
+    <div id="edit_players" class="content">
+        <h3>Calendar</h3>
+        <table id="calendarTable">
+            <tr>
+                <th>scheduledTime</th>
+                <th>level</th>
+                <th>currentPlayers</th>
+                <th>maxPlayers</th>
+                <th>availability</th>
+            </tr>
+        </table>
     </div>
 
-    <div id="edit_class">
-        <h3>Class</h3>
-        <table id="classTable"></table>
-    </div>
 
-    <div id="edit_reservation">
-        <h3>Reservation</h3>
-        <table id="reservationTable"></table>
-    </div>
 
-    
-        
+
 
 
     <div id="AdminPage" style="">
         <button onclick="loadTables()">Refresh Database</button>
-        
+
     </div>
 
     <!-- ======= Footer ======= -->
@@ -113,12 +158,15 @@
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Nuestros Servicios</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://www.instagram.com/baumannswimming/">Clases de Natacion</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a target="_blank"
+                                    href="https://www.instagram.com/baumannswimming/">Clases de Natacion</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="https://bauworkpy.com/">Espacio de
                                     Coworking</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a target="_blank" href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3ODcyMjE1OTE3NDUwMDM4?story_media_id=2607138840565795999&utm_medium=copy_link">Colonia
+                            <li><i class="bx bx-chevron-right"></i> <a target="_blank"
+                                    href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3ODcyMjE1OTE3NDUwMDM4?story_media_id=2607138840565795999&utm_medium=copy_link">Colonia
                                     de Ingles</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a target="_blank" href=" https://www.instagram.com/p/CW6rK6OLt6a/?utm_source=ig_web_copy_link">Zumba</a>
+                            <li><i class="bx bx-chevron-right"></i> <a target="_blank"
+                                    href=" https://www.instagram.com/p/CW6rK6OLt6a/?utm_source=ig_web_copy_link">Zumba</a>
                             </li>
 
                         </ul>
