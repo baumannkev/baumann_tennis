@@ -472,10 +472,10 @@ app.post(endpoint + "updateCalendar", async(req, res) => {
                     });
                     break;
                 case "UPDATE":
-                    connection.query(`UPDATE dayofweek SET StartTime = ${req.body.startTime}, EndTime = ${req.body.endTime} WHERE TimeslotID = '${req.body.timeslotID}'`, (err, result) => {
+                    connection.query(`UPDATE dayofweek SET StartTime = '${req.body.startTime}', EndTime = '${req.body.endTime}' WHERE TimeslotID = '${req.body.timeslotID}'`, (err, result) => {
                         try {
                             if (err) throw err;
-                            connection.query(`UPDATE reservation SET Type = ${req.body.type}, CurrentPlayers = ${req.body.currentPlayers}, MaxPlayers = ${req.body.maxPlayers} WHERE ReservationID = '${req.body.reservationID}'`, (err, result) => {
+                            connection.query(`UPDATE reservation SET Type = '${req.body.type}', CurrentPlayers = '${req.body.currentPlayers}', MaxPlayers = '${req.body.maxPlayers}' WHERE ReservationID = '${req.body.reservationID}'`, (err, result) => {
                                 try {
                                     if (err) throw err;
                                     res.json({
