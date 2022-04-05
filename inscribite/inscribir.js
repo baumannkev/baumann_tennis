@@ -3,8 +3,15 @@ var optionSelected = 'book';
 var bookSelectedText = 'Bienvenido! Elegi la hora disponible para alquilar la cancha';
 $('#welcome').text(bookSelectedText)
 $('#confirmBookDiv').hide();
+$('.ui.players')
+    .dropdown();
+$('.ui.selection')
+    .dropdown();
 
-// $('.full').disable();
+let reservationIDGlobal = "";
+let tokenGlobal = ""
+let playerIDGlobal = ""
+
 var arr = [0, 1, 2, 3, 4, 5];
 // $(".cardDateBook2").hide();
 let dropValues = [{
@@ -85,8 +92,20 @@ const register = () => {
     let resource = "/register";
     const url = endPointRoot + resource;
 
+
+    let registerInfo = {
+        token: tokenGlobal,
+        reservationID: reservationIDGlobal,
+        playerID: playerIDGlobal
+    }
+
+    registerInfo = JSON.stringify(registerInfo)
+
+    console.log("Register ", registerInfo)
+
     xhttp.open(POST, url, true);
-    xhttp.send(LoginInfo);
+    xhttp.setRequestHeader('Content-Type', 'application/json');
+    xhttp.send(registerInfo);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("successBooking").innerHTML = 'Gracias por registrar!'
@@ -94,8 +113,37 @@ const register = () => {
     };
 }
 
-function httpGetPlayer(token) {
+function httpGetPlayerLogin(tokenValue) {
+    const xhttp = new XMLHttpRequest();
+    let resource = "/getPlayers";
+    const url2 = endPointRoot + resource;
+    let tokenInfo = {
+        token: tokenValue
+    }
 
+    tokenInfo = JSON.stringify(tokenInfo)
+
+    xhttp.open(POST, url2, true);
+    xhttp.setRequestHeader('Content-Type', 'application/json');
+    xhttp.send(tokenInfo);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+
+            var players = JSON.parse(this.response);
+            fullName = JSON.parse(this.response)[0].FullName;
+            console.log("Players ", players)
+
+            let selectPlayer = document.getElementById('playerMenu');
+            selectPlayer.innerHTML = ""
+
+            for (var i = 0; i < players.length; i++) {
+                playerIDGlobal = players[i].PlayerID
+                selectPlayer.innerHTML += '<div class="item" id = "' + players[i].PlayerID + '" data-value=' + players[i].FullName + '> ' + players[i].FullName + ' </div>'
+            }
+
+        };
+    };
 }
 const login = () => {
     const xhttp = new XMLHttpRequest();
@@ -119,72 +167,47 @@ const login = () => {
             if (JSON.parse(this.response).success) {
                 $("#loginForm").hide();
                 $('#confirmBookDiv').show();
+                tokenGlobal = JSON.parse(this.response).token
+                httpGetPlayerLogin(JSON.parse(this.response).token)
 
-                // let token = JSON.parse(this.response).token;
-                // token = JSON.stringify(token)
-                // var dbData = httpGetPlayer('http://localhost:30005/getPlayers', token);
-
-                const xhttp = new XMLHttpRequest();
-
-                let resource = "/getPlayers";
-                const url2 = endPointRoot + resource;
-
-                let tokenInfo = {
-                    token: JSON.parse(this.response).token
-                }
-
-                tokenInfo = JSON.stringify(tokenInfo)
-                var userName = "";
-                xhttp.open(POST, url2, true);
-                xhttp.setRequestHeader('Content-Type', 'application/json');
-                xhttp.send(tokenInfo);
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        var players = JSON.parse(this.response);
-                        let fullName = "";
-                        fullName = JSON.parse(this.response)[0].FullName;
-                        console.log("Players ", players)
-                            // document.getElementById("confirmBookDiv").innerHTML = userName;
-
-                        // <div class="field">
-                        //         <label>Sexo</label>
-                        //         <div class="ui selection dropdown">
-                        //             <input name="gender" type="hidden" id="signUpGender">
-                        //             <div class="default text">Sexo</div>
-                        //             <i class="dropdown icon"></i>
-                        //             <div class="menu">
-                        //                 <div class="item" data-value="male">Masculino</div>
-                        //                 <div class="item" data-value="female">Femenino</div>
-                        //             </div>
-                        //         </div>
-                        //     </div>
-                        let selectDiv = document.getElementById('confirmBookPlayer');
-                        selectDiv.innerHTML = ""
-                        selectDiv.innerHTML += '<div class="ui players selection dropdown ">' +
-                            '<input name="players">' +
-                            '<div class="default text">Jugador</div>' +
-                            '<i class="dropdown icon"></i>' +
-                            '<div class="menu">' +
-                            '<div class="item" data-value=" ' + players[0].FullName + '">' + players[0].FullName + '</div>'
-                            // for (var i = 0; i < players.length; i++) {
-                            //     console.log("player i ", players[i].FullName)
-                            //     selectDiv.innerHTML +=
-
-                        //         ' <div class="item" data-value=" ' + players[i].FullName + '">' + players[i].FullName + '</div>'
-                        // }
-                        selectDiv.innerHTML += '</div>' +
-                            '</div>'
-                        $('.ui.players')
-                            .dropdown();
-                    };
-                };
-                // var dbData = httpGetPlayer(token);
-                // console.log("Players ", dbData)
-                // document.getElementById("confirmBookDiv").innerHTML = 'test'
-                // console.log("here")
             } else {
                 alert("Login unsuccessful, please try again");
             }
+        };
+    };
+}
+
+function httpGetPlayerSignUp(tokenValue) {
+    const xhttp = new XMLHttpRequest();
+    let resource = "/getPlayers";
+    const url2 = endPointRoot + resource;
+    let tokenInfo = {
+        // token: JSON.parse(this.response).token
+        token: tokenValue
+    }
+
+    tokenInfo = JSON.stringify(tokenInfo)
+
+    xhttp.open(POST, url2, true);
+    xhttp.setRequestHeader('Content-Type', 'application/json');
+    xhttp.send(tokenInfo);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+
+            var players = JSON.parse(this.response);
+            let fullName = "";
+            fullName = JSON.parse(this.response)[0].FullName;
+            console.log("Players ", players)
+
+            let selectPlayer = document.getElementById('playerMenu');
+            selectPlayer.innerHTML = ""
+
+            for (var i = 0; i < players.length; i++) {
+                playerIDGlobal = players[i].PlayerID
+                selectPlayer.innerHTML += '<div class="item" id = " ' + players[i].PlayerID + '" data-value=' + players[i].FullName + '> ' + players[i].FullName + ' </div>'
+            }
+
         };
     };
 }
@@ -210,9 +233,7 @@ const signUp = () => {
     console.log("Info ", SignUpInfo)
     SignUpInfo = JSON.stringify(SignUpInfo)
 
-
     xhttp.open(POST, url, true);
-    // xhttp.setRequestHeader("Accept", "application/json");
     xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(SignUpInfo);
     xhttp.onreadystatechange = function() {
@@ -222,6 +243,10 @@ const signUp = () => {
             $('#confirmBookDiv').show();
             document.getElementById("signUpTest").innerHTML = 'You are in'
             console.log("here")
+
+            tokenGlobal = JSON.parse(this.response).token
+            httpGetPlayerSignUp(JSON.parse(this.response).token)
+
         };
     };
 }
@@ -237,16 +262,12 @@ function get_json_data(daySelected) {
         xmlHttpReq.send(null);
         return xmlHttpReq.responseText;
     }
-    var dbData = httpGet('http://localhost:30005/getCalendar');
+    let resource = "/getCalendar";
+    const url = endPointRoot + resource;
+    var dbData = httpGet(url);
     const jsonData = JSON.parse(dbData)
-        // console.log("DATA 1", jsonData)
-        // console.log("test ", jsonData)
-        // console.log(httpGet('http://localhost:30005/getCalendar'));
-        // console.log("DAY " + day)
-        // console.log("DATA ", jsonData[day])
-    var dateSelected = jsonData[day];
 
-    // var dateSelected = dateExamples[0].week[0][day]
+    var dateSelected = jsonData[day];
     append_json_data(dateSelected)
 
 }
@@ -255,9 +276,6 @@ function append_json_data(data) {
     var tableDiv = document.getElementById('dateBooking');
     tableDiv.innerHTML = ""
     for (var i = 0; i < data.length; i++) {
-        // console.log("scheduled time: ", data[i].scheduledTime);
-        // console.log("level: ", data[i].level);
-        // console.log("availability: ", data[i].availability);
         var availabilityColor = ""
         var disabledSelect = ""
         var backgroundSkillColor = ""
@@ -297,8 +315,9 @@ function append_json_data(data) {
             backgroundSkillColor = '#FFF9D2'
             skillColor = '#BF9122'
         }
-
-        tableDiv.innerHTML += '<tr class="bookTable">' +
+        console.log("Reservation ID ", data[i].reservationID)
+        reservationIDGlobal = data[i].reservationID
+        tableDiv.innerHTML += '<tr class="bookTable" id = "' + data[i].reservationID + '">' +
             '<td><span class="day2"></span>,</br>' + data[i].scheduledTime + '</td>' +
             '<td><span style="color: ' + availabilityColor + ' ">' + full + '</td>' +
             '<td><span style="color:  ' + skillColor + '; background-color: ' + backgroundSkillColor + ' ">' + data[i].level + '</td>' +
