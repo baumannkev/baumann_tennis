@@ -49,6 +49,7 @@ function createTableData(endpoints, tableName) {
             tableRow.appendChild(tableData);
         }
         let Editbtn = document.createElement("button");
+        Editbtn.className = 'ui button';
         Editbtn.innerHTML = "Edit Player";
         Editbtn.playerID = element["PlayerID"];
         Editbtn.fullName = element["FullName"];
@@ -199,6 +200,7 @@ function loadCalendar() {
                     });
 
                     let Editbtn = document.createElement("button");
+                    Editbtn.className = 'ui button';
                     Editbtn.innerHTML = "Edit Class";
                     Editbtn.timeslotID = endpoints[day][class_]["timeslotID"];
                     Editbtn.reservationID = endpoints[day][class_]["reservationID"];
@@ -246,7 +248,8 @@ function saveCalendarEdit() {
         "maxPlayers": maxP,
         "currentPlayers": 0,
         "timeslotID": localStorage.getItem("timeslotID"),
-        "reservationID": localStorage.getItem("reservationID")
+        "reservationID": localStorage.getItem("reservationID"),
+        "weekday": "Sunday",
     };
     xhttp.send(JSON.stringify(tokenJson));
     xhttp.onreadystatechange = function() {

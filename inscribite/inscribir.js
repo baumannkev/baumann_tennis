@@ -10,7 +10,9 @@ $('.ui.selection')
 let reservationIDGlobal = "";
 let tokenGlobal = ""
 let playerIDGlobal = ""
-
+$("#closeAddPlayer").click(function() {
+    $('#addAnotherPlayer').hide();
+});
 $(".playerOption").click(function() {
     console.log("test ")
         // var PlayerID = $(this).children("div").map(function() {
@@ -139,7 +141,10 @@ const addPlayerSubmit = () => {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             $("#addAnotherPlayer").hide();
-            document.getElementById("playerAddedSuccess").innerHTML = '<p>Jugador agregado!</p>'
+            document.getElementById("playerAddedSuccess").innerHTML = '<div class="ui positive message"> ' +
+                '<i class = "close icon"></i>' +
+                '<div class = "header" >Jugador Agregado!</div>' +
+                '</div>'
             httpGetPlayerLogin(tokenGlobal)
         };
     };
@@ -163,12 +168,20 @@ const register = () => {
     xhttp.open(POST, url, true);
     xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(registerInfo);
-    document.getElementById("successBooking").innerHTML = '<p>Gracias por registrar!</p>'
+    // document.getElementById("successBooking").innerHTML = '<p>Gracias por registrar!</p>'
+    document.getElementById("successBooking").innerHTML = '<div class="ui positive message"> ' +
+        '<i class = "close icon"></i>' +
+        '<div class = "header" >Inscripción fue exitoso!</div>' +
+        '<p>Chequea tu <b>email</b> para confirmar la inscripción.</p>' +
+        '</div>'
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("successBooking").innerHTML = '<p>Gracias por registrar!</p>'
+            document.getElementById("successBooking").innerHTML = '<div class="ui positive message"> ' +
+                '<i class = "close icon"></i>' +
+                '<div class = "header" >Inscripción fue exitoso!</div>' +
+                '</div>'
         };
-        document.getElementById("successBooking").innerHTML = '<p>Gracias por registrar!</p>'
+        // document.getElementById("successBooking").innerHTML = '<p>Gracias por registrar!</p>'
     };
 }
 
@@ -342,11 +355,16 @@ function append_json_data(data) {
             availabilityColor = "#2185D0"
         }
 
+        if (data[i].currentPlayers == "0") {
+            console.log("0 players")
+        }
+
         // reservationIDGlobal = data[i].reservationID
         tableDiv.innerHTML += '<tr btn_id = "' + data[i].reservationID + '" class="bookTable"> ' +
             '<td><span class="day2"></span>,</br>' + data[i].scheduledTime + '</td>' +
             '<td><span style="color: ' + availabilityColor + ' ">' + full + '</td>' +
             '<td><span style="color:  ' + data[i].colour + '; background-color: ' + data[i].backgroundColour + ' ">' + data[i].level + '</td>' +
+            '<td>' + data[i].currentPlayers + ' / ' + data[i].maxPlayers + '</td>' +
             '<td><a class = "availability scrollto" href="#cardMemberID"><button class="ui primary button ' + disabledSelect + '" onclick="showMember()">Seleccionar</button></a></td>' +
             '</tr>';
     }

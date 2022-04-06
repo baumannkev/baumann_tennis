@@ -1,28 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap');
-#dateSelectedBooking,
-#dateSelectedRegister {
-    font-weight: 700;
-}
-
-@media (max-width: 500px) {
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap');
+    #dateSelectedBooking,
+    #dateSelectedRegister {
+        font-weight: 700;
+    }
+    
+    @media (max-width: 500px) {
+        .headClass {
+            margin-top: 120px;
+        }
+    }
+    
     .headClass {
         margin-top: 120px;
     }
-}
-
-.headClass {
-    margin-top: 120px;
-}
-
-a.availability {
-    color: white !important;
-}
-
-@media screen and (max-width: 767px) {
-    input,
-    select,
-    textarea {
-        font-size: 16px !important;
-        outline: none;
+    
+    a.availability {
+        color: white !important;
     }
-}
+    
+    @media screen and (max-width: 767px) {
+        input,
+        select,
+        textarea {
+            font-size: 16px !important;
+            outline: none;
+        }
+    }
+    
+    .btn-card {
+        padding: 10px 20px;
+        background-color: rgb(166, 211, 136);
+        color: #ffffff;
+        transition: .7s;
+        border: 2px;
+        border-radius: 4px;
+    }
+    
+    .btn-card:hover {
+        background-color: #4FA665;
+        color: #ffffff;
+    }
+    
+    .confirm-button {
+        padding: 10px 20px;
+        background-color: #4FA665;
+        color: #ffffff;
+        transition: .7s;
+        border: 2px;
+        border-radius: 4px;
+    }
+    
+    .confirm-button:hover {
+        background-color: rgb(166, 211, 136);
+        color: #ffffff;
+    }

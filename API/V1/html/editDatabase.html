@@ -23,8 +23,9 @@
             border: 1px solid;
             padding: 2px;
         }
-
-        .editCalendar,.editPlayer{
+        
+        .editCalendar,
+        .editPlayer {
             visibility: hidden;
             top: 50px;
             border: 2px black solid;
@@ -69,33 +70,33 @@
 
     </div>
     <div class="editPlayer" id="editPlayer">
-        <label for="fullname">Full Name:</label>
+        <label for="fullname">Nombre:</label>
         <input type="text" id="fullname" name="fullname" required>
-        <label for="dob">DOB</label>
+        <label for="dob">Fecha de Nacimiento</label>
         <input type="date" id="dob" name="dob" required>
-        <label for="skillLevel">Skill Level:</label>
+        <label for="skillLevel">Nivel:</label>
         <select id="skillLevel" name="skillLevel" required>
             <option value="Beginner">Beginner</option>
             <option value="Intermediate">Intermediate</option>
             <option value="Advanced">Advanced</option>
-          </select>
+        </select>
         <label for="med">Allergies & Medication:</label>
         <input type="text" id="med" name="med" required>
-        <input type="submit" onclick="savePlayerEdit()">    
+        <input type="submit" onclick="savePlayerEdit()">
         <input type="button" name="delete" id="deletePlayer" value="Delete" onclick="deletePlayer()">
     </div>
 
     <div id="edit_players" class="content">
         <h3>Player</h3>
-        <table id="playerTable"></table>
+        <table class="ui table" id="playerTable"></table>
     </div>
 
     <div class="editCalendar" id="editCalendar">
-        <label for="startTime">Start Time:</label>
+        <label for="startTime">Comienza:</label>
         <input type="time" id="startTime" name="startTime" min="00:00" max="24:00" value="00:00" required>
-        <label for="endTime">End Time:</label>
+        <label for="endTime">Termina:</label>
         <input type="time" id="endTime" name="endTime" min="00:00" max="24:00" value="00:00" required>
-        <label for="appt">Level:</label>
+        <label for="appt">Nivel:</label>
         <select id="level" name="level" required>
             <option value="Red1">Red1</option>
             <option value="Red2">Red2</option>
@@ -115,12 +116,12 @@
 
     <div id="edit_players" class="content">
         <h3>Calendar</h3>
-        <table id="calendarTable">
+        <table class="ui table" id="calendarTable">
         </table>
     </div>
 
-    <div id="AdminPage" style="" class="content">
-        <button onclick="loadTables()">Refresh Database</button>
+    <div id="AdminPage" class="content">
+        <button class="ui button" onclick="loadTables()">Refresh Database</button>
     </div>
 
     <script src="../js/edit.js"></script>
