@@ -11,16 +11,19 @@ let reservationIDGlobal = "";
 let tokenGlobal = ""
 let playerIDGlobal = ""
 
+$(".playerOption").click(function() {
+    console.log("test ")
+        // var PlayerID = $(this).children("div").map(function() {
+        //     return $(this).attr('pl_id');
+        // }).get();
+        // console.log("Player ID: ", PlayerID);
+        // playerIDGlobal = PlayerID;
+
+});
 $('#playerSelect')
     .dropdown();
 $('.ui.players')
-    .dropdown({
-        onChange: function changePlayerSelected() {
-
-
-
-        },
-    });
+    .dropdown({});
 
 var arr = [0, 1, 2, 3, 4, 5];
 let dropValues = [{
@@ -192,8 +195,8 @@ function httpGetPlayerLogin(tokenValue) {
             selectPlayer.innerHTML = ''
 
             for (var i = 0; i < players.length; i++) {
-                playerIDGlobal = players[i].PlayerID
-                selectPlayer.innerHTML += '<div class="item" id = "' + players[i].PlayerID + '" data-value=' + players[i].FullName + '> ' + players[i].FullName + ' </div>'
+                // playerIDGlobal = players[i].PlayerID
+                selectPlayer.innerHTML += '<option class = "playerOption"><div class="item" pl_id = "' + players[i].PlayerID + '" data-value=' + players[i].FullName + '>' + players[i].FullName + '</div></option'
             }
 
         };
