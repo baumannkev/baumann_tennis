@@ -50,7 +50,7 @@ function createTableData(endpoints, tableName) {
         }
         let Editbtn = document.createElement("button");
         Editbtn.className = 'ui button';
-        Editbtn.innerHTML = "Edit Player";
+        Editbtn.innerHTML = "Edita Jugador";
         Editbtn.playerID = element["PlayerID"];
         Editbtn.fullName = element["FullName"];
         Editbtn.skillLevel = element["SkillLevel"];
@@ -201,7 +201,7 @@ function loadCalendar() {
 
                     let Editbtn = document.createElement("button");
                     Editbtn.className = 'ui button';
-                    Editbtn.innerHTML = "Edit Class";
+                    Editbtn.innerHTML = "Edita Clase";
                     Editbtn.timeslotID = endpoints[day][class_]["timeslotID"];
                     Editbtn.reservationID = endpoints[day][class_]["reservationID"];
                     Editbtn.level = endpoints[day][class_]["level"];
@@ -220,6 +220,7 @@ function loadCalendar() {
 function editClass(event) {
     localStorage.setItem("timeslotID", event.currentTarget.timeslotID);
     localStorage.setItem("reservationID", event.currentTarget.reservationID);
+    console.log("weekday: ", event.currentTarget)
     $("#level").value = event.currentTarget.level;
     $("#maxplayers").value = event.currentTarget.maxplayers;
     document.getElementById("editCalendar").classList.toggle("show");

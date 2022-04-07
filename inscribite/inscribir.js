@@ -27,7 +27,6 @@ $('#playerSelect')
 $('.ui.players')
     .dropdown({});
 
-var arr = [0, 1, 2, 3, 4, 5];
 let dropValues = [{
         name: 'Alquila la cancha',
         value: 'book',
@@ -42,8 +41,21 @@ let dropValues = [{
     }
 ];
 
+function checkTime() {
+    let date = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+    let currentDate = new Date();
+    let time = currentDate.getHours();
+    if (time >= 18) {
+        console.log("After 6")
+        return new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1)
+
+    }
+    return date;
+}
 var databaseDates = [{
-            date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 0),
+            date: new Date(checkTime()),
+            // date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 0),
             message: 'Disponible',
             class: 'green'
         },
@@ -338,9 +350,9 @@ function append_json_data(data) {
     for (var i = 0; i < data.length; i++) {
         var availabilityColor = ""
         var disabledSelect = ""
-        var backgroundSkillColor = ""
-        var skillColor = ""
-        var full = "Disponible"
+        var full = "Disponible";
+        var percentageColor = "green";
+        var classLevel = data[i].level;
 
         var fullClass = "Por favor, haga una selección diferente"
 
@@ -350,22 +362,26 @@ function append_json_data(data) {
             data[i].level = fullClass
             skillColor = availabilityColor
             full = "Lleno"
+            percentageColor = "red"
                 // data[i].availability = 'No disponible'
         } else {
             availabilityColor = "#2185D0"
         }
 
         if (data[i].currentPlayers == "0") {
+
             console.log("0 players")
+            classLevel = "Alquiler"
         }
+        // div class = "ui red horizontal label" > Fruit < /div>
 
         // reservationIDGlobal = data[i].reservationID
         tableDiv.innerHTML += '<tr btn_id = "' + data[i].reservationID + '" class="bookTable"> ' +
             '<td><span class="day2"></span>,</br>' + data[i].scheduledTime + '</td>' +
             '<td><span style="color: ' + availabilityColor + ' ">' + full + '</td>' +
-            '<td><span style="color:  ' + data[i].colour + '; background-color: ' + data[i].backgroundColour + ' ">' + data[i].level + '</td>' +
-            '<td>' + data[i].currentPlayers + ' / ' + data[i].maxPlayers + '</td>' +
-            '<td><a class = "availability scrollto" href="#cardMemberID"><button class="ui primary button ' + disabledSelect + '" onclick="showMember()">Seleccionar</button></a></td>' +
+            '<td><span style="color:  ' + data[i].colour + '; background-color: ' + data[i].backgroundColour + ' ">' + classLevel + '</td>' +
+            '<td><div class = "ui ' + percentageColor + ' horizontal label">' + data[i].currentPlayers + ' / ' + data[i].maxPlayers + '</div></td>' +
+            '<td><a class = "availability scrollto" href="#cardMemberID"><button class="ui green button ' + disabledSelect + '" onclick="showMember()">Seleccionar</button></a></td>' +
             '</tr>';
     }
 }
@@ -388,26 +404,6 @@ function showMember() {
         }
     });
 }
-$('.test.modal')
-    .modal('attach events', '.test.button', 'show');
-$("#signUpTarget").click(function() {
-    $("#loginForm").hide();
-    $("#signUpForm").show();
-});
-
-$("#loginTarget").click(function() {
-    $("#loginForm").show();
-    $("#signUpForm").hide();
-});
-$("#signUpTargetModal").click(function() {
-    $("#loginFormModal").hide()
-    $("#signUpFormModal").show();
-});
-
-$("#loginTargetModal").click(function() {
-    $("#loginFormModal").show();
-    $("#signUpFormModal").hide();
-});
 
 function showSuccess() {
     $(".successMessage").show();
@@ -496,7 +492,7 @@ $('#spanish_calendar')
         type: 'date',
         on: "hover",
         // disableMinute: "true",
-        minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+        minDate: checkTime(),
         maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 6),
         text: {
             eventClass: 'inverted red',
@@ -508,11 +504,7 @@ $('#spanish_calendar')
             am: 'AM',
             pm: 'PM',
         },
-        // disabledDates: [{
-        //     date: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 3),
-        //     message: 'Llena',
-        //     inverted: true,
-        // }, ],
+
         eventDates: databaseDates,
     });
 

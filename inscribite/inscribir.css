@@ -27,30 +27,39 @@
         }
     }
     
+    #closeAddPlayer,
+    #pl_id {
+        cursor: pointer;
+    }
+    
     .btn-card {
+        font-size: 1rem;
         padding: 10px 20px;
-        background-color: rgb(166, 211, 136);
+        background-color: #21BA45;
         color: #ffffff;
-        transition: .7s;
         border: 2px;
         border-radius: 4px;
+        text-shadow: none;
+        font-weight: 700;
     }
     
     .btn-card:hover {
-        background-color: #4FA665;
+        background-color: #16ab39;
         color: #ffffff;
     }
     
     .confirm-button {
+        font-size: 1rem;
         padding: 10px 20px;
-        background-color: #4FA665;
+        background-color: #16ab39;
         color: #ffffff;
-        transition: .7s;
         border: 2px;
         border-radius: 4px;
+        text-shadow: none;
+        font-weight: 700;
     }
     
     .confirm-button:hover {
-        background-color: rgb(166, 211, 136);
+        background-color: #21BA45;
         color: #ffffff;
     }
