@@ -371,7 +371,7 @@ function append_json_data(data) {
         if (data[i].currentPlayers == "0") {
 
             console.log("0 players")
-            classLevel = "Alquiler"
+                // classLevel = "Alquiler"
         }
         // div class = "ui red horizontal label" > Fruit < /div>
 
