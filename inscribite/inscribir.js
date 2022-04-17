@@ -46,8 +46,8 @@ function checkTime() {
 
     let currentDate = new Date();
     let time = currentDate.getHours();
-    if (time >= 18) {
-        console.log("After 6")
+    if (time >= 22) {
+        console.log("After 10")
         return new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1)
 
     }
@@ -94,8 +94,8 @@ var databaseDates = [{
     //first add an event listener for page load
     // document.addEventListener("DOMContentLoaded", get_json_data, false);
 
-const endPointRoot = "http://127.0.0.1:30005";
-// const endPointRoot = "https://API.baumanntennis.com";
+// const endPointRoot = "http://127.0.0.1:30005";
+const endPointRoot = "https://API.baumanntennis.com";
 
 const GET = "GET";
 const POST = "POST";
@@ -368,15 +368,31 @@ function append_json_data(data) {
             availabilityColor = "#2185D0"
         }
 
-        if (data[i].currentPlayers == "0") {
+        // console.log("Time: " + data[i].scheduledTime)
 
-            console.log("0 players")
-                // classLevel = "Alquiler"
+        let inputVal = document.getElementById("inputID").value;
+        let newDate = new Date(inputVal);
+        let todayDate = new Date();
+        let cDay = todayDate.getDate()
+        let cDaySelected = newDate.getDate()
+
+        let pmOram = (data[i].scheduledTime).substring(2, 4);
+        let startTime = (data[i].scheduledTime).substring(0, 2);
+
+        let currentTime = todayDate.getHours()
+        if (pmOram == 'AM' || startTime == '12') {
+            var startFullTime = startTime;
+        } else {
+            var startFullTime = Number(startTime) + Number("12");
         }
-        // div class = "ui red horizontal label" > Fruit < /div>
 
-        // reservationIDGlobal = data[i].reservationID
-        tableDiv.innerHTML += '<tr btn_id = "' + data[i].reservationID + '" class="bookTable"> ' +
+        if (cDaySelected == cDay && (currentTime >= Number(startFullTime))) {
+            disabledSelect = "disabled"
+            full = "No Disponible"
+            percentageColor = "red"
+            availabilityColor = "#E24D4D"
+        }
+        tableDiv.innerHTML += '<tr btn_id = "' + data[i].reservationID + '" class="bookTable ' + disabledSelect + '"> ' +
             '<td><span class="day2"></span>,</br>' + data[i].scheduledTime + '</td>' +
             '<td><span style="color: ' + availabilityColor + ' ">' + full + '</td>' +
             '<td><span style="color:  ' + data[i].colour + '; background-color: ' + data[i].backgroundColour + ' ">' + classLevel + '</td>' +
@@ -404,6 +420,16 @@ function showMember() {
         }
     });
 }
+$("#signUpTarget").click(function() {
+    $("#loginForm").hide();
+    $("#signUpForm").show();
+});
+
+$("#loginTarget").click(function() {
+    $("#loginForm").show();
+    $("#signUpForm").hide();
+});
+
 
 function showSuccess() {
     $(".successMessage").show();

@@ -1,4 +1,5 @@
-const endPointRoot = "http://localhost:30005"; //"https://API.baumanntennis.com";
+// const endPointRoot = "http://localhost:30005"; //"https://API.baumanntennis.com";
+const endPointRoot = "https://API.baumanntennis.com";
 const GET = "GET";
 const POST = "POST";
 
@@ -202,6 +203,7 @@ function loadCalendar() {
                     let Editbtn = document.createElement("button");
                     Editbtn.className = 'ui button';
                     Editbtn.innerHTML = "Edita Clase";
+                    Editbtn.scheduledTime = endpoints[day][class_]["scheduledTime"];
                     Editbtn.timeslotID = endpoints[day][class_]["timeslotID"];
                     Editbtn.reservationID = endpoints[day][class_]["reservationID"];
                     Editbtn.level = endpoints[day][class_]["level"];
@@ -220,7 +222,19 @@ function loadCalendar() {
 function editClass(event) {
     localStorage.setItem("timeslotID", event.currentTarget.timeslotID);
     localStorage.setItem("reservationID", event.currentTarget.reservationID);
-    console.log("weekday: ", event.currentTarget)
+
+    let pmOram = (event.currentTarget.scheduledTime).substring(2, 4);
+    let startTime = (event.currentTarget.scheduledTime).substring(0, 2);
+    let endTime = (event.currentTarget.scheduledTime).substring(7, 9);
+    if (pmOram == 'AM' || startTime == '12') {
+        var startFullTime = startTime + ":00";
+        var endFullTime = endTime + ":00";
+    } else {
+        var startFullTime = Number(startTime) + Number("12") + ":00";
+        var endFullTime = Number(endTime) + Number("12") + ":00";
+    }
+    document.getElementById("startTime").value = startFullTime;
+    document.getElementById("endTime").value = endFullTime;
     $("#level").value = event.currentTarget.level;
     $("#maxplayers").value = event.currentTarget.maxplayers;
     document.getElementById("editCalendar").classList.toggle("show");

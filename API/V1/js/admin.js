@@ -26,7 +26,8 @@
 // if ($('.ui.form').form('is valid')) {
 // form is valid (both email and name)
 
-const endPointRoot = "http://127.0.0.1:30005"; //"https://API.baumanntennis.com";
+// const endPointRoot = "http://127.0.0.1:30005"; //"https://API.baumanntennis.com";
+const endPointRoot = "https://API.baumanntennis.com";
 
 const GET = "GET";
 const POST = "POST";
