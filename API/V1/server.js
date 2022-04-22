@@ -1,4 +1,47 @@
 const mysql = require('mysql')
+    // var pool = mysql.createPool({
+    //     host: '137.184.30.51',
+    //     user: 'baumanntennisapi',
+    //     password: 'B2TjEenFCPGkAdGp'
+    // });
+var pool = mysql.createPool({
+    host: "127.0.0.1",
+    user: "root",
+    password: "",
+});
+exports.connection = {
+    query: function() {
+        var queryArgs = Array.prototype.slice.call(arguments),
+            events = [],
+            eventNameIndex = {};
+
+        pool.getConnection(function(err, conn) {
+            if (err) {
+                if (eventNameIndex.error) {
+                    eventNameIndex.error();
+                }
+            }
+            if (conn) {
+                var q = conn.query.apply(conn, queryArgs);
+                q.on('end', function() {
+                    conn.release();
+                });
+
+                events.forEach(function(args) {
+                    q.on.apply(q, args);
+                });
+            }
+        });
+
+        return {
+            on: function(eventName, callback) {
+                events.push(Array.prototype.slice.call(arguments));
+                eventNameIndex[eventName] = callback;
+                return this;
+            }
+        };
+    }
+};
 const bodyParser = require("body-parser");
 const path = require('path');
 const express = require('express');
@@ -428,7 +471,7 @@ app.post(endpoint + "updateCalendar", async(req, res) => {
     let permission = jwt.verify(req.body.token, secretKey);
     if (permission) {
         // if (permission.Permissions == "Admin" || permission.Permissions == "Instructor") {
-            if (permission.Permissions == "Admin" || permission.Permissions == "Instructor" || permission.Permissions == "Player") {
+        if (permission.Permissions == "Admin" || permission.Permissions == "Instructor" || permission.Permissions == "Player") {
             switch (req.body.operation) {
                 case "ADD":
                     connection.query(`SELECT UUID() AS ID`, (err, result) => {
@@ -570,7 +613,7 @@ app.post(endpoint + "addPlayer", (req, res) => {
             }
         });
     }
-    
+
 })
 
 
@@ -585,7 +628,7 @@ app.post(endpoint + "updatePlayer", async(req, res) => {
     let permission = jwt.verify(req.body.token, secretKey);
     if (permission) {
         // if (permission.Permissions == "Admin" || permission.Permissions == "Instructor") {
-            if (permission.Permissions == "Admin" || permission.Permissions == "Instructor" || permission.Permissions == "Player") {
+        if (permission.Permissions == "Admin" || permission.Permissions == "Instructor" || permission.Permissions == "Player") {
             switch (req.body.operation) {
                 case "DELETE":
                     connection.query(`DELETE FROM player WHERE PlayerID = '${req.body.playerID}'`, (err, result) => {

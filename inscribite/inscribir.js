@@ -7,9 +7,9 @@ $('#addAnotherPlayer').hide();
 $('.ui.selection')
     .dropdown();
 
-let reservationIDGlobal = "";
-let tokenGlobal = ""
-let playerIDGlobal = ""
+// let reservationIDGlobal = "";
+// let tokenGlobal = ""
+// let playerIDGlobal = ""
 $("#closeAddPlayer").click(function() {
     $('#addAnotherPlayer').hide();
 });
@@ -141,7 +141,7 @@ const addPlayerSubmit = () => {
         skill: document.getElementById("addPlayerSkill").value,
         emergency: document.getElementById("addPlayerECN").value,
         relationship: document.getElementById("addPlayerRelationship").value,
-        token: tokenGlobal
+        token: localStorage.getItem("tokenGlobal")
     }
 
 
@@ -157,7 +157,7 @@ const addPlayerSubmit = () => {
                 '<i class = "close icon"></i>' +
                 '<div class = "header" >Jugador Agregado!</div>' +
                 '</div>'
-            httpGetPlayerLogin(tokenGlobal)
+            httpGetPlayerLogin(localStorage.getItem("tokenGlobal"))
         };
     };
 }
@@ -169,9 +169,9 @@ const register = () => {
 
 
     let registerInfo = {
-        token: tokenGlobal,
-        reservationID: reservationIDGlobal,
-        playerID: playerIDGlobal
+        token: localStorage.getItem("tokenGlobal"),
+        reservationID: localStorage.getItem("reservationID"),
+        playerID: localStorage.getItem("playerID")
     }
 
     registerInfo = JSON.stringify(registerInfo)
@@ -212,7 +212,6 @@ function httpGetPlayerLogin(tokenValue) {
     xhttp.send(tokenInfo);
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-
             var players = JSON.parse(this.response);
             // fullName = JSON.parse(this.response)[0].FullName;
 
@@ -247,12 +246,18 @@ const login = () => {
             if (JSON.parse(this.response).success) {
                 $("#loginForm").hide();
                 $('#confirmBookDiv').show();
-                tokenGlobal = JSON.parse(this.response).token
+                // tokenGlobal = JSON.parse(this.response).token
+                localStorage.setItem("tokenGlobal", JSON.parse(this.response).token);
                 httpGetPlayerLogin(JSON.parse(this.response).token)
+                localStorage.setItem("loggedIn", "true");
 
             } else {
                 alert("Login unsuccessful, please try again");
             }
+        } else {
+            document.getElementById("loginError").innerHTML = 'Revisa tu email y contraseña y vuelve a intentarlo.';
+            $("#loginError").show();
+            console.log("Login unsuccessful")
         };
     };
 }
@@ -281,7 +286,8 @@ function httpGetPlayerSignUp(tokenValue) {
             selectPlayer.innerHTML = ""
 
             for (var i = 0; i < players.length; i++) {
-                playerIDGlobal = players[i].PlayerID
+                // playerIDGlobal = players[i].PlayerID
+                localStorage.setItem("playerID", players[i].PlayerID);
                 selectPlayer.innerHTML += '<div class="item" id = " ' + players[i].PlayerID + '" data-value=' + players[i].FullName + '> ' + players[i].FullName + ' </div>'
             }
 
@@ -317,7 +323,8 @@ const signUp = () => {
             $("#signUpForm").hide();
             $('#confirmBookDiv').show();
             document.getElementById("signUpTest").innerHTML = 'You are in'
-            tokenGlobal = JSON.parse(this.response).token
+                // tokenGlobal = JSON.parse(this.response).token
+            localStorage.setItem("tokenGlobal", JSON.parse(this.response).token);
             httpGetPlayerSignUp(JSON.parse(this.response).token)
         };
     };
@@ -413,10 +420,15 @@ function showMember() {
             return $(this).text();
         }).get();
         var resId = $(this).attr('btn_id');
-        reservationIDGlobal = resId;
+        localStorage.setItem("reservationID", resId);
+        // reservationIDGlobal = resId;
         if ($.trim(tableData[1]) !== 'Lleno') {
-            console.log("Res id: ", resId);
             $(".details").text($.trim(tableData[0]) + " , " + $.trim(tableData[2]));
+        }
+        httpGetPlayerLogin(localStorage.getItem("tokenGlobal"))
+        if (localStorage.getItem("loggedIn") == "true") {
+            $("#loginForm").hide();
+            $('#confirmBookDiv').show();
         }
     });
 }

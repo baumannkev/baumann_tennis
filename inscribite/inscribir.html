@@ -178,6 +178,7 @@
                                     <input type="password" name="password" id="loginPassword">
                                 </div>
                             </div>
+                            <div id="loginError" class="ui error message"></div>
                             <input class="btn-card" id="Submit" type="submit" value="Iniciar sesión" />
                             <!-- <div class="ui primary submit button">Iniciar sesión</div> -->
                             <p>¿Eres nuevo en este sitio?</p>
@@ -187,7 +188,11 @@
                         <div id="confirmBookDiv">
 
                             <div class="field" id="confirmBookPlayer">
-                                <label>Elegi quien va jugar</label>
+                                <label class="addPlayerButton">Elegi quien va jugar</label>
+                                <!-- Add a another player -->
+                                <form id="playerAdd" class="addPlayerButton" style="margin-top: 2rem; margin-bottom: 2rem;">
+                                    <input class="btn-card" type="submit" value="Agrega Jugador" />
+                                </form>
 
                             </div>
                             <div class="field">
@@ -200,10 +205,6 @@
                                 </div>
 
                             </div>
-                            <!-- Add a another player -->
-                            <form id="playerAdd" style="margin-top: 2rem; margin-bottom: 2rem;">
-                                <input class="btn-card" type="submit" value="Agrega Jugador" />
-                            </form>
                             <div id="addAnotherPlayer">
                                 <i class="times icon" id="closeAddPlayer"></i>
                                 <form class="ui form segment addPlayer" id="addPlayerForm">
@@ -232,17 +233,17 @@
                                             <label>Nivel de Jugador</label>
                                             <div class="ui selection dropdown">
                                                 <input name="skill" type="hidden" id="addPlayerSkill">
-                                                <div class="default text">Red1</div>
+                                                <div class="default text">Rojo1</div>
                                                 <i class="dropdown icon"></i>
                                                 <div class="menu">
-                                                    <div class="item" data-value="Red1">Red1</div>
-                                                    <div class="item" data-value="Red2">Red2</div>
-                                                    <div class="item" data-value="Orange1">Orange1</div>
-                                                    <div class="item" data-value="Orange2">Orange2</div>
-                                                    <div class="item" data-value="Green1">Green1</div>
-                                                    <div class="item" data-value="Green2">Green2</div>
-                                                    <div class="item" data-value="Yellow1">Yellow1</div>
-                                                    <div class="item" data-value="Yellow2">Yellow2</div>
+                                                    <div class="item" data-value="Red1">Rojo1</div>
+                                                    <div class="item" data-value="Red2">Rojo2</div>
+                                                    <div class="item" data-value="Orange1">Naranja1</div>
+                                                    <div class="item" data-value="Orange2">Naranja2</div>
+                                                    <div class="item" data-value="Green1">Verde1</div>
+                                                    <div class="item" data-value="Green2">Verde2</div>
+                                                    <div class="item" data-value="Yellow1">Amarillo1</div>
+                                                    <div class="item" data-value="Yellow2">Amarillo2</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -261,7 +262,7 @@
                                             <input placeholder="+595 985 734580" name="emergency" type="text" id="addPlayerECN">
                                         </div>
                                         <div class="field">
-                                            <label>Relacion a account holder</label>
+                                            <label>Relacion a dueño(a) de cuenta</label>
                                             <input placeholder="Padre" name="contactName" type="text" id="addPlayerRelationship">
                                         </div>
                                     </div>
