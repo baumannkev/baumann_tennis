@@ -1,0 +1,54 @@
+{
+    "WorldCup": {
+        "GroupStage": {
+            "GroupA": {
+                "J1a": {
+                    "Away": "Netherlands",
+                    "AwayScore": 0,
+                    "Date": "2022-11-21",
+                    "Home": "Senegal",
+                    "HomeScore": 0
+                },
+                "J1b": {
+                    "Away": "Netherlands",
+                    "AwayScore": 0,
+                    "Date": "2022-11-21",
+                    "Home": "Senegal",
+                    "HomeScore": 0
+                },
+                "J2a": {
+                    "Away": "Netherlands",
+                    "AwayScore": 0,
+                    "Date": "2022-11-21",
+                    "Home": "Senegal",
+                    "HomeScore": 0
+                },
+                "J2b": {
+                    "Away": "Netherlands",
+                    "AwayScore": 0,
+                    "Date": "2022-11-21",
+                    "Home": "Senegal",
+                    "HomeScore": 0
+                },
+                "J3a": {
+                    "Away": "Netherlands",
+                    "AwayScore": 0,
+                    "Date": "2022-11-21",
+                    "Home": "Senegal",
+                    "HomeScore": 0
+                },
+                "J3b": {
+                    "Away": "Netherlands",
+                    "AwayScore": 0,
+                    "Date": "2022-11-21",
+                    "Home": "Senegal",
+                    "HomeScore": 0
+                }
+            }
+        }
+    },
+    "Kevin": {
+        "totalPoints": 0,
+        "GroupA"
+    }
+}
