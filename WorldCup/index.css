@@ -4,7 +4,12 @@ table {
     border: 1px solid black;
 }
 
-.table {}
+button {
+    text-align: center;
+    color: #006600;
+    font-size: xx-large;
+    font-family: "Gill Sans", "Gill Sans MT", " Calibri", "Trebuchet MS", "sans-serif";
+}
 
 h1 {
     text-align: center;
@@ -28,4 +33,8 @@ td {
 
 td {
     font-weight: lighter;
+}
+
+a {
+    text-decoration: none;
 }

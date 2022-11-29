@@ -27,18 +27,11 @@
 
     <section>
         <h1>Qatar World Cup 2022</h1>
+        <h1><a href="standings.html">Standings</a></h1>
+
+        <h1><button>Steven</button></h1>
 
         <div id="table" class="table">
-
-            <!-- <table id='table'>
-
-            <tr>
-                <th>Date</th>
-                <th>Home</th>
-                <th>Goal</th>
-                <th>Goal</th>
-                <th>Away</th>
-            </tr> -->
 
             <script>
                 $(document).ready(function() {
@@ -49,13 +42,19 @@
                             var game = '';
 
                             $.each(data, function(key, value) {
-                                var groupsSize = Object.keys(value.Groups).length;
-                                // console.log("groupsSize: ", Object.keys(value.Groups).length);
-                                game += '<h1>' + "Predictions from " + key + '</h1>';
+                                let player = "Carlos Simon";
+                                console.log("Data: ", Object.keys(value[player].Groups).length);
+                                var dataPlayer = value[player];
+                                var groupsSize = Object.keys(dataPlayer.Groups).length;
+
+
+                                game += '<h1>' + "Predictions from " + dataPlayer.name + '</h1>';
+
+                                game += '<h1>' + key + " points: " + (dataPlayer.totalPoints) + ' </h1>';
 
                                 for (let i = 0; i < groupsSize; i++) {
 
-                                    game += '<h1>' + value.Groups[i].group + '</h1>';
+                                    game += '<h1>' + dataPlayer.Groups[i].group + '</h1>';
                                     // console.log("i: ", i)
                                     game += '<table>'
                                     game += '<th>Date</th>';
@@ -63,32 +62,32 @@
                                     game += '<th>Goal</th>';
                                     game += '<th>Goal</th>';
                                     game += '<th>Away</th>';
-                                    game += '<th>Result</th>';
-                                    game += '<th>Goals</th>';
+                                    game += '<th>Result Points</th>';
+                                    game += '<th>Goals Points</th>';
 
                                     // console.log("table " + i + " Size: ", Object.keys(value.Groups[i]).length);
                                     // console.log("table index: ", i)
-                                    var tablesSize = Object.keys(value.Groups[i]).length - 1;
+                                    var tablesSize = Object.keys(dataPlayer.Groups[i]).length - 1;
                                     for (let j = 0; j < tablesSize; j++) {
                                         // console.log("row index: ", j)
                                         game += '<tr>';
                                         game += '<td>' +
-                                            value.Groups[i][j].Date + '</td>';
+                                            dataPlayer.Groups[i][j].Date + '</td>';
 
                                         game += '<td>' +
-                                            value.Groups[i][j].Home + '</td>';
+                                            dataPlayer.Groups[i][j].Home + '</td>';
 
                                         game += '<td>' +
-                                            value.Groups[i][j].HomeScore + '</td>';
+                                            dataPlayer.Groups[i][j].HomeScore + '</td>';
 
                                         game += '<td>' +
-                                            value.Groups[i][j].AwayScore + '</td>';
+                                            dataPlayer.Groups[i][j].AwayScore + '</td>';
                                         game += '<td>' +
-                                            value.Groups[i][j].Away + '</td>';
+                                            dataPlayer.Groups[i][j].Away + '</td>';
 
-                                        game += '<td><input type="checkbox" checked="false"></td>';
+                                        game += '<td>' + dataPlayer.Groups[i][j].ExactGameResult + '</td>';
 
-                                        game += '<td>' + value.Groups[i][j].ExactGameResult + '</td>';
+                                        game += '<td>' + dataPlayer.Groups[i][j].ExactGoalResult + '</td>';
 
                                         game += '</tr>';
                                     }
