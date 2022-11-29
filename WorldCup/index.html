@@ -6,48 +6,225 @@
     <title>Baumann Tennis</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js"></script>
     <!-- Font Awesome -->
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="../img/logos/tennis-ball.png" type="image/x-icon" />
     <script src="https://kit.fontawesome.com/26da0e4274.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/css/index.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy" rel="stylesheet">
 
-    <link rel="shortcut icon" href="../../../img/logos/tennis-ball.png" type="image/x-icon" />
+    <!-- <link <link rel="shortcut icon" href="../../../img/logos/tennis-ball.png" type="image/x-icon" /> -->
 </head>
 
 <body>
-    <h1>Test</h1>
 
-    <table>
-        <tr>
-            <th>#</th>
-            <th>Team</th>
-            <th>P</th>
-            <th>#</th>
-            <th>#</th>
-            <th>#</th>
-            <th>#</th>
-            <th>#</th>
+    <section>
+        <h1>Qatar World Cup 2022</h1>
 
-        </tr>
-    </table>
+        <div id="table" class="table">
 
-    <script>
-        // const options = {
-        //     method: 'GET',
-        //     headers: {
-        //         'X-RapidAPI-Key': '5cce2eff92mshef35919e57a0ea3p1b828djsn68259564d9da',
-        //         'X-RapidAPI-Host': 'livescore6.p.rapidapi.com'
-        //     }
-        // };
+            <!-- <table id='table'>
 
-        // fetch('https://livescore6.p.rapidapi.com/leagues/v2/get-scoreboard?Category=soccer&Ccd=world-cup&Scd=group-a', options)
-        //     .then(response => response.json())
-        //     .then(response => console.log(response))
-        //     .catch(err => console.error(err));
+            <tr>
+                <th>Date</th>
+                <th>Home</th>
+                <th>Goal</th>
+                <th>Goal</th>
+                <th>Away</th>
+            </tr> -->
+
+            <script>
+                $(document).ready(function() {
+
+                    $.getJSON("standings.json",
+                        function(data) {
+
+                            var game = '';
+
+                            $.each(data, function(key, value) {
+                                var groupsSize = Object.keys(value.Groups).length;
+                                // console.log("groupsSize: ", Object.keys(value.Groups).length);
+                                game += '<h1>' + "Predictions from " + key + '</h1>';
+
+                                for (let i = 0; i < groupsSize; i++) {
+
+                                    game += '<h1>' + value.Groups[i].group + '</h1>';
+                                    // console.log("i: ", i)
+                                    game += '<table>'
+                                    game += '<th>Date</th>';
+                                    game += '<th>Home</th>';
+                                    game += '<th>Goal</th>';
+                                    game += '<th>Goal</th>';
+                                    game += '<th>Away</th>';
+                                    game += '<th>Result</th>';
+                                    game += '<th>Goals</th>';
+
+                                    // console.log("table " + i + " Size: ", Object.keys(value.Groups[i]).length);
+                                    // console.log("table index: ", i)
+                                    var tablesSize = Object.keys(value.Groups[i]).length - 1;
+                                    for (let j = 0; j < tablesSize; j++) {
+                                        // console.log("row index: ", j)
+                                        game += '<tr>';
+                                        game += '<td>' +
+                                            value.Groups[i][j].Date + '</td>';
+
+                                        game += '<td>' +
+                                            value.Groups[i][j].Home + '</td>';
+
+                                        game += '<td>' +
+                                            value.Groups[i][j].HomeScore + '</td>';
+
+                                        game += '<td>' +
+                                            value.Groups[i][j].AwayScore + '</td>';
+                                        game += '<td>' +
+                                            value.Groups[i][j].Away + '</td>';
+
+                                        game += '<td><input type="checkbox" checked="false"></td>';
+
+                                        game += '<td>' + value.Groups[i][j].ExactGameResult + '</td>';
+
+                                        game += '</tr>';
+                                    }
+                                    game += '</table>';
+                                }
+                            });
+
+                            $('#table').append(game);
+                        });
+                });
+            </script>
+        </div>
+    </section>
+    <!-- <div class="container">
+
+        <h1 class="text text-success text-center ">
+            2022 World Cup Pool
+        </h1>
+
+        <h6 class="text text-success text-center">
+            Group A <span data-field="KevinB.name"> </span> predictions
+        </h6>
+
+        <table class="table-striped border-success">
+
+            <thead>
+
+                <tr>
+
+
+                    <th data-field="KevinB.GroupA.J1a.Home">
+                        <span class="text-success">Home</span>
+                    </th>
+                    <th data-field="KevinB.GroupA.J1a.HomeScore">
+                        <span class="text-success">Goal</span>
+                    </th>
+                    <th data-field="KevinB.GroupA.J1a.AwayScore">
+                        <span class="text-success">Goal</span>
+                    </th>
+                    <th data-field="KevinB.GroupA.J1a.Away">
+                        <span class="text-success">Away</span>
+                    </th>
+
+                </tr>
+
+                <tr>
+                    <td data-field="KevinB.GroupA.J1b.Home">
+                    </td>
+                    <td data-field="KevinB.GroupA.J1b.HomeScore">
+                    </td>
+                    <td data-field="KevinB.GroupA.J1b.AwayScore">
+                    </td>
+                    <td data-field="KevinB.GroupA.J1b.Away">
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </div> -->
+    <!-- Include jQuery and other required files for Bootstrap -->
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js">
     </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
+
+
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js">
+    </script> -->
+
+
+    <!-- <script type="text/javascript" src="index.js">
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('table').bootstrapTable({
+                data: mydata,
+                name: "Kevinb"
+            });
+        });
+
+        var mydata = JSON.parse(da)
+    </script> -->
 </body>
+<!-- "WorldCup": {
+        "GroupStage": {
+            "GroupA": {
+                "J1a": {
+                    "Away": "Netherlands",
+                    "AwayScore": 0,
+                    "Date": "2022-11-21",
+                    "Home": "Senegal",
+                    "HomeScore": 0
+                },
+                "J1b": {
+                    "Away": "Netherlands",
+                    "AwayScore": 0,
+                    "Date": "2022-11-21",
+                    "Home": "Senegal",
+                    "HomeScore": 0
+                },
+                "J2a": {
+                    "Away": "Netherlands",
+                    "AwayScore": 0,
+                    "Date": "2022-11-21",
+                    "Home": "Senegal",
+                    "HomeScore": 0
+                },
+                "J2b": {
+                    "Away": "Netherlands",
+                    "AwayScore": 0,
+                    "Date": "2022-11-21",
+                    "Home": "Senegal",
+                    "HomeScore": 0
+                },
+                "J3a": {
+                    "Away": "Netherlands",
+                    "AwayScore": 0,
+                    "Date": "2022-11-21",
+                    "Home": "Senegal",
+                    "HomeScore": 0
+                },
+                "J3b": {
+                    "Away": "Netherlands",
+                    "AwayScore": 0,
+                    "Date": "2022-11-21",
+                    "Home": "Senegal",
+                    "HomeScore": 0
+                }
+            }
+        }
+    }, -->
+
+</html>
